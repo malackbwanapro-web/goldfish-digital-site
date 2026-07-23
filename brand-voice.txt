@@ -1,0 +1,115 @@
+# GOLDFISH MARKETING – BRAND VOICE GUIDE
+Generated: 2026-06-10 | Phase 1 Output
+
+─────────────────────────────────────────────────
+THE PERSONA: THE PRAGMATIC OPTIMIST
+─────────────────────────────────────────────────
+Goldfish Marketing speaks as a confident, deeply knowledgeable local authority
+who holds itself to international standards. The voice is visionary but grounded —
+never vague, always precise. We make big promises and then immediately back them
+up with data, systems, and proof.
+
+We are the smartest person in the room who doesn't need to say it.
+
+
+─────────────────────────────────────────────────
+SIGNATURE TAGLINE
+─────────────────────────────────────────────────
+"Local Experts. Global Standards."
+
+Secondary Lines (for section headers, social captions, ad copy):
+• "We don't just market your business. We engineer its growth."
+• "From Diani to Nairobi — and every SME in between."
+• "The bridge between who you are offline and who you need to be online."
+• "Your competitors are already losing to us. You don't have to."
+• "AI is not the future. It's Tuesday."
+
+
+─────────────────────────────────────────────────
+TONE PILLARS
+─────────────────────────────────────────────────
+
+1. AUTHORITATIVE (not arrogant)
+   We speak with conviction and expertise. We do not hedge or over-qualify.
+   ✓ "Our systems save your team 10–20 hours every week."
+   ✗ "Our systems might help you save some time."
+
+2. PRECISE (not corporate)
+   Every claim is specific. We use real numbers, real outcomes, real benchmarks.
+   ✓ "Lighthouse scores ≥92. GDPR, CCPA, and Kenya Data Protection Act compliant."
+   ✗ "We build great websites that meet industry standards."
+
+3. WARM & LOCAL (not distant)
+   We are rooted in the Kwale coast. We know the terrain — culturally, economically,
+   and digitally. We are not an international agency pretending to understand Kenya.
+   ✓ "We know what drives bookings in Diani. We've built the systems that prove it."
+   ✗ "We serve a diverse range of clients across emerging markets."
+
+4. FORWARD-LEANING (not hype-driven)
+   We talk about the future with calm certainty, not breathless excitement.
+   ✓ "AI isn't disrupting your industry — it already has. We help you catch up, fast."
+   ✗ "AI is CHANGING EVERYTHING!!! Don't get left behind!!!"
+
+5. EMPOWERING (not condescending)
+   We position our clients as the hero, not ourselves. We are the strategic partner
+   that makes them formidable — we share knowledge, we teach, we open doors.
+   ✓ "We'll teach your team to use these AI systems. You own the knowledge forever."
+   ✗ "Leave the complicated tech stuff to us — you just focus on running your business."
+
+
+─────────────────────────────────────────────────
+VOCABULARY GUIDE
+─────────────────────────────────────────────────
+
+USE THESE WORDS:
+  engineer, build, precision, dominance, authority, velocity,
+  data-driven, compliant, benchmark, conversion, ecosystem,
+  audit, seamless, premium, elite, proven, measurable, strategic,
+  local, cultural, coast, Kenya, Diani, Nairobi, Kwale
+
+AVOID THESE WORDS:
+  cheap, affordable, basic, simple, easy, synergy, disruptive,
+  game-changer, innovative (overused), best-in-class (unverified),
+  world-class (unless backed by data), passion, journey
+
+
+─────────────────────────────────────────────────
+SENTENCE STRUCTURE RULES
+─────────────────────────────────────────────────
+• Short punchy headlines: 2–6 words. Uppercase for hero headings.
+• Body copy: sentence case. Max 2–3 sentences per paragraph for web.
+• CTAs: action verbs first. "Book Your Audit." not "Click here to learn more."
+• No exclamation marks in body copy. One maximum per page, in headlines only.
+• Numbers always as numerals: "10 hours" not "ten hours", "92%" not "ninety-two percent".
+
+
+─────────────────────────────────────────────────
+AUDIENCE-SPECIFIC TONE ADJUSTMENTS
+─────────────────────────────────────────────────
+
+→ Hospitality / Tourism Clients:
+   Elevated, experiential, sensory. Focus on "bookability," direct revenue,
+   and freedom from OTA commissions. Tone: luxury concierge meets growth strategist.
+
+→ Nightlife / Entertainment Clients:
+   High-energy, trend-aware, fast. Focus on hype, social proof, and venue fill-rate.
+   Tone: culturally plugged-in creative director.
+
+→ Law / Corporate / NGO Clients:
+   Precise, credible, compliance-forward. Focus on trust, authority, and data security.
+   Tone: senior consultant who happens to understand digital.
+
+→ Startups / CBOs / Small Retailers:
+   Accessible, encouraging, jargon-light. Focus on quick wins and tangible ROI.
+   Tone: smart older sibling who's done this before.
+
+
+─────────────────────────────────────────────────
+WRITING CHECKLIST (before publishing any copy)
+─────────────────────────────────────────────────
+□ Does the headline pass the "so what?" test?
+□ Is every claim specific and verifiable?
+□ Does the copy sound like it was written for this exact audience?
+□ Are there zero filler words ("very", "really", "just", "basically")?
+□ Is the CTA a direct action verb?
+□ Would this copy embarrass us if shown to a Stripe or Linear copywriter? (It shouldn't.)

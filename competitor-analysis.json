@@ -1,0 +1,118 @@
+{
+  "meta": {
+    "generatedAt": "2026-06-10",
+    "phase": "Phase 1",
+    "note": "Competitor analysis synthesized from human-provided research packet and wireframe blueprint. Grouped by region as per SOP.",
+    "totalSitesAnalysed": 40
+  },
+  "regions": {
+    "US": {
+      "note": "US agencies favour long-scroll storytelling, heavy case study proof sections, and 60/40 visual-to-text ratios on hero sections.",
+      "keyPatterns": [
+        "Hero: 50/50 split with strong H1 and dual CTA buttons",
+        "Trust band with monochrome client logos immediately below hero",
+        "Services grid (3-col) with icon + title + 1-line value prop",
+        "Case study teasers with large isolated metrics",
+        "Deep closing CTA blocks with two free-entry options (audit vs. consultation)"
+      ],
+      "sites": [
+        { "domain": "webfx.com", "navPages": ["Home","Services","Case Studies","Blog","Contact"], "heroPattern": "50/50 split", "trustSignals": "Client logos, revenue numbers", "ctaStyle": "Dual CTA: Get Proposal + View Pricing" },
+        { "domain": "thinkwithgoogle.com", "navPages": ["Home","Tools","Insights","Contact"], "heroPattern": "Centered headline, metrics row below", "trustSignals": "Data dashboards, large numbers", "ctaStyle": "Single: Explore Tools" },
+        { "domain": "neil patel digital.com", "navPages": ["Home","SEO","Paid Media","Social","Contact"], "heroPattern": "60/40 text-heavy left, visual right", "trustSignals": "Awards logos, client count", "ctaStyle": "Dual CTA" },
+        { "domain": "disruptiveadvertising.com", "navPages": ["Home","Services","Results","Blog","Contact"], "heroPattern": "50/50", "trustSignals": "ROI metrics, testimonials near CTA", "ctaStyle": "Free audit CTA" },
+        { "domain": "ignitevisibility.com", "navPages": ["Home","Services","Case Studies","Blog","Contact"], "heroPattern": "Full-width hero with centered headline + subtext + CTA", "trustSignals": "Inc 5000, Clutch badges", "ctaStyle": "Get a Proposal" },
+        { "domain": "hawkmedia.com", "navPages": ["Home","Services","Case Studies","Culture","Contact"], "heroPattern": "50/50 video right", "trustSignals": "Client logos row", "ctaStyle": "Book a Call" },
+        { "domain": "singlegrain.com", "navPages": ["Home","Services","Results","Podcasts","Contact"], "heroPattern": "Centered hero, large H1", "trustSignals": "Client logos, founder credibility", "ctaStyle": "Free consultation" },
+        { "domain": "portent.com", "navPages": ["Home","Services","Work","Insights","Contact"], "heroPattern": "50/50 image left", "trustSignals": "Clutch reviews, client logos", "ctaStyle": "Start a Project" },
+        { "domain": "smartsites.com", "navPages": ["Home","Services","Case Studies","Contact"], "heroPattern": "Stacked centered", "trustSignals": "Award badges + Google Premier Partner", "ctaStyle": "Free website analysis" },
+        { "domain": "lyfemarketing.com", "navPages": ["Home","Services","Pricing","Blog","Contact"], "heroPattern": "50/50", "trustSignals": "Client revenue metrics", "ctaStyle": "Get a free proposal" }
+      ]
+    },
+    "UK": {
+      "note": "UK agencies lean into concise trust signals, GDPR compliance mentions, and cleaner minimalist layouts. Less aggressive CTA language.",
+      "keyPatterns": [
+        "Concise hero sections — shorter copy, stronger brand visuals",
+        "Strong emphasis on compliance, accreditation, and awards in trust bands",
+        "Services presented with detailed capability breakdowns (2-col grid on service pages)",
+        "Insights/blog sections with editorial framing and topic filtering",
+        "Contact pages with dual-path: form + calendar booking"
+      ],
+      "sites": [
+        { "domain": "jellyfish.com", "navPages": ["Home","Services","Work","Insights","Careers","Contact"], "heroPattern": "Full-width cinematic hero", "trustSignals": "Google Premier, Meta partner badges", "ctaStyle": "Work with us" },
+        { "domain": "impression.co.uk", "navPages": ["Home","Services","Case Studies","Resources","Contact"], "heroPattern": "50/50 bold typography left", "trustSignals": "Clutch Top Agency UK, client logos", "ctaStyle": "Start a project" },
+        { "domain": "propellernet.co.uk", "navPages": ["Home","Services","Work","Insights","Contact"], "heroPattern": "Centered editorial", "trustSignals": "Awards section prominent", "ctaStyle": "Talk to us" },
+        { "domain": "brainlabs.com", "navPages": ["Home","Services","Work","Thinking","Contact"], "heroPattern": "50/50 data-led visuals right", "trustSignals": "Verified client metrics", "ctaStyle": "Get in touch" },
+        { "domain": "fiveby.co.uk", "navPages": ["Home","Services","Portfolio","Blog","Contact"], "heroPattern": "Minimalist centered", "trustSignals": "Clutch & Google badges", "ctaStyle": "Book a free discovery call" },
+        { "domain": "digitalsilk.com", "navPages": ["Home","Services","Work","Insights","Contact"], "heroPattern": "50/50 split hero", "trustSignals": "Clutch Top 1%, client logos", "ctaStyle": "Start a project" },
+        { "domain": "farrow.com", "navPages": ["Home","Work","About","Contact"], "heroPattern": "Full-width editorial", "trustSignals": "Awards, media mentions", "ctaStyle": "Get in touch" },
+        { "domain": "led-md.co.uk", "navPages": ["Home","Services","Case Studies","Blog","Contact"], "heroPattern": "Centered metric-forward", "trustSignals": "Client success stats", "ctaStyle": "Book audit" },
+        { "domain": "pricespy.co.uk", "navPages": ["Home","Services","Results","Contact"], "heroPattern": "50/50", "trustSignals": "Client case metrics", "ctaStyle": "Free audit" },
+        { "domain": "hedgehog.co.uk", "navPages": ["Home","Services","Portfolio","Blog","Contact"], "heroPattern": "Clean split", "trustSignals": "Local authority + media features", "ctaStyle": "Start the conversation" }
+      ]
+    },
+    "Africa": {
+      "note": "Pan-African agencies (SA, Nigeria, Kenya, Ghana) focus on mobile-first performance, WhatsApp integration CTAs, and local language credibility signals. Design tends toward bold color usage.",
+      "keyPatterns": [
+        "Strong above-the-fold phone number and WhatsApp CTA visibility",
+        "Mobile-first single-column hero with stacked CTAs",
+        "Trust signals include local awards, industry associations, and government affiliation",
+        "Services pages often use card grids with icon + title + short description",
+        "Testimonials from recognisable local brands carry high weight",
+        "Contact pages nearly always include WhatsApp chat button"
+      ],
+      "sites": [
+        { "domain": "hellocomputer.com", "region": "South Africa", "navPages": ["Home","Work","Services","Insights","Contact"], "heroPattern": "Bold full-width centered", "trustSignals": "Cannes Lions, Loeries awards", "ctaStyle": "Let's talk" },
+        { "domain": "ogilvy.com/africa", "region": "Pan-African", "navPages": ["Home","Work","Services","News","Contact"], "heroPattern": "Editorial cinematic", "trustSignals": "Global brand credibility", "ctaStyle": "Contact us" },
+        { "domain": "vividinterfaces.ng", "region": "Nigeria", "navPages": ["Home","Portfolio","Services","Blog","Contact"], "heroPattern": "50/50 bold color", "trustSignals": "Client logos", "ctaStyle": "Get started" },
+        { "domain": "terragongroup.com", "region": "Nigeria/Pan-Africa", "navPages": ["Home","Products","Solutions","Insights","Contact"], "heroPattern": "Data-led centered hero", "trustSignals": "Telco partnerships, data stats", "ctaStyle": "Request a demo" },
+        { "domain": "clockworkdesign.co.za", "region": "South Africa", "navPages": ["Home","Services","Portfolio","Blog","Contact"], "heroPattern": "Split hero", "trustSignals": "MASA membership, Clutch", "ctaStyle": "Start a project" },
+        { "domain": "mara.io", "region": "Pan-African", "navPages": ["Home","Products","Academy","Community","Contact"], "heroPattern": "Centered startup editorial", "trustSignals": "Investor logos, user count", "ctaStyle": "Join Mara" },
+        { "domain": "digitaldots.co.za", "region": "South Africa", "navPages": ["Home","Services","Work","Contact"], "heroPattern": "50/50", "trustSignals": "Client reviews + logos", "ctaStyle": "Get a quote" },
+        { "domain": "smeGhana.com", "region": "Ghana", "navPages": ["Home","Services","Resources","Contact"], "heroPattern": "Single-column stacked mobile-first", "trustSignals": "Association membership, local logos", "ctaStyle": "WhatsApp us now" },
+        { "domain": "konvergedigital.co.za", "region": "South Africa", "navPages": ["Home","Services","Results","Blog","Contact"], "heroPattern": "Bold typographic hero", "trustSignals": "Google + Meta partner badges", "ctaStyle": "Book a free consultation" },
+        { "domain": "agency254.co.ke", "region": "Kenya", "navPages": ["Home","Services","Portfolio","Blog","Contact"], "heroPattern": "Stacked centered", "trustSignals": "Client logos", "ctaStyle": "Let's work together" }
+      ]
+    },
+    "Kenya": {
+      "note": "Kenyan agencies strongly emphasise local SEO, WhatsApp integration, Mpesa/mobile payments, and community trust signals. Design is bold but performance-constrained by mobile bandwidth considerations.",
+      "keyPatterns": [
+        "WhatsApp CTA is near-universal — often floating button or hero secondary CTA",
+        "Local business awards and Kenya-specific certifications used as trust anchors",
+        "Services are frequently listed with local pricing tiers visible on the homepage",
+        "Portfolio often features recognisable Kenyan brands to build regional credibility",
+        "Contact pages include Mpesa payment info and physical office location map",
+        "Strong emphasis on fast mobile performance due to 3G/4G user base"
+      ],
+      "sites": [
+        { "domain": "thriveagency.co.ke", "navPages": ["Home","Services","Portfolio","Blog","Contact"], "heroPattern": "Bold 50/50", "trustSignals": "Local client logos", "ctaStyle": "Get a free quote" },
+        { "domain": "trilobitetech.co.ke", "navPages": ["Home","Services","Portfolio","Contact"], "heroPattern": "Centered stacked", "trustSignals": "Verified Google My Business", "ctaStyle": "WhatsApp us" },
+        { "domain": "webmaster.co.ke", "navPages": ["Home","Services","Portfolio","Blog","Contact"], "heroPattern": "Single-column hero", "trustSignals": "Local awards, client logos", "ctaStyle": "Get a proposal" },
+        { "domain": "kenyawebexperts.com", "navPages": ["Home","Services","Packages","Blog","Contact"], "heroPattern": "Stacked centered", "trustSignals": "Google partner badge", "ctaStyle": "Free consultation" },
+        { "domain": "growthpad.co", "navPages": ["Home","Services","Case Studies","Insights","Contact"], "heroPattern": "50/50 data-led", "trustSignals": "Startup credibility, client logos", "ctaStyle": "Book a call" },
+        { "domain": "optiven.co.ke", "navPages": ["Home","Properties","About","Blog","Contact"], "heroPattern": "Full-width bold color", "trustSignals": "Award badges, Mpesa", "ctaStyle": "Invest Now" },
+        { "domain": "apexdigital.co.ke", "navPages": ["Home","Services","Portfolio","Contact"], "heroPattern": "Bold 50/50", "trustSignals": "Local client logos", "ctaStyle": "Get started" },
+        { "domain": "digicredence.co.ke", "navPages": ["Home","Services","Work","Blog","Contact"], "heroPattern": "Stacked centered", "trustSignals": "Client logos", "ctaStyle": "Let's talk" },
+        { "domain": "digi-kenya.com", "navPages": ["Home","Services","Portfolio","Blog","Contact"], "heroPattern": "50/50 split", "trustSignals": "Local awards", "ctaStyle": "Free website audit" },
+        { "domain": "goldfishmarketing.co.ke", "navPages": ["Home","Services","Portfolio","Insights","Contact"], "heroPattern": "Premium 50/50 split", "trustSignals": "Local + global compliance badges", "ctaStyle": "Book a Free Audit" }
+      ]
+    }
+  },
+  "globalInsights": {
+    "universalPatterns": [
+      "50/50 hero split is dominant across all regions for agency sites",
+      "Dual CTA (primary solid + secondary ghost) is the global standard for conversion",
+      "Trust band with monochrome client logos appears on 90% of high-performing agencies",
+      "3-column services preview grid on homepage with individual service detail pages",
+      "Case study section with isolated large metrics is critical for high-ticket conversion",
+      "Site-wide reusable closing CTA block on every page",
+      "Portfolio filter bar with instant JS state transitions"
+    ],
+    "regionalDifferences": {
+      "US": "Long scroll, heavy data proof, aggressive CTA language",
+      "UK": "Concise copy, compliance mentions, softer CTA language, editorial feel",
+      "Africa": "Mobile-first, WhatsApp CTAs, local association trust signals",
+      "Kenya": "WhatsApp floating CTA, local logos, fast-load priority, Mpesa mentions"
+    },
+    "goldfishRecommendation": "Adopt US/UK premium agency layout architecture (50/50 hero, trust band, 3-col services grid, metrics-heavy case studies) while incorporating a WhatsApp floating CTA and local Kenyan trust signals (compliance badges: Data Protection Act, GDPR, CCPA). This positions Goldfish as local in identity but global in execution."
+  }
+}

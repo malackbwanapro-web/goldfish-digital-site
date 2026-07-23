@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "generatedAt": "2026-06-10",
+    "phase": "Phase 1",
+    "client": "Goldfish Marketing",
+    "note": "Data-driven sitemap derived from brand.config.json and wireframe-master.json. Copy will be injected separately by client."
+  },
+  "pages": [
+    {
+      "id": "home",
+      "slug": "/",
+      "title": "Home",
+      "metaTitleTemplate": "Goldfish Marketing – Local Experts. Global Standards.",
+      "metaDescriptionTemplate": "Goldfish Marketing is Diani's premier digital marketing agency and AI systems integration consultancy. We engineer your brand's growth with global standards.",
+      "navLabel": "Home",
+      "sectionOrder": [
+        "hero",
+        "trust-band",
+        "core-thesis",
+        "services-grid",
+        "case-study-teaser",
+        "insights-teaser",
+        "closing-cta"
+      ],
+      "primaryGoalSupport": "Lead generation via dual CTA (audit + consultation) in hero and closing CTA",
+      "secondaryGoalSupport": "Showcase services and insights to build authority"
+    },
+    {
+      "id": "services-hub",
+      "slug": "/services",
+      "title": "Services",
+      "navLabel": "Services",
+      "metaTitleTemplate": "Our Services – Goldfish Marketing",
+      "metaDescriptionTemplate": "From premium web builds to AI workflow automation — explore Goldfish Marketing's 6 core service pillars built for Kenya's most ambitious brands.",
+      "sectionOrder": [
+        "context-header",
+        "services-matrix",
+        "engagement-framework",
+        "safety-cta"
+      ],
+      "primaryGoalSupport": "Convert undecided visitors by showing full service range + how we work",
+      "children": [
+        {
+          "id": "service-web",
+          "slug": "/services/web-app-ecosystems",
+          "title": "Smart Web & App Ecosystems",
+          "navLabel": null,
+          "metaTitleTemplate": "Smart Web & App Ecosystems – Goldfish Marketing",
+          "metaDescriptionTemplate": "Mobile-first, conversion-optimized web and app builds featuring premium UI, compliance audits, and WhatsApp & booking engine integrations.",
+          "sectionOrder": [
+            "service-hero",
+            "capabilities-breakout",
+            "tech-stack",
+            "case-study-proof",
+            "faq",
+            "closing-cta"
+          ]
+        },
+        {
+          "id": "service-seo",
+          "slug": "/services/visibility-engineering",
+          "title": "Advanced Visibility Engineering",
+          "navLabel": null,
+          "metaTitleTemplate": "Advanced Visibility Engineering (SEO, GEO, CRO) – Goldfish Marketing",
+          "metaDescriptionTemplate": "Dominate Google, get recommended by AI engines, and turn passive traffic into high-value clients with our SEO, GEO, and CRO systems.",
+          "sectionOrder": [
+            "service-hero",
+            "capabilities-breakout",
+            "tech-stack",
+            "case-study-proof",
+            "faq",
+            "closing-cta"
+          ]
+        },
+        {
+          "id": "service-brand",
+          "slug": "/services/brand-identity-content",
+          "title": "Brand Identity & Content Creation",
+          "navLabel": null,
+          "metaTitleTemplate": "Brand Identity & Content Creation – Goldfish Marketing",
+          "metaDescriptionTemplate": "High-end brand strategy, cinematic video production, and premium commercial photography to define the face of your business.",
+          "sectionOrder": [
+            "service-hero",
+            "capabilities-breakout",
+            "tech-stack",
+            "case-study-proof",
+            "faq",
+            "closing-cta"
+          ]
+        },
+        {
+          "id": "service-paid",
+          "slug": "/services/paid-growth",
+          "title": "Digital Presence & Paid Growth",
+          "navLabel": null,
+          "metaTitleTemplate": "Digital Presence & Paid Growth – Goldfish Marketing",
+          "metaDescriptionTemplate": "Full-scale social media management and targeted Meta, Google, and TikTok ad campaigns designed to eliminate the mid-week slump.",
+          "sectionOrder": [
+            "service-hero",
+            "capabilities-breakout",
+            "tech-stack",
+            "case-study-proof",
+            "faq",
+            "closing-cta"
+          ]
+        },
+        {
+          "id": "service-ai",
+          "slug": "/services/ai-automation",
+          "title": "AI Systems & Automation",
+          "navLabel": null,
+          "metaTitleTemplate": "AI Systems & Automation for SMEs – Goldfish Marketing",
+          "metaDescriptionTemplate": "Deploy AI-driven workflows that save your team 10–20 hours a week. WhatsApp pipelines, CRM automation, and AI team training workshops.",
+          "sectionOrder": [
+            "service-hero",
+            "capabilities-breakout",
+            "tech-stack",
+            "case-study-proof",
+            "faq",
+            "closing-cta"
+          ]
+        },
+        {
+          "id": "service-analytics",
+          "slug": "/services/analytics-audits",
+          "title": "Strategic Analytics & Audits",
+          "navLabel": null,
+          "metaTitleTemplate": "Strategic Analytics & Smart Growth Audits – Goldfish Marketing",
+          "metaDescriptionTemplate": "Data-backed performance monitoring and deep-dive Smart Growth Audits that give you a flawless 1-page roadmap for improvement.",
+          "sectionOrder": [
+            "service-hero",
+            "capabilities-breakout",
+            "tech-stack",
+            "case-study-proof",
+            "faq",
+            "closing-cta"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "slug": "/portfolio",
+      "title": "Portfolio",
+      "navLabel": "Portfolio",
+      "metaTitleTemplate": "Portfolio & Case Studies – Goldfish Marketing",
+      "metaDescriptionTemplate": "Real results for real businesses. Explore Goldfish Marketing's portfolio of web builds, automation deployments, and growth campaigns across Kenya.",
+      "sectionOrder": [
+        "portfolio-hero",
+        "filter-bar",
+        "portfolio-grid",
+        "testimonials",
+        "closing-cta"
+      ],
+      "filterCategories": [
+        "All",
+        "Web & App Ecosystems",
+        "SEO / GEO / CRO",
+        "Brand Identity",
+        "Paid Ads",
+        "AI Automation",
+        "Analytics"
+      ]
+    },
+    {
+      "id": "insights",
+      "slug": "/insights",
+      "title": "Insights",
+      "navLabel": "Insights",
+      "metaTitleTemplate": "Insights & Deep Dives – Goldfish Marketing",
+      "metaDescriptionTemplate": "Strategic briefings, automation ROI breakdowns, and technical architecture deep-dives from Goldfish Marketing's growth engineering team.",
+      "sectionOrder": [
+        "insights-hero",
+        "topical-filter",
+        "featured-insight",
+        "insights-grid",
+        "conversion-bridge"
+      ],
+      "filterCategories": [
+        "All",
+        "Technical Architecture",
+        "Automation ROI",
+        "Case Breakdowns",
+        "Industry Shifts"
+      ]
+    },
+    {
+      "id": "contact",
+      "slug": "/contact",
+      "title": "Contact",
+      "navLabel": "Contact",
+      "metaTitleTemplate": "Start an Engagement – Goldfish Marketing",
+      "metaDescriptionTemplate": "Book a free Smart Growth Audit or schedule a 15-minute consultation. We review all audit requests within 24 business hours.",
+      "sectionOrder": [
+        "contact-hero",
+        "dual-path-form",
+        "trust-anchors"
+      ],
+      "conversionPaths": [
+        "Path A: Free Audit Intake Form (high-intent structured qualification)",
+        "Path B: Free Consultation Calendar via Calendly or HubSpot Meetings"
+      ]
+    }
+  ],
+  "navigation": {
+    "mainLinks": ["Home", "Services", "Portfolio", "Insights", "Contact"],
+    "primaryCTA": { "label": "Book a Free Audit", "href": "/contact" },
+    "footerLinks": {
+      "company": ["About", "Services", "Portfolio", "Insights", "Contact"],
+      "services": [
+        "Web & App Ecosystems",
+        "Visibility Engineering",
+        "Brand Identity & Content",
+        "Paid Growth",
+        "AI Automation",
+        "Analytics & Audits"
+      ],
+      "legal": ["Privacy Policy", "Terms of Service", "Data Protection (KDPA, GDPR, CCPA)"],
+      "contact": {
+        "phone": "+254 711 404 755",
+        "email": "info@goldfishmarketing.co.ke",
+        "address": "Diani Bazaar, Beach Rd, Diani, Kwale County, Kenya",
+        "hours": "Open daily 8:00 AM – 6:00 PM"
+      }
+    }
+  }
+}

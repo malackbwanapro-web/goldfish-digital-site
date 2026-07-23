@@ -1,0 +1,68 @@
+{
+  "brandName": "Goldfish Marketing",
+  "industry": "Creative digital marketing agency & AI systems integration consultancy",
+  "operationStatus": "Established (coast-based, nationwide footprint)",
+  "location": {
+    "town": "Diani",
+    "city": "Diani",
+    "county": "Kwale County",
+    "country": "Kenya",
+    "address": "Diani Bazaar, Beach Rd"
+  },
+  "operatingHours": "Open daily from 8:00 AM to 6:00 PM",
+  "contact": {
+    "phone": "+254 711 404 755",
+    "email": "info@goldfishmarketing.co.ke"
+  },
+  "productsServices": [
+    "Smart Web & App Ecosystems (Foundation, Growth, Dominance)",
+    "Advanced Visibility Engineering (SEO, GEO, CRO)",
+    "Brand Identity & Content Creation",
+    "Digital Presence & Paid Growth Management",
+    "AI Systems & Automation Solutions",
+    "Strategic Analytics & Audits"
+  ],
+  "targetAudience": [
+    "Hospitality, Luxury Tourism & Leisure",
+    "Entertainment, Gastronomy & Nightlife",
+    "Corporate Services, Legal & High-Trust Sectors",
+    "Social Impact, NGOs & Public Infrastructure",
+    "Real Estate, Property Development & Construction",
+    "Retail, E-Commerce & Creative Economies"
+  ],
+  "usp": "Local Experts. Global Standards. Combining deep cultural insight with high-level marketing strategy, advanced technical optimization (SEO, GEO, and CRO), and strict compliance (Kenyan Data Protection Act, GDPR, CCPA).",
+  "colors": {
+    "light": {
+      "background": "#F6E0CA",
+      "surface": "#FFFFFF",
+      "text": "#3A2F26",
+      "accent": "#D4AF37"
+    },
+    "dark": {
+      "background": "#121212",
+      "surface": "#1E1E1E",
+      "text": "#E0D7D0",
+      "accent": "#D4AF37"
+    }
+  },
+  "logo": {
+    "lightPath": "/logo-light.svg",
+    "darkPath": "/logo-dark.svg",
+    "aspectRatio": "1:1"
+  },
+  "goals": {
+    "primary": "Generate high-value agency leads and book 'Smart Growth Audits' / Retainers",
+    "secondary": "Showcase service tiers, build authority, and drive sign-ups for AI corporate workshops"
+  },
+  "referenceSites": [
+    "Apple",
+    "Stripe",
+    "Linear",
+    "Superlist",
+    "Pitch",
+    "Bruno Simon",
+    "Active Theory",
+    "Refirme",
+    "ETQ Amsterdam"
+  ]
+}

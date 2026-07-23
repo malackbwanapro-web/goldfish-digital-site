@@ -1,0 +1,593 @@
+{
+  "meta": {
+    "generatedAt": "2026-06-10",
+    "phase": "Phase 1",
+    "source": "Human-provided wireframe blueprint",
+    "client": "Goldfish Marketing"
+  },
+  "globalNavigation": {
+    "structure": "Three-part header: BrandMark (hard-left) | Nav Index centered (5 links) | Primary CTA (hard-right)",
+    "navLinks": ["Home", "Services", "Portfolio", "Insights", "Contact"],
+    "primaryCTA": "Book a Free Audit",
+    "mobileBreakpoint": "1024px",
+    "mobilePattern": "Hamburger menu (center nav collapses)",
+    "notes": "Strict flexbox space-between alignment. Nav links must collapse at 1024px before collision with right-hand CTA."
+  },
+  "globalComponents": {
+    "closingCTABlock": {
+      "usedOnPages": ["Home", "Services Hub", "Individual Service Pages", "Portfolio"],
+      "layout": "Monolithic centered deep-background container block",
+      "elements": [
+        "H2 closing headline (centered, high-impact)",
+        "Dual CTA row: [Book a Free Audit] (solid primary) + [Book a Free Consultation] (ghost/outline secondary)"
+      ],
+      "builderNote": "Build as a single reusable global component. Do NOT duplicate markup on each page."
+    },
+    "whatsappFloatingCTA": {
+      "type": "Floating action button",
+      "position": "Bottom-right corner, fixed position",
+      "visibleOn": "All pages",
+      "icon": "WhatsApp logo",
+      "behavior": "Opens WhatsApp chat on click"
+    }
+  },
+  "pages": {
+    "home": {
+      "slug": "/",
+      "title": "Home",
+      "sections": [
+        {
+          "id": "hero",
+          "order": 1,
+          "name": "The Hero",
+          "layout": "50/50 horizontal split (desktop) / Single-column stacked (mobile)",
+          "leftColumn": {
+            "elements": [
+              { "type": "eyebrow", "description": "Small uppercase kicker text framing the niche" },
+              { "type": "h1", "description": "Massive typography 48–60px, bold, left-aligned. Use CSS clamp() for fluid scaling." },
+              { "type": "subheadline", "description": "Medium weight paragraph, 2 lines max" },
+              {
+                "type": "ctaGroup",
+                "layout": "Horizontal row",
+                "buttons": [
+                  { "label": "Book a Free Audit", "variant": "primary" },
+                  { "label": "View Our Work", "variant": "ghost/outline" }
+                ]
+              }
+            ]
+          },
+          "rightColumn": {
+            "elements": [
+              { "type": "visualContainer", "aspectRatio": "16:9 or 4:3", "content": "High-fidelity interface mockup or structural system diagram" }
+            ]
+          }
+        },
+        {
+          "id": "trust-band",
+          "order": 2,
+          "name": "Social Proof / Trust Anchor",
+          "layout": "Full-width low-height band",
+          "elements": [
+            { "type": "label", "text": "Trusted by operators at", "alignment": "center", "style": "muted" },
+            { "type": "logoGrid", "count": "4–6 logos", "layout": "Horizontal single row", "styling": "Monochrome grayscale — all logos" }
+          ]
+        },
+        {
+          "id": "core-thesis",
+          "order": 3,
+          "name": "The Core Thesis",
+          "layout": "Centered asymmetric — 8-column width inside 12-column page grid",
+          "elements": [
+            { "type": "h2", "description": "Focused on industry friction point / the problem" },
+            { "type": "bodyBlock", "paragraphs": 2, "note": "Short paragraphs — problem space + solution framework. Bold inline key phrases for scanners." }
+          ]
+        },
+        {
+          "id": "services-grid",
+          "order": 4,
+          "name": "Services Preview Grid — The 6 Pillars",
+          "layout": "3-column 2-row grid (desktop) / 1-column (mobile)",
+          "cardBlueprint": {
+            "elements": [
+              { "type": "icon", "alignment": "top-left", "style": "Simple geometric icon" },
+              { "type": "h3", "description": "Service title, clean bold" },
+              { "type": "valueSentence", "description": "1 line high-impact value proposition" },
+              { "type": "textLinkCTA", "pattern": "Explore [Service] →" }
+            ],
+            "repeatCount": 6
+          },
+          "sectionFooter": {
+            "type": "button",
+            "label": "View All Services",
+            "alignment": "center"
+          }
+        },
+        {
+          "id": "case-study-teaser",
+          "order": 5,
+          "name": "Flagship Case Study Teaser",
+          "layout": "Alternating horizontal asymmetric split — 60% visual / 40% text",
+          "visualSide": { "content": "High-contrast dashboard or system layout screenshot" },
+          "dataSide": {
+            "elements": [
+              { "type": "metadataLabel", "style": "Uppercase tracking-spaced", "content": "Industry | System Built" },
+              { "type": "h2", "description": "Project title, heavy weight, left-aligned" },
+              {
+                "type": "metricsBlock",
+                "layout": "2–3 column micro-grid",
+                "items": [
+                  { "value": "[Large number]", "label": "[Metric label]" },
+                  { "value": "[Large number]", "label": "[Metric label]" },
+                  { "value": "[Large number]", "label": "[Metric label]" }
+                ]
+              },
+              { "type": "button", "label": "Read Full Case Study", "variant": "outline" }
+            ]
+          }
+        },
+        {
+          "id": "insights-teaser",
+          "order": 6,
+          "name": "Authority / Insights Teaser",
+          "layout": "3-column horizontal grid",
+          "cardBlueprint": {
+            "elements": [
+              { "type": "imageHeader", "description": "Graphic thumbnail bounding box" },
+              { "type": "metadata", "description": "Read Time + Topic Category, small text" },
+              { "type": "h3", "description": "Article title, multi-line" },
+              { "type": "excerpt", "style": "Muted color, 2 lines max" }
+            ],
+            "repeatCount": 3
+          }
+        },
+        {
+          "id": "closing-cta",
+          "order": 7,
+          "name": "The Closer — Final CTA",
+          "layout": "Monolithic centered deep-background container block",
+          "component": "GlobalClosingCTA",
+          "elements": [
+            { "type": "h2", "description": "Centered high-impact push to action" },
+            {
+              "type": "ctaRow",
+              "buttons": [
+                { "label": "Book a Free Audit", "variant": "primary" },
+                { "label": "Book a Free Consultation", "variant": "ghost" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "services-hub": {
+      "slug": "/services",
+      "title": "Services",
+      "sections": [
+        {
+          "id": "context-header",
+          "order": 1,
+          "name": "The Context Header",
+          "layout": "Centered single-column, 8-column width desktop",
+          "elements": [
+            { "type": "h1", "description": "Heavy bold typography — overarching engineering/automation focus" },
+            { "type": "contextParagraph", "sentences": "2–3 max" }
+          ],
+          "spacingNote": "Generous padding-bottom to separate from the grid below"
+        },
+        {
+          "id": "services-matrix",
+          "order": 2,
+          "name": "The 6 Services Matrix",
+          "layout": "2-column grid (3 rows) — wide horizontal cards with technical detail",
+          "cardBlueprint": {
+            "leftHalf": [
+              { "type": "h2", "description": "Service name — bold distinct" },
+              { "type": "valueHook", "description": "1 sentence operational outcome, slightly larger high-contrast font" },
+              { "type": "cta", "pattern": "Explore [Service] Architecture →", "variant": "text-link or outline" }
+            ],
+            "rightHalf": [
+              { "type": "label", "text": "Core Capabilities:", "style": "small uppercase" },
+              { "type": "bulletList", "items": "3–4 specific technical capabilities", "bulletStyle": "Geometric checkmark or dash" }
+            ],
+            "repeatCount": 6
+          }
+        },
+        {
+          "id": "engagement-framework",
+          "order": 3,
+          "name": "The Engagement Framework — How We Work",
+          "layout": "Horizontal 3-column process timeline",
+          "steps": [
+            {
+              "number": "01",
+              "title": "Phase 1: Operational Audit",
+              "description": "Short paragraph on what data is reviewed and what the client provides"
+            },
+            {
+              "number": "02",
+              "title": "Phase 2: Strategy & Architecture",
+              "description": "Short paragraph on custom system design and planning"
+            },
+            {
+              "number": "03",
+              "title": "Phase 3: Deployment & Handover",
+              "description": "Short paragraph on build, QA, and client team enablement"
+            }
+          ],
+          "stepNumberStyle": "Large stylized numeric — muted or brand accent color"
+        },
+        {
+          "id": "safety-cta",
+          "order": 4,
+          "name": "The Safety Valve CTA",
+          "layout": "Full-width high-contrast structural block",
+          "component": "GlobalClosingCTA",
+          "elements": [
+            { "type": "h2", "description": "Centered — addresses uncertainty objection (e.g. 'Not sure where your operational leaks are?')" },
+            {
+              "type": "ctaRow",
+              "buttons": [
+                { "label": "Book a Free Audit", "variant": "primary" },
+                { "label": "Book a Free Consultation", "variant": "ghost" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "service-individual": {
+      "slug": "/services/[service-slug]",
+      "title": "Individual Service Page",
+      "note": "Template — repeated for each of the 6 service pillars",
+      "sections": [
+        {
+          "id": "service-hero",
+          "order": 1,
+          "name": "The Service Hero",
+          "layout": "50/50 horizontal split (desktop) / Vertically stacked (mobile)",
+          "leftColumn": [
+            { "type": "breadcrumb", "text": "← Back to All Services" },
+            { "type": "h1", "description": "Massive specific typography — service name + core business outcome" },
+            { "type": "description", "sentences": "2–3 defining scope, target infrastructure, who it's built for" },
+            {
+              "type": "ctaRow",
+              "buttons": [
+                { "label": "Book a Free Audit", "variant": "primary" },
+                { "label": "Book a Free Consultation", "variant": "ghost" }
+              ]
+            }
+          ],
+          "rightColumn": [
+            { "type": "schematicContainer", "aspectRatio": "1:1 or 4:3", "content": "Workflow diagram or architectural node layout for this service" }
+          ]
+        },
+        {
+          "id": "capabilities-breakout",
+          "order": 2,
+          "name": "The Core Capabilities Breakout",
+          "layout": "Single-column vertical stack of alternating rows (image-left/text-right then text-left/image-right)",
+          "moduleBlueprint": {
+            "textSide": [
+              { "type": "h2", "description": "Component title — engineering label" },
+              { "type": "technicalParagraph", "sentences": "2–3 detailing framework, pipelines, logic models" },
+              { "type": "impactLine", "description": "Single bold statement — efficiency or overhead reduction guarantee" }
+            ],
+            "visualSide": [
+              { "type": "wireframeFrame", "description": "Minimalist dashboard interface or code logic tree matching this capability" }
+            ],
+            "repeatCount": "3–4"
+          }
+        },
+        {
+          "id": "tech-stack",
+          "order": 3,
+          "name": "The Integration Tech Stack Matrix",
+          "layout": "Centered content → logo grid",
+          "elements": [
+            { "type": "h2", "description": "e.g. 'Seamless Infrastructure Integration'" },
+            { "type": "contextSentence", "description": "1 sentence — systems plug natively into existing codebase and APIs" },
+            { "type": "logoGrid", "columns": "4 or 6 columns", "style": "Flat monochrome logos — specific to this service" }
+          ]
+        },
+        {
+          "id": "case-study-proof",
+          "order": 4,
+          "name": "Service-Specific Case Study / Proof",
+          "layout": "Full-width high-contrast background block — 40/60 data split",
+          "elements": [
+            { "type": "h2", "description": "e.g. 'Proven Deployment In Action'" },
+            {
+              "type": "splitBlock",
+              "leftSide": { "description": "2 short paragraphs: initial bottleneck → custom architecture → final handover" },
+              "rightSide": {
+                "description": "2–3 massive typographic number blocks vertically stacked",
+                "items": [
+                  { "value": "[Large metric]", "label": "[Metric description]" },
+                  { "value": "[Large metric]", "label": "[Metric description]" },
+                  { "value": "[Large metric]", "label": "[Metric description]" }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "faq",
+          "order": 5,
+          "name": "Technical FAQs — Accordion",
+          "layout": "Asymmetric 40/60 split",
+          "leftColumn": [
+            { "type": "h2", "description": "e.g. 'Frequently Asked Questions'" },
+            { "type": "subtext", "description": "Prompt to reach out if question not listed" }
+          ],
+          "rightColumn": {
+            "type": "accordion",
+            "items": "3–5 Q&A rows",
+            "rowStructure": "H3 question text (left) + [+/−] toggle (far right)",
+            "behavior": "Clicking row expands downward to reveal text answer"
+          }
+        },
+        {
+          "id": "closing-cta",
+          "order": 6,
+          "name": "The Double-Down CTA",
+          "layout": "Centered monolithic block",
+          "component": "GlobalClosingCTA"
+        }
+      ]
+    },
+    "portfolio": {
+      "slug": "/portfolio",
+      "title": "Portfolio",
+      "sections": [
+        {
+          "id": "portfolio-hero",
+          "order": 1,
+          "name": "The Portfolio Hero",
+          "layout": "Centered single-column → impact metrics row below",
+          "elements": [
+            { "type": "h1", "description": "Heavy bold — performance, execution, outcomes" },
+            { "type": "subheadline", "sentences": 2 },
+            {
+              "type": "metricsMatrix",
+              "layout": "Horizontal row of 3 thin-bordered data cards",
+              "cards": [
+                { "number": "[Large number]+", "label": "Hours Saved" },
+                { "number": "$[Large number]+", "label": "Overhead Reduced" },
+                { "number": "[Number]+", "label": "Pipelines Active" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "filter-bar",
+          "order": 2,
+          "name": "The Project Filter / Categorization Bar",
+          "layout": "Full-width low-height sticky horizontal bar",
+          "elements": [
+            {
+              "type": "filterTags",
+              "items": ["All", "Web & App Ecosystems", "SEO / GEO / CRO", "Brand Identity", "Paid Ads", "AI Automation", "Analytics"],
+              "alignment": "centered or left-aligned",
+              "behavior": "Instant JS filter state — no page reload",
+              "emptyState": "Centered text block: 'No active deployments in this category yet. Contact us to build yours.'"
+            }
+          ]
+        },
+        {
+          "id": "portfolio-grid",
+          "order": 3,
+          "name": "The Portfolio Grid",
+          "layout": "1-column or staggered 2-column — wide spacious cards",
+          "cardBlueprint": {
+            "columnA": [
+              { "type": "visualContainer", "aspectRatio": "16:9", "content": "Interface mockup, data flow diagram, or dashboard screenshot" }
+            ],
+            "columnB": [
+              { "type": "metadataTags", "style": "Small uppercase — Service Category + Client Industry" },
+              { "type": "h2", "description": "Project title — direct operational achievement" },
+              {
+                "type": "microMetrics",
+                "layout": "2–3 column data block",
+                "items": [
+                  { "value": "[Number]", "label": "[Description]" },
+                  { "value": "[Number]", "label": "[Description]" }
+                ]
+              },
+              { "type": "cta", "label": "Read Case Study Breakdown →", "variant": "text-link or outline" }
+            ]
+          }
+        },
+        {
+          "id": "testimonials",
+          "order": 4,
+          "name": "The Validation Section — Client Testimonials",
+          "layout": "2–3 column horizontal card grid",
+          "cardBlueprint": [
+            { "type": "companyLogo", "style": "Top-left, monochrome grayscale" },
+            { "type": "quote", "style": "Italicized or medium weight — specific speed/execution/bottom-line impact" },
+            { "type": "attribution", "description": "Client Name + exact Corporate Title" }
+          ]
+        },
+        {
+          "id": "closing-cta",
+          "order": 5,
+          "name": "The Post-Proof CTA",
+          "layout": "Centered monolithic block",
+          "component": "GlobalClosingCTA"
+        }
+      ]
+    },
+    "insights": {
+      "slug": "/insights",
+      "title": "Insights",
+      "sections": [
+        {
+          "id": "insights-hero",
+          "order": 1,
+          "name": "The Insights Hero",
+          "layout": "Centered single-column, 8-column width desktop",
+          "elements": [
+            { "type": "h1", "description": "Bold high-authority engineering typography" },
+            { "type": "subheadline", "sentences": 2 },
+            {
+              "type": "resourceCallout",
+              "optional": true,
+              "layout": "Thin-bordered full-width horizontal container",
+              "elements": [
+                { "type": "emailInput", "label": "Corporate Email Address" },
+                { "type": "button", "label": "Download Briefing", "variant": "primary" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "topical-filter",
+          "order": 2,
+          "name": "Topical Filtering Bar",
+          "layout": "Low-height horizontal tag row — matches Portfolio filter styling",
+          "filterItems": ["All", "Technical Architecture", "Automation ROI", "Case Breakdowns", "Industry Shifts"],
+          "behavior": "Instant JS filter — no page reload"
+        },
+        {
+          "id": "featured-insight",
+          "order": 3,
+          "name": "The Featured Insight — Lead Article",
+          "layout": "Full-width asymmetric 50/50 split",
+          "leftColumn": [
+            { "type": "visualAsset", "aspectRatio": "16:9", "content": "Abstract system blueprint or technical vector graphic" }
+          ],
+          "rightColumn": [
+            { "type": "metadataRow", "style": "Uppercase tracking-spaced", "content": "Topic Category | Read Time" },
+            { "type": "h2", "description": "Large left-aligned commanding headline" },
+            { "type": "excerpt", "sentences": "2–3 — structural thesis and operational takeaways" },
+            { "type": "textLinkCTA", "label": "Read Deep-Dive →" }
+          ]
+        },
+        {
+          "id": "insights-grid",
+          "order": 4,
+          "name": "The Insights Grid",
+          "layout": "3-column horizontal grid (desktop) / 1-column (mobile)",
+          "cardBlueprint": [
+            { "type": "imageHeader", "aspectRatio": "16:10" },
+            { "type": "metadata", "content": "Read Time + Topic Category, muted small text" },
+            { "type": "h3", "description": "Left-aligned sharp title" },
+            { "type": "excerpt", "style": "Muted, 2 lines max" },
+            { "type": "textLinkCTA", "label": "Read Article →" }
+          ]
+        },
+        {
+          "id": "conversion-bridge",
+          "order": 5,
+          "name": "The Content-to-Conversion Bridge",
+          "layout": "Full-width low-height horizontal banner in page flow",
+          "elements": [
+            { "type": "h2", "description": "Left or centered — transitions from theory to action" },
+            {
+              "type": "ctaRow",
+              "buttons": [
+                { "label": "Book a Free Audit", "variant": "primary" },
+                { "label": "Book a Free Consultation", "variant": "ghost" }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "contact": {
+      "slug": "/contact",
+      "title": "Contact",
+      "sections": [
+        {
+          "id": "contact-hero",
+          "order": 1,
+          "name": "The Contact Hero & Setup",
+          "layout": "Centered single-column, 8-column width desktop",
+          "elements": [
+            { "type": "h1", "description": "Bold high-authority — focused on starting an engagement" },
+            { "type": "subheadline", "sentences": "2 short — framing the two conversion paths: Form vs. Calendar" }
+          ]
+        },
+        {
+          "id": "dual-path-form",
+          "order": 2,
+          "name": "The Dual-Path Form Matrix",
+          "layout": "50/50 split (desktop) / Single column stacked [Form top, Calendar bottom] (mobile)",
+          "divider": "Vertical dividing line or distinct background shading",
+          "pathA": {
+            "label": "Book a Free Audit Intake Form",
+            "description": "Structured high-intent lead qualification",
+            "fields": [
+              { "type": "input", "label": "Full Name" },
+              { "type": "input", "label": "Corporate Email Address" },
+              { "type": "input", "label": "Company Name & Website URL" },
+              { "type": "dropdown", "label": "Current Operational Spend or Team Size", "options": "Pre-set qualification tiers" },
+              { "type": "textarea", "label": "Primary Operational Bottleneck / Manual Workflow to Eliminate" }
+            ],
+            "cta": { "label": "Submit Free Audit Request", "variant": "primary", "width": "full-width" }
+          },
+          "pathB": {
+            "label": "Book a Free Consultation Calendar",
+            "description": "Low-friction immediate booking",
+            "elements": [
+              { "type": "h3", "text": "Schedule a 15-Minute Technical Exploration Call" },
+              {
+                "type": "calendarWidget",
+                "aspectRatio": "4:3 or 1:1",
+                "tool": "Calendly or HubSpot Meetings",
+                "note": "Must have explicit fallback height/width set while third-party script loads to prevent CLS"
+              }
+            ]
+          }
+        },
+        {
+          "id": "trust-anchors",
+          "order": 3,
+          "name": "Post-Submission Trust Anchors",
+          "layout": "Full-width 3-column row below the form matrix",
+          "columns": [
+            {
+              "icon": "Clock/SLA icon",
+              "label": "Response SLA",
+              "subtext": "We review all audit requests within 24 business hours."
+            },
+            {
+              "icon": "Shield/Security icon",
+              "label": "Data Security",
+              "subtext": "All data and operational pipelines are protected under standard NDA protocols."
+            },
+            {
+              "icon": "Email icon",
+              "label": "Direct Contact",
+              "subtext": "Prefer direct contact? Email us at info@goldfishmarketing.co.ke"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "engineeringNotes": {
+    "navigation": {
+      "headerLayout": "Strict flexbox space-between: BrandMark left | Nav center | CTA right",
+      "collapseBreakpoint": "1024px — center nav → hamburger menu",
+      "closingCTA": "Build as single reusable global component used on Home, Services, Service pages, Portfolio"
+    },
+    "filteringLogic": {
+      "pages": ["Portfolio", "Insights"],
+      "requirement": "Zero-reload transitions — instant JS filter states or React/Vue state",
+      "emptyState": "'No active deployments in this category yet. Contact us to build yours.' — centered text block"
+    },
+    "imageSizing": {
+      "rule": "All graphic placeholders must use CSS aspect-ratio property: aspect-ratio: 16/9; object-fit: cover;",
+      "reason": "Prevents layout warp when copy lengths vary"
+    },
+    "typography": {
+      "heroH1": "Must use CSS clamp() for fluid scaling — prevents 1-letter wrapping on mobile",
+      "heroH1Range": "clamp(36px, 6vw, 60px)"
+    },
+    "contactForm": {
+      "mobileOrder": "Path A (Intake Form) stacks ABOVE Path B (Calendar) on mobile",
+      "calendarFallback": "Explicit height/width fallback on calendar container to prevent CLS during Calendly/HubSpot load"
+    }
+  }
+}
