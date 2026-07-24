@@ -7,6 +7,7 @@ export interface InsightArticle {
   readTime: string;
   isFeatured: boolean;
   tags: string[];
+  coverImage?: string;
 }
 
 export interface InsightCategory {
@@ -69,6 +70,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '10 Min Read',
     isFeatured: true,
     tags: ['Core Web Vitals', 'Performance', 'Conversion Rate'],
+    coverImage: '/images/services/web-conversion.png',
   },
   {
     slug: 'high-converting-landing-page-teardown',
@@ -81,6 +83,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '8 Min Read',
     isFeatured: false,
     tags: ['Landing Pages', 'CRO', 'UX Engineering'],
+    coverImage: '/images/services/technical-seo.png',
   },
 
   // ───────────────────────────────────────────────
@@ -97,6 +100,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '12 Min Read',
     isFeatured: true,
     tags: ['GEO', 'AI Overviews', 'Organic Traffic'],
+    coverImage: '/images/services/geo-ai.png',
   },
   {
     slug: 'entity-seo-vs-keyword-seo',
@@ -109,6 +113,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '9 Min Read',
     isFeatured: false,
     tags: ['Entity SEO', 'Knowledge Graph', 'Schema'],
+    coverImage: '/images/services/entity-graph.png',
   },
 
   // ───────────────────────────────────────────────
@@ -125,6 +130,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '7 Min Read',
     isFeatured: true,
     tags: ['Brand Strategy', 'Visual Identity', 'Differentiation'],
+    coverImage: '/images/services/brand-identity.png',
   },
   {
     slug: 'content-velocity-vs-content-authority',
@@ -137,6 +143,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '8 Min Read',
     isFeatured: false,
     tags: ['Content Strategy', 'Authority', 'SEO Content'],
+    coverImage: '/images/services/content-strategy-production.png',
   },
 
   // ───────────────────────────────────────────────
@@ -153,6 +160,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '11 Min Read',
     isFeatured: true,
     tags: ['Google Ads', 'Performance Max', 'ROAS'],
+    coverImage: '/images/services/paid-advertising-dashboard.png',
   },
   {
     slug: 'linkedin-lead-gen-b2b-connection-requests',
@@ -165,6 +173,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '7 Min Read',
     isFeatured: false,
     tags: ['LinkedIn', 'B2B', 'Lead Generation'],
+    coverImage: '/images/services/linkedin-b2b-lead-generation.png',
   },
 
   // ───────────────────────────────────────────────
@@ -181,6 +190,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '13 Min Read',
     isFeatured: true,
     tags: ['WhatsApp AI', 'Automation ROI', 'SME Ops'],
+    coverImage: '/images/services/whatsapp-ai-assistant.png',
   },
   {
     slug: 'sme-automation-playbook-5-workflows',
@@ -193,6 +203,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '9 Min Read',
     isFeatured: false,
     tags: ['Workflow Automation', 'SME Growth', 'Cost Reduction'],
+    coverImage: '/images/services/crm-integration.png',
   },
 
   // ───────────────────────────────────────────────
@@ -209,6 +220,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '10 Min Read',
     isFeatured: true,
     tags: ['Analytics', 'Data Strategy', 'GA4'],
+    coverImage: '/images/services/social-media-management.png',
   },
   {
     slug: 'pre-scale-audit-7-technical-red-flags',
@@ -221,6 +233,7 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     readTime: '8 Min Read',
     isFeatured: false,
     tags: ['Audits', 'Scaling', 'Technical Debt'],
+    coverImage: '/images/services/mobile-app.png',
   },
 ];
 

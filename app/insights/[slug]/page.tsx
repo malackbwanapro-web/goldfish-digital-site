@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import {
   INSIGHT_ARTICLES,
@@ -86,7 +87,7 @@ export default function InsightArticlePage({ params }: PageProps) {
           </p>
 
           {/* Tags */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mb-10">
             {article.tags.map((tag) => (
               <span
                 key={tag}
@@ -96,6 +97,21 @@ export default function InsightArticlePage({ params }: PageProps) {
               </span>
             ))}
           </div>
+
+          {/* Article Hero Banner Graphic */}
+          {article.coverImage && (
+            <div className="w-full aspect-video relative rounded-2xl overflow-hidden border border-[var(--border-accent)]/30 shadow-2xl bg-[#0E0E0E]">
+              <Image
+                src={article.coverImage}
+                alt={article.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 1024px) 100vw, 896px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-primary)] via-transparent to-black/20" />
+            </div>
+          )}
         </div>
       </section>
 

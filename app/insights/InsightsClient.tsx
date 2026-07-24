@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   INSIGHT_CATEGORIES,
   INSIGHT_ARTICLES,
@@ -221,18 +222,27 @@ export default function InsightsClient() {
               {featured && (
                 <Link
                   href={`/insights/${featured.slug}`}
-                  className="block group mb-8"
-                  style={{ textDecoration: 'none' }}
+                  className="block group mb-8 text-decoration-none"
                 >
                   <div className="card-brand overflow-hidden grid grid-cols-1 lg:grid-cols-2 items-stretch border border-[var(--border-subtle)] shadow-lg group-hover:border-[var(--accent-gold)]/40 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-[var(--accent-gold)]/5">
-                    {/* Left: Terminal Graphic */}
-                    <div className="bg-[#0E0E0E] min-h-[280px] flex items-center justify-center p-8 lg:p-12 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.03)_1px,transparent_1px)] bg-[size:30px_30px] pointer-events-none" />
+                    {/* Left: Custom Visual Image Graphic with Overlay */}
+                    <div className="bg-[#0E0E0E] min-h-[300px] relative overflow-hidden flex items-center justify-center p-6">
+                      {featured.coverImage ? (
+                        <Image
+                          src={featured.coverImage}
+                          alt={featured.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-70"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                        />
+                      ) : null}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0E0E0E] via-[#0E0E0E]/40 to-transparent" />
 
-                      <div className="relative z-10 w-full max-w-sm aspect-video rounded-lg border border-gray-800 bg-[#161616]/80 flex flex-col justify-between p-6 font-mono text-[10px] text-green-500/80">
-                        <div className="flex items-center justify-between border-b border-gray-800 pb-3">
+                      {/* Floating Glassmorphism Terminal Badge */}
+                      <div className="relative z-10 w-full max-w-sm rounded-xl border border-gray-800 bg-[#161616]/80 backdrop-blur-md flex flex-col justify-between p-5 font-mono text-[10px] text-green-500/80 shadow-2xl">
+                        <div className="flex items-center justify-between border-b border-gray-800 pb-2">
                           <span className="text-[var(--accent-gold)] font-bold">
-                            {terminal?.filename}
+                            {terminal?.filename || 'INSIGHT_TELEMETRY.LOG'}
                           </span>
                           <span
                             className={`font-bold ${
@@ -243,33 +253,31 @@ export default function InsightsClient() {
                                 : 'text-red-500'
                             }`}
                           >
-                            STATUS: {terminal?.status}
+                            {terminal?.status || 'VERIFIED'}
                           </span>
                         </div>
-                        <div className="space-y-1.5 my-4 text-[11px]">
+                        <div className="space-y-1.5 my-3 text-[11px]">
                           {terminal?.lines.map((line, i) => (
                             <div key={i} className="opacity-90">
                               {line}
                             </div>
                           ))}
                         </div>
-                        <div className="text-gray-600 text-right text-[9px]">
-                          GOLDFISH_DIGITAL // CLASSIFIED
+                        <div className="text-gray-500 text-right text-[9px] uppercase tracking-widest">
+                          GOLDFISH_DIGITAL // BRIEFING
                         </div>
                       </div>
-
-                      <div className="absolute top-[10%] left-[10%] w-48 h-48 bg-[var(--accent-gold)]/10 rounded-full filter blur-2xl pointer-events-none" />
                     </div>
 
-                    {/* Right: Article Text */}
+                    {/* Right: Article Copy */}
                     <div className="p-8 lg:p-12 flex flex-col justify-center items-start bg-[var(--bg-surface)]">
                       <div className="flex items-center gap-3 mb-4">
-                        <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider">
+                        <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold">
                           {featured.readTime}
                         </span>
                         <span className="w-1 h-1 rounded-full bg-[var(--accent-gold)]/40" />
-                        <span className="text-[11px] font-mono text-[var(--accent-gold)]/60 uppercase tracking-wider">
-                          Featured
+                        <span className="text-[11px] font-mono text-[var(--accent-gold)]/60 uppercase tracking-wider font-bold">
+                          Featured Briefing
                         </span>
                       </div>
                       <h3 className="text-xl lg:text-2xl font-black tracking-tight mb-4 leading-snug text-[var(--text-core)] group-hover:text-[var(--accent-gold)] transition-colors duration-300">
@@ -306,41 +314,55 @@ export default function InsightsClient() {
                     <Link
                       key={article.slug}
                       href={`/insights/${article.slug}`}
-                      className="block group"
-                      style={{ textDecoration: 'none' }}
+                      className="block group text-decoration-none"
                     >
-                      <div className="card-brand p-8 flex flex-col justify-between items-start min-h-[300px] bg-[var(--bg-surface)] border border-[var(--border-subtle)] group-hover:border-[var(--accent-gold)]/40 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[var(--accent-gold)]/5 h-full">
-                        <div>
-                          <div className="flex items-center gap-3 mb-4">
-                            <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider">
+                      <div className="card-brand overflow-hidden flex flex-col justify-between items-start bg-[var(--bg-surface)] border border-[var(--border-subtle)] group-hover:border-[var(--accent-gold)]/40 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[var(--accent-gold)]/5 h-full">
+                        
+                        {/* Article Header Image */}
+                        {article.coverImage && (
+                          <div className="w-full aspect-video relative overflow-hidden bg-[#0E0E0E]">
+                            <Image
+                              src={article.coverImage}
+                              alt={article.title}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-surface)] via-transparent to-black/30" />
+                            <div className="absolute top-3 left-3 text-[10px] font-mono text-[var(--accent-gold)] bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-[var(--accent-gold)]/20 uppercase tracking-wider font-bold">
                               {article.readTime}
-                            </span>
-                            <span className="w-1 h-1 rounded-full bg-[var(--accent-gold)]/40" />
-                            <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider">
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="p-6 lg:p-8 flex-1 flex flex-col justify-between">
+                          <div>
+                            <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider mb-3">
                               {article.category}
+                            </div>
+                            <h3 className="text-[17px] font-extrabold text-[var(--text-core)] tracking-tight mb-4 leading-snug group-hover:text-[var(--accent-gold)] transition-colors duration-300">
+                              {article.title}
+                            </h3>
+                            <p className="text-sm leading-relaxed text-[var(--text-muted)] font-light">
+                              {article.excerpt}
+                            </p>
+                          </div>
+
+                          <div className="mt-6 pt-4 border-t border-[var(--border-subtle)]/50 flex items-center justify-between w-full">
+                            <div className="flex flex-wrap gap-1.5">
+                              {article.tags.slice(0, 2).map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-[var(--border-subtle)] text-[var(--text-muted)]"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                            <span className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-core)] group-hover:text-[var(--accent-gold)] transition-colors duration-200 uppercase tracking-wider font-bold flex-shrink-0">
+                              Read →
                             </span>
                           </div>
-                          <h3 className="text-[17px] font-extrabold text-[var(--text-core)] tracking-tight mb-4 leading-snug group-hover:text-[var(--accent-gold)] transition-colors duration-300">
-                            {article.title}
-                          </h3>
-                          <p className="text-sm leading-relaxed text-[var(--text-muted)] font-light">
-                            {article.excerpt}
-                          </p>
-                        </div>
-                        <div className="mt-6 flex items-center justify-between w-full">
-                          <div className="flex flex-wrap gap-1.5">
-                            {article.tags.slice(0, 2).map((tag) => (
-                              <span
-                                key={tag}
-                                className="text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-[var(--border-subtle)] text-[var(--text-muted)]"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                          <span className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-core)] group-hover:text-[var(--accent-gold)] transition-colors duration-200 uppercase tracking-wider font-bold flex-shrink-0">
-                            Read →
-                          </span>
                         </div>
                       </div>
                     </Link>
