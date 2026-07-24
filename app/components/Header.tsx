@@ -51,14 +51,14 @@ export default function Header() {
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         scrolled
-          ? 'bg-[var(--bg-primary)]/80 backdrop-blur-md border-b border-[var(--border-subtle)] shadow-sm'
-          : 'bg-transparent'
+          ? 'bg-[var(--bg-primary)]/85 backdrop-blur-xl border-b border-[var(--border-accent)]/30 shadow-lg'
+          : 'bg-[var(--bg-primary)]/40 backdrop-blur-md border-b border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3 group text-decoration-none">
-          <div className="w-10 h-10 rounded-full border-2 border-[var(--accent-gold)] flex items-center justify-center bg-[var(--bg-surface)] overflow-hidden shadow-sm">
+          <div className="w-10 h-10 rounded-full border-2 border-[var(--accent-gold)] flex items-center justify-center bg-[var(--bg-surface)] overflow-hidden shadow-sm group-hover:scale-105 transition-transform duration-300">
             <span className="text-[var(--accent-gold)] font-black text-lg tracking-tighter">G</span>
           </div>
           <span className="font-extrabold text-lg tracking-wider text-[var(--text-core)] uppercase group-hover:text-[var(--accent-gold)] transition-colors duration-200">
@@ -68,17 +68,21 @@ export default function Header() {
 
         {/* Center Links (Desktop - 1024px and above) */}
         <nav className="hidden lg:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={`link-underline font-medium text-[15px] ${
-                pathname === link.href ? 'text-[var(--accent-gold)]' : 'text-[var(--text-core)]'
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`link-underline font-medium text-[15px] flex items-center gap-1.5 ${
+                  isActive ? 'text-[var(--accent-gold)] font-semibold' : 'text-[var(--text-core)]'
+                }`}
+              >
+                {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-gold)] animate-pulse" />}
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Right CTA / Switcher (Desktop) */}
