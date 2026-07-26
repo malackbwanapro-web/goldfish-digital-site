@@ -3,24 +3,24 @@ import PortfolioClient from './PortfolioClient';
 import FooterCloser from '../components/FooterCloser';
 
 export const metadata: Metadata = {
-  title: 'Enterprise AI Case Studies & Proven Metrics | Goldfish Digital',
+  title: 'Client Results & Growth Case Studies | Goldfish Digital',
   description:
-    'Real performance data. Read technical breakdowns of custom AI platforms, pipeline deployments, and automation architectures built by Goldfish Digital.',
+    'Real business outcomes. See how Goldfish Digital helps small and medium enterprises build fast websites, dominate search results, scale paid ad spend, and automate daily admin.',
 };
 
 export default function PortfolioPage() {
   const impactCards = [
     {
       value: '12,000+ Hours Saved',
-      label: 'Operational Resource Efficiency Reclaimed'
+      label: 'Manual Admin & Repeat Tasks Reclaimed for Team Productivity'
     },
     {
-      value: '$1.5M+ Overhead Reduced',
-      label: 'Cumulative Client Expenditure Eliminated'
+      value: '$1.5M+ Overhead Saved',
+      label: 'Wasted Ad Spend & Operational Bottlenecks Eliminated'
     },
     {
-      value: '40+ Active Custom Pipelines',
-      label: 'High-Throughput Deployments Currently Live'
+      value: '40+ Active Systems',
+      label: 'Custom Web, Search & AI Growth Engines Live'
     }
   ];
 
@@ -29,12 +29,12 @@ export default function PortfolioPage() {
       {/* SECTION 1: HERO */}
       <section className="section-padding px-6 lg:px-10">
         <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-          <span className="text-eyebrow mb-4 block">PORTFOLIO</span>
-          <h1 className="text-h1 font-black tracking-tight text-[var(--text-core)] mb-6 max-w-3xl leading-tight">
-            Proven Performance: Architectural Deployments That Scale.
+          <span className="text-eyebrow mb-4 block">CLIENT RESULTS &amp; CASE STUDIES</span>
+          <h1 className="text-h1 font-black tracking-tight text-[var(--text-core)] mb-6 max-w-4xl leading-tight">
+            Proven Results: Real Growth Systems Engineered for Ambitious Businesses.
           </h1>
           <p className="text-body-lg text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto mb-16 font-light">
-            We measure engineering success through cold, unyielding performance statistics. Review the verifiable operational returns delivered to enterprise environments.
+            We measure success by real business outcomes — more leads, higher checkout sales, lower customer acquisition costs, and hours of admin saved every week.
           </p>
 
           {/* Total Impact Tracker Matrix */}

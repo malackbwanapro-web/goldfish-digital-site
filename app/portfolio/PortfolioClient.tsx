@@ -76,15 +76,15 @@ export default function PortfolioClient() {
   const testimonials = [
     {
       quote:
-        "Goldfish Digital delivered an operational automation platform that completely transformed our processing capacity. They didn't just consultation-wrap the project; they built elite, deterministic infrastructure that integrated flawlessly into our core database stack.",
-      author: 'Vice President of Infrastructure Operations',
-      company: 'Enterprise Group',
+        "Goldfish Digital transformed how our business handles leads and bookings. They built a WhatsApp AI assistant and a high-speed website that eliminated 20+ hours of manual admin every week and doubled our conversion rate within 30 days.",
+      author: 'Managing Director & Founder',
+      company: 'Apex Service Group',
     },
     {
       quote:
-        'The technical caliber of their engineering team is exceptional. Our data silos were entirely resolved by their custom ETL pipelines, translating to an immediate drop in monthly overhead spending.',
-      author: 'Chief Technology Officer',
-      company: 'Technologies Corp',
+        'Working with their team was seamless. They overhauled our Google Ads campaigns, fixed our analytics, and cut our cost-per-lead by 40%. For the first time, we know exactly where every marketing dollar goes.',
+      author: 'Head of Growth',
+      company: 'Vanguard Digital Brands',
     },
   ];
 
