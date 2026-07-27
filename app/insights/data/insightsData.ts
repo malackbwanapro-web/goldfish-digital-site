@@ -8,6 +8,8 @@ export interface InsightArticle {
   isFeatured: boolean;
   tags: string[];
   coverImage?: string;
+  /** Full HTML body content — if present, renders full article instead of "Coming Soon" */
+  content?: string;
 }
 
 export interface InsightCategory {
@@ -174,6 +176,70 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     isFeatured: false,
     tags: ['LinkedIn', 'B2B', 'Lead Generation'],
     coverImage: '/images/services/linkedin-b2b-lead-generation.png',
+  },
+
+  // ───────────────────────────────────────────────
+  // Social Media Strategy (AI-SEO Cluster)
+  // ───────────────────────────────────────────────
+  {
+    slug: 'social-media-content-strategy-from-scratch',
+    category: 'Digital Presence & Paid Growth',
+    categorySlug: 'digital-presence-paid-growth',
+    title: 'How to Create a Social Media Content Strategy From Scratch (The 2026 Complete Guide)',
+    excerpt:
+      'A social media content strategy is a documented plan that defines your goals, target audience, content pillars, posting cadence, and measurement framework across all chosen platforms. Creating one from scratch means starting with a crystal-clear business objective and building a sustainable content system that drives measurable results — not just likes.',
+    readTime: '14 Min Read',
+    isFeatured: true,
+    tags: ['Social Media Strategy', 'Content Planning', 'AI Tools'],
+    coverImage: '/images/services/content-strategy-production.png',
+  },
+  {
+    slug: 'outsource-social-media-marketing-or-in-house',
+    category: 'Digital Presence & Paid Growth',
+    categorySlug: 'digital-presence-paid-growth',
+    title: 'Should I Outsource Social Media Marketing or Handle It In-House? (The 2026 Decision Guide)',
+    excerpt:
+      'Outsourcing social media marketing gives you access to a full specialist team — strategist, video editor, copywriter, and media buyer — typically at a lower total cost than hiring one experienced in-house manager with full benefits. The right choice depends entirely on your budget, growth stage, and content production demands.',
+    readTime: '12 Min Read',
+    isFeatured: false,
+    tags: ['Agency vs In-House', 'Social Media Management', 'Cost Analysis'],
+    coverImage: '/images/services/social-media-management.png',
+  },
+  {
+    slug: 'organic-vs-paid-social-media-marketing',
+    category: 'Digital Presence & Paid Growth',
+    categorySlug: 'digital-presence-paid-growth',
+    title: 'Organic vs Paid Social Media Marketing: The Complete 2026 Strategy Guide',
+    excerpt:
+      'Organic social media marketing builds brand awareness and community trust through unpaid content, while paid social uses advertising budgets to reach precisely targeted audiences at scale and drive measurable conversions. In 2026, the most effective strategies use both in a coordinated hybrid system — and the AI recommendation engine shift has changed organic reach forever.',
+    readTime: '13 Min Read',
+    isFeatured: true,
+    tags: ['Organic Social', 'Paid Social', 'Hybrid Strategy'],
+    coverImage: '/images/services/paid-advertising-dashboard.png',
+  },
+  {
+    slug: 'how-to-measure-social-media-marketing-success',
+    category: 'Digital Presence & Paid Growth',
+    categorySlug: 'digital-presence-paid-growth',
+    title: 'How to Accurately Measure the Success of Your Social Media Marketing (The 2026 Complete Guide)',
+    excerpt:
+      'Accurately measuring social media marketing success requires moving beyond vanity metrics like follower counts toward business-aligned value metrics — cost per acquisition, share of voice, and conversion rate — tracked through UTM parameters, platform analytics, and server-side event tracking. In 2026, accurate measurement also requires accounting for Dark Social attribution and iOS 14.5 signal loss.',
+    readTime: '15 Min Read',
+    isFeatured: false,
+    tags: ['Social Media ROI', 'Analytics', 'Dark Social'],
+    coverImage: '/images/services/entity-graph.png',
+  },
+  {
+    slug: 'social-media-campaign-metrics-to-track',
+    category: 'Digital Presence & Paid Growth',
+    categorySlug: 'digital-presence-paid-growth',
+    title: 'What Metrics Should I Track in a Social Media Marketing Campaign? (The 2026 Complete Guide)',
+    excerpt:
+      'The social media metrics you should track depend entirely on your campaign objective — but every business should monitor at minimum: engagement rate, click-through rate, social-attributed conversions, and cost per lead. Moving beyond these requires a tiered measurement framework that captures modern algorithmic signals like video completion rate and saves, plus the Dark Social attribution that standard analytics platforms miss entirely.',
+    readTime: '13 Min Read',
+    isFeatured: false,
+    tags: ['Social Media Metrics', 'KPIs', 'Campaign Tracking'],
+    coverImage: '/images/services/mobile-app.png',
   },
 
   // ───────────────────────────────────────────────

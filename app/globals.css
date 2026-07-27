@@ -535,3 +535,193 @@ h1, h2, h3, h4, .font-display {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+/* ─────────────────────────────────────────
+   ARTICLE PROSE — Full article body styles
+───────────────────────────────────────── */
+.article-prose {
+  color: var(--text-core);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.article-prose .article-hook {
+  border-left: 3px solid var(--accent-gold);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.article-prose .article-hook p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--text-core);
+  margin: 0;
+  line-height: 1.75;
+}
+
+.article-prose h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-core);
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.article-prose h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-core);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.35;
+}
+
+.article-prose p {
+  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.article-prose strong {
+  color: var(--text-core);
+  font-weight: 700;
+}
+
+.article-prose a {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.article-prose a:hover {
+  opacity: 0.75;
+}
+
+.article-prose ul,
+.article-prose ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.article-prose ul {
+  list-style-type: disc;
+}
+
+.article-prose ol {
+  list-style-type: decimal;
+}
+
+.article-prose li {
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.article-prose li strong {
+  color: var(--text-core);
+}
+
+.article-prose blockquote {
+  border-left: 3px solid var(--accent-gold);
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  background: rgba(212, 175, 55, 0.04);
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.article-prose blockquote a {
+  font-style: normal;
+}
+
+.article-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.article-prose table thead tr {
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.article-prose table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-core);
+  border-bottom: 1px solid var(--border-accent);
+}
+
+.article-prose table td {
+  padding: 0.75rem 1rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+
+.article-prose table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.article-prose table tbody tr:nth-child(even) {
+  background: rgba(212, 175, 55, 0.02);
+}
+
+.article-prose pre {
+  background: #0E0E0E;
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.article-prose pre code {
+  color: #a0d0a0;
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  background: none;
+  padding: 0;
+}
+
+.article-prose code {
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--accent-gold);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.article-prose .article-cta {
+  margin-top: 3rem;
+  padding: 1.5rem 2rem;
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid var(--border-accent);
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.article-prose .article-cta p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.article-prose .article-cta a {
+  font-weight: 700;
+}
