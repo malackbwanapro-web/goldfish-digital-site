@@ -21,15 +21,40 @@ export default function ContactClient() {
   const [painPoints, setPainPoints]   = useState('');
   const [submittedAudit, setSubmittedAudit] = useState(false);
 
-  // ── PATH B STATE ──────────────────────────────────────────
+  // ── PATH B STATE & TIME SLOTS ──────────────────────────────
   const [callName, setCallName]       = useState('');
   const [callPhone, setCallPhone]     = useState('');
-  const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const [selectedDayLabel, setSelectedDayLabel] = useState<string>('Today');
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [bookedConsultation, setBookedConsultation] = useState(false);
 
-  const daysInMonth = Array.from({ length: 14 }, (_, i) => i + 12);
-  const timeSlots   = ['09:00 AM', '10:30 AM', '01:00 PM', '02:30 PM', '04:00 PM'];
+  // Dynamic Date calculation
+  const now = new Date();
+  const dateOptions = [
+    {
+      label: 'Today',
+      sub: now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+      badge: '⚡ Fastest',
+    },
+    {
+      label: 'Tomorrow',
+      sub: new Date(now.getTime() + 86400000).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+      badge: '⭐ Recommended',
+    },
+    {
+      label: new Date(now.getTime() + 172800000).toLocaleDateString('en-US', { weekday: 'short', day: 'numeric' }),
+      sub: new Date(now.getTime() + 172800000).toLocaleDateString('en-US', { month: 'short' }),
+      badge: '📅 Upcoming',
+    },
+  ];
+
+  const customTimeSlots = [
+    '8:00 AM - 10:00 AM',
+    '10:00 AM - 12:00 NOON',
+    '12:00 NOON - 2:00 PM',
+    '2:00 PM - 4:00 PM',
+    '5:00 PM - 6:00 PM',
+  ];
 
   const budgetRanges = [
     'Under KShs 10,000',
@@ -84,22 +109,26 @@ export default function ContactClient() {
       alert('Please enter your name and phone number before booking.');
       return;
     }
-    if (!selectedDay || !selectedTime) {
+    if (!selectedDayLabel || !selectedTime) {
       alert('Please select a date and time slot.');
       return;
     }
 
     const message =
-      `📅 *NEW STRATEGY CALL REQUEST* 📅\n\n` +
+      `📅 *STRATEGY CALL BOOKING REQUEST* 📅\n\n` +
       `👤 *Contact Name:* ${callName}\n` +
       `📱 *Phone / WhatsApp:* ${callPhone}\n` +
-      `🗓️ *Requested Date:* August ${selectedDay}, 2026\n` +
-      `⏰ *Requested Time:* ${selectedTime} (EAT / UTC+3)\n\n` +
-      `— Submitted via Goldfish Marketing Contact Page`;
+      `🗓️ *Requested Date:* ${selectedDayLabel}\n` +
+      `⏰ *Requested Time Slot:* ${selectedTime} (EAT / UTC+3)\n\n` +
+      `— Submitted via Goldfish Marketing Site`;
 
     sendToWhatsApp(message);
     setBookedConsultation(true);
   };
+
+  const directWhatsAppLink = `https://wa.me/254711404755?text=${encodeURIComponent(
+    "Hi Goldfish Marketing, I'd like to schedule a 15-minute Strategy Call for my business."
+  )}`;
 
   return (
     <div className="w-full flex flex-col gap-16">
@@ -294,7 +323,7 @@ export default function ContactClient() {
         </div>
 
         {/* ══════════════════════════════════
-            PATH B — STRATEGY CALL BOOKING
+            PATH B — STRATEGY CALL BOOKING (STREAMLINED)
         ══════════════════════════════════ */}
         <div className="p-8 lg:p-12 bg-[var(--bg-primary)]/30 border-t lg:border-t-0 lg:border-l border-[var(--border-subtle)] flex flex-col justify-between">
           <div>
@@ -304,130 +333,137 @@ export default function ContactClient() {
             <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)] mb-2">
               Direct Schedule Access
             </h2>
-            <p className="text-caption text-[var(--text-muted)] mb-8">
-              Schedule a 15-Minute Technical Exploration Call
+            <p className="text-caption text-[var(--text-muted)] mb-6">
+              Schedule a 15-Minute Technical Exploration Call with Goldfish Marketing
             </p>
 
-            {/* Contact Name & Phone — always visible in Path B */}
-            <div className="space-y-5 mb-6">
+            {/* 1-TAP INSTANT WHATSAPP BOOKING BANNER */}
+            <a
+              href={directWhatsAppLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/15 transition-all duration-200 flex items-center justify-between group text-decoration-none mb-8 shadow-sm"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg">
+                  💬
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-xs font-bold text-[var(--text-core)] group-hover:text-emerald-500 transition-colors">
+                    1-Tap Instant WhatsApp Call Setup
+                  </span>
+                  <span className="text-[10px] text-[var(--text-muted)] font-mono">
+                    Skip form &amp; message Goldfish Marketing directly
+                  </span>
+                </div>
+              </div>
+              <span className="text-emerald-500 font-bold text-sm group-hover:translate-x-1 transition-transform">
+                →
+              </span>
+            </a>
+
+            {/* Contact Name & Phone */}
+            <div className="space-y-4 mb-6">
               <div className="flex flex-col gap-2">
                 <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                  Contact Name *
+                  Your Name *
                 </label>
                 <input
                   type="text"
                   value={callName}
                   onChange={(e) => setCallName(e.target.value)}
                   placeholder="Jane Doe"
-                  className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors duration-200"
+                  className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
                 />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                  Contact Phone Number / WhatsApp *
+                  Phone Number / WhatsApp *
                 </label>
                 <input
                   type="tel"
                   value={callPhone}
                   onChange={(e) => setCallPhone(e.target.value)}
-                  placeholder="+254 700 000 000"
-                  className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors duration-200"
+                  placeholder="+254 711 404 755"
+                  className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
                 />
               </div>
             </div>
 
-            {/* Calendar booking box */}
-            <div
-              style={{ minHeight: '340px', width: '100%', maxWidth: '440px' }}
-              className="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl p-5 shadow-sm mx-auto flex flex-col justify-between"
-            >
-              {bookedConsultation ? (
-                <div className="flex-1 flex flex-col justify-center items-center text-center p-6">
-                  <svg className="w-12 h-12 text-[var(--accent-gold)] mb-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <h4 className="font-bold text-sm text-[var(--text-core)] uppercase tracking-wider mb-2">
-                    Call Request Sent
-                  </h4>
-                  <p className="text-[11px] text-[var(--text-muted)] leading-relaxed">
-                    Thank you, <strong>{callName}</strong>. Your request for <strong>June {selectedDay}</strong> at <strong>{selectedTime}</strong> has been sent. We&apos;ll confirm via WhatsApp at {callPhone}.
-                  </p>
-                </div>
-              ) : (
-                <div className="flex-1 flex flex-col justify-between h-full">
-                  {/* Calendar Header */}
-                  <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-3 mb-4">
-                    <span className="font-bold text-xs uppercase tracking-wider text-[var(--text-core)]">June 2026</span>
-                    <span className="text-[10px] font-mono text-[var(--text-muted)]">Timezone: EAT (UTC+3)</span>
-                  </div>
-
-                  {/* Day grid */}
-                  <div className="grid grid-cols-7 gap-2 text-center mb-6">
-                    {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((dayChar, i) => (
-                      <div key={i} className="text-[9px] font-mono font-bold text-gray-400 py-1">
-                        {dayChar}
-                      </div>
-                    ))}
-                    {daysInMonth.map((day) => {
-                      const isSelected = selectedDay === day;
-                      return (
-                        <button
-                          key={day}
-                          onClick={() => { setSelectedDay(day); setSelectedTime(null); }}
-                          className={`aspect-square rounded flex items-center justify-center font-mono text-[11px] font-semibold border cursor-pointer transition-all duration-150 ${
-                            isSelected
-                              ? 'bg-[var(--accent-gold)] border-[var(--accent-gold)] text-white'
-                              : 'bg-[var(--bg-primary)]/50 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)]'
-                          }`}
-                        >
-                          {day}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  {/* Time slots */}
-                  {selectedDay && (
-                    <div className="mb-4">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[var(--text-core)] block mb-2">
-                        Available slots for June {selectedDay}:
+            {/* Dynamic Date Selection Cards */}
+            <div className="flex flex-col gap-3 mb-6">
+              <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
+                Select Preferred Date *
+              </label>
+              <div className="grid grid-cols-3 gap-2.5">
+                {dateOptions.map((opt) => {
+                  const isSelected = selectedDayLabel === `${opt.label} (${opt.sub})`;
+                  return (
+                    <button
+                      key={opt.label}
+                      type="button"
+                      onClick={() => setSelectedDayLabel(`${opt.label} (${opt.sub})`)}
+                      className={`p-3 rounded-xl border text-center transition-all duration-200 flex flex-col items-center justify-between min-h-[85px] ${
+                        isSelected
+                          ? 'bg-[var(--accent-gold)]/15 border-[var(--accent-gold)] shadow-sm ring-1 ring-[var(--accent-gold)]/50'
+                          : 'bg-[var(--bg-primary)]/30 border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/50'
+                      }`}
+                    >
+                      <span className="text-[9px] font-mono text-[var(--accent-gold)] font-bold uppercase tracking-wider mb-1">
+                        {opt.badge}
                       </span>
-                      <div className="flex flex-wrap gap-2 justify-center">
-                        {timeSlots.map((time) => {
-                          const isSelected = selectedTime === time;
-                          return (
-                            <button
-                              key={time}
-                              onClick={() => setSelectedTime(time)}
-                              className={`py-1.5 px-3 rounded font-mono text-[10px] border cursor-pointer transition-all duration-150 ${
-                                isSelected
-                                  ? 'bg-[var(--text-core)] border-[var(--text-core)] text-white'
-                                  : 'bg-[var(--bg-primary)]/30 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--text-core)]'
-                              }`}
-                            >
-                              {time}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Confirm button */}
-                  <button
-                    disabled={!selectedDay || !selectedTime}
-                    onClick={handleConsultationBook}
-                    className={`w-full py-3 rounded-lg font-mono text-[10px] uppercase font-bold tracking-widest transition-all duration-200 ${
-                      selectedDay && selectedTime
-                        ? 'bg-[var(--accent-gold)] text-white hover:bg-[var(--accent-gold-dark)] cursor-pointer shadow-md'
-                        : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                    }`}
-                  >
-                    Confirm Strategy Call Booking
-                  </button>
-                </div>
-              )}
+                      <span className="text-xs font-bold text-[var(--text-core)]">{opt.label}</span>
+                      <span className="text-[10px] font-mono text-[var(--text-muted)]">{opt.sub}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
+
+            {/* Time Slot Selection Pills */}
+            <div className="flex flex-col gap-3 mb-6">
+              <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold flex items-center justify-between">
+                <span>Select 2-Hour Time Slot (EAT / UTC+3) *</span>
+                {selectedTime && <span className="text-[var(--accent-gold)] font-bold text-[10px]">{selectedTime}</span>}
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {customTimeSlots.map((slot) => {
+                  const isSelected = selectedTime === slot;
+                  return (
+                    <button
+                      key={slot}
+                      type="button"
+                      onClick={() => setSelectedTime(slot)}
+                      className={`py-2 px-3 rounded-lg text-xs font-mono transition-all duration-200 border ${
+                        isSelected
+                          ? 'bg-[var(--accent-gold)] text-black font-bold border-[var(--accent-gold)] shadow-sm'
+                          : 'bg-[var(--bg-primary)]/40 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)]/50'
+                      }`}
+                    >
+                      {slot}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Confirmation Action */}
+            {bookedConsultation ? (
+              <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-center">
+                <p className="text-xs font-bold text-emerald-500">
+                  🎉 Request sent! We&apos;ll confirm your slot via WhatsApp at {callPhone}.
+                </p>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={handleConsultationBook}
+                className="btn-primary w-full py-4 text-xs font-bold uppercase tracking-widest shadow-md flex items-center justify-center gap-2 group"
+              >
+                <span>Confirm Strategy Call Booking</span>
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              </button>
+            )}
 
           </div>
         </div>
