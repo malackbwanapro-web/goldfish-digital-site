@@ -6,12 +6,12 @@ export default function SchemaMarkup() {
     '@graph': [
       {
         '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
-        '@id': 'https://gold-fish-digital.netlify.app/#organization',
+        '@id': 'https://goldfish-digital-site.vercel.app/#organization',
         'name': 'Goldfish Marketing',
         'alternateName': 'Goldfish Digital',
-        'url': 'https://gold-fish-digital.netlify.app',
-        'logo': 'https://gold-fish-digital.netlify.app/logo-light.svg',
-        'image': 'https://gold-fish-digital.netlify.app/og-image.png',
+        'url': 'https://goldfish-digital-site.vercel.app',
+        'logo': 'https://goldfish-digital-site.vercel.app/logo-light.svg',
+        'image': 'https://goldfish-digital-site.vercel.app/og-image.png',
         'description': 'Diani premier creative digital marketing agency & enterprise AI systems integration consultancy. Local experts with global standards.',
         'telephone': '+254711404755',
         'email': 'goldfishprojex@gmail.com',
@@ -59,11 +59,11 @@ export default function SchemaMarkup() {
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://gold-fish-digital.netlify.app/#website',
-        'url': 'https://gold-fish-digital.netlify.app',
+        '@id': 'https://goldfish-digital-site.vercel.app/#website',
+        'url': 'https://goldfish-digital-site.vercel.app',
         'name': 'Goldfish Digital',
         'publisher': {
-          '@id': 'https://gold-fish-digital.netlify.app/#organization'
+          '@id': 'https://goldfish-digital-site.vercel.app/#organization'
         },
         'inLanguage': 'en-US'
       }
