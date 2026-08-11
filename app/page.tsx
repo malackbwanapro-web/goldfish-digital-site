@@ -49,14 +49,14 @@ export default function Home() {
   const servicesList = Object.values(servicesData);
 
   const clientLogos = [
-    'LOGISTICS LABS',
-    'VERTEX GLOBAL',
-    'APEX CORP',
-    'NEXUS FLOW',
-    'SAASGRID',
-    'ORION SYSTEMS',
-    'QUANTUM REACH',
-    'HELIOS MEDIA',
+    'LUXURY RESORTS & VILLAS',
+    'GASTRONOMY GROUPS',
+    'CORPORATE LEGAL',
+    'COASTAL RETREATS',
+    'E-COMMERCE BRANDS',
+    'NGO INFRASTRUCTURE',
+    'REAL ESTATE DEVELOPERS',
+    'CREATIVE ECONOMIES',
   ];
 
   const insightTeasers = [
@@ -93,25 +93,27 @@ export default function Home() {
           
           {/* Left Column (7 cols) */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-surface)]/60 text-[var(--accent-gold)] text-[11px] font-mono tracking-widest uppercase mb-6 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-pulse" />
-              CREATIVE AGENCY &amp; AI SYSTEMS INTEGRATION
+            
+            {/* Outcome Micro-Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-surface)]/80 text-[var(--accent-gold)] text-[11px] font-mono tracking-wider uppercase mb-6 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>⚡ Average +180% Organic Lead Velocity for Clients in 90 Days</span>
             </div>
 
             <h1 className="text-h1 font-black leading-[1.12] tracking-tight mb-6">
-              We Build <span className="gradient-text-gold">Smart Digital Ecosystems</span> &amp; Custom AI Infrastructure.
+              We Build <span className="gradient-text-gold">High-Converting Web Ecosystems</span>, Precision SEO &amp; AI Automation.
             </h1>
 
             <p className="text-body-lg text-[var(--text-muted)] mb-10 leading-relaxed font-light max-w-2xl">
-              From high-performance web platforms and advanced visibility (SEO/GEO) to production-ready AI automation, Goldfish Digital designs and integrates high-throughput solutions that eliminate overhead and scale your business.
+              From high-performance web platforms and advanced visibility (SEO/GEO/CRO) to production-ready AI automation, Goldfish Marketing designs and integrates high-throughput solutions that eliminate overhead and scale your business.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
               <Link href="/contact" className="btn-primary w-full sm:w-auto shadow-md">
                 Request a Free Operational Audit
               </Link>
-              <Link href="/contact" className="btn-outline w-full sm:w-auto">
-                Explore Capabilities
+              <Link href="/services" className="btn-outline w-full sm:w-auto">
+                Explore Our Services →
               </Link>
             </div>
           </div>
@@ -129,15 +131,15 @@ export default function Home() {
       <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-surface)] py-8 px-6">
         <div className="max-w-7xl mx-auto">
           <p className="text-[10px] font-mono tracking-widest text-[var(--text-muted)] uppercase mb-6 text-center">
-            TRUSTED BY DESIGN, ENGINEERING, AND OPERATIONS TEAMS WORLDWIDE
+            SPECIALIZED GROWTH &amp; AUTOMATION SOLUTIONS FOR HIGH-VALUE SECTORS
           </p>
 
           <div className="marquee-container py-2">
             <div className="marquee-track">
               {[...clientLogos, ...clientLogos].map((logo, i) => (
-                <div key={i} className="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity duration-300">
+                <div key={i} className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-300">
                   <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)]" />
-                  <span className="font-mono font-extrabold text-sm tracking-widest uppercase text-[var(--text-core)]">
+                  <span className="font-mono font-extrabold text-xs tracking-widest uppercase text-[var(--text-core)]">
                     {logo}
                   </span>
                 </div>

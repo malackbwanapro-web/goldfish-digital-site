@@ -31,11 +31,35 @@ export default function ContactClient() {
   const daysInMonth = Array.from({ length: 14 }, (_, i) => i + 12);
   const timeSlots   = ['09:00 AM', '10:30 AM', '01:00 PM', '02:30 PM', '04:00 PM'];
 
+  const budgetRanges = [
+    'Under KShs 10,000',
+    'KShs 10,000 - 20,000',
+    'KShs 20,000 - 50,000',
+    'KShs 50,000 - 100,000',
+    'KShs 100,000+',
+  ];
+
+  const quickPainPoints = [
+    '⚡ Website & App Rebuild',
+    '📈 SEO & GEO Rankings',
+    '💬 WhatsApp Lead Automation',
+    '🎨 Brand Identity & Content',
+    '🎯 Paid Ads ROAS Growth',
+  ];
+
+  const togglePainPoint = (tag: string) => {
+    if (painPoints.includes(tag)) {
+      setPainPoints(painPoints.replace(tag, '').replace(/\n\n+/g, '\n').trim());
+    } else {
+      setPainPoints(painPoints ? `${painPoints}\n• ${tag}` : `• ${tag}`);
+    }
+  };
+
   // ── PATH A SUBMIT ─────────────────────────────────────────
   const handleAuditSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName || !email || !phone || !companyName || !spend || !painPoints) {
-      alert('Please fill out all required fields.');
+      alert('Please fill out all required fields, including selecting a budget range.');
       return;
     }
 
@@ -46,9 +70,9 @@ export default function ContactClient() {
       `📱 *Phone / WhatsApp:* ${phone}\n` +
       `🏢 *Company Name:* ${companyName}\n` +
       `🌐 *Company Website:* ${companyWebsite || 'Not provided'}\n` +
-      `💰 *Monthly Digital Marketing Spend:* ${spend}\n\n` +
-      `📝 *Current Pain Points:*\n${painPoints}\n\n` +
-      `— Submitted via Goldfish Digital Contact Page`;
+      `💰 *Project Budget Range:* ${spend}\n\n` +
+      `📝 *Current Pain Points & Objectives:*\n${painPoints}\n\n` +
+      `— Submitted via Goldfish Marketing Contact Page`;
 
     sendToWhatsApp(message);
     setSubmittedAudit(true);
@@ -69,9 +93,9 @@ export default function ContactClient() {
       `📅 *NEW STRATEGY CALL REQUEST* 📅\n\n` +
       `👤 *Contact Name:* ${callName}\n` +
       `📱 *Phone / WhatsApp:* ${callPhone}\n` +
-      `🗓️ *Requested Date:* June ${selectedDay}, 2026\n` +
+      `🗓️ *Requested Date:* August ${selectedDay}, 2026\n` +
       `⏰ *Requested Time:* ${selectedTime} (EAT / UTC+3)\n\n` +
-      `— Submitted via Goldfish Digital Contact Page`;
+      `— Submitted via Goldfish Marketing Contact Page`;
 
     sendToWhatsApp(message);
     setBookedConsultation(true);
@@ -109,7 +133,7 @@ export default function ContactClient() {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleAuditSubmit} className="space-y-5">
+              <form onSubmit={handleAuditSubmit} className="space-y-6">
 
                 {/* Full Name */}
                 <div className="flex flex-col gap-2">
@@ -122,7 +146,7 @@ export default function ContactClient() {
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="Jane Doe"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors duration-200"
+                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
                   />
                 </div>
 
@@ -137,7 +161,7 @@ export default function ContactClient() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="jane@company.com"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors duration-200"
+                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
                   />
                 </div>
 
@@ -151,8 +175,8 @@ export default function ContactClient() {
                     required
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+254 700 000 000"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors duration-200"
+                    placeholder="+254 711 404 755"
+                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
                   />
                 </div>
 
@@ -166,65 +190,103 @@ export default function ContactClient() {
                     required
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
-                    placeholder="Acme Ltd"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors duration-200"
+                    placeholder="Acme Ltd / Villa Diani"
+                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
                   />
                 </div>
 
                 {/* Company Website */}
                 <div className="flex flex-col gap-2">
                   <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                    Company Website
+                    Company Website / Social Page
                   </label>
                   <input
                     type="text"
                     value={companyWebsite}
                     onChange={(e) => setCompanyWebsite(e.target.value)}
                     placeholder="www.yourcompany.com"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors duration-200"
+                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
                   />
                 </div>
 
-                {/* Monthly Spend Dropdown */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                    Estimated Monthly Digital Marketing Spend *
+                {/* Interactive KShs Budget Range Pills */}
+                <div className="flex flex-col gap-3">
+                  <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold flex items-center justify-between">
+                    <span>What is your project budget range? *</span>
+                    {spend && <span className="text-[var(--accent-gold)] font-bold text-[10px]">Selected: {spend}</span>}
                   </label>
-                  <select
-                    required
-                    value={spend}
-                    onChange={(e) => setSpend(e.target.value)}
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors duration-200"
-                  >
-                    <option value="" disabled>Select a range...</option>
-                    <option value="Kshs 25,000 - 50,000">Kshs 25,000 – 50,000</option>
-                    <option value="Kshs 50,000 - 100,000">Kshs 50,000 – 100,000</option>
-                    <option value="Kshs 100,000 - 200,000">Kshs 100,000 – 200,000</option>
-                    <option value="Over Kshs 200,000">Over Kshs 200,000</option>
-                  </select>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {budgetRanges.map((bRange) => {
+                      const isSelected = spend === bRange;
+                      return (
+                        <button
+                          key={bRange}
+                          type="button"
+                          onClick={() => setSpend(bRange)}
+                          className={`py-3 px-3.5 rounded-xl border text-xs font-mono tracking-tight text-left transition-all duration-200 flex items-center justify-between ${
+                            isSelected
+                              ? 'bg-[var(--accent-gold)]/15 border-[var(--accent-gold)] text-[var(--accent-gold)] font-bold shadow-sm ring-1 ring-[var(--accent-gold)]/50'
+                              : 'bg-[var(--bg-primary)]/30 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)]/50'
+                          }`}
+                        >
+                          <span>{bRange}</span>
+                          {isSelected && <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-pulse" />}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
 
-                {/* Pain Points */}
-                <div className="flex flex-col gap-2">
+                {/* Quick Select Pain Points & Textarea */}
+                <div className="flex flex-col gap-3">
                   <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                    Give us a brief update on your current pain points *
+                    Select main focus &amp; current challenges *
                   </label>
+                  
+                  {/* Quick Select Tags */}
+                  <div className="flex flex-wrap gap-2 mb-1">
+                    {quickPainPoints.map((tag) => {
+                      const isSelected = painPoints.includes(tag);
+                      return (
+                        <button
+                          key={tag}
+                          type="button"
+                          onClick={() => togglePainPoint(tag)}
+                          className={`py-1.5 px-3 rounded-full text-[11px] font-medium transition-all duration-200 ${
+                            isSelected
+                              ? 'bg-[var(--accent-gold)] text-black font-bold shadow-sm'
+                              : 'bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[var(--text-muted)] hover:text-[var(--text-core)] hover:border-[var(--accent-gold)]/50'
+                          }`}
+                        >
+                          {tag}
+                        </button>
+                      );
+                    })}
+                  </div>
+
                   <textarea
                     required
-                    rows={4}
+                    rows={3}
                     value={painPoints}
                     onChange={(e) => setPainPoints(e.target.value)}
-                    placeholder="e.g. We&apos;re getting traffic but not converting, our ads aren&apos;t performing, we have no visibility online..."
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] transition-colors duration-200 resize-none"
+                    placeholder="Tap tags above or type your key goals &amp; pain points..."
+                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200 resize-none"
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="btn-primary w-full shadow-md py-4 text-xs font-bold uppercase tracking-widest"
-                >
-                  Submit Free Audit Request
-                </button>
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    className="btn-primary w-full shadow-lg py-4 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 group"
+                  >
+                    <span>Submit Free Audit Request</span>
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  </button>
+
+                  <p className="text-[10px] font-mono text-center text-[var(--text-muted)] mt-3">
+                    ⚡ 60-Second Form • 24-Hour SLA Response • 100% Confidential
+                  </p>
+                </div>
 
               </form>
             )}

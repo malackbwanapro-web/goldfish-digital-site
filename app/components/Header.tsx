@@ -33,6 +33,18 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   const toggleTheme = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(nextTheme);
@@ -41,23 +53,23 @@ export default function Header() {
   };
 
   const navLinks = [
-    { label: 'Services', href: '/services' },
-    { label: 'Work', href: '/portfolio' },
-    { label: 'Insights', href: '/insights' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Services', href: '/services', desc: 'Web Ecosystems, SEO/GEO & AI Automation' },
+    { label: 'Work', href: '/portfolio', desc: 'Case studies & empirical client results' },
+    { label: 'Insights', href: '/insights', desc: 'Strategic briefings & technical deep dives' },
+    { label: 'Contact', href: '/contact', desc: 'Book a Smart Growth Audit or Strategy Call' },
   ];
 
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? 'bg-[var(--bg-primary)]/85 backdrop-blur-xl border-b border-[var(--border-accent)]/30 shadow-lg'
-          : 'bg-[var(--bg-primary)]/40 backdrop-blur-md border-b border-transparent'
+        scrolled || isOpen
+          ? 'bg-[var(--bg-primary)] border-b border-[var(--border-accent)]/30 shadow-lg'
+          : 'bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between relative z-50">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group text-decoration-none">
+        <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 group text-decoration-none">
           <div className="w-10 h-10 rounded-full border-2 border-[var(--accent-gold)] flex items-center justify-center bg-[var(--bg-surface)] overflow-hidden shadow-sm group-hover:scale-105 transition-transform duration-300">
             <span className="text-[var(--accent-gold)] font-black text-lg tracking-tighter">G</span>
           </div>
@@ -120,7 +132,7 @@ export default function Header() {
         </div>
 
         {/* Hamburger / Toggle Controls (Mobile - Below 1024px) */}
-        <div className="flex lg:hidden items-center gap-4">
+        <div className="flex lg:hidden items-center gap-3">
           <button
             onClick={toggleTheme}
             className="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center bg-[var(--bg-surface)] text-[var(--text-core)]"
@@ -132,7 +144,7 @@ export default function Header() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
                 />
               </svg>
             ) : (
@@ -149,7 +161,7 @@ export default function Header() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none z-50 bg-[var(--bg-surface)] rounded-full border border-[var(--border-subtle)]"
+            className="w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none bg-[var(--bg-surface)] rounded-full border border-[var(--border-subtle)] active:scale-95 transition-transform"
             aria-label="Toggle navigation menu"
           >
             <span
@@ -171,32 +183,63 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu Drawer (Below 1024px) */}
+      {/* Mobile Menu Drawer (Opaque Solid Surface Container) */}
       <div
-        className={`fixed inset-0 top-20 bg-[var(--overlay-scrim)] backdrop-blur-md z-40 transition-all duration-300 lg:hidden ${
-          isOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'
+        className={`fixed inset-x-0 top-20 bottom-0 bg-[var(--bg-primary)] z-40 transition-all duration-300 ease-in-out lg:hidden flex flex-col justify-between overflow-y-auto px-6 py-8 border-t border-[var(--border-subtle)] ${
+          isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}
       >
-        <nav className="flex flex-col items-center justify-start pt-16 gap-8 h-full px-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className="text-2xl font-bold text-[var(--text-core)] tracking-wide hover:text-[var(--accent-gold)] transition-colors duration-200"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <div className="w-full max-w-xs h-px bg-[var(--border-subtle)] my-4" />
+        <nav className="flex flex-col gap-4 max-w-md mx-auto w-full">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`p-4 rounded-xl border transition-all duration-200 flex flex-col gap-1 ${
+                  isActive
+                    ? 'bg-[var(--bg-surface)] border-[var(--accent-gold)] shadow-sm'
+                    : 'bg-[var(--bg-surface)]/60 border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/50'
+                }`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-lg font-bold text-[var(--text-core)] tracking-wide flex items-center gap-2">
+                    {isActive && <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)]" />}
+                    {link.label}
+                  </span>
+                  <svg className="w-5 h-5 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                <span className="text-xs text-[var(--text-muted)] font-light">{link.desc}</span>
+              </Link>
+            );
+          })}
+
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="btn-primary w-full max-w-xs text-center text-sm shadow-md"
+            className="btn-primary w-full text-center text-sm shadow-md py-4 mt-2"
           >
-            Book a Free Audit
+            Request a Free Audit →
           </Link>
         </nav>
+
+        {/* Mobile Drawer Footer Contacts */}
+        <div className="max-w-md mx-auto w-full pt-6 mt-6 border-t border-[var(--border-subtle)] text-center space-y-2">
+          <p className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider">
+            Diani Bazaar, Beach Rd, Diani, Kenya
+          </p>
+          <div className="flex items-center justify-center gap-4 text-xs font-mono">
+            <a href="tel:+254711404755" className="text-[var(--accent-gold)] hover:underline">
+              📞 +254 711 404 755
+            </a>
+            <a href="https://wa.me/254711404755" target="_blank" rel="noopener noreferrer" className="text-emerald-500 hover:underline">
+              💬 WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </header>
   );
