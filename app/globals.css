@@ -66,7 +66,7 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-core);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', var(--font-inter), system-ui, -apple-system, sans-serif;
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: 0.2px;
@@ -90,7 +90,7 @@ h1, h2, h3, h4, .font-display {
 
 /* Hero Display */
 .text-hero {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
   font-weight: 900;
   font-size: clamp(52px, 10vw, 120px);
   line-height: 1.1;
@@ -101,7 +101,7 @@ h1, h2, h3, h4, .font-display {
 
 /* H1 */
 .text-h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
   font-weight: 800;
   font-size: clamp(36px, 5vw, 48px);
   line-height: 1.2;
@@ -112,7 +112,7 @@ h1, h2, h3, h4, .font-display {
 
 /* H2 */
 .text-h2 {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
   font-weight: 700;
   font-size: clamp(28px, 4vw, 36px);
   line-height: 1.3;
@@ -122,7 +122,7 @@ h1, h2, h3, h4, .font-display {
 
 /* H3 */
 .text-h3 {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
   font-weight: 600;
   font-size: clamp(20px, 3vw, 24px);
   line-height: 1.4;
@@ -241,7 +241,7 @@ h1, h2, h3, h4, .font-display {
   padding: 14px 32px;
   background: var(--accent-gold);
   color: var(--text-inverse);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 15px;
   letter-spacing: 0.04em;
@@ -278,7 +278,7 @@ h1, h2, h3, h4, .font-display {
   padding: 14px 32px;
   background: transparent;
   color: var(--text-core);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 15px;
   letter-spacing: 0.04em;
@@ -311,7 +311,7 @@ h1, h2, h3, h4, .font-display {
   padding: 14px 32px;
   background: transparent;
   color: var(--accent-gold);
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 15px;
   letter-spacing: 0.04em;

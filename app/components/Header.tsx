@@ -56,6 +56,7 @@ export default function Header() {
     { label: 'Services', href: '/services', desc: 'Web Ecosystems, SEO/GEO & AI Automation' },
     { label: 'Work', href: '/portfolio', desc: 'Case studies & empirical client results' },
     { label: 'Insights', href: '/insights', desc: 'Strategic briefings & technical deep dives' },
+    { label: 'About', href: '/about', desc: 'Our story, founder & core values' },
     { label: 'Contact', href: '/contact', desc: 'Book a Smart Growth Audit or Strategy Call' },
   ];
 

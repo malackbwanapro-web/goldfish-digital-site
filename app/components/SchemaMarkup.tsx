@@ -14,7 +14,7 @@ export default function SchemaMarkup() {
         'image': 'https://gold-fish-digital.netlify.app/og-image.png',
         'description': 'Diani premier creative digital marketing agency & enterprise AI systems integration consultancy. Local experts with global standards.',
         'telephone': '+254711404755',
-        'email': 'info@goldfishmarketing.co.ke',
+        'email': 'goldfishprojex@gmail.com',
         'address': {
           '@type': 'PostalAddress',
           'streetAddress': 'Diani Bazaar, Beach Rd',

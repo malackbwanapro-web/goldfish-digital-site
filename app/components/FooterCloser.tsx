@@ -133,6 +133,11 @@ export default function FooterCloser({
                 </Link>
               </li>
               <li>
+                <Link href="/about" className="text-caption hover:text-[var(--accent-gold)] transition-colors duration-200 text-decoration-none">
+                  About Malack &amp; Goldfish
+                </Link>
+              </li>
+              <li>
                 <Link href="/contact" className="text-caption hover:text-[var(--accent-gold)] transition-colors duration-200 text-decoration-none">
                   Contact Us
                 </Link>
@@ -188,11 +193,17 @@ export default function FooterCloser({
                 Terms of Service
               </Link>
               <span className="text-xs text-[var(--accent-gold)] font-semibold mt-1">SLA Guarantee: 24h Form response</span>
+              <div className="flex gap-2 text-xs text-[var(--text-muted)] mt-2">
+                <span className="font-bold text-[var(--text-core)]">Coverage:</span>
+                <Link href="/diani" className="hover:text-[var(--accent-gold)] underline">Diani</Link> &bull;
+                <Link href="/mombasa" className="hover:text-[var(--accent-gold)] underline">Mombasa</Link> &bull;
+                <Link href="/kenya" className="hover:text-[var(--accent-gold)] underline">Kenya</Link>
+              </div>
             </div>
             <div className="text-caption flex flex-col gap-0.5 mt-2">
               <span className="font-semibold text-[var(--text-core)]">Direct Contact:</span>
-              <a href="mailto:info@goldfishmarketing.co.ke" className="text-[var(--accent-gold)] hover:underline">
-                info@goldfishmarketing.co.ke
+              <a href="mailto:goldfishprojex@gmail.com" className="text-[var(--accent-gold)] hover:underline">
+                goldfishprojex@gmail.com
               </a>
               <a href="tel:+254711404755" className="text-[var(--text-muted)] hover:text-[var(--accent-gold)]">
                 +254 711 404 755

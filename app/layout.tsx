@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter, Outfit, JetBrains_Mono } from 'next/font/google';
+import { Inter, Outfit, JetBrains_Mono, Poppins } from 'next/font/google';
 import './globals.css';
 import Header from './components/Header';
 import GoogleAnalytics from './components/GoogleAnalytics';
 import SchemaMarkup from './components/SchemaMarkup';
 import MobileStickyBar from './components/MobileStickyBar';
+import WhatsAppFloat from './components/WhatsAppFloat';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -22,6 +23,13 @@ const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-jetbrains',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-poppins',
 });
 
 const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -50,7 +58,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Goldfish Marketing', url: 'https://goldfishmarketing.co.ke' }],
   creator: 'Goldfish Marketing',
   alternates: {
-    canonical: '/',
+    canonical: siteUrl,
   },
   openGraph: {
     type: 'website',
@@ -95,7 +103,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning className={`${inter.variable} ${outfit.variable} ${jetbrains.variable}`}>
+    <html lang="en" data-theme="light" suppressHydrationWarning className={`${inter.variable} ${outfit.variable} ${jetbrains.variable} ${poppins.variable}`}>
       <head>
         <SchemaMarkup />
       </head>
@@ -105,6 +113,7 @@ export default function RootLayout({
         <div className="flex-1 flex flex-col">
           {children}
         </div>
+        <WhatsAppFloat />
         <MobileStickyBar />
       </body>
     </html>

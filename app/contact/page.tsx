@@ -79,8 +79,8 @@ export default function ContactPage() {
               </h4>
               <p className="text-[11px] text-[var(--text-muted)] leading-relaxed font-light">
                 Prefer direct engineering contact? Email us at{' '}
-                <a href="mailto:operations@goldfishdigital.com" className="text-[var(--accent-gold)] hover:underline">
-                  operations@goldfishdigital.com
+                <a href="mailto:goldfishprojex@gmail.com" className="text-[var(--accent-gold)] hover:underline">
+                  goldfishprojex@gmail.com
                 </a>
               </p>
             </div>

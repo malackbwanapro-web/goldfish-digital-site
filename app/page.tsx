@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import CodeTerminal from './components/CodeTerminal';
 import FooterCloser from './components/FooterCloser';
+import TestimonialsSection from './components/TestimonialsSection';
 import { servicesData } from './services/data/servicesData';
 
 export const metadata: Metadata = {
@@ -97,15 +98,18 @@ export default function Home() {
             {/* Outcome Micro-Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-surface)]/80 text-[var(--accent-gold)] text-[11px] font-mono tracking-wider uppercase mb-6 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>⚡ Average +180% Organic Lead Velocity for Clients in 90 Days</span>
+              <span>⚡ Trusted by SMEs, Hotels &amp; Brands Across Kenya &amp; East Africa</span>
             </div>
 
             <h1 className="text-h1 font-black leading-[1.12] tracking-tight mb-6">
               We Build <span className="gradient-text-gold">High-Converting Web Ecosystems</span>, Precision SEO &amp; AI Automation.
             </h1>
 
-            <p className="text-body-lg text-[var(--text-muted)] mb-10 leading-relaxed font-light max-w-2xl">
-              From high-performance web platforms and advanced visibility (SEO/GEO/CRO) to production-ready AI automation, Goldfish Marketing designs and integrates high-throughput solutions that eliminate overhead and scale your business.
+            <p className="text-body-lg text-[var(--text-muted)] mb-4 leading-relaxed font-light max-w-2xl">
+              From high-performance web platforms and advanced visibility (SEO/GEO/CRO) to production-ready AI automation, Goldfish Marketing designs and integrates solutions that eliminate overhead and scale your business.
+            </p>
+            <p className="text-body text-[var(--text-muted)] mb-10 leading-relaxed max-w-2xl">
+              Whether your website isn&apos;t generating enquiries, your ads aren&apos;t converting, or you&apos;re drowning in manual admin — we handle it end to end.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
@@ -122,6 +126,26 @@ export default function Home() {
           <div className="lg:col-span-5 w-full aspect-square max-w-lg mx-auto">
             <CodeTerminal />
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════
+          TRUST STRIP
+      ═══════════════════════════════════════════════════════ */}
+      <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-primary)] py-6 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+          {[
+            { icon: '🎯', label: 'Free Strategy Call', sub: 'No commitment required' },
+            { icon: '🔓', label: 'No Lock-In Contracts', sub: 'Month-to-month, always' },
+            { icon: '📈', label: 'Results-First Approach', sub: 'We succeed when you do' },
+            { icon: '🌍', label: 'Local & Global Delivery', sub: 'Based in Diani, Kenya' },
+          ].map((item, i) => (
+            <div key={i} className="flex flex-col items-center gap-1.5">
+              <span className="text-2xl">{item.icon}</span>
+              <p className="text-sm font-bold text-[var(--text-core)]">{item.label}</p>
+              <p className="text-[11px] text-[var(--text-muted)]">{item.sub}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -236,6 +260,11 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
+          TESTIMONIALS
+      ═══════════════════════════════════════════════════════ */}
+      <TestimonialsSection />
+
+      {/* ═══════════════════════════════════════════════════════
           SECTION 5: FLAGSHIP CASE STUDY
       ═══════════════════════════════════════════════════════ */}
       <section className="section-padding px-6">
@@ -306,7 +335,11 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {insightTeasers.map((insight, idx) => (
+            {[
+              { tag: '12 Min Read | Technical Architecture', title: 'Why Traditional RPA Fails the Modern Enterprise—And the Agentic Architectures Replacing It.', excerpt: 'Discover why deterministic Robotic Process Automation breaks under unstructured data arrays, and how to build self-healing agent pipelines.', slug: 'sme-automation-playbook-5-workflows' },
+              { tag: '8 Min Read | SEO & Visibility', title: 'Why Google\'s AI Overviews Are Killing Your Organic Traffic — And How to Get Cited Instead.', excerpt: 'AI is now answering your customers\' questions before they ever reach your website. Here\'s how to get cited and stay visible.', slug: 'google-ai-overviews-killing-organic-traffic' },
+              { tag: '10 Min Read | Web Performance', title: 'Your Website Loads in 6 Seconds — Here\'s Exactly How Much Revenue That\'s Costing You.', excerpt: 'A data-driven breakdown of how page speed directly impacts bounce rate, conversion rate, and bottom-line revenue.', slug: 'site-speed-killing-revenue' },
+            ].map((insight, idx) => (
               <article key={idx} className="flex flex-col justify-between p-8 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/20 hover:border-[var(--accent-gold)] transition-colors duration-300">
                 <div>
                   <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider block mb-4">
@@ -320,7 +353,7 @@ export default function Home() {
                   </p>
                 </div>
                 <Link
-                  href="/insights"
+                  href={`/insights/${insight.slug}`}
                   className="inline-flex items-center gap-1 text-[13px] font-mono text-[var(--text-core)] hover:text-[var(--accent-gold)] transition-colors duration-200 mt-6 uppercase tracking-wider font-bold"
                 >
                   Read Briefing →
