@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   title: 'Digital Marketing & AI Automation Agency Kenya | Goldfish Marketing',
   description:
     'Premier digital agency in Kenya offering custom web development, SEO, paid ads management, and AI automation for SMEs and growing brands across Kenya.',
-  alternates: { canonical: 'https://goldfish-digital-site.vercel.app/kenya' },
+  alternates: { canonical: 'https://www.goldfishmarketing.co.ke/kenya' },
   openGraph: {
     title: 'Digital Marketing & AI Automation Agency Kenya',
     description: 'High-performance digital growth infrastructure for Kenyan SMEs, hospitality, and corporate enterprises.',
-    url: 'https://goldfish-digital-site.vercel.app/kenya',
+    url: 'https://www.goldfishmarketing.co.ke/kenya',
   },
 };
 

@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   title: 'About Malack Bwana & Goldfish Marketing | Digital Agency Diani, Kenya',
   description:
     'Meet Malack Bwana, founder of Goldfish Marketing — Diani\'s premier digital marketing, web design, SEO, and AI automation agency serving businesses across Kenya and East Africa.',
-  alternates: { canonical: 'https://goldfish-digital-site.vercel.app/about' },
+  alternates: { canonical: 'https://www.goldfishmarketing.co.ke/about' },
   openGraph: {
     title: 'About Malack Bwana & Goldfish Marketing',
     description: 'The story behind Diani\'s leading digital growth agency.',
-    url: 'https://goldfish-digital-site.vercel.app/about',
+    url: 'https://www.goldfishmarketing.co.ke/about',
   },
 };
 

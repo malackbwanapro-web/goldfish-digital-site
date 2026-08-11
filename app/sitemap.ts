@@ -4,7 +4,7 @@ import { PORTFOLIO_PROJECTS } from './portfolio/data/portfolioData';
 import { INSIGHT_ARTICLES } from './insights/data/insightsData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://goldfishdigital.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketing.co.ke';
   const currentDate = new Date().toISOString();
 
   // Static core routes

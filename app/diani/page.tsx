@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   title: 'Digital Marketing & Web Design Agency in Diani Beach | Goldfish Marketing',
   description:
     'Diani Beach\'s premier digital marketing, web design, SEO, and AI automation agency. Helping coastal resorts, hotels, and SMEs win more customers online.',
-  alternates: { canonical: 'https://goldfish-digital-site.vercel.app/diani' },
+  alternates: { canonical: 'https://www.goldfishmarketing.co.ke/diani' },
   openGraph: {
     title: 'Digital Marketing & Web Design Agency in Diani Beach',
     description: 'Premier digital growth & web development services in Diani Beach, Kwale County, Kenya.',
-    url: 'https://goldfish-digital-site.vercel.app/diani',
+    url: 'https://www.goldfishmarketing.co.ke/diani',
   },
 };
 

@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   title: 'Digital Marketing & Web Design Agency Mombasa | Goldfish Marketing',
   description:
     'Leading digital marketing agency in Mombasa. Web development, SEO, Meta/Google ads, and AI automation for Mombasa companies and coastal enterprises.',
-  alternates: { canonical: 'https://goldfish-digital-site.vercel.app/mombasa' },
+  alternates: { canonical: 'https://www.goldfishmarketing.co.ke/mombasa' },
   openGraph: {
     title: 'Digital Marketing & Web Design Agency Mombasa',
     description: 'Premier digital growth & web development services serving Mombasa City & Coast Region.',
-    url: 'https://goldfish-digital-site.vercel.app/mombasa',
+    url: 'https://www.goldfishmarketing.co.ke/mombasa',
   },
 };
 

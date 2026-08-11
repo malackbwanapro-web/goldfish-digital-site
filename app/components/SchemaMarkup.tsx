@@ -6,12 +6,12 @@ export default function SchemaMarkup() {
     '@graph': [
       {
         '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
-        '@id': 'https://goldfish-digital-site.vercel.app/#organization',
+        '@id': 'https://www.goldfishmarketing.co.ke/#organization',
         'name': 'Goldfish Marketing',
         'alternateName': 'Goldfish Digital',
-        'url': 'https://goldfish-digital-site.vercel.app',
-        'logo': 'https://goldfish-digital-site.vercel.app/logo-light.svg',
-        'image': 'https://goldfish-digital-site.vercel.app/og-image.png',
+        'url': 'https://www.goldfishmarketing.co.ke',
+        'logo': 'https://www.goldfishmarketing.co.ke/logo-light.svg',
+        'image': 'https://www.goldfishmarketing.co.ke/og-image.png',
         'description': 'Diani premier creative digital marketing agency & enterprise AI systems integration consultancy. Local experts with global standards.',
         'telephone': '+254711404755',
         'email': 'goldfishprojex@gmail.com',
@@ -59,11 +59,11 @@ export default function SchemaMarkup() {
       },
       {
         '@type': 'WebSite',
-        '@id': 'https://goldfish-digital-site.vercel.app/#website',
-        'url': 'https://goldfish-digital-site.vercel.app',
+        '@id': 'https://www.goldfishmarketing.co.ke/#website',
+        'url': 'https://www.goldfishmarketing.co.ke',
         'name': 'Goldfish Digital',
         'publisher': {
-          '@id': 'https://goldfish-digital-site.vercel.app/#organization'
+          '@id': 'https://www.goldfishmarketing.co.ke/#organization'
         },
         'inLanguage': 'en-US'
       }
