@@ -39,23 +39,22 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketi
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Goldfish Digital | Enterprise AI Systems & Automation Infrastructure',
-    template: '%s | Goldfish Digital',
+    default: 'Digital Marketing, Web Design & AI Agency Kenya | Goldfish Marketing',
+    template: '%s | Goldfish Marketing',
   },
   description:
-    'We design, deploy, and integrate production-ready AI pipelines and deterministic workflows to eliminate structural overhead for modern enterprises in Diani, Kenya & worldwide.',
+    'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
   keywords: [
-    'custom AI systems',
-    'enterprise automation pipelines',
-    'agentic workflows',
-    'operational infrastructure optimization',
-    'deterministic workflows',
-    'data pipeline engineering',
+    'digital marketing agency Kenya',
+    'web design agency Diani',
+    'SEO agency Mombasa',
+    'AI automation Kenya',
+    'high converting websites Kenya',
     'Goldfish Marketing Diani',
-    'Kenya AI agency',
-    'digital marketing agency Kwale',
+    'Meta ads management Kenya',
+    'WhatsApp automation SMEs',
   ],
-  authors: [{ name: 'Goldfish Marketing', url: 'https://goldfishmarketing.co.ke' }],
+  authors: [{ name: 'Goldfish Marketing', url: 'https://www.goldfishmarketing.co.ke' }],
   creator: 'Goldfish Marketing',
   alternates: {
     canonical: siteUrl,
@@ -64,24 +63,24 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
-    siteName: 'Goldfish Digital',
-    title: 'Goldfish Digital | Enterprise AI Systems & Automation Infrastructure',
+    siteName: 'Goldfish Marketing',
+    title: 'Digital Marketing, Web Design & AI Agency Kenya | Goldfish Marketing',
     description:
-      'We design, deploy, and integrate production-ready AI pipelines and deterministic workflows to eliminate structural overhead for modern enterprises.',
+      'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
     images: [
       {
         url: '/og-image.svg',
         width: 1200,
         height: 630,
-        alt: 'Goldfish Digital Enterprise AI & Automation',
+        alt: 'Goldfish Marketing Digital Growth & AI Agency Kenya',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Goldfish Digital | Enterprise AI Systems & Automation Infrastructure',
+    title: 'Digital Marketing, Web Design & AI Agency Kenya | Goldfish Marketing',
     description:
-      'Production-ready AI pipelines and deterministic workflows to eliminate structural overhead for modern enterprises.',
+      'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
     images: ['/og-image.svg'],
   },
   robots: {

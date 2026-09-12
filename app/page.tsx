@@ -7,9 +7,9 @@ import TestimonialsSection from './components/TestimonialsSection';
 import { servicesData } from './services/data/servicesData';
 
 export const metadata: Metadata = {
-  title: 'Custom AI Systems & Enterprise Automation Infrastructure | Goldfish Digital',
+  title: 'Digital Marketing, Web Design & AI Agency Kenya | Goldfish Marketing',
   description:
-    'We design, deploy, and integrate production-ready AI pipelines and deterministic workflows to eliminate structural overhead for modern enterprises.',
+    'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
 };
 
 export default function Home() {

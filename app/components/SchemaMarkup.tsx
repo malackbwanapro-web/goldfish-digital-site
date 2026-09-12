@@ -12,7 +12,7 @@ export default function SchemaMarkup() {
         'url': 'https://www.goldfishmarketing.co.ke',
         'logo': 'https://www.goldfishmarketing.co.ke/logo-light.svg',
         'image': 'https://www.goldfishmarketing.co.ke/og-image.png',
-        'description': 'Diani premier creative digital marketing agency & enterprise AI systems integration consultancy. Local experts with global standards.',
+        'description': 'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
         'telephone': '+254711404755',
         'email': 'goldfishprojex@gmail.com',
         'address': {
