@@ -10,9 +10,9 @@ interface FooterCloserProps {
 }
 
 export default function FooterCloser({
-  closerTitle = "Ready to Build Something That Actually Works?",
-  closerText = "Whether you need a full digital ecosystem, a visibility strategy, or an AI automation system, we'll scope your project in a free 30-minute strategy call.",
-  primaryBtnText = "Book a Free Strategy Call",
+  closerTitle = "Stop Leaking Revenue to Outdated Systems & High OTA Fees.",
+  closerText = "Whether you manage a boutique coastal resort, a growing SME, or a regional real estate firm, we'll diagnose your bottlenecks and map a custom growth architecture in an actionable audit.",
+  primaryBtnText = "Request a Free Growth Audit",
   primaryBtnHref = "/contact",
   secondaryBtnText = "View Our Services",
   secondaryBtnHref = "/services"
@@ -27,7 +27,7 @@ export default function FooterCloser({
       <div className="max-w-4xl mx-auto px-6 py-24 text-center relative z-10">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-primary)]/50 text-[var(--accent-gold)] text-[11px] font-mono tracking-widest uppercase mb-6">
           <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-pulse" />
-          System Initialization Terminal
+          Strategic Growth Intake • Diani Beach HQ
         </div>
 
         <h2 className="text-h2 font-black tracking-tight mb-6 max-w-2xl mx-auto leading-tight">
@@ -59,7 +59,7 @@ export default function FooterCloser({
                 <span className="text-[var(--accent-gold)] font-bold text-sm">G</span>
               </div>
               <span className="font-extrabold text-sm tracking-widest text-[var(--text-core)] uppercase">
-                Goldfish Digital
+                Goldfish Marketing
               </span>
             </Link>
             <p className="text-caption leading-relaxed mt-2">

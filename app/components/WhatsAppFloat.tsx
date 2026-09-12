@@ -1,10 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 
 export default function WhatsAppFloat() {
-  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -12,7 +10,6 @@ export default function WhatsAppFloat() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (pathname === '/contact') return null;
 
   const waNumber = '254711404755';
   const msg = encodeURIComponent("Hi Goldfish Marketing! I came across your website and I'd like to learn more about your services.");

@@ -2,473 +2,723 @@
 
 import { useState } from 'react';
 
-// WhatsApp business number (no + or spaces)
 const WA_NUMBER = '254711404755';
 
-function sendToWhatsApp(message: string) {
-  const encoded = encodeURIComponent(message);
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank');
-}
-
 export default function ContactClient() {
-  // ── PATH A STATE ──────────────────────────────────────────
-  const [fullName, setFullName]       = useState('');
-  const [email, setEmail]             = useState('');
-  const [phone, setPhone]             = useState('');
-  const [companyName, setCompanyName] = useState('');
-  const [companyWebsite, setCompanyWebsite] = useState('');
-  const [spend, setSpend]             = useState('');
-  const [painPoints, setPainPoints]   = useState('');
-  const [submittedAudit, setSubmittedAudit] = useState(false);
+  const [activeTab, setActiveTab] = useState<'whatsapp' | 'calendar' | 'diagnostic'>('whatsapp');
 
-  // ── PATH B STATE & TIME SLOTS ──────────────────────────────
-  const [callName, setCallName]       = useState('');
-  const [callPhone, setCallPhone]     = useState('');
-  const [selectedDayLabel, setSelectedDayLabel] = useState<string>('Today');
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [bookedConsultation, setBookedConsultation] = useState(false);
+  // ── TAB 1: WHATSAPP DIRECT STATE ──
+  const [waTopic, setWaTopic] = useState('Direct Booking Engine / OTA Leak');
+  const [waCustomMsg, setWaCustomMsg] = useState(
+    "Hi Malack, I run a business in Kenya and would like to discuss upgrading our direct booking engine to cut OTA commissions."
+  );
 
-  // Dynamic Date calculation
+  const waPromptChips = [
+    {
+      label: '🏨 Direct Booking Engine / OTA Leak',
+      text: "Hi Malack, I run a hospitality/villa business and want to reduce our OTA commission losses with a direct booking engine and M-Pesa checkout.",
+    },
+    {
+      label: '💬 24/7 WhatsApp AI Reservation Bot',
+      text: "Hi Malack, I'm interested in deploying a 24/7 WhatsApp AI assistant to handle customer inquiries, check availability, and take bookings automatically.",
+    },
+    {
+      label: '📍 Local SEO & Google Maps 3-Pack',
+      text: "Hi Malack, I'd like to audit our Google Business Profile and local search rankings to get more direct phone calls and inquiries.",
+    },
+    {
+      label: '⚡ Sub-Second Next.js Website Rebuild',
+      text: "Hi Malack, our current website is slow on mobile and losing leads. I'd like to discuss a high-speed Next.js redesign.",
+    },
+    {
+      label: '📊 Ad Spend Audit & Attribution',
+      text: "Hi Malack, we are running Google/Meta ads and want to audit our conversion tracking and reduce cost-per-lead.",
+    },
+  ];
+
+  const handleChipSelect = (chip: { label: string; text: string }) => {
+    setWaTopic(chip.label);
+    setWaCustomMsg(chip.text);
+  };
+
+  const handleOpenWhatsApp = () => {
+    const encoded = encodeURIComponent(waCustomMsg);
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank');
+  };
+
+  // ── TAB 2: 15-MIN STRATEGY SLOT STATE ──
+  const [calName, setCalName] = useState('');
+  const [calPhone, setCalPhone] = useState('');
+  const [calEmail, setCalEmail] = useState('');
+  const [calTopic, setCalTopic] = useState('General Digital Strategy');
+  const [selectedDay, setSelectedDay] = useState('Today');
+  const [selectedTime, setSelectedTime] = useState<string | null>('10:00 AM - 10:15 AM');
+  const [bookedSlot, setBookedSlot] = useState(false);
+
   const now = new Date();
   const dateOptions = [
     {
+      id: 'today',
       label: 'Today',
       sub: now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
       badge: '⚡ Fastest',
     },
     {
+      id: 'tomorrow',
       label: 'Tomorrow',
       sub: new Date(now.getTime() + 86400000).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
       badge: '⭐ Recommended',
     },
     {
+      id: 'day-after',
       label: new Date(now.getTime() + 172800000).toLocaleDateString('en-US', { weekday: 'short', day: 'numeric' }),
       sub: new Date(now.getTime() + 172800000).toLocaleDateString('en-US', { month: 'short' }),
       badge: '📅 Upcoming',
     },
   ];
 
-  const customTimeSlots = [
-    '8:00 AM - 10:00 AM',
-    '10:00 AM - 12:00 NOON',
-    '12:00 NOON - 2:00 PM',
-    '2:00 PM - 4:00 PM',
-    '5:00 PM - 6:00 PM',
+  const timeSlots = [
+    '09:00 AM - 09:15 AM',
+    '10:00 AM - 10:15 AM',
+    '11:30 AM - 11:45 AM',
+    '02:00 PM - 02:15 PM',
+    '03:30 PM - 03:45 PM',
+    '04:45 PM - 05:00 PM',
   ];
 
-  const budgetRanges = [
-    'Under KShs 10,000',
-    'KShs 10,000 - 20,000',
+  const handleSlotBooking = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!calName || !calPhone || !calEmail || !selectedTime) return;
+
+    const message =
+      `📅 *NEW STRATEGY CALL BOOKING* 📅\n\n` +
+      `👤 *Name:* ${calName}\n` +
+      `📱 *WhatsApp / Phone:* ${calPhone}\n` +
+      `📧 *Email:* ${calEmail}\n` +
+      `🗓️ *Requested Date:* ${selectedDay}\n` +
+      `⏰ *Time Slot:* ${selectedTime} (EAT / UTC+3)\n` +
+      `🎯 *Priority Focus:* ${calTopic}\n\n` +
+      `— Submitted via Goldfish Marketing Strategy Booking Hub`;
+
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank');
+    setBookedSlot(true);
+  };
+
+  // ── TAB 3: CONFIDENTIAL DIAGNOSTIC INTAKE (SME CALIBRATED) ──
+  const [diagStep, setDiagStep] = useState<1 | 2 | 3>(1);
+  const [currency, setCurrency] = useState<'KES' | 'USD'>('KES');
+  const [diagName, setDiagName] = useState('');
+  const [diagPhone, setDiagPhone] = useState('');
+  const [diagEmail, setDiagEmail] = useState('');
+  const [diagCompany, setDiagCompany] = useState('');
+  const [diagWebsite, setDiagWebsite] = useState('');
+  const [selectedHurdles, setSelectedHurdles] = useState<string[]>([]);
+  const [selectedBudget, setSelectedBudget] = useState('KShs 50,000 - 100,000');
+  const [diagNotes, setDiagNotes] = useState('');
+  const [submittedDiagnostic, setSubmittedDiagnostic] = useState(false);
+
+  const hurdleOptions = [
+    '🏨 High OTA Commissions (18-25% leak)',
+    '📱 Sluggish Mobile Load Speeds on 4G',
+    '📍 Low Google Maps & Local Search Ranking',
+    '💬 Slow Lead Response & No After-Hours Automation',
+    '💸 High Ad Spend with Unclear ROAS / Attribution',
+    '🎨 Outdated Brand Identity Hurting Pricing Power',
+  ];
+
+  const toggleHurdle = (h: string) => {
+    if (selectedHurdles.includes(h)) {
+      setSelectedHurdles(selectedHurdles.filter((item) => item !== h));
+    } else {
+      setSelectedHurdles([...selectedHurdles, h]);
+    }
+  };
+
+  const budgetTiersKES = [
+    'Under KShs 20,000',
     'KShs 20,000 - 50,000',
     'KShs 50,000 - 100,000',
-    'KShs 100,000+',
+    'KShs 100,000 - 250,000',
+    'KShs 250,000+',
   ];
 
-  const quickPainPoints = [
-    '⚡ Website & App Rebuild',
-    '📈 SEO & GEO Rankings',
-    '💬 WhatsApp Lead Automation',
-    '🎨 Brand Identity & Content',
-    '🎯 Paid Ads ROAS Growth',
+  const budgetTiersUSD = [
+    'Under $150',
+    '$150 - $400',
+    '$400 - $800',
+    '$800 - $2,000',
+    '$2,000+',
   ];
 
-  const togglePainPoint = (tag: string) => {
-    if (painPoints.includes(tag)) {
-      setPainPoints(painPoints.replace(tag, '').replace(/\n\n+/g, '\n').trim());
-    } else {
-      setPainPoints(painPoints ? `${painPoints}\n• ${tag}` : `• ${tag}`);
-    }
-  };
+  const activeBudgetTiers = currency === 'KES' ? budgetTiersKES : budgetTiersUSD;
 
-  // ── PATH A SUBMIT ─────────────────────────────────────────
-  const handleAuditSubmit = (e: React.FormEvent) => {
+  const handleDiagnosticSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fullName || !email || !phone || !companyName || !spend || !painPoints) {
-      alert('Please fill out all required fields, including selecting a budget range.');
-      return;
-    }
+    if (!diagName || !diagPhone || !diagEmail || !diagCompany) return;
 
     const message =
-      `🚨 *NEW AUDIT REQUEST* 🚨\n\n` +
-      `👤 *Full Name:* ${fullName}\n` +
-      `📧 *Email:* ${email}\n` +
-      `📱 *Phone / WhatsApp:* ${phone}\n` +
-      `🏢 *Company Name:* ${companyName}\n` +
-      `🌐 *Company Website:* ${companyWebsite || 'Not provided'}\n` +
-      `💰 *Project Budget Range:* ${spend}\n\n` +
-      `📝 *Current Pain Points & Objectives:*\n${painPoints}\n\n` +
-      `— Submitted via Goldfish Marketing Contact Page`;
+      `🛡️ *CONFIDENTIAL 3-PAGE DIAGNOSTIC REQUEST* 🛡️\n\n` +
+      `👤 *Name:* ${diagName}\n` +
+      `🏢 *Company:* ${diagCompany}\n` +
+      `🌐 *Website:* ${diagWebsite || 'Not provided'}\n` +
+      `📱 *Phone / WhatsApp:* ${diagPhone}\n` +
+      `📧 *Email:* ${diagEmail}\n` +
+      `💰 *SME Budget Band:* ${selectedBudget} (${currency})\n\n` +
+      `🎯 *Key Operational Hurdles:*\n${
+        selectedHurdles.length > 0 ? selectedHurdles.map((h) => `• ${h}`).join('\n') : '• General Operational Audit'
+      }\n\n` +
+      (diagNotes ? `📝 *Context / Notes:* ${diagNotes}\n\n` : '') +
+      `— Submitted via Goldfish Marketing 24h Diagnostic Engine`;
 
-    sendToWhatsApp(message);
-    setSubmittedAudit(true);
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank');
+    setSubmittedDiagnostic(true);
   };
-
-  // ── PATH B SUBMIT ─────────────────────────────────────────
-  const handleConsultationBook = () => {
-    if (!callName || !callPhone) {
-      alert('Please enter your name and phone number before booking.');
-      return;
-    }
-    if (!selectedDayLabel || !selectedTime) {
-      alert('Please select a date and time slot.');
-      return;
-    }
-
-    const message =
-      `📅 *STRATEGY CALL BOOKING REQUEST* 📅\n\n` +
-      `👤 *Contact Name:* ${callName}\n` +
-      `📱 *Phone / WhatsApp:* ${callPhone}\n` +
-      `🗓️ *Requested Date:* ${selectedDayLabel}\n` +
-      `⏰ *Requested Time Slot:* ${selectedTime} (EAT / UTC+3)\n\n` +
-      `— Submitted via Goldfish Marketing Site`;
-
-    sendToWhatsApp(message);
-    setBookedConsultation(true);
-  };
-
-  const directWhatsAppLink = `https://wa.me/254711404755?text=${encodeURIComponent(
-    "Hi Goldfish Marketing, I'd like to schedule a 15-minute Strategy Call for my business."
-  )}`;
 
   return (
-    <div className="w-full flex flex-col gap-16">
+    <div className="max-w-5xl mx-auto w-full">
+      {/* ═══ TRI-MODAL TAB SWITCHER ═══ */}
+      <div className="flex flex-col sm:flex-row items-center justify-center p-1.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-md mb-10 max-w-2xl mx-auto">
+        <button
+          onClick={() => setActiveTab('whatsapp')}
+          className={`w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
+            activeTab === 'whatsapp'
+              ? 'bg-emerald-600 text-white shadow-md'
+              : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
+          }`}
+        >
+          <span>💬</span>
+          <span>1-Tap WhatsApp</span>
+        </button>
 
-      {/* DUAL-PATH MATRIX */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 border border-[var(--border-subtle)] rounded-2xl overflow-hidden bg-[var(--bg-surface)] shadow-lg max-w-7xl mx-auto w-full">
+        <button
+          onClick={() => setActiveTab('calendar')}
+          className={`w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
+            activeTab === 'calendar'
+              ? 'bg-[var(--accent-gold)] text-white shadow-md'
+              : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
+          }`}
+        >
+          <span>📅</span>
+          <span>15-Min Slot</span>
+        </button>
 
-        {/* ══════════════════════════════════
-            PATH A — FREE OPERATIONAL AUDIT
-        ══════════════════════════════════ */}
-        <div className="p-8 lg:p-12 flex flex-col justify-between">
-          <div>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[var(--accent-gold)]/10 text-[var(--accent-gold)] text-[9px] font-mono tracking-widest uppercase mb-4">
-              PATH A
-            </div>
-            <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)] mb-8">
-              Request A Free Operational Audit
-            </h2>
+        <button
+          onClick={() => setActiveTab('diagnostic')}
+          className={`w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
+            activeTab === 'diagnostic'
+              ? 'bg-[var(--accent-gold)] text-white shadow-md'
+              : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
+          }`}
+        >
+          <span>🛡️</span>
+          <span>24h Diagnostic</span>
+        </button>
+      </div>
 
-            {submittedAudit ? (
-              <div className="p-8 rounded-xl border border-green-500/30 bg-green-500/5 text-center my-6">
-                <svg className="w-12 h-12 text-green-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <h3 className="font-bold text-[16px] text-green-500 uppercase tracking-wider mb-2">
-                  Audit Request Sent
-                </h3>
-                <p className="text-caption text-[var(--text-muted)] leading-relaxed">
-                  Thank you, {fullName}. Your audit request has been submitted. We&apos;ll review your details and reach out to you at{' '}
-                  <strong className="text-[var(--text-core)]">{phone}</strong> within 24 business hours.
-                </p>
+      {/* ══════════════════════════════════════════
+          TAB 1: 1-TAP DIRECT WHATSAPP
+      ══════════════════════════════════════════ */}
+      {activeTab === 'whatsapp' && (
+        <div className="card-brand p-8 lg:p-12 border border-[var(--border-subtle)] bg-[var(--bg-surface)] shadow-xl rounded-2xl relative overflow-hidden">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-6 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-500 font-bold">
+                  DIRECT FOUNDER LINE // DIANI BEACH HQ
+                </span>
               </div>
-            ) : (
-              <form onSubmit={handleAuditSubmit} className="space-y-6">
+              <h2 className="text-2xl lg:text-3xl font-black tracking-tight text-[var(--text-core)]">
+                Instant WhatsApp Conversation
+              </h2>
+            </div>
+            <div className="text-right">
+              <span className="text-xs font-mono text-[var(--text-muted)] block">
+                Typical Response: &lt; 15 mins
+              </span>
+              <span className="text-[11px] font-mono text-[var(--accent-gold)] font-bold">
+                Direct with Malack Bwana
+              </span>
+            </div>
+          </div>
 
-                {/* Full Name */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="Jane Doe"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
-                  />
-                </div>
+          <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
+            Select what you would like to discuss or customize your message below. Tapping the button opens WhatsApp directly with your pre-filled inquiry.
+          </p>
 
-                {/* Contact Email */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                    Contact Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="jane@company.com"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
-                  />
-                </div>
+          {/* Quick-Select Topic Chips */}
+          <div className="mb-8">
+            <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider block mb-3">
+              Select Your Discussion Priority:
+            </span>
+            <div className="flex flex-wrap gap-2.5">
+              {waPromptChips.map((chip, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleChipSelect(chip)}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-mono transition-all text-left ${
+                    waTopic === chip.label
+                      ? 'bg-emerald-600 text-white shadow-md border-emerald-500'
+                      : 'bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[var(--text-core)] hover:border-emerald-500/50'
+                  }`}
+                >
+                  {chip.label}
+                </button>
+              ))}
+            </div>
+          </div>
 
-                {/* Phone / WhatsApp */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                    Contact Phone Number / WhatsApp *
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+254 711 404 755"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
-                  />
-                </div>
+          {/* Message Preview Box */}
+          <div className="mb-8">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider">
+                Message Preview:
+              </span>
+              <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                Editable before sending
+              </span>
+            </div>
+            <textarea
+              value={waCustomMsg}
+              onChange={(e) => setWaCustomMsg(e.target.value)}
+              rows={4}
+              className="w-full p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-sm font-mono text-[var(--text-core)] focus:outline-none focus:border-emerald-500 leading-relaxed"
+            />
+          </div>
 
-                {/* Company Name */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                    Company Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
-                    placeholder="Acme Ltd / Villa Diani"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
-                  />
-                </div>
-
-                {/* Company Website */}
-                <div className="flex flex-col gap-2">
-                  <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                    Company Website / Social Page
-                  </label>
-                  <input
-                    type="text"
-                    value={companyWebsite}
-                    onChange={(e) => setCompanyWebsite(e.target.value)}
-                    placeholder="www.yourcompany.com"
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
-                  />
-                </div>
-
-                {/* Interactive KShs Budget Range Pills */}
-                <div className="flex flex-col gap-3">
-                  <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold flex items-center justify-between">
-                    <span>What is your project budget range? *</span>
-                    {spend && <span className="text-[var(--accent-gold)] font-bold text-[10px]">Selected: {spend}</span>}
-                  </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {budgetRanges.map((bRange) => {
-                      const isSelected = spend === bRange;
-                      return (
-                        <button
-                          key={bRange}
-                          type="button"
-                          onClick={() => setSpend(bRange)}
-                          className={`py-3 px-3.5 rounded-xl border text-xs font-mono tracking-tight text-left transition-all duration-200 flex items-center justify-between ${
-                            isSelected
-                              ? 'bg-[var(--accent-gold)]/15 border-[var(--accent-gold)] text-[var(--accent-gold)] font-bold shadow-sm ring-1 ring-[var(--accent-gold)]/50'
-                              : 'bg-[var(--bg-primary)]/30 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)]/50'
-                          }`}
-                        >
-                          <span>{bRange}</span>
-                          {isSelected && <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-pulse" />}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Quick Select Pain Points & Textarea */}
-                <div className="flex flex-col gap-3">
-                  <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                    Select main focus &amp; current challenges *
-                  </label>
-                  
-                  {/* Quick Select Tags */}
-                  <div className="flex flex-wrap gap-2 mb-1">
-                    {quickPainPoints.map((tag) => {
-                      const isSelected = painPoints.includes(tag);
-                      return (
-                        <button
-                          key={tag}
-                          type="button"
-                          onClick={() => togglePainPoint(tag)}
-                          className={`py-1.5 px-3 rounded-full text-[11px] font-medium transition-all duration-200 ${
-                            isSelected
-                              ? 'bg-[var(--accent-gold)] text-black font-bold shadow-sm'
-                              : 'bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[var(--text-muted)] hover:text-[var(--text-core)] hover:border-[var(--accent-gold)]/50'
-                          }`}
-                        >
-                          {tag}
-                        </button>
-                      );
-                    })}
-                  </div>
-
-                  <textarea
-                    required
-                    rows={3}
-                    value={painPoints}
-                    onChange={(e) => setPainPoints(e.target.value)}
-                    placeholder="Tap tags above or type your key goals &amp; pain points..."
-                    className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3.5 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200 resize-none"
-                  />
-                </div>
-
-                <div className="pt-2">
-                  <button
-                    type="submit"
-                    className="btn-primary w-full shadow-lg py-4 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 group"
-                  >
-                    <span>Submit Free Audit Request</span>
-                    <span className="group-hover:translate-x-1 transition-transform">→</span>
-                  </button>
-
-                  <p className="text-[10px] font-mono text-center text-[var(--text-muted)] mt-3">
-                    ⚡ 60-Second Form • 24-Hour SLA Response • 100% Confidential
-                  </p>
-                </div>
-
-              </form>
-            )}
+          {/* Action CTA */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[var(--border-subtle)]">
+            <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)]">
+              <span>🔒 Direct end-to-end encrypted chat</span>
+              <span>•</span>
+              <span>No spam bots</span>
+            </div>
+            <button
+              onClick={handleOpenWhatsApp}
+              className="w-full sm:w-auto py-3.5 px-8 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs uppercase tracking-wider font-bold shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2 transition-all"
+            >
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M12.031 2c-5.514 0-9.998 4.486-9.998 10.001 0 1.956.564 3.78 1.54 5.337l-1.573 5.761 5.908-1.549c1.492.839 3.21 1.302 5.033 1.302 5.516 0 10.001-4.485 10.001-10.001 0-5.515-4.485-10.001-10.012-10.001zm5.758 14.175c-.244.688-1.428 1.314-1.968 1.391-.497.07-1.144.1-3.326-.803-2.793-1.157-4.577-4.004-4.717-4.193-.139-.188-1.135-1.512-1.135-2.883 0-1.371.717-2.046.974-2.327.257-.282.559-.352.747-.352.188 0 .376.002.535.01.17.008.399-.064.625.478.234.563.799 1.947.869 2.088.07.141.117.305.023.493-.093.188-.141.305-.281.47-.14.165-.295.368-.422.493-.14.136-.286.286-.123.567.164.281.728 1.202 1.562 1.944 1.073.955 1.979 1.25 2.26 1.39.281.141.445.117.61-.07.164-.188.703-.82.891-1.101.188-.282.375-.235.633-.14.258.094 1.64.773 1.921.913.281.141.469.211.539.328.07.117.07.677-.174 1.365z" />
+              </svg>
+              <span>Open WhatsApp Directly (+254 711 404 755)</span>
+            </button>
           </div>
         </div>
+      )}
 
-        {/* ══════════════════════════════════
-            PATH B — STRATEGY CALL BOOKING (STREAMLINED)
-        ══════════════════════════════════ */}
-        <div className="p-8 lg:p-12 bg-[var(--bg-primary)]/30 border-t lg:border-t-0 lg:border-l border-[var(--border-subtle)] flex flex-col justify-between">
-          <div>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[var(--accent-gold)]/10 text-[var(--accent-gold)] text-[9px] font-mono tracking-widest uppercase mb-4">
-              PATH B
+      {/* ══════════════════════════════════════════
+          TAB 2: 15-MINUTE STRATEGY SLOT
+      ══════════════════════════════════════════ */}
+      {activeTab === 'calendar' && (
+        <div className="card-brand p-8 lg:p-12 border border-[var(--border-subtle)] bg-[var(--bg-surface)] shadow-xl rounded-2xl">
+          {bookedSlot ? (
+            <div className="p-10 text-center rounded-2xl border border-green-500/30 bg-green-500/5 my-4">
+              <div className="w-12 h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+                ✓
+              </div>
+              <h3 className="text-2xl font-black text-[var(--text-core)] mb-2">
+                Strategy Call Slot Requested!
+              </h3>
+              <p className="text-sm text-[var(--text-muted)] font-light max-w-lg mx-auto mb-6 leading-relaxed">
+                Thank you, <strong className="text-[var(--text-core)]">{calName}</strong>. We received your request for{' '}
+                <span className="text-[var(--accent-gold)] font-mono font-bold">{selectedDay} at {selectedTime} (EAT)</span>. We have dispatched calendar and Google Meet confirmation details to your WhatsApp and email.
+              </p>
+              <button
+                onClick={() => setBookedSlot(false)}
+                className="btn-outline text-xs py-2 px-6"
+              >
+                Modify or Book Another Slot
+              </button>
             </div>
-            <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)] mb-2">
-              Direct Schedule Access
-            </h2>
-            <p className="text-caption text-[var(--text-muted)] mb-6">
-              Schedule a 15-Minute Technical Exploration Call with Goldfish Marketing
-            </p>
-
-            {/* 1-TAP INSTANT WHATSAPP BOOKING BANNER */}
-            <a
-              href={directWhatsAppLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/15 transition-all duration-200 flex items-center justify-between group text-decoration-none mb-8 shadow-sm"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-lg">
-                  💬
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xs font-bold text-[var(--text-core)] group-hover:text-emerald-500 transition-colors">
-                    1-Tap Instant WhatsApp Call Setup
-                  </span>
-                  <span className="text-[10px] text-[var(--text-muted)] font-mono">
-                    Skip form &amp; message Goldfish Marketing directly
-                  </span>
-                </div>
+          ) : (
+            <form onSubmit={handleSlotBooking} className="space-y-8">
+              <div>
+                <span className="text-eyebrow text-xs font-mono block mb-2">
+                  DIRECT TECHNICAL EVALUATION
+                </span>
+                <h2 className="text-2xl lg:text-3xl font-black tracking-tight text-[var(--text-core)] mb-3">
+                  Schedule a 15-Minute Strategy Slot
+                </h2>
+                <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed">
+                  No sales pitch. A focused 15-minute diagnostic session with our technical team to analyze your website latency, booking engine friction, or AI automation scope.
+                </p>
               </div>
-              <span className="text-emerald-500 font-bold text-sm group-hover:translate-x-1 transition-transform">
-                →
-              </span>
-            </a>
 
-            {/* Contact Name & Phone */}
-            <div className="space-y-4 mb-6">
-              <div className="flex flex-col gap-2">
-                <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                  Your Name *
+              {/* Day Selection */}
+              <div>
+                <label className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider block mb-3">
+                  1. Select Preferred Day:
                 </label>
-                <input
-                  type="text"
-                  value={callName}
-                  onChange={(e) => setCallName(e.target.value)}
-                  placeholder="Jane Doe"
-                  className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                  Phone Number / WhatsApp *
-                </label>
-                <input
-                  type="tel"
-                  value={callPhone}
-                  onChange={(e) => setCallPhone(e.target.value)}
-                  placeholder="+254 711 404 755"
-                  className="w-full bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] rounded-lg py-3 px-4 text-caption text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] focus:ring-2 focus:ring-[var(--accent-gold)]/20 transition-all duration-200"
-                />
-              </div>
-            </div>
-
-            {/* Dynamic Date Selection Cards */}
-            <div className="flex flex-col gap-3 mb-6">
-              <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                Select Preferred Date *
-              </label>
-              <div className="grid grid-cols-3 gap-2.5">
-                {dateOptions.map((opt) => {
-                  const isSelected = selectedDayLabel === `${opt.label} (${opt.sub})`;
-                  return (
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {dateOptions.map((opt) => (
                     <button
-                      key={opt.label}
                       type="button"
-                      onClick={() => setSelectedDayLabel(`${opt.label} (${opt.sub})`)}
-                      className={`p-3 rounded-xl border text-center transition-all duration-200 flex flex-col items-center justify-between min-h-[85px] ${
-                        isSelected
-                          ? 'bg-[var(--accent-gold)]/15 border-[var(--accent-gold)] shadow-sm ring-1 ring-[var(--accent-gold)]/50'
-                          : 'bg-[var(--bg-primary)]/30 border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/50'
+                      key={opt.id}
+                      onClick={() => setSelectedDay(opt.label)}
+                      className={`p-4 rounded-xl border text-left transition-all ${
+                        selectedDay === opt.label
+                          ? 'border-[var(--accent-gold)] bg-[var(--accent-gold)]/10 shadow-sm'
+                          : 'border-[var(--border-subtle)] bg-[var(--bg-primary)]/50 hover:border-[var(--accent-gold)]/30'
                       }`}
                     >
-                      <span className="text-[9px] font-mono text-[var(--accent-gold)] font-bold uppercase tracking-wider mb-1">
+                      <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-widest block mb-1">
                         {opt.badge}
                       </span>
-                      <span className="text-xs font-bold text-[var(--text-core)]">{opt.label}</span>
-                      <span className="text-[10px] font-mono text-[var(--text-muted)]">{opt.sub}</span>
+                      <span className="text-sm font-bold text-[var(--text-core)] block">
+                        {opt.label}
+                      </span>
+                      <span className="text-xs text-[var(--text-muted)] font-mono">
+                        {opt.sub}
+                      </span>
                     </button>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Time Slot Selection Pills */}
-            <div className="flex flex-col gap-3 mb-6">
-              <label className="text-[11px] font-mono uppercase tracking-widest text-[var(--text-core)] font-bold flex items-center justify-between">
-                <span>Select 2-Hour Time Slot (EAT / UTC+3) *</span>
-                {selectedTime && <span className="text-[var(--accent-gold)] font-bold text-[10px]">{selectedTime}</span>}
-              </label>
-              <div className="flex flex-wrap gap-2">
-                {customTimeSlots.map((slot) => {
-                  const isSelected = selectedTime === slot;
-                  return (
+              {/* Time Slots */}
+              <div>
+                <label className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider block mb-3">
+                  2. Select Time Window (East Africa Time - EAT / UTC+3):
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {timeSlots.map((slot) => (
                     <button
-                      key={slot}
                       type="button"
+                      key={slot}
                       onClick={() => setSelectedTime(slot)}
-                      className={`py-2 px-3 rounded-lg text-xs font-mono transition-all duration-200 border ${
-                        isSelected
-                          ? 'bg-[var(--accent-gold)] text-black font-bold border-[var(--accent-gold)] shadow-sm'
-                          : 'bg-[var(--bg-primary)]/40 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)]/50'
+                      className={`py-3 px-4 rounded-xl text-xs font-mono border transition-all text-center ${
+                        selectedTime === slot
+                          ? 'bg-[var(--accent-gold)] text-white border-[var(--accent-gold)] shadow-sm font-bold'
+                          : 'bg-[var(--bg-primary)]/40 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)]/40'
                       }`}
                     >
                       {slot}
                     </button>
-                  );
-                })}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* Confirmation Action */}
-            {bookedConsultation ? (
-              <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-center">
-                <p className="text-xs font-bold text-emerald-500">
-                  🎉 Request sent! We&apos;ll confirm your slot via WhatsApp at {callPhone}.
-                </p>
+              {/* Contact Information */}
+              <div className="space-y-4 pt-4 border-t border-[var(--border-subtle)]">
+                <label className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider block">
+                  3. Your Details for Google Meet Invite:
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    required
+                    value={calName}
+                    onChange={(e) => setCalName(e.target.value)}
+                    placeholder="Your Full Name *"
+                    className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:border-[var(--accent-gold)]"
+                  />
+                  <input
+                    type="tel"
+                    required
+                    value={calPhone}
+                    onChange={(e) => setCalPhone(e.target.value)}
+                    placeholder="WhatsApp / Phone Number *"
+                    className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:border-[var(--accent-gold)]"
+                  />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    type="email"
+                    required
+                    value={calEmail}
+                    onChange={(e) => setCalEmail(e.target.value)}
+                    placeholder="Corporate Email Address *"
+                    className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:border-[var(--accent-gold)]"
+                  />
+                  <select
+                    value={calTopic}
+                    onChange={(e) => setCalTopic(e.target.value)}
+                    className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                  >
+                    <option value="Direct Booking Engine">Direct Booking Engine / OTA Leak</option>
+                    <option value="WhatsApp AI Automation">WhatsApp AI Customer Assistant</option>
+                    <option value="Local SEO & Google Maps">Local SEO & Google Maps Visibility</option>
+                    <option value="High-Speed Web Replatforming">Next.js Web Replatforming</option>
+                    <option value="General Digital Strategy">General Digital Systems Strategy</option>
+                  </select>
+                </div>
               </div>
-            ) : (
-              <button
-                type="button"
-                onClick={handleConsultationBook}
-                className="btn-primary w-full py-4 text-xs font-bold uppercase tracking-widest shadow-md flex items-center justify-center gap-2 group"
-              >
-                <span>Confirm Strategy Call Booking</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
-              </button>
-            )}
 
-          </div>
+              <div className="flex items-center justify-between pt-4 border-t border-[var(--border-subtle)]">
+                <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                  Instant Google Meet confirmation dispatched upon booking
+                </span>
+                <button
+                  type="submit"
+                  className="btn-primary text-xs py-3.5 px-8 shadow-md"
+                >
+                  Confirm 15-Minute Slot →
+                </button>
+              </div>
+            </form>
+          )}
         </div>
+      )}
 
-      </div>
+      {/* ══════════════════════════════════════════
+          TAB 3: 3-STEP CONFIDENTIAL DIAGNOSTIC
+      ══════════════════════════════════════════ */}
+      {activeTab === 'diagnostic' && (
+        <div className="card-brand p-8 lg:p-12 border border-[var(--border-subtle)] bg-[var(--bg-surface)] shadow-xl rounded-2xl">
+          {submittedDiagnostic ? (
+            <div className="p-10 text-center rounded-2xl border border-green-500/30 bg-green-500/5 my-4">
+              <div className="w-12 h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center mx-auto mb-4 text-2xl">
+                🛡️
+              </div>
+              <h3 className="text-2xl font-black text-[var(--text-core)] mb-2">
+                Confidential Diagnostic Intake Received
+              </h3>
+              <p className="text-sm text-[var(--text-muted)] font-light max-w-lg mx-auto mb-6 leading-relaxed">
+                Thank you, <strong className="text-[var(--text-core)]">{diagName}</strong>. Our engineering team has initiated the review for <strong className="text-[var(--text-core)]">{diagCompany}</strong>. You will receive a bespoke 3-page Growth &amp; Systems Teardown at <span className="text-[var(--accent-gold)] font-mono">{diagEmail}</span> and via WhatsApp within 24 hours.
+              </p>
+              <button
+                onClick={() => {
+                  setSubmittedDiagnostic(false);
+                  setDiagStep(1);
+                }}
+                className="btn-outline text-xs py-2 px-6"
+              >
+                Submit Additional Project
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleDiagnosticSubmit} className="space-y-8">
+              {/* Stepper Header */}
+              <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-4">
+                <div>
+                  <span className="text-eyebrow text-xs font-mono block mb-1">
+                    CONFIDENTIAL 24-HOUR TEARDOWN
+                  </span>
+                  <h2 className="text-2xl font-black tracking-tight text-[var(--text-core)]">
+                    3-Step Growth Diagnostic
+                  </h2>
+                </div>
+                <div className="flex items-center gap-2">
+                  {[1, 2, 3].map((stepNum) => (
+                    <div
+                      key={stepNum}
+                      onClick={() => setDiagStep(stepNum as 1 | 2 | 3)}
+                      className={`w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs cursor-pointer transition-all ${
+                        diagStep === stepNum
+                          ? 'bg-[var(--accent-gold)] text-white font-bold shadow-sm'
+                          : diagStep > stepNum
+                          ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                          : 'bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[var(--text-muted)]'
+                      }`}
+                    >
+                      {stepNum}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* STEP 1: BUSINESS BASICS */}
+              {diagStep === 1 && (
+                <div className="space-y-5">
+                  <h3 className="text-base font-bold text-[var(--text-core)] mb-2">
+                    Step 1: Your Business Profile
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      required
+                      value={diagName}
+                      onChange={(e) => setDiagName(e.target.value)}
+                      placeholder="Your Full Name *"
+                      className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                    />
+                    <input
+                      type="text"
+                      required
+                      value={diagCompany}
+                      onChange={(e) => setDiagCompany(e.target.value)}
+                      placeholder="Business / Company Name *"
+                      className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input
+                      type="email"
+                      required
+                      value={diagEmail}
+                      onChange={(e) => setDiagEmail(e.target.value)}
+                      placeholder="Your Business Email *"
+                      className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                    />
+                    <input
+                      type="tel"
+                      required
+                      value={diagPhone}
+                      onChange={(e) => setDiagPhone(e.target.value)}
+                      placeholder="Phone / WhatsApp Number *"
+                      className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                    />
+                  </div>
+                  <input
+                    type="url"
+                    value={diagWebsite}
+                    onChange={(e) => setDiagWebsite(e.target.value)}
+                    placeholder="Website or Social Link (e.g. https://yourbusiness.co.ke)"
+                    className="w-full p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                  />
+
+                  <div className="pt-4 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (!diagName || !diagCompany || !diagEmail || !diagPhone) {
+                          return;
+                        }
+                        setDiagStep(2);
+                      }}
+                      className="btn-primary text-xs py-3 px-8"
+                    >
+                      Continue to Step 2: Key Hurdles →
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 2: OPERATIONAL HURDLES */}
+              {diagStep === 2 && (
+                <div className="space-y-5">
+                  <h3 className="text-base font-bold text-[var(--text-core)] mb-2">
+                    Step 2: What Are Your Core Operational Bottlenecks?
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light">
+                    Select all that currently apply to your business:
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {hurdleOptions.map((h, idx) => {
+                      const isSelected = selectedHurdles.includes(h);
+                      return (
+                        <button
+                          type="button"
+                          key={idx}
+                          onClick={() => toggleHurdle(h)}
+                          className={`p-4 rounded-xl border text-left text-xs font-mono transition-all flex items-center justify-between ${
+                            isSelected
+                              ? 'bg-[var(--accent-gold)]/10 border-[var(--accent-gold)] text-[var(--text-core)] shadow-sm'
+                              : 'bg-[var(--bg-primary)]/40 border-[var(--border-subtle)] text-[var(--text-muted)] hover:border-[var(--accent-gold)]/30'
+                          }`}
+                        >
+                          <span>{h}</span>
+                          <span className="text-sm font-bold ml-2">
+                            {isSelected ? '✓' : '+'}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  <div className="pt-6 flex items-center justify-between">
+                    <button
+                      type="button"
+                      onClick={() => setDiagStep(1)}
+                      className="btn-outline text-xs py-2.5 px-6"
+                    >
+                      ← Back to Step 1
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setDiagStep(3)}
+                      className="btn-primary text-xs py-3 px-8"
+                    >
+                      Continue to Step 3: Budget &amp; Scope →
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* STEP 3: SME BUDGET CALIBRATION */}
+              {diagStep === 3 && (
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-base font-bold text-[var(--text-core)]">
+                      Step 3: SME Budget Band &amp; Additional Context
+                    </h3>
+                    <div className="inline-flex rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-1 text-xs font-mono">
+                      <button
+                        type="button"
+                        onClick={() => setCurrency('KES')}
+                        className={`px-3 py-1 rounded transition-all ${
+                          currency === 'KES' ? 'bg-[var(--accent-gold)] text-white font-bold' : 'text-[var(--text-muted)]'
+                        }`}
+                      >
+                        KES
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setCurrency('USD')}
+                        className={`px-3 py-1 rounded transition-all ${
+                          currency === 'USD' ? 'bg-[var(--accent-gold)] text-white font-bold' : 'text-[var(--text-muted)]'
+                        }`}
+                      >
+                        USD
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Budget Options */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {activeBudgetTiers.map((tier) => (
+                      <button
+                        type="button"
+                        key={tier}
+                        onClick={() => setSelectedBudget(tier)}
+                        className={`p-3.5 rounded-xl border text-center text-xs font-mono transition-all ${
+                          selectedBudget === tier
+                            ? 'bg-[var(--accent-gold)] border-[var(--accent-gold)] text-white font-bold shadow-sm'
+                            : 'bg-[var(--bg-primary)]/40 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)]/40'
+                        }`}
+                      >
+                        {tier}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider block mb-2">
+                      Any specific notes or questions for our engineering audit?
+                    </label>
+                    <textarea
+                      value={diagNotes}
+                      onChange={(e) => setDiagNotes(e.target.value)}
+                      rows={3}
+                      placeholder="e.g. We want to stop relying on Booking.com for 80% of our guests and need direct M-Pesa bookings..."
+                      className="w-full p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] leading-relaxed"
+                    />
+                  </div>
+
+                  <div className="pt-4 flex items-center justify-between border-t border-[var(--border-subtle)]">
+                    <button
+                      type="button"
+                      onClick={() => setDiagStep(2)}
+                      className="btn-outline text-xs py-2.5 px-6"
+                    >
+                      ← Back to Step 2
+                    </button>
+                    <button
+                      type="submit"
+                      className="btn-primary text-xs py-3.5 px-8 shadow-md"
+                    >
+                      Submit Confidential Diagnostic →
+                    </button>
+                  </div>
+                </div>
+              )}
+            </form>
+          )}
+        </div>
+      )}
     </div>
   );
 }

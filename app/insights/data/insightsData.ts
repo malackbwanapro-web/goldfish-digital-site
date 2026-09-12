@@ -23,297 +23,308 @@ export const INSIGHT_CATEGORIES: InsightCategory[] = [
     name: 'Smart Web & App Ecosystems',
     slug: 'smart-web-app-ecosystems',
     description:
-      'Architecture teardowns, conversion engineering, and the technical DNA of high-performance digital properties.',
+      'Sub-second mobile architecture, direct booking engines, M-Pesa checkout integrations, and conversion funnels built for the Kenyan economy.',
   },
   {
     name: 'Advanced Visibility Engineering',
     slug: 'advanced-visibility-engineering',
     description:
-      'AI search optimization, entity architecture, and the new rules of discoverability in a post-blue-link era.',
+      'Generative engine optimization (GEO), Google Maps 3-pack dominance, and local search authority across Coastal Kenya and national markets.',
   },
   {
     name: 'Brand Identity & Content Creation',
     slug: 'brand-identity-content-creation',
     description:
-      'Strategic identity systems, content authority frameworks, and the science of brand differentiation.',
+      'High-status visual systems, authority editorial frameworks, and video storytelling designed to command premium pricing and investor trust.',
   },
   {
     name: 'Digital Presence & Paid Growth',
     slug: 'digital-presence-paid-growth',
     description:
-      'Paid media strategy, social architecture, and precision-targeted campaigns that compound ROI.',
+      'Precision paid Meta & Google ad campaigns, WhatsApp click-to-chat funnels, and high-ROAS acquisition structures for regional SMEs.',
   },
   {
     name: 'AI Automation for SMEs',
     slug: 'ai-automation-sme',
     description:
-      'Operational automation playbooks, AI agent deployments, and the ROI of replacing manual workflows.',
+      '24/7 conversational WhatsApp AI booking agents, automated lead triage, and CRM integrations that reclaim 20+ staff hours weekly.',
   },
   {
     name: 'Strategic Analytics & Audits',
     slug: 'strategic-analytics-audits',
     description:
-      'Data infrastructure design, performance auditing frameworks, and decision-ready analytics stacks.',
+      'Server-side GA4 tracking, KDPA 2019 compliance diagnostics, and revenue attribution models that stop wasted marketing spend.',
   },
 ];
 
 export const INSIGHT_ARTICLES: InsightArticle[] = [
   // ───────────────────────────────────────────────
-  // Smart Web & App Ecosystems
+  // 1. Smart Web & App Ecosystems
   // ───────────────────────────────────────────────
   {
-    slug: 'site-speed-killing-revenue',
+    slug: 'web-design-hotels-diani-beach-kenya',
     category: 'Smart Web & App Ecosystems',
     categorySlug: 'smart-web-app-ecosystems',
     title:
-      "Your Website Loads in 6 Seconds — Here's Exactly How Much Revenue That's Costing You",
+      'Web Design for Hotels & Villas in Diani Beach: Reclaiming Direct Bookings from OTAs',
     excerpt:
-      "Every additional second of load time beyond 2.5s destroys conversion rates by 12-20%. We dissect the technical anatomy of a slow site — bloated third-party scripts, unoptimized CLS, and server-side rendering failures — and map the exact engineering fixes that recovered £340K in annual revenue for one client.",
-    readTime: '10 Min Read',
+      'Every confirmed booking on Booking.com costs a Diani property 15–25% in commission fees. Here is the exact mobile-first architecture, M-Pesa STK push integration, and multi-currency system that converts browsers into direct guests.',
+    readTime: '9 Min Read',
     isFeatured: true,
-    tags: ['Core Web Vitals', 'Performance', 'Conversion Rate'],
+    tags: ['Diani Beach', 'Hotel Web Design', 'M-Pesa STK', 'Direct Bookings'],
     coverImage: '/images/services/web-conversion.png',
   },
   {
-    slug: 'high-converting-landing-page-teardown',
+    slug: 'web-design-company-mombasa-south-coast-kenya',
     category: 'Smart Web & App Ecosystems',
     categorySlug: 'smart-web-app-ecosystems',
     title:
-      'The Anatomy of a High-Converting Landing Page: Technical Teardown of a 340% ROI Rebuild',
+      'Web Design for Mombasa & South Coast Businesses: What to Look for in a Local Agency',
     excerpt:
-      "We strip a real client rebuild down to its skeleton — from the CTA hierarchy and scroll-depth heatmaps to the lazy-loaded asset pipeline — and show you exactly why the old page bled leads while the new one prints them.",
+      'Why generic desktop templates fail on Safaricom 4G connections. What Coastal Kenyan businesses need: local CDN edge caching, sub-3-second mobile speed, and localized conversion architecture.',
     readTime: '8 Min Read',
     isFeatured: false,
-    tags: ['Landing Pages', 'CRO', 'UX Engineering'],
+    tags: ['Mombasa', 'South Coast', 'Mobile-First', 'Web Architecture'],
     coverImage: '/images/services/technical-seo.png',
+  },
+  {
+    slug: 'website-design-cost-kenya-pricing-guide',
+    category: 'Smart Web & App Ecosystems',
+    categorySlug: 'smart-web-app-ecosystems',
+    title:
+      'Website Design Cost in Kenya (2025/2026 Guide): Realistic SME Pricing Tiers in KES',
+    excerpt:
+      'From basic KES 35,000 brochure sites to KES 280,000+ custom revenue engines with M-Pesa STK Push and booking integration. A transparent breakdown of what Kenyan SMEs should actually pay.',
+    readTime: '11 Min Read',
+    isFeatured: false,
+    tags: ['Kenya Web Pricing', 'SME Budgets', 'M-Pesa Daraja', 'ROI'],
+    coverImage: '/images/services/web-conversion.png',
   },
 
   // ───────────────────────────────────────────────
-  // Advanced Visibility Engineering
+  // 2. Advanced Visibility Engineering
   // ───────────────────────────────────────────────
   {
-    slug: 'google-ai-overviews-killing-organic-traffic',
+    slug: 'rank-google-diani-beach-tourism',
     category: 'Advanced Visibility Engineering',
     categorySlug: 'advanced-visibility-engineering',
     title:
-      "Why Google's AI Overviews Are Killing Your Organic Traffic — And How to Get Cited Instead",
+      'How to Rank on Google for Diani Beach Tourism & Safari Inquiries: A Local Authority Blueprint',
     excerpt:
-      "AI Overviews now answer 40%+ of informational queries before a single click happens. If your content isn't structured to be the cited source inside those AI-generated panels, you're watching your traffic evaporate. This briefing documents the exact schema, entity, and content architecture required to become the answer.",
-    readTime: '12 Min Read',
+      'Targeting international holiday planners 6 months ahead vs Nairobi weekenders booking on Friday afternoon. How to dominate Google Local 3-Packs and earn high-intent safari bookings.',
+    readTime: '10 Min Read',
     isFeatured: true,
-    tags: ['GEO', 'AI Overviews', 'Organic Traffic'],
+    tags: ['Diani SEO', 'Tourism Search', 'Google Maps 3-Pack', 'Hospitality'],
     coverImage: '/images/services/geo-ai.png',
   },
   {
-    slug: 'entity-seo-vs-keyword-seo',
+    slug: 'seo-services-kenyan-coast-businesses',
     category: 'Advanced Visibility Engineering',
     categorySlug: 'advanced-visibility-engineering',
     title:
-      "Entity SEO vs. Keyword SEO: The Technical Shift Most Agencies Haven't Made Yet",
+      'SEO for Kenyan Coast Businesses: Why Coastal Search Strategy Is Different from Nairobi',
     excerpt:
-      "Google's Knowledge Graph doesn't rank keywords — it ranks entities. We break down how to engineer your brand's entity footprint across Wikidata, Schema.org, and structured data so that search engines understand what you are, not just what you write about.",
-    readTime: '9 Min Read',
+      'Bilingual search behavior, extreme seasonal tourism swings, and geo-targeted service entities across Mombasa, Kilifi, and Kwale. How to build search authority that lasts year-round.',
+    readTime: '8 Min Read',
+    tags: ['Coastal SEO', 'Mombasa', 'Entity Search', 'Local SEO'],
     isFeatured: false,
-    tags: ['Entity SEO', 'Knowledge Graph', 'Schema'],
     coverImage: '/images/services/entity-graph.png',
+  },
+  {
+    slug: 'how-to-rank-first-on-google-in-kenya',
+    category: 'Advanced Visibility Engineering',
+    categorySlug: 'advanced-visibility-engineering',
+    title:
+      'How to Rank First on Google in Kenya: The Technical Blueprint for Growing Businesses',
+    excerpt:
+      'Why traditional keyword stuffing fails in modern search engines. How to structure schema markup, secure authoritative East African citations, and optimize for AI search overviews.',
+    readTime: '12 Min Read',
+    isFeatured: false,
+    tags: ['Kenya SEO', 'Search Rankings', 'Schema JSON-LD', 'AI Overviews'],
+    coverImage: '/images/services/geo-ai.png',
   },
 
   // ───────────────────────────────────────────────
-  // Brand Identity & Content Creation
+  // 3. Brand Identity & Content Creation
   // ───────────────────────────────────────────────
   {
-    slug: 'template-brand-identity-strategic-cost',
+    slug: 'brand-identity-content-diani-beach-businesses',
     category: 'Brand Identity & Content Creation',
     categorySlug: 'brand-identity-content-creation',
     title:
-      "Your Brand Looks Like Everyone Else's — The Strategic Cost of Template-Based Identity",
+      'Brand Identity & Content for Diani Businesses: Balancing European Luxury & Kenyan Authenticity',
     excerpt:
-      "Canva templates and stock photography aren't branding — they're camouflage. This briefing quantifies the revenue impact of undifferentiated visual identity and maps the psychological triggers that make premium brand systems convert at 2-4x the rate of generic alternatives.",
-    readTime: '7 Min Read',
+      'How hospitality and lifestyle brands in Diani avoid generic Canva templates and build timeless visual identities that command 35% higher nightly rates and international guest trust.',
+    readTime: '8 Min Read',
     isFeatured: true,
-    tags: ['Brand Strategy', 'Visual Identity', 'Differentiation'],
+    tags: ['Brand Identity', 'Diani Beach', 'Visual Systems', 'Luxury Travel'],
     coverImage: '/images/services/brand-identity.png',
   },
   {
-    slug: 'content-velocity-vs-content-authority',
+    slug: 'content-creation-tourism-businesses-kenya-coast',
     category: 'Brand Identity & Content Creation',
     categorySlug: 'brand-identity-content-creation',
     title:
-      'Content Velocity vs. Content Authority: Why Publishing More Is Making You Less Visible',
+      'Content Creation for Kenya Coast Tourism: The Two-Engine Authority Framework',
     excerpt:
-      "Publishing 30 blog posts a month is not a content strategy — it's a dilution strategy. We analyse the authority signals that determine whether Google treats your content as noise or gospel, and why 4 strategic pieces outperform 40 generic ones every time.",
-    readTime: '8 Min Read',
-    isFeatured: false,
-    tags: ['Content Strategy', 'Authority', 'SEO Content'],
-    coverImage: '/images/services/content-strategy-production.png',
-  },
-
-  // ───────────────────────────────────────────────
-  // Digital Presence & Paid Growth
-  // ───────────────────────────────────────────────
-  {
-    slug: 'google-ads-ctr-performance-max-migration',
-    category: 'Digital Presence & Paid Growth',
-    categorySlug: 'digital-presence-paid-growth',
-    title:
-      "Your Google Ads CTR Dropped 40% After Performance Max — Here's What Actually Went Wrong",
-    excerpt:
-      "Performance Max campaigns promise AI-driven optimisation but deliver opaque reporting and cannibalised brand spend. We tear apart a real account migration, show where Google's automation failed, and document the hybrid manual-plus-AI strategy that recovered ROAS within 6 weeks.",
-    readTime: '11 Min Read',
-    isFeatured: true,
-    tags: ['Google Ads', 'Performance Max', 'ROAS'],
-    coverImage: '/images/services/paid-advertising-dashboard.png',
-  },
-  {
-    slug: 'linkedin-lead-gen-b2b-connection-requests',
-    category: 'Digital Presence & Paid Growth',
-    categorySlug: 'digital-presence-paid-growth',
-    title:
-      "LinkedIn Lead Gen for B2B: Why Your Connection Requests Are Getting Ignored (And the Fix)",
-    excerpt:
-      "The average LinkedIn outreach sequence gets a 2% response rate because it reads like spam. We document the authority-first engagement framework that generates 15-22% acceptance rates and converts cold connections into booked discovery calls within 14 days.",
-    readTime: '7 Min Read',
-    isFeatured: false,
-    tags: ['LinkedIn', 'B2B', 'Lead Generation'],
-    coverImage: '/images/services/linkedin-b2b-lead-generation.png',
-  },
-
-  // ───────────────────────────────────────────────
-  // Social Media Strategy (AI-SEO Cluster)
-  // ───────────────────────────────────────────────
-  {
-    slug: 'social-media-content-strategy-from-scratch',
-    category: 'Digital Presence & Paid Growth',
-    categorySlug: 'digital-presence-paid-growth',
-    title: 'How to Create a Social Media Content Strategy From Scratch (The 2026 Complete Guide)',
-    excerpt:
-      'A social media content strategy is a documented plan that defines your goals, target audience, content pillars, posting cadence, and measurement framework across all chosen platforms. Creating one from scratch means starting with a crystal-clear business objective and building a sustainable content system that drives measurable results — not just likes.',
-    readTime: '14 Min Read',
-    isFeatured: true,
-    tags: ['Social Media Strategy', 'Content Planning', 'AI Tools'],
-    coverImage: '/images/services/content-strategy-production.png',
-  },
-  {
-    slug: 'outsource-social-media-marketing-or-in-house',
-    category: 'Digital Presence & Paid Growth',
-    categorySlug: 'digital-presence-paid-growth',
-    title: 'Should I Outsource Social Media Marketing or Handle It In-House? (The 2026 Decision Guide)',
-    excerpt:
-      'Outsourcing social media marketing gives you access to a full specialist team — strategist, video editor, copywriter, and media buyer — typically at a lower total cost than hiring one experienced in-house manager with full benefits. The right choice depends entirely on your budget, growth stage, and content production demands.',
-    readTime: '12 Min Read',
-    isFeatured: false,
-    tags: ['Agency vs In-House', 'Social Media Management', 'Cost Analysis'],
-    coverImage: '/images/services/social-media-management.png',
-  },
-  {
-    slug: 'organic-vs-paid-social-media-marketing',
-    category: 'Digital Presence & Paid Growth',
-    categorySlug: 'digital-presence-paid-growth',
-    title: 'Organic vs Paid Social Media Marketing: The Complete 2026 Strategy Guide',
-    excerpt:
-      'Organic social media marketing builds brand awareness and community trust through unpaid content, while paid social uses advertising budgets to reach precisely targeted audiences at scale and drive measurable conversions. In 2026, the most effective strategies use both in a coordinated hybrid system — and the AI recommendation engine shift has changed organic reach forever.',
-    readTime: '13 Min Read',
-    isFeatured: true,
-    tags: ['Organic Social', 'Paid Social', 'Hybrid Strategy'],
-    coverImage: '/images/services/paid-advertising-dashboard.png',
-  },
-  {
-    slug: 'how-to-measure-social-media-marketing-success',
-    category: 'Digital Presence & Paid Growth',
-    categorySlug: 'digital-presence-paid-growth',
-    title: 'How to Accurately Measure the Success of Your Social Media Marketing (The 2026 Complete Guide)',
-    excerpt:
-      'Accurately measuring social media marketing success requires moving beyond vanity metrics like follower counts toward business-aligned value metrics — cost per acquisition, share of voice, and conversion rate — tracked through UTM parameters, platform analytics, and server-side event tracking. In 2026, accurate measurement also requires accounting for Dark Social attribution and iOS 14.5 signal loss.',
-    readTime: '15 Min Read',
-    isFeatured: false,
-    tags: ['Social Media ROI', 'Analytics', 'Dark Social'],
-    coverImage: '/images/services/entity-graph.png',
-  },
-  {
-    slug: 'social-media-campaign-metrics-to-track',
-    category: 'Digital Presence & Paid Growth',
-    categorySlug: 'digital-presence-paid-growth',
-    title: 'What Metrics Should I Track in a Social Media Marketing Campaign? (The 2026 Complete Guide)',
-    excerpt:
-      'The social media metrics you should track depend entirely on your campaign objective — but every business should monitor at minimum: engagement rate, click-through rate, social-attributed conversions, and cost per lead. Moving beyond these requires a tiered measurement framework that captures modern algorithmic signals like video completion rate and saves, plus the Dark Social attribution that standard analytics platforms miss entirely.',
-    readTime: '13 Min Read',
-    isFeatured: false,
-    tags: ['Social Media Metrics', 'KPIs', 'Campaign Tracking'],
-    coverImage: '/images/services/mobile-app.png',
-  },
-
-  // ───────────────────────────────────────────────
-  // AI Automation for SMEs
-  // ───────────────────────────────────────────────
-  {
-    slug: 'whatsapp-ai-agent-replaced-admin-team',
-    category: 'AI Automation for SMEs',
-    categorySlug: 'ai-automation-sme',
-    title:
-      "We Replaced a 3-Person Admin Team with a WhatsApp AI Agent — Here's the ROI Breakdown",
-    excerpt:
-      "A service-based SME was spending £8,400/month on admin staff to handle enquiries, bookings, and follow-ups. We deployed a WhatsApp-native AI agent that handles 94% of inbound volume autonomously. This is the full cost, deployment, and results breakdown.",
-    readTime: '13 Min Read',
-    isFeatured: true,
-    tags: ['WhatsApp AI', 'Automation ROI', 'SME Ops'],
-    coverImage: '/images/services/whatsapp-ai-assistant.png',
-  },
-  {
-    slug: 'sme-automation-playbook-5-workflows',
-    category: 'AI Automation for SMEs',
-    categorySlug: 'ai-automation-sme',
-    title:
-      'The SME Automation Playbook: 5 Workflows You Should Automate Before You Hire Anyone Else',
-    excerpt:
-      "Before you post another job ad, read this. Lead capture, invoice chasing, appointment scheduling, review requests, and onboarding sequences — these five workflows cost the average SME 60+ hours per month and can be fully automated for less than one employee's weekly wage.",
+      'Balancing inspirational drone video storytelling for international travelers with practical, frictionless WhatsApp-friendly guides for domestic Kenyan weekenders.',
     readTime: '9 Min Read',
     isFeatured: false,
-    tags: ['Workflow Automation', 'SME Growth', 'Cost Reduction'],
-    coverImage: '/images/services/crm-integration.png',
+    tags: ['Tourism Content', 'Video Production', 'Kenya Coast', 'Storytelling'],
+    coverImage: '/images/services/content-strategy-production.png',
+  },
+  {
+    slug: 'branding-agencies-kenya-what-to-look-for',
+    category: 'Brand Identity & Content Creation',
+    categorySlug: 'brand-identity-content-creation',
+    title:
+      'Branding Agencies in Kenya: What Growing SMEs Must Evaluate Before Hiring',
+    excerpt:
+      'The difference between paying KES 15,000 for a cosmetic logo file and investing in a cohesive brand identity system that positions your company for commercial contracts and pricing power.',
+    readTime: '10 Min Read',
+    isFeatured: false,
+    tags: ['Branding Kenya', 'Agency Selection', 'Brand Equity', 'SME Growth'],
+    coverImage: '/images/services/brand-identity.png',
   },
 
   // ───────────────────────────────────────────────
-  // Strategic Analytics & Audits
+  // 4. Digital Presence & Paid Growth
   // ───────────────────────────────────────────────
   {
-    slug: 'dashboard-47-metrics-zero-insights',
-    category: 'Strategic Analytics & Audits',
-    categorySlug: 'strategic-analytics-audits',
+    slug: 'social-media-marketing-hotels-diani-kenya',
+    category: 'Digital Presence & Paid Growth',
+    categorySlug: 'digital-presence-paid-growth',
     title:
-      'Your Dashboard Has 47 Metrics and Zero Insights — How to Build a Decision-Ready Data Stack',
+      'Social Media Marketing for Hotels & Villas in Diani: Turning Likes into Confirmed Direct Guests',
     excerpt:
-      "Vanity metrics are the comfort food of underperforming businesses. This briefing maps the exact analytics infrastructure — from GA4 event taxonomy to Looker Studio templating — that transforms raw data into boardroom-grade strategic intelligence.",
-    readTime: '10 Min Read',
+      'Why pretty Instagram sunset photos don’t pay bills. The exact paid Meta ad funnels, WhatsApp click-to-chat targeting, and retargeting loops that generate real villa deposits.',
+    readTime: '8 Min Read',
     isFeatured: true,
-    tags: ['Analytics', 'Data Strategy', 'GA4'],
-    coverImage: '/images/services/social-media-management.png',
+    tags: ['Social Media', 'Meta Ads', 'Diani Hotels', 'WhatsApp Funnel'],
+    coverImage: '/images/services/performance-media.png',
   },
   {
-    slug: 'pre-scale-audit-7-technical-red-flags',
+    slug: 'social-media-management-mombasa-south-coast',
+    category: 'Digital Presence & Paid Growth',
+    categorySlug: 'digital-presence-paid-growth',
+    title:
+      'Social Media Management for Mombasa & South Coast: Why Most Retainers Disappoint & What Works',
+    excerpt:
+      'Moving beyond hollow vanity follower counts to revenue-producing social systems: high-intent paid social campaigns, lead generation funnels, and authentic coastal storytelling.',
+    readTime: '8 Min Read',
+    isFeatured: false,
+    tags: ['Mombasa Social', 'Paid Social', 'ROAS', 'Lead Generation'],
+    coverImage: '/images/services/performance-media.png',
+  },
+  {
+    slug: 'social-media-management-packages-kenya-pricing',
+    category: 'Digital Presence & Paid Growth',
+    categorySlug: 'digital-presence-paid-growth',
+    title:
+      'Social Media Management Packages in Kenya (2025/2026): What Realistic SME Budgets Deliver',
+    excerpt:
+      'Transparent pricing breakdown of social media packages in Kenya from KES 25,000 to KES 120,000+. Deliverables, ad spend management, video content frequency, and expected ROI.',
+    readTime: '9 Min Read',
+    isFeatured: false,
+    tags: ['Social Media Pricing', 'Kenya SME', 'Ad Spend', 'Retainers'],
+    coverImage: '/images/services/performance-media.png',
+  },
+
+  // ───────────────────────────────────────────────
+  // 5. AI Automation for SMEs
+  // ───────────────────────────────────────────────
+  {
+    slug: 'whatsapp-automation-diani-beach-hotels',
+    category: 'AI Automation for SMEs',
+    categorySlug: 'ai-automation-sme',
+    title:
+      'WhatsApp Automation for Diani Beach Hotels: 24/7 Conversational AI That Books Rooms',
+    excerpt:
+      'How automated WhatsApp AI agents answer late-night European guest inquiries in 15 seconds, check room availability, send quotes, and trigger M-Pesa STK pushes while your desk sleeps.',
+    readTime: '9 Min Read',
+    isFeatured: true,
+    tags: ['WhatsApp AI', 'Diani Hospitality', 'Booking Bot', '24/7 Automation'],
+    coverImage: '/images/services/growth-ai.png',
+  },
+  {
+    slug: 'automate-customer-service-coastal-kenya',
+    category: 'AI Automation for SMEs',
+    categorySlug: 'ai-automation-sme',
+    title:
+      'Automating Customer Service for Coastal Kenya SMEs: Reclaiming 20+ Hours of Weekly Admin',
+    excerpt:
+      'Eliminating manual response delays across WhatsApp, Instagram DM, and email. Integrating instant FAQ resolution, automated booking confirmations, and CRM lead logging.',
+    readTime: '8 Min Read',
+    isFeatured: false,
+    tags: ['Customer Automation', 'Coastal Kenya', 'SME Operations', 'Time Savings'],
+    coverImage: '/images/services/growth-ai.png',
+  },
+  {
+    slug: 'whatsapp-ai-chatbot-pricing-kenya',
+    category: 'AI Automation for SMEs',
+    categorySlug: 'ai-automation-sme',
+    title:
+      'WhatsApp AI Chatbots in Kenya: Setup Costs, Monthly Subscriptions & Measurable SME ROI',
+    excerpt:
+      'What does an intelligent WhatsApp AI assistant actually cost in Kenya? Meta Cloud API conversation fees, webhook engineering, CRM sync, and operational cost savings explained in KES.',
+    readTime: '10 Min Read',
+    isFeatured: false,
+    tags: ['WhatsApp Chatbot Pricing', 'Kenya AI', 'Cloud API', 'SME ROI'],
+    coverImage: '/images/services/growth-ai.png',
+  },
+
+  // ───────────────────────────────────────────────
+  // 6. Strategic Analytics & Audits
+  // ───────────────────────────────────────────────
+  {
+    slug: 'digital-marketing-audit-diani-beach',
     category: 'Strategic Analytics & Audits',
     categorySlug: 'strategic-analytics-audits',
     title:
-      'The Pre-Scale Audit: 7 Technical Red Flags That Will Break Your Business at 2x Growth',
+      'The Diani Beach Digital Marketing Audit: 7 Red Flags That Leak Revenue Every Season',
     excerpt:
-      "Scaling a broken system doesn't create growth — it creates expensive chaos. We document the 7 infrastructure failure points we find in 90% of pre-scale audits: from misconfigured conversion tracking to single-point-of-failure hosting architectures.",
+      'From unverified Google Business Profiles and missing M-Pesa STK options to slow mobile load speeds and OTA dependence. The 7 critical fixes that protect hotel and villa revenue.',
+    readTime: '9 Min Read',
+    isFeatured: true,
+    tags: ['Digital Audit', 'Diani Beach', 'Revenue Protection', 'OTA Recovery'],
+    coverImage: '/images/services/intelligence-audit.png',
+  },
+  {
+    slug: 'digital-marketing-roi-tracking-mombasa-coast-kenya',
+    category: 'Strategic Analytics & Audits',
+    categorySlug: 'strategic-analytics-audits',
+    title:
+      'Digital Marketing ROI Tracking for Coastal Kenya: Solving the Two-Journey Attribution Problem',
+    excerpt:
+      'How to connect Google and Meta ad spend to actual bank deposits and M-Pesa merchant statements when customer inquiries move between web forms, phone calls, and WhatsApp chats.',
     readTime: '8 Min Read',
     isFeatured: false,
-    tags: ['Audits', 'Scaling', 'Technical Debt'],
-    coverImage: '/images/services/mobile-app.png',
+    tags: ['ROI Tracking', 'Mombasa', 'GA4 Attribution', 'M-Pesa Tracking'],
+    coverImage: '/images/services/intelligence-audit.png',
+  },
+  {
+    slug: 'digital-marketing-audit-small-businesses-kenya',
+    category: 'Strategic Analytics & Audits',
+    categorySlug: 'strategic-analytics-audits',
+    title:
+      'Digital Marketing Audit for Kenyan Small Businesses: Stopping Wasted Spend & Boosting ROI',
+    excerpt:
+      'Breaking the "Boost Post" habit. How to diagnose tracking errors, evaluate true customer acquisition cost (CAC), and establish KDPA 2019-compliant customer data systems.',
+    readTime: '10 Min Read',
+    isFeatured: false,
+    tags: ['Small Business Audit', 'Kenya SME', 'KDPA 2019', 'Ad Spend Audit'],
+    coverImage: '/images/services/intelligence-audit.png',
   },
 ];
 
-/** Get all articles for a specific category */
 export function getArticlesByCategory(categorySlug: string): InsightArticle[] {
   return INSIGHT_ARTICLES.filter((a) => a.categorySlug === categorySlug);
 }
 
-/** Get a single article by slug */
 export function getArticleBySlug(slug: string): InsightArticle | undefined {
   return INSIGHT_ARTICLES.find((a) => a.slug === slug);
 }
 
-/** Get the category object by slug */
 export function getCategoryBySlug(slug: string): InsightCategory | undefined {
   return INSIGHT_CATEGORIES.find((c) => c.slug === slug);
 }

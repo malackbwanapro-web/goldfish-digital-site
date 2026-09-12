@@ -98,28 +98,35 @@ export default function Home() {
             {/* Outcome Micro-Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-surface)]/80 text-[var(--accent-gold)] text-[11px] font-mono tracking-wider uppercase mb-6 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>⚡ Trusted by SMEs, Hotels &amp; Brands Across Kenya &amp; East Africa</span>
+              <span>⚡ Premier Digital Growth &amp; AI Systems • Diani • Nairobi • Coast</span>
             </div>
 
             <h1 className="text-h1 font-black leading-[1.12] tracking-tight mb-6">
-              We Build <span className="gradient-text-gold">High-Converting Web Ecosystems</span>, Precision SEO &amp; AI Automation.
+              We Engineer <span className="gradient-text-gold">Market Dominance</span> for Kenya&apos;s Growing SMEs &amp; Brands.
             </h1>
 
             <p className="text-body-lg text-[var(--text-muted)] mb-4 leading-relaxed font-light max-w-2xl">
-              From high-performance web platforms and advanced visibility (SEO/GEO/CRO) to production-ready AI automation, Goldfish Marketing designs and integrates solutions that eliminate overhead and scale your business.
+              Local insight meets global engineering. We build high-converting web ecosystems, direct booking engines that cut OTA commissions for hospitality, and AI automation that eliminates manual admin for growing SMEs.
             </p>
-            <p className="text-body text-[var(--text-muted)] mb-10 leading-relaxed max-w-2xl">
-              Whether your website isn&apos;t generating enquiries, your ads aren&apos;t converting, or you&apos;re drowning in manual admin — we handle it end to end.
+            <p className="text-body text-[var(--text-muted)] mb-8 leading-relaxed max-w-2xl font-normal">
+              Whether your website isn&apos;t generating enquiries, your ads are burning budget without ROAS, or your team is drowning in repetitive WhatsApp chats — we engineer the fix.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-3">
               <Link href="/contact" className="btn-primary w-full sm:w-auto shadow-md">
-                Request a Free Operational Audit
+                Request a Free Growth &amp; SEO Audit
               </Link>
-              <Link href="/services" className="btn-outline w-full sm:w-auto">
-                Explore Our Services →
+              <Link href="/portfolio" className="btn-outline w-full sm:w-auto">
+                Explore Client Case Studies →
               </Link>
             </div>
+            <p className="text-[11px] font-mono text-[var(--text-muted)] flex items-center gap-2">
+              <span>🔒 100% Confidential</span>
+              <span>•</span>
+              <span>Actionable 12-Point Roadmap</span>
+              <span>•</span>
+              <span>Zero Sales Pressure</span>
+            </p>
           </div>
           
           {/* Right Column — Dual Mode Terminal (5 cols) */}
@@ -135,10 +142,10 @@ export default function Home() {
       <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-primary)] py-6 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
           {[
-            { icon: '🎯', label: 'Free Strategy Call', sub: 'No commitment required' },
-            { icon: '🔓', label: 'No Lock-In Contracts', sub: 'Month-to-month, always' },
-            { icon: '📈', label: 'Results-First Approach', sub: 'We succeed when you do' },
-            { icon: '🌍', label: 'Local & Global Delivery', sub: 'Based in Diani, Kenya' },
+            { icon: '💎', label: 'Local Soul. Global Code.', sub: 'Diani roots, international standards' },
+            { icon: '⚡', label: 'Sub-Second Velocity', sub: '95+ Lighthouse score guaranteed' },
+            { icon: '🛡️', label: 'KDPA & GDPR Compliant', sub: 'Data Protection Act 2019 verified' },
+            { icon: '📈', label: 'Measurable Commercial ROI', sub: 'Direct bookings, pipeline & saved hours' },
           ].map((item, i) => (
             <div key={i} className="flex flex-col items-center gap-1.5">
               <span className="text-2xl">{item.icon}</span>
@@ -271,37 +278,38 @@ export default function Home() {
         <div className="max-w-7xl mx-auto rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-10 items-stretch border border-[var(--border-subtle)] shadow-2xl">
           {/* Metrics Dashboard Display */}
           <div className="lg:col-span-6 bg-[#0E0E0E] text-white p-8 lg:p-12 flex flex-col justify-center gap-8 relative">
-            <div className="text-[9px] font-mono text-[var(--accent-gold)] uppercase tracking-widest mb-2">
-              Featured Enterprise Deployment
+            <div className="text-[9px] font-mono text-[var(--accent-gold)] uppercase tracking-widest mb-2 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Verified Deployment • Diani Beach, Kenya</span>
             </div>
 
             <h3 className="text-h2 font-black tracking-tight text-white leading-tight">
-              Automating Multi-National Invoice Reconciliation for Scale.
+              Cutting OTA Commission Leakage: +58% Direct Bookings in 90 Days.
             </h3>
             
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left mt-2">
               <div className="flex flex-col gap-2">
-                <span className="text-[var(--accent-gold)] text-4xl lg:text-5xl font-black font-mono tracking-tighter">
-                  -94%
+                <span className="text-emerald-400 text-4xl lg:text-5xl font-black font-mono tracking-tighter">
+                  58%
                 </span>
                 <span className="text-[10px] text-gray-400 font-mono uppercase tracking-widest leading-normal">
-                  Manual Processing Time
+                  Direct Booking Ratio (Up from 14%)
                 </span>
               </div>
               <div className="flex flex-col gap-2 border-y sm:border-y-0 sm:border-x border-gray-800 py-6 sm:py-0 sm:px-6">
-                <span className="text-white text-4xl lg:text-5xl font-black font-mono tracking-tighter">
-                  12 Days
+                <span className="text-[var(--accent-gold)] text-4xl lg:text-5xl font-black font-mono tracking-tighter">
+                  1.2s
                 </span>
                 <span className="text-[10px] text-gray-400 font-mono uppercase tracking-widest leading-normal">
-                  Architecture to Production
+                  Mobile Load Speed (-76% Latency)
                 </span>
               </div>
               <div className="flex flex-col gap-2">
-                <span className="text-blue-400 text-4xl lg:text-5xl font-black font-mono tracking-tighter">
-                  $180k
+                <span className="text-white text-4xl lg:text-5xl font-black font-mono tracking-tighter">
+                  KES 3.2M
                 </span>
                 <span className="text-[10px] text-gray-400 font-mono uppercase tracking-widest leading-normal">
-                  Overhead Saved / Quarter
+                  Annual OTA Fees Reclaimed
                 </span>
               </div>
             </div>
@@ -310,13 +318,16 @@ export default function Home() {
           {/* Copy (40% Desktop) */}
           <div className="lg:col-span-4 p-8 lg:p-12 flex flex-col justify-center items-start bg-[var(--bg-surface)]">
             <span className="text-eyebrow text-xs mb-3 font-mono">
-              WORKFLOW AUTOMATION / GLOBAL SUPPLY CHAIN
+              HOSPITALITY DIRECT REVENUE ENGINE
             </span>
-            <p className="text-body text-[var(--text-muted)] mb-8 leading-relaxed">
-              We replaced legacy manual accounting pipelines with autonomous agent queues that parse, validate, and reconcile enterprise ledgers with zero human intervention.
+            <p className="text-body text-[var(--text-muted)] mb-4 leading-relaxed">
+              We engineered a custom Next.js direct booking platform with instant M-Pesa STK push and 24/7 WhatsApp AI concierge for a boutique coastal resort, liberating them from predatory 20% OTA commission cuts.
             </p>
+            <div className="p-3 rounded-lg bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] mb-6 text-[11px] font-mono text-[var(--accent-gold)]">
+              💡 Provenance: Verified via Booking Engine Telemetry &amp; GA4 Audit
+            </div>
             <Link href="/portfolio" className="btn-primary w-full sm:w-auto text-xs py-3 px-6 shadow-md">
-              Read Full Case Study →
+              Explore All Case Studies →
             </Link>
           </div>
         </div>

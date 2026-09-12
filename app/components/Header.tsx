@@ -75,7 +75,7 @@ export default function Header() {
             <span className="text-[var(--accent-gold)] font-black text-lg tracking-tighter">G</span>
           </div>
           <span className="font-extrabold text-lg tracking-wider text-[var(--text-core)] uppercase group-hover:text-[var(--accent-gold)] transition-colors duration-200">
-            Goldfish Digital
+            Goldfish Marketing
           </span>
         </Link>
 
@@ -128,7 +128,7 @@ export default function Header() {
           </button>
 
           <Link href="/contact" className="btn-primary text-xs py-2.5 px-6 shadow-sm">
-            Book a Free Audit
+            Request an Audit
           </Link>
         </div>
 

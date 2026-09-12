@@ -1,13 +1,12 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
   INSIGHT_CATEGORIES,
   INSIGHT_ARTICLES,
   type InsightArticle,
-  type InsightCategory,
 } from './data/insightsData';
 
 /* ─── Category Icons (inline SVGs) ─── */
@@ -45,81 +44,85 @@ const categoryIcons: Record<string, React.ReactNode> = {
   ),
 };
 
-/* ─── Featured card terminal content per category ─── */
-const terminalContent: Record<string, { filename: string; status: string; lines: string[] }> = {
+/* ─── Terminal data per category (Kenyan context, KES/USD) ─── */
+const terminalContent: Record<
+  string,
+  { filename: string; status: string; lines: string[] }
+> = {
   'smart-web-app-ecosystems': {
-    filename: 'PERF_AUDIT.LOG',
+    filename: 'SAFARICOM_4G_PERF.LOG',
     status: 'CRITICAL',
     lines: [
-      '- LCP: 6.2s → TARGET: < 2.5s',
-      '- CLS: 0.38 → TARGET: < 0.1',
-      '- Revenue leak: £28,400/month identified',
+      '- Mobile LCP: 5.8s → TARGET: < 2.5s',
+      '- M-Pesa STK push: NOT INTEGRATED',
+      '- Monthly OTA leak: KES 340,000 detected',
     ],
   },
   'advanced-visibility-engineering': {
-    filename: 'VISIBILITY_SCAN.JSON',
+    filename: 'GEO_CITATION_SCAN.JSON',
     status: 'WARNING',
     lines: [
-      '- AI Citation Rate: 0% (not indexed)',
-      '- Entity Authority: UNREGISTERED',
-      '- Competitor citations: 47 (avg/month)',
+      '- AI Citation Rate: 0% in Perplexity/ChatGPT',
+      '- Local Google 3-Pack: #14 (Unoptimized GBP)',
+      '- Competitor citations: 38 (avg/month)',
     ],
   },
   'brand-identity-content-creation': {
-    filename: 'BRAND_DIFF.ANALYSIS',
-    status: 'FAILED',
+    filename: 'BRAND_EQUITY.ANALYSIS',
+    status: 'AUDITED',
     lines: [
-      '- Visual differentiation score: 12/100',
-      '- Template match rate: 94% (Canva detected)',
-      '- Perceived value gap: -£2.4M ARR',
+      '- Visual differentiation score: 18/100',
+      '- Template match rate: 92% (Canva detected)',
+      '- Pricing power discount: -35% vs leaders',
     ],
   },
   'digital-presence-paid-growth': {
-    filename: 'ROAS_REPORT.CSV',
+    filename: 'AD_SPEND_AUDIT.CSV',
     status: 'CRITICAL',
     lines: [
-      '- ROAS post-PMax migration: 1.2x → 0.7x',
-      '- Brand spend cannibalisation: 62%',
-      '- Recovery protocol: INITIATED',
+      '- "Boost Post" waste: 58% of ad budget',
+      '- WhatsApp click-to-chat conversion: 3.4x vs web form',
+      '- Cost-per-lead: KES 2,450 → target KES 1,400',
     ],
   },
   'ai-automation-sme': {
-    filename: 'AUTOMATION_DEPLOY.LOG',
+    filename: 'WHATSAPP_AI_OPS.LOG',
     status: 'ACTIVE',
     lines: [
-      '- WhatsApp agent: LIVE (94% auto-resolve)',
-      '- Admin hours saved: 240/month',
-      '- Cost delta: -£8,400/month vs. headcount',
+      '- 24/7 WhatsApp AI: LIVE (15s response)',
+      '- Night inquiry capture: +44% bookings',
+      '- Cost delta: -KES 180,000/mo vs full-time desk',
     ],
   },
   'strategic-analytics-audits': {
-    filename: 'AUDIT_RESULTS.JSON',
+    filename: 'KDPA_ATTRIBUTION.JSON',
     status: 'WARNING',
     lines: [
-      '- Tracked metrics: 47 | Actionable: 3',
-      '- Conversion attribution: BROKEN',
-      '- Data confidence score: 22/100',
+      '- Untracked mobile conversions: 45%',
+      '- KDPA 2019 consent banner: NON-COMPLIANT',
+      '- Server-side GTM: RECOMMENDED',
     ],
   },
 };
 
 export default function InsightsClient() {
   const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
-  const filterBarRef = useRef<HTMLDivElement>(null);
 
   const filters = [
-    { label: 'All Briefings', slug: 'all' },
+    { label: 'All Briefings (18)', slug: 'all' },
     ...INSIGHT_CATEGORIES.map((c) => ({ label: c.name, slug: c.slug })),
   ];
 
   const handleFilterClick = (slug: string) => {
     setActiveFilter(slug);
+    setSearchQuery('');
 
     if (slug !== 'all') {
       const section = sectionRefs.current[slug];
       if (section) {
-        const headerOffset = 160; // account for sticky header + filter bar
+        const headerOffset = 160;
         const elementPosition = section.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
         window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
@@ -129,250 +132,315 @@ export default function InsightsClient() {
     }
   };
 
-  // Highlight active section on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (activeFilter !== 'all') return; // only auto-highlight in "All" mode
-
-      const scrollPos = window.scrollY + 200;
-      let currentSection = '';
-
-      INSIGHT_CATEGORIES.forEach((cat) => {
-        const el = sectionRefs.current[cat.slug];
-        if (el && el.offsetTop <= scrollPos) {
-          currentSection = cat.slug;
-        }
-      });
-
-      // Don't override activeFilter unless we're in "all" mode
-      // This is just for visual feedback — we don't setActiveFilter here
-      // to avoid re-renders on every scroll tick
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeFilter]);
-
   const visibleCategories =
     activeFilter === 'all'
       ? INSIGHT_CATEGORIES
       : INSIGHT_CATEGORIES.filter((c) => c.slug === activeFilter);
 
+  // Search filter across all 18 articles
+  const searchResults: InsightArticle[] = searchQuery.trim()
+    ? INSIGHT_ARTICLES.filter((article) => {
+        const q = searchQuery.toLowerCase();
+        return (
+          article.title.toLowerCase().includes(q) ||
+          article.excerpt.toLowerCase().includes(q) ||
+          article.tags.some((tag) => tag.toLowerCase().includes(q)) ||
+          article.category.toLowerCase().includes(q)
+        );
+      })
+    : [];
+
   return (
     <div className="w-full">
-      {/* ═══ STICKY FILTER BAR ═══ */}
-      <div
-        ref={filterBarRef}
-        className="sticky top-[80px] z-30 w-full bg-[var(--bg-primary)]/80 backdrop-blur-md border-b border-[var(--border-subtle)] py-4 px-6 lg:px-10"
-      >
-        <div className="max-w-7xl mx-auto flex items-center gap-3 overflow-x-auto whitespace-nowrap pb-1 scrollbar-hide">
-          {filters.map((filter) => (
-            <button
-              key={filter.slug}
-              onClick={() => handleFilterClick(filter.slug)}
-              className={`py-2 px-5 rounded-full font-mono text-[11px] uppercase tracking-wider font-bold border transition-all duration-200 cursor-pointer flex-shrink-0 ${
-                activeFilter === filter.slug
-                  ? 'bg-[var(--accent-gold)] border-[var(--accent-gold)] text-white shadow-lg shadow-[var(--accent-gold)]/20'
-                  : 'bg-[var(--bg-surface)] border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)]'
-              }`}
+      {/* ═══ STICKY SEARCH & FILTER BAR ═══ */}
+      <div className="sticky top-[80px] z-30 w-full bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-subtle)] py-4 px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          
+          {/* Category Filter Pills */}
+          <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap pb-1 scrollbar-hide flex-1">
+            {filters.map((filter) => (
+              <button
+                key={filter.slug}
+                onClick={() => handleFilterClick(filter.slug)}
+                className={`py-1.5 px-4 rounded-full font-mono text-[11px] uppercase tracking-wider font-bold border transition-all duration-200 cursor-pointer flex-shrink-0 ${
+                  activeFilter === filter.slug && !searchQuery
+                    ? 'bg-[var(--accent-gold)] border-[var(--accent-gold)] text-white shadow-sm'
+                    : 'bg-[var(--bg-surface)] border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)]'
+                }`}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Real-time Search Input */}
+          <div className="relative w-full md:w-72 flex-shrink-0">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search 18 briefings (e.g. M-Pesa, SEO, Diani)..."
+              className="w-full pl-9 pr-4 py-1.5 rounded-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/60 focus:outline-none focus:border-[var(--accent-gold)] transition-colors"
+            />
+            <svg
+              className="w-4 h-4 text-[var(--text-muted)] absolute left-3 top-1/2 -translate-y-1/2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
             >
-              {filter.label}
-            </button>
-          ))}
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-[var(--text-muted)] hover:text-[var(--text-core)]"
+              >
+                ✕
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* ═══ CATEGORY SECTIONS ═══ */}
-      {visibleCategories.map((category, catIndex) => {
-        const articles = INSIGHT_ARTICLES.filter(
-          (a) => a.categorySlug === category.slug
-        );
-        const featured = articles.find((a) => a.isFeatured);
-        const standard = articles.filter((a) => !a.isFeatured);
-        const terminal = terminalContent[category.slug];
+      {/* ═══ LIVE SEARCH RESULTS (IF QUERY ACTIVE) ═══ */}
+      {searchQuery.trim() ? (
+        <section className="py-16 px-6 lg:px-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="mb-8">
+              <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider block mb-1">
+                SEARCH INTELLIGENCE
+              </span>
+              <h2 className="text-2xl font-black text-[var(--text-core)]">
+                Found {searchResults.length} article{searchResults.length === 1 ? '' : 's'} matching &ldquo;{searchQuery}&rdquo;
+              </h2>
+            </div>
 
-        return (
-          <section
-            key={category.slug}
-            id={`insight-${category.slug}`}
-            ref={(el) => {
-              sectionRefs.current[category.slug] = el;
-            }}
-            className={`py-16 px-6 lg:px-10 ${
-              catIndex % 2 === 1 ? 'bg-[var(--bg-surface)]/30' : ''
-            }`}
-          >
-            <div className="max-w-7xl mx-auto">
-              {/* ── Category Header ── */}
-              <div className="flex items-center gap-4 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/20 flex items-center justify-center text-[var(--accent-gold)]">
-                  {categoryIcons[category.slug]}
-                </div>
-                <div>
-                  <h2 className="text-2xl lg:text-3xl font-black tracking-tight text-[var(--text-core)] leading-tight">
-                    {category.name}
-                  </h2>
-                </div>
-              </div>
-              <p className="text-sm text-[var(--text-muted)] font-light max-w-2xl mb-10 ml-14">
-                {category.description}
-              </p>
-
-              {/* ── Featured Hero Article ── */}
-              {featured && (
-                <Link
-                  href={`/insights/${featured.slug}`}
-                  className="block group mb-8 text-decoration-none"
+            {searchResults.length === 0 ? (
+              <div className="p-12 text-center rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+                <p className="text-sm font-mono text-[var(--text-muted)] mb-4">
+                  No direct matches found for your query. Try searching for &quot;Diani&quot;, &quot;M-Pesa&quot;, &quot;WhatsApp&quot;, &quot;SEO&quot;, or &quot;pricing&quot;.
+                </p>
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="btn-outline text-xs py-2 px-4"
                 >
-                  <div className="card-brand overflow-hidden grid grid-cols-1 lg:grid-cols-2 items-stretch border border-[var(--border-subtle)] shadow-lg group-hover:border-[var(--accent-gold)]/40 transition-all duration-300 group-hover:shadow-xl group-hover:shadow-[var(--accent-gold)]/5">
-                    {/* Left: Custom Visual Image Graphic with Overlay */}
-                    <div className="bg-[#0E0E0E] min-h-[300px] relative overflow-hidden flex items-center justify-center p-6">
-                      {featured.coverImage ? (
-                        <Image
-                          src={featured.coverImage}
-                          alt={featured.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-70"
-                          sizes="(max-width: 1024px) 100vw, 50vw"
-                        />
-                      ) : null}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0E0E0E] via-[#0E0E0E]/40 to-transparent" />
+                  Clear Search
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {searchResults.map((article) => (
+                  <Link
+                    key={article.slug}
+                    href={`/insights/${article.slug}`}
+                    className="card-brand p-6 border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between hover:border-[var(--accent-gold)]/50 transition-all duration-300"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-3">
+                        <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold">
+                          {article.category}
+                        </span>
+                        <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                          {article.readTime}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-bold text-[var(--text-core)] mb-2 leading-snug">
+                        {article.title}
+                      </h3>
+                      <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4 line-clamp-3">
+                        {article.excerpt}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-1.5 pt-4 border-t border-[var(--border-subtle)]">
+                      {article.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[9px] font-mono px-2 py-0.5 rounded bg-[var(--bg-primary)] text-[var(--text-muted)]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      ) : (
+        /* ═══ CATEGORY SECTIONS (ALL 18 ARTICLES) ═══ */
+        visibleCategories.map((category, catIndex) => {
+          const articles = INSIGHT_ARTICLES.filter(
+            (a) => a.categorySlug === category.slug
+          );
+          const featured = articles.find((a) => a.isFeatured) || articles[0];
+          const standard = articles.filter((a) => a.slug !== featured?.slug);
+          const terminal = terminalContent[category.slug];
 
-                      {/* Floating Glassmorphism Terminal Badge */}
-                      <div className="relative z-10 w-full max-w-sm rounded-xl border border-gray-800 bg-[#161616]/80 backdrop-blur-md flex flex-col justify-between p-5 font-mono text-[10px] text-green-500/80 shadow-2xl">
-                        <div className="flex items-center justify-between border-b border-gray-800 pb-2">
-                          <span className="text-[var(--accent-gold)] font-bold">
-                            {terminal?.filename || 'INSIGHT_TELEMETRY.LOG'}
+          return (
+            <section
+              key={category.slug}
+              id={`insight-${category.slug}`}
+              ref={(el) => {
+                sectionRefs.current[category.slug] = el;
+              }}
+              className={`py-16 px-6 lg:px-10 border-b border-[var(--border-subtle)] ${
+                catIndex % 2 === 1 ? 'bg-[var(--bg-surface)]/30' : ''
+              }`}
+            >
+              <div className="max-w-7xl mx-auto">
+                {/* Category Header */}
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/20 flex items-center justify-center text-[var(--accent-gold)]">
+                    {categoryIcons[category.slug]}
+                  </div>
+                  <div>
+                    <h2 className="text-2xl lg:text-3xl font-black tracking-tight text-[var(--text-core)] leading-tight">
+                      {category.name}
+                    </h2>
+                  </div>
+                </div>
+                <p className="text-sm text-[var(--text-muted)] font-light max-w-2xl mb-10 ml-14">
+                  {category.description}
+                </p>
+
+                {/* ── Featured Hero Article ── */}
+                {featured && (
+                  <div className="card-brand overflow-hidden grid grid-cols-1 lg:grid-cols-12 items-stretch border border-[var(--border-subtle)] shadow-lg hover:border-[var(--accent-gold)]/40 transition-all duration-300 mb-8">
+                    
+                    {/* Left details */}
+                    <div className="lg:col-span-7 p-8 lg:p-12 flex flex-col justify-between items-start bg-[var(--bg-surface)]">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2 mb-4">
+                          <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-[var(--accent-gold)]/30 bg-[var(--accent-gold)]/5 font-bold">
+                            Featured Strategic Briefing
                           </span>
-                          <span
-                            className={`font-bold ${
-                              terminal?.status === 'ACTIVE'
-                                ? 'text-green-500'
-                                : terminal?.status === 'WARNING'
-                                ? 'text-amber-500'
-                                : 'text-red-500'
-                            }`}
-                          >
-                            {terminal?.status || 'VERIFIED'}
+                          <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                            {featured.readTime}
                           </span>
                         </div>
-                        <div className="space-y-1.5 my-3 text-[11px]">
-                          {terminal?.lines.map((line, i) => (
-                            <div key={i} className="opacity-90">
-                              {line}
-                            </div>
+
+                        <h3 className="text-xl lg:text-2xl font-black tracking-tight mb-4 leading-tight text-[var(--text-core)]">
+                          {featured.title}
+                        </h3>
+
+                        <p className="text-sm leading-relaxed text-[var(--text-muted)] mb-6 font-light">
+                          {featured.excerpt}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 mb-8">
+                          {featured.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-full border border-[var(--border-subtle)] text-[var(--text-muted)] bg-[var(--bg-primary)]"
+                            >
+                              {tag}
+                            </span>
                           ))}
                         </div>
-                        <div className="text-gray-500 text-right text-[9px] uppercase tracking-widest">
-                          GOLDFISH_DIGITAL // BRIEFING
-                        </div>
                       </div>
-                    </div>
 
-                    {/* Right: Article Copy */}
-                    <div className="p-8 lg:p-12 flex flex-col justify-center items-start bg-[var(--bg-surface)]">
-                      <div className="flex items-center gap-3 mb-4">
-                        <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold">
-                          {featured.readTime}
-                        </span>
-                        <span className="w-1 h-1 rounded-full bg-[var(--accent-gold)]/40" />
-                        <span className="text-[11px] font-mono text-[var(--accent-gold)]/60 uppercase tracking-wider font-bold">
-                          Featured Briefing
-                        </span>
-                      </div>
-                      <h3 className="text-xl lg:text-2xl font-black tracking-tight mb-4 leading-snug text-[var(--text-core)] group-hover:text-[var(--accent-gold)] transition-colors duration-300">
-                        {featured.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-[var(--text-muted)] mb-6 font-light">
-                        {featured.excerpt}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {featured.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-[10px] font-mono uppercase tracking-wider px-3 py-1 rounded-full border border-[var(--border-subtle)] text-[var(--text-muted)] bg-[var(--bg-primary)]/50"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <span className="inline-flex items-center gap-2 text-xs font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold group-hover:gap-3 transition-all duration-300">
-                        Read Deep-Dive Briefing
+                      <Link
+                        href={`/insights/${featured.slug}`}
+                        className="inline-flex items-center gap-2 text-xs font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold hover:gap-3 transition-all duration-300"
+                        style={{ textDecoration: 'none' }}
+                      >
+                        Read Full Technical Briefing
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                         </svg>
-                      </span>
+                      </Link>
                     </div>
-                  </div>
-                </Link>
-              )}
 
-              {/* ── Standard Article Cards ── */}
-              {standard.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {standard.map((article) => (
-                    <Link
-                      key={article.slug}
-                      href={`/insights/${article.slug}`}
-                      className="block group text-decoration-none"
-                    >
-                      <div className="card-brand overflow-hidden flex flex-col justify-between items-start bg-[var(--bg-surface)] border border-[var(--border-subtle)] group-hover:border-[var(--accent-gold)]/40 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[var(--accent-gold)]/5 h-full">
-                        
-                        {/* Article Header Image */}
-                        {article.coverImage && (
-                          <div className="w-full aspect-video relative overflow-hidden bg-[#0E0E0E]">
-                            <Image
-                              src={article.coverImage}
-                              alt={article.title}
-                              fill
-                              className="object-cover group-hover:scale-105 transition-transform duration-500 opacity-80"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-surface)] via-transparent to-black/30" />
-                            <div className="absolute top-3 left-3 text-[10px] font-mono text-[var(--accent-gold)] bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md border border-[var(--accent-gold)]/20 uppercase tracking-wider font-bold">
-                              {article.readTime}
-                            </div>
+                    {/* Right terminal / graphic */}
+                    <div className="lg:col-span-5 bg-[#0E0E0E] text-white p-8 lg:p-10 border-t lg:border-t-0 lg:border-l border-gray-800 flex flex-col justify-between gap-6 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.01)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+
+                      {featured.coverImage && (
+                        <div className="w-full aspect-video relative rounded-lg overflow-hidden border border-gray-800 shadow-md">
+                          <Image
+                            src={featured.coverImage}
+                            alt={featured.title}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 1024px) 100vw, 400px"
+                          />
+                        </div>
+                      )}
+
+                      {/* Terminal Telemetry Box */}
+                      {terminal && (
+                        <div className="rounded-lg bg-black/60 border border-gray-800 p-4 font-mono text-[11px] relative z-10">
+                          <div className="flex items-center justify-between text-gray-500 mb-2 border-b border-gray-800 pb-2">
+                            <span>{terminal.filename}</span>
+                            <span className="text-[var(--accent-gold)] font-bold">[{terminal.status}]</span>
                           </div>
-                        )}
-
-                        <div className="p-6 lg:p-8 flex-1 flex flex-col justify-between">
-                          <div>
-                            <div className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider mb-3">
-                              {article.category}
-                            </div>
-                            <h3 className="text-[17px] font-extrabold text-[var(--text-core)] tracking-tight mb-4 leading-snug group-hover:text-[var(--accent-gold)] transition-colors duration-300">
-                              {article.title}
-                            </h3>
-                            <p className="text-sm leading-relaxed text-[var(--text-muted)] font-light">
-                              {article.excerpt}
-                            </p>
-                          </div>
-
-                          <div className="mt-6 pt-4 border-t border-[var(--border-subtle)]/50 flex items-center justify-between w-full">
-                            <div className="flex flex-wrap gap-1.5">
-                              {article.tags.slice(0, 2).map((tag) => (
-                                <span
-                                  key={tag}
-                                  className="text-[9px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border border-[var(--border-subtle)] text-[var(--text-muted)]"
-                                >
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                            <span className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--text-core)] group-hover:text-[var(--accent-gold)] transition-colors duration-200 uppercase tracking-wider font-bold flex-shrink-0">
-                              Read →
-                            </span>
+                          <div className="text-gray-300 space-y-1">
+                            {terminal.lines.map((line, lIdx) => (
+                              <div key={lIdx} className="line-clamp-1">{line}</div>
+                            ))}
                           </div>
                         </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          </section>
-        );
-      })}
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* ── Standard Secondary Articles (Tier 2 & 3) ── */}
+                {standard.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {standard.map((art) => (
+                      <Link
+                        key={art.slug}
+                        href={`/insights/${art.slug}`}
+                        className="card-brand p-6 border border-[var(--border-subtle)] bg-[var(--bg-surface)]/60 backdrop-blur-sm flex flex-col justify-between hover:border-[var(--accent-gold)]/40 hover:shadow-md transition-all duration-300"
+                        style={{ textDecoration: 'none' }}
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold">
+                              Regional Deep-Dive
+                            </span>
+                            <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                              {art.readTime}
+                            </span>
+                          </div>
+
+                          <h4 className="text-base font-bold text-[var(--text-core)] mb-2 leading-snug">
+                            {art.title}
+                          </h4>
+
+                          <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4 line-clamp-3">
+                            {art.excerpt}
+                          </p>
+                        </div>
+
+                        <div className="flex items-center justify-between pt-4 border-t border-[var(--border-subtle)]">
+                          <div className="flex flex-wrap gap-1.5">
+                            {art.tags.slice(0, 2).map((t) => (
+                              <span
+                                key={t}
+                                className="text-[9px] font-mono px-2 py-0.5 rounded bg-[var(--bg-primary)] text-[var(--text-muted)]"
+                              >
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                          <span className="text-xs font-mono text-[var(--accent-gold)] font-bold">
+                            Read Briefing →
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </section>
+          );
+        })
+      )}
     </div>
   );
 }
