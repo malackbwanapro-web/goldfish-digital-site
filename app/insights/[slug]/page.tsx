@@ -29,8 +29,19 @@ export function generateMetadata({ params }: PageProps): Metadata {
     return { title: 'Article Not Found | Goldfish Marketing' };
   }
   return {
-    title: `${article.title} | Goldfish Marketing Insights`,
+    title: {
+      absolute: `${article.title} | Goldfish Marketing Briefing`,
+    },
     description: article.excerpt,
+    alternates: {
+      canonical: `https://www.goldfishmarketing.co.ke/insights/${params.slug}`,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: `https://www.goldfishmarketing.co.ke/insights/${params.slug}`,
+      locale: 'en_KE',
+    },
   };
 }
 

@@ -103,9 +103,25 @@ export default function PortfolioClient() {
   ];
 
   return (
-    <div className="w-full">
+    <div id="case-studies" className="w-full">
+      {/* Section Header for Case Studies */}
+      <div className="pt-16 pb-8 px-6 lg:px-10 max-w-7xl mx-auto">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)]" />
+          <span className="text-eyebrow text-xs font-mono tracking-wider">
+            DEEP ARCHITECTURE TEARDOWNS // 6 COMMERCIAL CASE STUDIES
+          </span>
+        </div>
+        <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-[var(--text-core)]">
+          Engineering Blueprints &amp; ROI Case Studies
+        </h2>
+        <p className="text-sm text-[var(--text-muted)] font-light mt-2 max-w-2xl">
+          Deep-dive into the exact bottlenecks, architectural solutions, and codebases deployed to protect client revenue, automate operations, and capture local search demand.
+        </p>
+      </div>
+
       {/* ═══ STICKY FILTER BAR WITH DUAL PERSPECTIVE ═══ */}
-      <div className="sticky top-[80px] z-30 w-full bg-[var(--bg-primary)]/90 backdrop-blur-md border-b border-[var(--border-subtle)] py-4 px-6 lg:px-10">
+      <div className="sticky top-[80px] z-30 w-full bg-[var(--bg-primary)]/90 backdrop-blur-md border-y border-[var(--border-subtle)] py-4 px-6 lg:px-10">
         <div className="max-w-7xl mx-auto flex flex-col gap-3">
           {/* Perspective Selector */}
           <div className="flex items-center justify-between flex-wrap gap-3">
@@ -208,7 +224,15 @@ export default function PortfolioClient() {
                   </div>
                   <div>
                     <h2 className="text-2xl lg:text-3xl font-black tracking-tight text-[var(--text-core)] leading-tight">
-                      {category.name}
+                      <Link
+                        href={`/services/${category.slug === 'digital-presence-paid-growth' ? 'digital-presence-paid-growth-management' : category.slug}`}
+                        className="hover:text-[var(--accent-gold)] transition-colors inline-flex items-center gap-2 group"
+                      >
+                        {category.name}
+                        <span className="text-xs font-mono text-[var(--accent-gold)] opacity-0 group-hover:opacity-100 transition-opacity">
+                          View Pillar →
+                        </span>
+                      </Link>
                     </h2>
                   </div>
                 </div>

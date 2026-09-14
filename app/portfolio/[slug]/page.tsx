@@ -23,8 +23,26 @@ export function generateMetadata({ params }: PageProps): Metadata {
     return { title: 'Case Study Not Found | Goldfish Marketing' };
   }
   return {
-    title: `${project.title} | Goldfish Marketing Architecture Teardown`,
+    title: {
+      absolute: `${project.title} | Case Study | Goldfish`,
+    },
     description: project.description,
+    alternates: {
+      canonical: `https://www.goldfishmarketing.co.ke/portfolio/${params.slug}`,
+    },
+    openGraph: {
+      title: `${project.title} Case Study | Goldfish Marketing`,
+      description: project.description,
+      url: `https://www.goldfishmarketing.co.ke/portfolio/${params.slug}`,
+      locale: 'en_KE',
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: project.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${project.title} Case Study | Goldfish Marketing`,
+      description: project.description,
+      images: ['/og-image.png'],
+    },
   };
 }
 
@@ -35,8 +53,67 @@ export default function CaseStudyPage({ params }: PageProps) {
     notFound();
   }
 
+  const caseStudySchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `https://www.goldfishmarketing.co.ke/portfolio/${project.slug}/#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.goldfishmarketing.co.ke',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Portfolio',
+            item: 'https://www.goldfishmarketing.co.ke/portfolio',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: project.title,
+            item: `https://www.goldfishmarketing.co.ke/portfolio/${project.slug}`,
+          },
+        ],
+      },
+      {
+        '@type': 'TechArticle',
+        '@id': `https://www.goldfishmarketing.co.ke/portfolio/${project.slug}/#article`,
+        headline: project.title,
+        description: project.description,
+        author: {
+          '@type': 'Organization',
+          name: 'Goldfish Marketing',
+          url: 'https://www.goldfishmarketing.co.ke',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Goldfish Marketing',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://www.goldfishmarketing.co.ke/goldfish-logo.svg',
+          },
+        },
+        about: {
+          '@type': 'Thing',
+          name: project.category,
+        },
+        inLanguage: 'en-KE',
+      },
+    ],
+  };
+
   return (
-    <main className="w-full flex flex-col min-h-screen">
+    <main className="w-full flex flex-col min-h-screen bg-[var(--bg-primary)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudySchema) }}
+      />
+
       {/* ═══ HERO / CASE STUDY HEADER ═══ */}
       <section className="section-padding px-6 lg:px-10 relative overflow-hidden border-b border-[var(--border-subtle)]">
         {/* Background glow */}
@@ -44,7 +121,14 @@ export default function CaseStudyPage({ params }: PageProps) {
 
         <div className="max-w-4xl mx-auto relative z-10">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 mb-8">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 mb-8">
+            <Link
+              href="/"
+              className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider hover:text-[var(--accent-gold)] transition-colors duration-200"
+            >
+              Home
+            </Link>
+            <span className="text-[var(--text-muted)]/40 text-[10px]">/</span>
             <Link
               href="/portfolio"
               className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider hover:text-[var(--accent-gold)] transition-colors duration-200"
@@ -52,10 +136,10 @@ export default function CaseStudyPage({ params }: PageProps) {
               Portfolio
             </Link>
             <span className="text-[var(--text-muted)]/40 text-[10px]">/</span>
-            <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider">
+            <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold">
               {project.category}
             </span>
-          </div>
+          </nav>
 
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <span className="text-eyebrow text-xs font-mono">
@@ -81,9 +165,9 @@ export default function CaseStudyPage({ params }: PageProps) {
                 key={idx}
                 className="card-brand p-6 border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between"
               >
-                <h3 className="text-2xl lg:text-3xl font-black font-mono text-[var(--accent-gold)] tracking-tight mb-1">
+                <p className="text-2xl lg:text-3xl font-black font-mono text-[var(--accent-gold)] tracking-tight mb-1">
                   {metric.value}
-                </h3>
+                </p>
                 <p className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-muted)]">
                   {metric.label}
                 </p>
@@ -205,7 +289,7 @@ export default function CaseStudyPage({ params }: PageProps) {
                 Have questions about executing this for your brand?
               </span>
               <Link
-                href="/contact"
+                href={`/contact?service=${project.categorySlug}&source=case-study`}
                 className="btn-primary text-xs py-2 px-5 shadow-sm"
               >
                 Request Free 24-Hour Diagnostic
@@ -235,7 +319,7 @@ export default function CaseStudyPage({ params }: PageProps) {
               ← All Case Studies
             </Link>
             <Link
-              href="/contact"
+              href={`/contact?service=${project.categorySlug}&source=case-study`}
               className="btn-primary text-xs py-2.5 px-6 shadow-sm"
             >
               Schedule a 15-Min Slot

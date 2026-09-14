@@ -6,13 +6,70 @@ import ServiceRecommender from './components/ServiceRecommender';
 import { servicesData } from './data/servicesData';
 
 export const metadata: Metadata = {
-  title: 'Our Services — Web Ecosystems, SEO/GEO, Paid Ads & AI Automation | Goldfish Marketing',
+  title: {
+    absolute: 'Our Services: Web Systems, SEO/GEO, Paid Growth & AI Automation | Goldfish Marketing',
+  },
   description:
     'Explore our six core capability engines engineered for growing SMEs, boutique hospitality, and regional market leaders across Kenya and East Africa.',
+  alternates: {
+    canonical: 'https://www.goldfishmarketing.co.ke/services',
+  },
+  openGraph: {
+    title: 'Our Services: Web Systems, SEO/GEO, Paid Growth & AI Automation | Goldfish Marketing',
+    description:
+      'Explore our six core capability engines engineered for growing SMEs, boutique hospitality, and regional market leaders across Kenya and East Africa.',
+    url: 'https://www.goldfishmarketing.co.ke/services',
+    locale: 'en_KE',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Goldfish Marketing Capabilities & Services' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Services: Web Systems, SEO/GEO, Paid Growth & AI Automation | Goldfish Marketing',
+    description:
+      'Explore our six core capability engines engineered for growing SMEs, boutique hospitality, and regional market leaders across Kenya and East Africa.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function ServicesHub() {
   const servicesList = Object.values(servicesData);
+
+  const servicesHubSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://www.goldfishmarketing.co.ke/services/#breadcrumb',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.goldfishmarketing.co.ke',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Services',
+            item: 'https://www.goldfishmarketing.co.ke/services',
+          },
+        ],
+      },
+      {
+        '@type': 'ItemList',
+        '@id': 'https://www.goldfishmarketing.co.ke/services/#itemlist',
+        name: 'Goldfish Marketing Core Engineering & Growth Services',
+        description:
+          'Six specialized web architecture, generative engine optimization, paid advertising, and AI automation practices for Kenyan businesses.',
+        itemListElement: servicesList.map((service, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          name: service.title,
+          url: `https://www.goldfishmarketing.co.ke/services/${service.slug}`,
+        })),
+      },
+    ],
+  };
 
   const sprintPhases = [
     {
@@ -67,19 +124,42 @@ export default function ServicesHub() {
 
   return (
     <main className="w-full flex flex-col bg-[var(--bg-primary)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesHubSchema) }}
+      />
       
       {/* SECTION 1: CONTEXT HERO */}
       <section className="section-padding px-6 relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <span className="text-eyebrow text-[var(--accent-gold)] mb-4 block">
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center justify-center gap-2 text-xs font-mono text-[var(--text-muted)]">
+            <Link href="/" className="hover:text-[var(--accent-gold)] transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-[var(--text-core)] font-bold">Services</span>
+          </nav>
+
+          <span className="text-eyebrow text-[var(--accent-gold)] mb-4 block font-mono">
             LOCAL EXPERTS · GLOBAL STANDARDS
           </span>
           <h1 className="text-h1 font-black tracking-tight text-[var(--text-core)] mb-6 leading-tight">
             High-Velocity Digital Ecosystems &amp; AI Infrastructure Engineered to Dominate.
           </h1>
-          <p className="text-body-lg text-[var(--text-muted)] leading-relaxed max-w-3xl mx-auto font-light">
+          <p className="text-body-lg text-[var(--text-muted)] leading-relaxed max-w-3xl mx-auto font-light mb-8">
             From Diani to Nairobi and beyond: We build high-converting web applications, establish search &amp; AI authority (GEO), run high-ROAS ad campaigns, and deploy autonomous WhatsApp workflows for Kenya&apos;s growing SMEs and hospitality brands.
           </p>
+
+          {/* Jump Navigation Chips */}
+          <div className="flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto">
+            {servicesList.map((s, idx) => (
+              <a
+                key={idx}
+                href={`#${s.slug}`}
+                className="text-[11px] font-mono font-medium px-3 py-1.5 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)] transition-all"
+              >
+                {s.title}
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -92,7 +172,7 @@ export default function ServicesHub() {
       <section className="py-16 px-6 bg-[var(--bg-surface)] border-y border-[var(--border-subtle)]">
         <div className="max-w-7xl mx-auto flex flex-col gap-16">
           <div className="text-center max-w-2xl mx-auto mb-4">
-            <span className="text-eyebrow text-[var(--accent-gold)] mb-2 block">THE CORE ENGINES</span>
+            <span className="text-eyebrow text-[var(--accent-gold)] mb-2 block font-mono">THE CORE ENGINES</span>
             <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)]">
               Six Specialized Capability Practices
             </h2>
@@ -104,7 +184,8 @@ export default function ServicesHub() {
           {servicesList.map((service, idx) => (
             <div
               key={idx}
-              className="card-brand p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center border border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/40 transition-all duration-300"
+              id={service.slug}
+              className="card-brand p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center border border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/40 transition-all duration-300 scroll-mt-24"
             >
               {/* Left Column: Details & Capabilities (7 cols) */}
               <div className="lg:col-span-7 flex flex-col justify-between h-full">
@@ -119,7 +200,9 @@ export default function ServicesHub() {
                   </div>
 
                   <h3 className="text-h2 font-black tracking-tight text-[var(--text-core)] leading-snug mb-3">
-                    {service.title}
+                    <Link href={`/services/${service.slug}`} className="hover:text-[var(--accent-gold)] transition-colors">
+                      {service.title}
+                    </Link>
                   </h3>
 
                   <p className="text-body text-[var(--text-muted)] leading-relaxed mb-6 font-light">

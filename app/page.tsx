@@ -7,9 +7,12 @@ import TestimonialsSection from './components/TestimonialsSection';
 import { servicesData } from './services/data/servicesData';
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing, Web Design & AI Agency Kenya | Goldfish Marketing',
+  title: 'Digital Marketing & AI Agency Kenya | Goldfish Marketing',
   description:
     'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
+  alternates: {
+    canonical: 'https://www.goldfishmarketing.co.ke',
+  },
 };
 
 export default function Home() {
@@ -98,32 +101,32 @@ export default function Home() {
             {/* Outcome Micro-Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-surface)]/80 text-[var(--accent-gold)] text-[11px] font-mono tracking-wider uppercase mb-6 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>⚡ Premier Digital Growth &amp; AI Systems • Diani • Nairobi • Coast</span>
+              <span>Premier Digital Growth &amp; AI Systems • Diani • Nairobi • Coast</span>
             </div>
 
             <h1 className="text-h1 font-black leading-[1.12] tracking-tight mb-6">
-              We Engineer <span className="gradient-text-gold">Market Dominance</span> for Kenya&apos;s Growing SMEs &amp; Brands.
+              We Engineer <span className="gradient-text-gold">Market Dominance</span>: Kenya&apos;s Premier Web Systems, SEO &amp; AI Agency.
             </h1>
 
             <p className="text-body-lg text-[var(--text-muted)] mb-4 leading-relaxed font-light max-w-2xl">
-              Local insight meets global engineering. We build high-converting web ecosystems, direct booking engines that cut OTA commissions for hospitality, and AI automation that eliminates manual admin for growing SMEs.
+              Local insight meets global engineering. We build high-converting <Link href="/services/smart-web-app-ecosystems" className="underline hover:text-[var(--accent-gold)] transition-colors">web ecosystems</Link>, direct booking engines that cut OTA commissions for hospitality, and <Link href="/services/ai-automation-sme" className="underline hover:text-[var(--accent-gold)] transition-colors">AI automation</Link> that eliminates manual admin for growing Kenyan SMEs.
             </p>
             <p className="text-body text-[var(--text-muted)] mb-8 leading-relaxed max-w-2xl font-normal">
-              Whether your website isn&apos;t generating enquiries, your ads are burning budget without ROAS, or your team is drowning in repetitive WhatsApp chats — we engineer the fix.
+              Headquartered in <Link href="/diani" className="underline hover:text-[var(--accent-gold)] transition-colors">Diani Beach</Link> and serving ambitious brands across <Link href="/kenya" className="underline hover:text-[var(--accent-gold)] transition-colors">Kenya</Link> — whether your website isn&apos;t generating enquiries, your ads are burning budget, or your team is drowning in repetitive WhatsApp chats — we engineer the fix.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-3">
               <Link href="/contact" className="btn-primary w-full sm:w-auto shadow-md">
-                Request a Free Growth &amp; SEO Audit
+                Request a Commercial Growth Audit
               </Link>
               <Link href="/portfolio" className="btn-outline w-full sm:w-auto">
                 Explore Client Case Studies →
               </Link>
             </div>
             <p className="text-[11px] font-mono text-[var(--text-muted)] flex items-center gap-2">
-              <span>🔒 100% Confidential</span>
+              <span>100% Confidential</span>
               <span>•</span>
-              <span>Actionable 12-Point Roadmap</span>
+              <span>Actionable 12-Point Revenue Diagnostic</span>
               <span>•</span>
               <span>Zero Sales Pressure</span>
             </p>
@@ -142,13 +145,47 @@ export default function Home() {
       <section className="border-y border-[var(--border-subtle)] bg-[var(--bg-primary)] py-6 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
           {[
-            { icon: '💎', label: 'Local Soul. Global Code.', sub: 'Diani roots, international standards' },
-            { icon: '⚡', label: 'Sub-Second Velocity', sub: '95+ Lighthouse score guaranteed' },
-            { icon: '🛡️', label: 'KDPA & GDPR Compliant', sub: 'Data Protection Act 2019 verified' },
-            { icon: '📈', label: 'Measurable Commercial ROI', sub: 'Direct bookings, pipeline & saved hours' },
+            {
+              icon: (
+                <svg className="w-6 h-6 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+                </svg>
+              ),
+              label: 'Local Soul. Global Code.',
+              sub: 'Diani roots, international standards'
+            },
+            {
+              icon: (
+                <svg className="w-6 h-6 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              ),
+              label: 'Sub-Second Velocity',
+              sub: '95+ Lighthouse score guaranteed'
+            },
+            {
+              icon: (
+                <svg className="w-6 h-6 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              ),
+              label: 'KDPA & GDPR Compliant',
+              sub: 'Data Protection Act 2019 verified'
+            },
+            {
+              icon: (
+                <svg className="w-6 h-6 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              ),
+              label: 'Measurable Commercial ROI',
+              sub: 'Direct bookings, pipeline & saved hours'
+            },
           ].map((item, i) => (
             <div key={i} className="flex flex-col items-center gap-1.5">
-              <span className="text-2xl">{item.icon}</span>
+              <div className="p-2 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center">
+                {item.icon}
+              </div>
               <p className="text-sm font-bold text-[var(--text-core)]">{item.label}</p>
               <p className="text-[11px] text-[var(--text-muted)]">{item.sub}</p>
             </div>
@@ -275,6 +312,13 @@ export default function Home() {
           SECTION 5: FLAGSHIP CASE STUDY
       ═══════════════════════════════════════════════════════ */}
       <section className="section-padding px-6">
+        <div className="max-w-7xl mx-auto mb-10 text-center">
+          <span className="text-eyebrow text-xs mb-2 block font-mono">PROVEN COMMERCIAL IMPACT</span>
+          <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)]">
+            Featured Hospitality Case Study
+          </h2>
+        </div>
+
         <div className="max-w-7xl mx-auto rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-10 items-stretch border border-[var(--border-subtle)] shadow-2xl">
           {/* Metrics Dashboard Display */}
           <div className="lg:col-span-6 bg-[#0E0E0E] text-white p-8 lg:p-12 flex flex-col justify-center gap-8 relative">
@@ -324,10 +368,10 @@ export default function Home() {
               We engineered a custom Next.js direct booking platform with instant M-Pesa STK push and 24/7 WhatsApp AI concierge for a boutique coastal resort, liberating them from predatory 20% OTA commission cuts.
             </p>
             <div className="p-3 rounded-lg bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] mb-6 text-[11px] font-mono text-[var(--accent-gold)]">
-              💡 Provenance: Verified via Booking Engine Telemetry &amp; GA4 Audit
+              AUDITED PROVENANCE: Verified via Booking Engine Telemetry &amp; GA4 Audit
             </div>
-            <Link href="/portfolio" className="btn-primary w-full sm:w-auto text-xs py-3 px-6 shadow-md">
-              Explore All Case Studies →
+            <Link href="/portfolio/ecommerce-speed-replatforming" className="btn-primary w-full sm:w-auto text-xs py-3 px-6 shadow-md">
+              Explore Full Diani Resort Case Study →
             </Link>
           </div>
         </div>
@@ -356,9 +400,9 @@ export default function Home() {
                   <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider block mb-4">
                     {insight.tag}
                   </span>
-                  <h4 className="text-[18px] font-bold text-[var(--text-core)] tracking-tight mb-4 leading-snug">
+                  <h3 className="text-[18px] font-bold text-[var(--text-core)] tracking-tight mb-4 leading-snug">
                     {insight.title}
-                  </h4>
+                  </h3>
                   <p className="text-caption leading-relaxed">
                     {insight.excerpt}
                   </p>

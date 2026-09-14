@@ -3,8 +3,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Goldfish Digital & Goldfish Marketing',
-  description: 'Our commitment to data privacy, transparency, and compliance with the Kenyan Data Protection Act (KDPA 2019), GDPR, and CCPA.',
+  title: {
+    absolute: 'Privacy Policy | Goldfish Marketing',
+  },
+  description:
+    'Our commitment to data privacy, transparency, and compliance with the Kenyan Data Protection Act (KDPA 2019), GDPR, and CCPA.',
+  alternates: {
+    canonical: 'https://www.goldfishmarketing.co.ke/privacy',
+  },
 };
 
 export default function PrivacyPolicyPage() {

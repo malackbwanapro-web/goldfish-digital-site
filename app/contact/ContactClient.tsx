@@ -108,13 +108,14 @@ export default function ContactClient() {
   // ── TAB 3: CONFIDENTIAL DIAGNOSTIC INTAKE (SME CALIBRATED) ──
   const [diagStep, setDiagStep] = useState<1 | 2 | 3>(1);
   const [currency, setCurrency] = useState<'KES' | 'USD'>('KES');
+  const [step1Errors, setStep1Errors] = useState(false);
   const [diagName, setDiagName] = useState('');
   const [diagPhone, setDiagPhone] = useState('');
   const [diagEmail, setDiagEmail] = useState('');
   const [diagCompany, setDiagCompany] = useState('');
   const [diagWebsite, setDiagWebsite] = useState('');
   const [selectedHurdles, setSelectedHurdles] = useState<string[]>([]);
-  const [selectedBudget, setSelectedBudget] = useState('KShs 50,000 - 100,000');
+  const [selectedBudget, setSelectedBudget] = useState('KShs 150,000 – 350,000');
   const [diagNotes, setDiagNotes] = useState('');
   const [submittedDiagnostic, setSubmittedDiagnostic] = useState(false);
 
@@ -136,19 +137,17 @@ export default function ContactClient() {
   };
 
   const budgetTiersKES = [
-    'Under KShs 20,000',
-    'KShs 20,000 - 50,000',
-    'KShs 50,000 - 100,000',
-    'KShs 100,000 - 250,000',
-    'KShs 250,000+',
+    'KShs 75,000 – 150,000',
+    'KShs 150,000 – 350,000',
+    'KShs 350,000 – 750,000',
+    'KShs 750,000+',
   ];
 
   const budgetTiersUSD = [
-    'Under $150',
-    '$150 - $400',
-    '$400 - $800',
-    '$800 - $2,000',
-    '$2,000+',
+    '$600 – $1,200',
+    '$1,200 – $2,800',
+    '$2,800 – $6,000',
+    '$6,000+',
   ];
 
   const activeBudgetTiers = currency === 'KES' ? budgetTiersKES : budgetTiersUSD;
@@ -220,7 +219,7 @@ export default function ContactClient() {
       {/* ══════════════════════════════════════════
           TAB 1: 1-TAP DIRECT WHATSAPP
       ══════════════════════════════════════════ */}
-      {activeTab === 'whatsapp' && (
+      <div className={activeTab === 'whatsapp' ? 'block' : 'hidden'}>
         <div className="card-brand p-8 lg:p-12 border border-[var(--border-subtle)] bg-[var(--bg-surface)] shadow-xl rounded-2xl relative overflow-hidden">
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-6 mb-8">
             <div>
@@ -306,12 +305,12 @@ export default function ContactClient() {
             </button>
           </div>
         </div>
-      )}
+      </div>
 
       {/* ══════════════════════════════════════════
           TAB 2: 15-MINUTE STRATEGY SLOT
       ══════════════════════════════════════════ */}
-      {activeTab === 'calendar' && (
+      <div className={activeTab === 'calendar' ? 'block' : 'hidden'}>
         <div className="card-brand p-8 lg:p-12 border border-[var(--border-subtle)] bg-[var(--bg-surface)] shadow-xl rounded-2xl">
           {bookedSlot ? (
             <div className="p-10 text-center rounded-2xl border border-green-500/30 bg-green-500/5 my-4">
@@ -460,12 +459,12 @@ export default function ContactClient() {
             </form>
           )}
         </div>
-      )}
+      </div>
 
       {/* ══════════════════════════════════════════
           TAB 3: 3-STEP CONFIDENTIAL DIAGNOSTIC
       ══════════════════════════════════════════ */}
-      {activeTab === 'diagnostic' && (
+      <div className={activeTab === 'diagnostic' ? 'block' : 'hidden'}>
         <div className="card-brand p-8 lg:p-12 border border-[var(--border-subtle)] bg-[var(--bg-surface)] shadow-xl rounded-2xl">
           {submittedDiagnostic ? (
             <div className="p-10 text-center rounded-2xl border border-green-500/30 bg-green-500/5 my-4">
@@ -530,17 +529,27 @@ export default function ContactClient() {
                       type="text"
                       required
                       value={diagName}
-                      onChange={(e) => setDiagName(e.target.value)}
+                      onChange={(e) => {
+                        setDiagName(e.target.value);
+                        if (step1Errors) setStep1Errors(false);
+                      }}
                       placeholder="Your Full Name *"
-                      className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                      className={`p-3.5 rounded-xl bg-[var(--bg-primary)] border text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] ${
+                        step1Errors && !diagName ? 'border-red-500 bg-red-500/5' : 'border-[var(--border-subtle)]'
+                      }`}
                     />
                     <input
                       type="text"
                       required
                       value={diagCompany}
-                      onChange={(e) => setDiagCompany(e.target.value)}
+                      onChange={(e) => {
+                        setDiagCompany(e.target.value);
+                        if (step1Errors) setStep1Errors(false);
+                      }}
                       placeholder="Business / Company Name *"
-                      className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                      className={`p-3.5 rounded-xl bg-[var(--bg-primary)] border text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] ${
+                        step1Errors && !diagCompany ? 'border-red-500 bg-red-500/5' : 'border-[var(--border-subtle)]'
+                      }`}
                     />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -548,17 +557,27 @@ export default function ContactClient() {
                       type="email"
                       required
                       value={diagEmail}
-                      onChange={(e) => setDiagEmail(e.target.value)}
+                      onChange={(e) => {
+                        setDiagEmail(e.target.value);
+                        if (step1Errors) setStep1Errors(false);
+                      }}
                       placeholder="Your Business Email *"
-                      className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                      className={`p-3.5 rounded-xl bg-[var(--bg-primary)] border text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] ${
+                        step1Errors && !diagEmail ? 'border-red-500 bg-red-500/5' : 'border-[var(--border-subtle)]'
+                      }`}
                     />
                     <input
                       type="tel"
                       required
                       value={diagPhone}
-                      onChange={(e) => setDiagPhone(e.target.value)}
+                      onChange={(e) => {
+                        setDiagPhone(e.target.value);
+                        if (step1Errors) setStep1Errors(false);
+                      }}
                       placeholder="Phone / WhatsApp Number *"
-                      className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
+                      className={`p-3.5 rounded-xl bg-[var(--bg-primary)] border text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] ${
+                        step1Errors && !diagPhone ? 'border-red-500 bg-red-500/5' : 'border-[var(--border-subtle)]'
+                      }`}
                     />
                   </div>
                   <input
@@ -569,13 +588,21 @@ export default function ContactClient() {
                     className="w-full p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
                   />
 
+                  {step1Errors && (
+                    <p className="text-xs font-mono text-red-400 bg-red-500/10 border border-red-500/20 p-2.5 rounded-lg">
+                      ⚠️ Please provide your full name, company, email, and phone/WhatsApp to continue.
+                    </p>
+                  )}
+
                   <div className="pt-4 flex justify-end">
                     <button
                       type="button"
                       onClick={() => {
                         if (!diagName || !diagCompany || !diagEmail || !diagPhone) {
+                          setStep1Errors(true);
                           return;
                         }
+                        setStep1Errors(false);
                         setDiagStep(2);
                       }}
                       className="btn-primary text-xs py-3 px-8"
@@ -718,7 +745,7 @@ export default function ContactClient() {
             </form>
           )}
         </div>
-      )}
+      </div>
     </div>
   );
 }

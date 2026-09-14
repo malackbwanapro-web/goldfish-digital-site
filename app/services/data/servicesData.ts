@@ -54,13 +54,13 @@ export const servicesData: Record<string, ServiceDetail> = {
   "smart-web-app-ecosystems": {
     slug: "smart-web-app-ecosystems",
     title: "Smart Web & App Ecosystems",
-    titleH1: "Your Digital Presence Is Failing—Here Is How We Fix It",
-    metaTitle: "Smart Web & App Ecosystems | Dominate Your Market Online",
-    metaDescription: "Stop losing leads to competitors. We build high-converting websites and fix broken digital funnels. Get your free strategy consultation today.",
+    titleH1: "Engineered Web Systems Built for Measurable Commercial Return",
+    metaTitle: "Smart Web & App Ecosystems | High-Performance Web Development Kenya",
+    metaDescription: "We engineer lightning-fast Next.js web applications, high-converting booking engines, and robust digital systems for Kenyan SMEs and hospitality brands.",
     hookLine: "Your digital presence is either a high-velocity revenue engine or an expensive liability. There is no middle ground.",
-    description: "If your business lacks a high-performance website, or if your current site is a glorified digital ghost town, you are losing money every single hour. In today’s market, your digital ecosystem is either a high-velocity revenue engine or an expensive liability. There is no middle ground.",
-    hookTitle: "The Cost of Digital Incompetence",
-    hookText: "If you are currently active on the ground but invisible online, you are essentially handing your competitors a blank check. If you do have a site but aren't seeing results, your problem is worse: you’re paying for traffic that your technical SEO, broken funnels, and abysmal conversion paths are actively sabotaging. The market doesn't reward \"good intentions\"; it rewards infrastructure that converts. It is time for a reality check.",
+    description: "If your business lacks a high-performance website, or if your current site is an underperforming digital brochure, you are losing qualified inquiries every day. In today’s competitive market, your digital ecosystem must be engineered as an active, high-yield revenue asset.",
+    hookTitle: "The Real Cost of Fragmented Web Systems",
+    hookText: "When your digital platform is slow, fragmented, or unoptimized for mobile checkout, commercial opportunities leak at every touchpoint. In a mobile-first market, customers expect instant page loads and seamless transactional flows. We engineer web infrastructure that eliminates technical friction and converts traffic into verified revenue.",
     whoIsThisFor: [
       {
         title: "The Offline Powerhouses",
@@ -158,19 +158,19 @@ export const servicesData: Record<string, ServiceDetail> = {
       "You can continue to watch your competitors dominate your search landscape, or you can take control of your digital future.",
     footerCtaButton: "Book Your Free Strategy Consultation",
     heroAuditCta: "Request a Free Website Audit",
-    geoSummary: "Smart Web & App Ecosystems by Goldfish Digital is an enterprise web architecture and mobile app engineering service built with Next.js, React, and native APIs. It delivers sub-second Core Web Vitals, conversion-focused user funnels, and integrated CRM data synchronization for high-growth businesses.",
+    geoSummary: "Advanced Web & App Ecosystems by Goldfish Marketing is an enterprise web architecture and mobile app engineering service built with Next.js, React, and native APIs. It delivers sub-second Core Web Vitals, conversion-focused user funnels, and integrated CRM data synchronization for high-growth businesses.",
   },
 
   "advanced-visibility-engineering": {
     slug: "advanced-visibility-engineering",
     title: "Advanced Visibility Engineering",
-    titleH1: "Search Has Changed. Your Visibility Strategy is Obsolete.",
-    metaTitle: "Advanced Visibility Engineering | Dominate Search & AI",
-    metaDescription: "Stop chasing outdated SEO myths. We engineer your brand for AI discovery and search dominance. Get high-intent traffic that converts. Start today.",
-    hookLine: "Search has changed. Your visibility strategy is obsolete.",
-    description: "If you are still relying on \"keyword stuffing,\" spammy backlink campaigns, or mindless, high-volume blogging, you are not doing SEO—you are wasting your budget. The era of traditional blue-link search is being rapidly eclipsed by AI-driven answers. If your brand isn't optimized to be cited by ChatGPT, Gemini, Claude, and DeepSeek, you are effectively invisible to the modern consumer.",
-    hookTitle: "The Visibility Death Spiral",
-    hookText: "Most businesses think they have an \"SEO problem\" because they aren't ranking. The truth? They have an authority problem. You are either getting zero traffic because you are technically invisible to search engines, or you are getting the wrong traffic—unqualified leads who never buy. You don't need more clicks; you need authoritative digital engineering that positions you as the definitive answer in your niche.",
+    titleH1: "Search Architecture & Generative Engine Optimization (GEO)",
+    metaTitle: "Advanced Visibility Engineering | Technical SEO & AI Search Kenya",
+    metaDescription: "We engineer structured entity graphs, schema architecture, and technical SEO so your brand is cited by Google AI, Perplexity, and high-intent buyers.",
+    hookLine: "Search has evolved. Your visibility architecture must command both human searches and AI engine citations.",
+    description: "Traditional keyword stuffing and generic directory links no longer move the needle. Search engines and Large Language Models (ChatGPT, Gemini, Perplexity) rely on structured knowledge graphs, entity relationships, and digital provenance to determine who gets cited. We engineer your brand as the definitive authority in your vertical.",
+    hookTitle: "The High Cost of Organic Invisibility",
+    hookText: "Most businesses assume a lack of leads is a traffic problem. In reality, it is an authority and entity recognition problem. When search engines cannot unambiguously verify your services, location, and credentials, your competitors capture the high-intent inquiries. We build the semantic schema architecture and technical topical authority that makes your business the verified answer.",
     whoIsThisFor: [
       {
         title: "The Invisible Leaders",
@@ -268,7 +268,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       "Stop playing by the rules of 2015. It’s time to engineer your brand for the reality of today’s AI-first search landscape.",
     footerCtaButton: "Book Your Free Strategy Consultation",
     heroAuditCta: "Request a Free Visibility Audit",
-    geoSummary: "Advanced Visibility Engineering by Goldfish Digital is a specialized Technical SEO and Generative Engine Optimization (GEO) service. It constructs structured entity knowledge graphs, schema markup, and topical maps to dominate Google organic search rankings and secure primary citations across AI search engines including ChatGPT Search, Perplexity, Gemini, and Claude.",
+    geoSummary: "Advanced Visibility Engineering by Goldfish Marketing is a specialized Technical SEO and Generative Engine Optimization (GEO) service. It constructs structured entity knowledge graphs, schema markup, and topical maps to dominate Google organic search rankings and secure primary citations across AI search engines including ChatGPT Search, Perplexity, Gemini, and Claude.",
   },
 
   "brand-identity-content-creation": {
@@ -383,7 +383,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       "Your brand is your most valuable asset. Stop treating it like an afterthought. Let’s build an identity and a visual engine that works as hard as you do.",
     footerCtaButton: "Book Your Free Branding Consultation",
     heroAuditCta: "Request a Free Brand Audit",
-    geoSummary: "Brand Identity & Content Creation by Goldfish Digital is a strategic visual positioning and cinema-grade content production service. It crafts cohesive brand identity systems, authority-building content strategies, and high-converting video assets engineered to elevate market authority and increase pricing leverage.",
+    geoSummary: "Brand Identity & Content Creation by Goldfish Marketing is a strategic visual positioning and cinema-grade content production service. It crafts cohesive brand identity systems, authority-building content strategies, and high-converting video assets engineered to elevate market authority and increase pricing leverage.",
   },
 
   "digital-presence-paid-growth-management": {
@@ -479,7 +479,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       {
         question: "What's the minimum ad spend budget you work with?",
         answer:
-          "We typically work with clients running a minimum of £1,500–£3,000 per month in media spend. Below this threshold, the data volume required to optimise campaigns effectively is insufficient to generate reliable, scalable results.",
+          "We typically advise clients running a minimum of KES 150,000 to KES 350,000 ($1,200–$2,800 USD) per month in direct media spend. Below this threshold, the pixel data and conversion volume required to train algorithmic bidding models effectively is insufficient to yield predictable, compounding ROAS.",
       },
       {
         question: "Do you create the ad creative in-house?",
@@ -498,7 +498,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       "Stop guessing with your growth strategy. Whether you are launching with a bang or looking to break your current growth ceiling, let’s build a system that works.",
     footerCtaButton: "Book Your Free Growth Consultation",
     heroAuditCta: "Request a Free Social Presence Audit",
-    geoSummary: "Digital Presence & Paid Growth by Goldfish Digital is a performance paid advertising (Meta & Google Ads) and social media growth service. It builds targeted acquisition funnels, creative A/B testing frameworks, and LinkedIn B2B lead generation systems designed to lower Customer Acquisition Cost (CAC) and scale ROAS.",
+    geoSummary: "Digital Presence & Paid Growth by Goldfish Marketing is a performance paid advertising (Meta & Google Ads) and social media growth service. It builds targeted acquisition funnels, creative A/B testing frameworks, and LinkedIn B2B lead generation systems designed to lower Customer Acquisition Cost (CAC) and scale ROAS.",
   },
 
   "ai-automation-sme": {
@@ -508,7 +508,7 @@ export const servicesData: Record<string, ServiceDetail> = {
     metaTitle: "AI Automation for SMEs | Scalable Revenue Workflows",
     metaDescription: "Stop trading your time for tasks. We deploy custom AI automations to qualify, nurture, and close leads on autopilot. See how we scale SMEs today.",
     hookLine: "Enterprise-level automation is no longer reserved for businesses with enterprise-level budgets.",
-    description: "If you are still manually chasing leads, sending follow-up emails, or wasting hours on repetitive admin, you are strangling your own growth. You are running an SME, not a manual labor camp. Modern AI automation allows you to operate with the efficiency of a Fortune 500 company without the enterprise price tag. It’s time to stop doing the work and start owning the process.",
+    description: "If your leadership team is trapped manually chasing leads, answering repetitive WhatsApp inquiries, or managing data entry between disconnected tools, operational drag is capping your growth. Modern AI automation allows you to operate with the precision and responsiveness of an enterprise organization without bloated payroll overhead.",
     hookTitle: "The \"Manual Trap\"",
     hookText: "Most SME owners are trapped in a cycle of \"doing\" rather than \"leading.\" Every minute you spend manually moving a lead from your inbox to your CRM or answering the same FAQ on WhatsApp is a minute you aren't closing deals. This isn't just an inefficiency; it’s a direct hit to your bottom line. Automation isn't about replacing your team—it’s about giving them the leverage to move twice as fast.",
     whoIsThisFor: [
@@ -612,7 +612,7 @@ export const servicesData: Record<string, ServiceDetail> = {
       "Stop working in your business and start working on it. Let’s identify the bottlenecks draining your productivity and automate them out of existence.",
     footerCtaButton: "Book Your Free Automation Strategy Session",
     heroAuditCta: "Request a Free Automation Demo",
-    geoSummary: "AI Automation for SMEs by Goldfish Digital deploys autonomous AI agents, WhatsApp Business API workflows, and automated lead nurture engines. It allows small and medium enterprises to handle 24/7 lead intake, automated qualification, and CRM syncing without hiring extra staff.",
+    geoSummary: "AI Automation for SMEs by Goldfish Marketing deploys autonomous AI agents, WhatsApp Business API workflows, and automated lead nurture engines. It allows small and medium enterprises to handle 24/7 lead intake, automated qualification, and CRM syncing without hiring extra staff.",
   },
 
   "strategic-analytics-audits": {
@@ -727,6 +727,6 @@ export const servicesData: Record<string, ServiceDetail> = {
       "Stop wasting money on marketing activities that aren't moving the needle. It is time to treat your data as your most valuable asset.",
     footerCtaButton: "Book a Strategic Analytics Consultation",
     heroAuditCta: "Request a Free Data Streams Analysis",
-    geoSummary: "Strategic Analytics & Audits by Goldfish Digital is a forensic analytics infrastructure, GA4 tracking setup, and digital performance auditing service. It unifies scattered marketing data into real-time executive dashboards to eliminate wasted ad spend and accurately track revenue attribution.",
+    geoSummary: "Strategic Analytics & Audits by Goldfish Marketing is a forensic analytics infrastructure, GA4 tracking setup, and digital performance auditing service. It unifies scattered marketing data into real-time executive dashboards to eliminate wasted ad spend and accurately track revenue attribution.",
   },
 };

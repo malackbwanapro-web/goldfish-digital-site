@@ -3,9 +3,21 @@ import InsightsClient from './InsightsClient';
 import FooterCloser from '../components/FooterCloser';
 
 export const metadata: Metadata = {
-  title: 'Technical Briefings, AI Architecture, & Automation Strategy | Goldfish Digital',
+  title: {
+    absolute: 'Technical Briefings, AI Architecture, & Automation Strategy | Goldfish Marketing',
+  },
   description:
     'High-substance technical analysis and architectural playbooks written directly for enterprise technology operators and business leadership.',
+  alternates: {
+    canonical: 'https://www.goldfishmarketing.co.ke/insights',
+  },
+  openGraph: {
+    title: 'Technical Briefings & Strategic Architecture | Goldfish Marketing',
+    description:
+      'High-substance technical analysis and architectural playbooks for growing Kenyan businesses.',
+    url: 'https://www.goldfishmarketing.co.ke/insights',
+    locale: 'en_KE',
+  },
 };
 
 export default function InsightsPage() {

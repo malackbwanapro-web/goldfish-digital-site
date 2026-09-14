@@ -3,8 +3,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Goldfish Digital & Goldfish Marketing',
-  description: 'Terms of Service and client engagement agreements for Goldfish Marketing web, SEO, and AI automation consulting services.',
+  title: {
+    absolute: 'Terms of Service | Goldfish Marketing',
+  },
+  description:
+    'Terms of Service and client engagement agreements for Goldfish Marketing web, SEO, and AI automation consulting services.',
+  alternates: {
+    canonical: 'https://www.goldfishmarketing.co.ke/terms',
+  },
 };
 
 export default function TermsOfServicePage() {

@@ -23,14 +23,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = servicesData[params.slug];
   if (!service) {
     return {
-      title: 'Service Not Found | Goldfish Digital',
+      title: 'Service Not Found',
     };
   }
 
-  const pageUrl = `https://goldfishdigital.com/services/${service.slug}`;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketing.co.ke';
+  const pageUrl = `${baseUrl}/services/${service.slug}`;
 
   return {
-    title: `${service.title} | Goldfish Digital`,
+    title: service.metaTitle ? { absolute: `${service.metaTitle} | Goldfish Marketing` } : `${service.title} | Kenya Digital Systems`,
     description: service.metaDescription,
     alternates: {
       canonical: pageUrl,
@@ -38,15 +39,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       type: 'website',
       url: pageUrl,
-      title: `${service.title} | Goldfish Digital`,
+      title: service.metaTitle || `${service.title} | Goldfish Marketing`,
       description: service.metaDescription,
-      siteName: 'Goldfish Digital',
-      locale: 'en_US',
+      siteName: 'Goldfish Marketing',
+      locale: 'en_KE',
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: `${service.title} - Goldfish Marketing Kenya`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${service.title} | Goldfish Digital`,
+      title: service.metaTitle || `${service.title} | Goldfish Marketing`,
       description: service.metaDescription,
+      images: ['/og-image.png'],
     },
   };
 }
@@ -58,7 +68,8 @@ export default function ServicePage({ params }: Props) {
     notFound();
   }
 
-  const pageUrl = `https://goldfishdigital.com/services/${service.slug}`;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketing.co.ke';
+  const pageUrl = `${baseUrl}/services/${service.slug}`;
 
   // Structured Data 1: Service Schema
   const serviceSchema = {
@@ -68,11 +79,19 @@ export default function ServicePage({ params }: Props) {
     'serviceType': service.title,
     'description': service.geoSummary || service.description,
     'provider': {
-      '@type': 'Organization',
-      'name': 'Goldfish Digital',
-      'url': 'https://goldfishdigital.com',
+      '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
+      '@id': `${baseUrl}/#organization`,
+      'name': 'Goldfish Marketing',
+      'url': baseUrl,
     },
-    'areaServed': 'Worldwide',
+    'areaServed': [
+      { '@type': 'Country', 'name': 'Kenya' },
+      { '@type': 'AdministrativeArea', 'name': 'Coast Province, Kenya' },
+      { '@type': 'City', 'name': 'Diani Beach' },
+      { '@type': 'City', 'name': 'Mombasa' },
+      { '@type': 'City', 'name': 'Nairobi' },
+      { '@type': 'AdministrativeArea', 'name': 'East Africa' }
+    ],
     'hasOfferCatalog': {
       '@type': 'OfferCatalog',
       'name': 'Core Capabilities',
@@ -110,13 +129,13 @@ export default function ServicePage({ params }: Props) {
         '@type': 'ListItem',
         'position': 1,
         'name': 'Home',
-        'item': 'https://goldfishdigital.com',
+        'item': baseUrl,
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Services',
-        'item': 'https://goldfishdigital.com/services',
+        'item': `${baseUrl}/services`,
       },
       {
         '@type': 'ListItem',
@@ -142,6 +161,7 @@ export default function ServicePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+
       {/* ═══════════════════════════════════════════════════════
           SECTION 1: HERO — Full-width editorial impact
       ═══════════════════════════════════════════════════════ */}
@@ -154,9 +174,17 @@ export default function ServicePage({ params }: Props) {
           
           {/* Left Column — Copy */}
           <div className="flex flex-col items-start text-left">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[12px] font-mono text-[var(--text-muted)] mb-6">
+              <Link href="/" className="hover:text-[var(--accent-gold)] transition-colors">Home</Link>
+              <span>/</span>
+              <Link href="/services" className="hover:text-[var(--accent-gold)] transition-colors">Services</Link>
+              <span>/</span>
+              <span className="text-[var(--accent-gold)] font-bold">{service.title}</span>
+            </nav>
+
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 text-[12px] font-mono text-[var(--accent-gold)] hover:underline mb-8 uppercase tracking-widest font-bold text-decoration-none"
+              className="inline-flex items-center gap-2 text-[11px] font-mono text-[var(--accent-gold)] hover:underline mb-6 uppercase tracking-widest font-bold text-decoration-none"
             >
               ← Back to All Services
             </Link>

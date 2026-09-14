@@ -1,21 +1,119 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import ContactClient from './ContactClient';
 import FooterCloser from '../components/FooterCloser';
 
 export const metadata: Metadata = {
-  title: 'Contact Engineering & Growth Desk | Goldfish Marketing',
+  title: {
+    absolute: 'Contact Engineering & Growth Desk | Goldfish Marketing',
+  },
   description:
-    'Connect directly with our engineering desk in Diani Beach, Kenya. 1-Tap WhatsApp, reserve a 15-minute technical strategy slot, or request a 3-page confidential growth diagnostic.',
+    'Connect directly with our technical desk in Diani Beach, Kenya. 1-Tap WhatsApp, reserve a 15-minute strategy slot, or request a 3-page confidential growth diagnostic.',
+  alternates: {
+    canonical: 'https://www.goldfishmarketing.co.ke/contact',
+  },
+  openGraph: {
+    title: 'Contact Engineering & Growth Desk | Goldfish Marketing',
+    description:
+      'Connect directly with our technical desk in Diani Beach, Kenya. Direct WhatsApp, 15-minute strategy slots, and confidential 24-hour diagnostics.',
+    url: 'https://www.goldfishmarketing.co.ke/contact',
+    locale: 'en_KE',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Contact Goldfish Marketing' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Engineering & Growth Desk | Goldfish Marketing',
+    description:
+      'Connect directly with our technical desk in Diani Beach, Kenya. Direct WhatsApp, 15-minute strategy slots, and confidential 24-hour diagnostics.',
+    images: ['/og-image.png'],
+  },
 };
 
 export default function ContactPage() {
+  const contactSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        '@id': 'https://www.goldfishmarketing.co.ke/contact/#breadcrumb',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.goldfishmarketing.co.ke',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Contact',
+            item: 'https://www.goldfishmarketing.co.ke/contact',
+          },
+        ],
+      },
+      {
+        '@type': 'ContactPage',
+        '@id': 'https://www.goldfishmarketing.co.ke/contact/#webpage',
+        url: 'https://www.goldfishmarketing.co.ke/contact',
+        name: 'Contact Engineering & Growth Desk | Goldfish Marketing',
+        description: 'Direct communication channels for Goldfish Marketing in Diani Beach, Kenya.',
+      },
+      {
+        '@type': 'LocalBusiness',
+        '@id': 'https://www.goldfishmarketing.co.ke/#localbusiness',
+        name: 'Goldfish Marketing',
+        url: 'https://www.goldfishmarketing.co.ke',
+        telephone: '+254711404755',
+        email: 'info@goldfishmarketing.co.ke',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Diani Beach Road, Diani Bazaar',
+          addressLocality: 'Diani Beach',
+          addressRegion: 'Kwale County',
+          postalCode: '80401',
+          addressCountry: 'KE',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: -4.2797,
+          longitude: 39.5947,
+        },
+        openingHoursSpecification: [
+          {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            opens: '08:00',
+            closes: '18:00',
+          },
+          {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: 'Saturday',
+            opens: '09:00',
+            closes: '13:00',
+          },
+        ],
+      },
+    ],
+  };
+
   return (
-    <main className="w-full flex flex-col min-h-screen">
+    <main className="w-full flex flex-col min-h-screen bg-[var(--bg-primary)]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchema) }}
+      />
+
       {/* ═══ SECTION 1: HERO & SETUP ═══ */}
       <section className="section-padding px-6 lg:px-10 relative overflow-hidden border-b border-[var(--border-subtle)]">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[var(--accent-gold)]/5 rounded-full filter blur-[120px] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center justify-center gap-2 text-xs font-mono text-[var(--text-muted)]">
+            <Link href="/" className="hover:text-[var(--accent-gold)] transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-[var(--text-core)] font-bold">Contact</span>
+          </nav>
+
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold">
@@ -97,7 +195,50 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ═══ SECTION 4: TRUST & SLA ANCHORS ═══ */}
+      {/* ═══ SECTION 4: PHYSICAL LOCATION & OPERATING HOURS (LOCAL SEO & TRUST) ═══ */}
+      <section className="py-16 px-6 lg:px-10 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex flex-col justify-between">
+            <div>
+              <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-2">
+                HEADQUARTERS &amp; PHYSICAL PRESENCE
+              </span>
+              <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                Diani Beach Technical Operations
+              </h3>
+              <p className="text-xs text-[var(--text-muted)] leading-relaxed font-light mb-4">
+                Goldfish Marketing operates out of Diani Beach, Kwale County, serving clients throughout the Kenyan Coast, Nairobi, and East Africa.
+              </p>
+              <div className="text-xs font-mono space-y-1.5 text-[var(--text-core)]">
+                <p>📍 <strong className="text-[var(--text-core)]">Address:</strong> Diani Beach Road, Diani Bazaar, Kwale County, Kenya (P.O. Box 80401)</p>
+                <p>📞 <strong className="text-[var(--text-core)]">Direct Line / WhatsApp:</strong> <a href="tel:+254711404755" className="text-[var(--accent-gold)] hover:underline">+254 711 404 755</a></p>
+                <p>✉️ <strong className="text-[var(--text-core)]">Official Inquiries:</strong> <a href="mailto:info@goldfishmarketing.co.ke" className="text-[var(--accent-gold)] hover:underline">info@goldfishmarketing.co.ke</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex flex-col justify-between">
+            <div>
+              <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-2">
+                OPERATIONAL COVERAGE &amp; HOURS
+              </span>
+              <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                East Africa Time (EAT / UTC+3)
+              </h3>
+              <p className="text-xs text-[var(--text-muted)] leading-relaxed font-light mb-4">
+                Our engineering team maintains high-velocity response times during core operating hours, with 24/7 automated triage for critical SLA incidents.
+              </p>
+              <div className="text-xs font-mono space-y-1.5 text-[var(--text-core)]">
+                <p>🗓️ <strong className="text-[var(--text-core)]">Monday – Friday:</strong> 08:00 – 18:00 EAT</p>
+                <p>🗓️ <strong className="text-[var(--text-core)]">Saturday:</strong> 09:00 – 13:00 EAT (Strategy &amp; Emergency Sprints)</p>
+                <p>🗓️ <strong className="text-[var(--text-core)]">Sunday:</strong> Closed (Automated System Monitoring Active)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SECTION 5: TRUST & SLA ANCHORS ═══ */}
       <section className="py-12 px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           
@@ -148,8 +289,8 @@ export default function ContactPage() {
               </h4>
               <p className="text-[11px] text-[var(--text-muted)] leading-relaxed font-light">
                 Direct pipeline email:{' '}
-                <a href="mailto:partners@goldfishmarketing.co.ke" className="text-[var(--accent-gold)] hover:underline">
-                  partners@goldfishmarketing.co.ke
+                <a href="mailto:info@goldfishmarketing.co.ke" className="text-[var(--accent-gold)] hover:underline">
+                  info@goldfishmarketing.co.ke
                 </a>
               </p>
             </div>
@@ -159,7 +300,14 @@ export default function ContactPage() {
       </section>
 
       {/* Footer Closer */}
-      <FooterCloser />
+      <FooterCloser
+        closerTitle="Explore Our Proven Case Studies or Service Engines."
+        closerText="Review verified implementations across Kenyan hospitality and SMEs, or explore our six core technical capabilities."
+        primaryBtnText="Explore Client Case Studies"
+        primaryBtnHref="/portfolio"
+        secondaryBtnText="View Capability Engines"
+        secondaryBtnHref="/services"
+      />
     </main>
   );
 }

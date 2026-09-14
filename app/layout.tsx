@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'en_KE',
     url: siteUrl,
     siteName: 'Goldfish Marketing',
     title: 'Digital Marketing, Web Design & AI Agency Kenya | Goldfish Marketing',

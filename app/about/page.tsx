@@ -1,37 +1,65 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import FooterCloser from '../components/FooterCloser';
+import TestimonialsSection from '../components/TestimonialsSection';
 
 export const metadata: Metadata = {
-  title: 'About Malack Bwana & Goldfish Marketing | Diani Beach, Kenya',
+  title: {
+    absolute: 'About Malack Bwana & Goldfish Marketing | Diani Beach Agency',
+  },
   description:
     'Meet Malack Bwana, founder of Goldfish Marketing — Diani Beach’s premier digital marketing, web engineering, SEO, and AI automation consultancy for growing Kenyan SMEs.',
   alternates: { canonical: 'https://www.goldfishmarketing.co.ke/about' },
   openGraph: {
-    title: 'About Malack Bwana & Goldfish Marketing',
+    title: 'About Malack Bwana & Goldfish Marketing | Diani Beach Agency',
     description: 'Local Experts. Global Standards. Engineered in Diani Beach, Kenya.',
     url: 'https://www.goldfishmarketing.co.ke/about',
+    locale: 'en_KE',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Malack Bwana - Goldfish Marketing Diani Beach' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Malack Bwana & Goldfish Marketing | Diani Beach Agency',
+    description: 'Local Experts. Global Standards. Engineered in Diani Beach, Kenya.',
+    images: ['/og-image.png'],
   },
 };
 
 const values = [
   {
-    icon: '🎯',
+    icon: (
+      <svg className="w-6 h-6 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
     title: 'Results Over Promises',
     desc: 'We measure ourselves by what actually moves for your business — direct bookings, qualified leads, and operational hours saved. Not vanity impressions.',
   },
   {
-    icon: '🤝',
+    icon: (
+      <svg className="w-6 h-6 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+      </svg>
+    ),
     title: 'Radical Transparency',
     desc: 'You always know what we are doing, why we are doing it, and what it costs. Full access to code repositories, ad dashboards, and analytics.',
   },
   {
-    icon: '⚡',
+    icon: (
+      <svg className="w-6 h-6 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
     title: 'Sub-Second Speed to Value',
     desc: 'We move fast. Most SME clients see measurable performance gains and operational time reclaimed within the first 30 days of deployment.',
   },
   {
-    icon: '🌍',
+    icon: (
+      <svg className="w-6 h-6 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
     title: 'Local Soul, Global Engineering',
     desc: 'Engineered in Diani Beach. Built on global cloud standards that rival tech firms in London, Berlin, or Silicon Valley, with deep Kenyan market fluency.',
   },
@@ -98,13 +126,92 @@ const stats = [
 ];
 
 export default function AboutPage() {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketing.co.ke';
+
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'AboutPage',
+        '@id': `${baseUrl}/about/#webpage`,
+        'url': `${baseUrl}/about`,
+        'name': 'About Malack Bwana & Goldfish Marketing | Diani Beach, Kenya',
+        'description': 'Meet Malack Bwana, founder of Goldfish Marketing — Diani Beach\'s premier digital marketing, web engineering, SEO, and AI automation consultancy for growing Kenyan SMEs.',
+        'isPartOf': {
+          '@id': `${baseUrl}/#website`
+        },
+        'about': [
+          { '@id': `${baseUrl}/#organization` },
+          { '@id': `${baseUrl}/about/#founder` }
+        ],
+        'breadcrumb': {
+          '@id': `${baseUrl}/about/#breadcrumb`
+        },
+        'inLanguage': 'en-KE'
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${baseUrl}/about/#breadcrumb`,
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': baseUrl
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'About',
+            'item': `${baseUrl}/about`
+          }
+        ]
+      },
+      {
+        '@type': 'Person',
+        '@id': `${baseUrl}/about/#founder`,
+        'name': 'Malack Bwana',
+        'jobTitle': 'Founder & Principal Systems Architect',
+        'worksFor': {
+          '@id': `${baseUrl}/#organization`
+        },
+        'url': `${baseUrl}/about`,
+        'telephone': '+254711404755',
+        'sameAs': [
+          'https://www.linkedin.com/in/malack-bwana',
+          'https://github.com/malackbwanapro-web'
+        ],
+        'knowsAbout': [
+          'AI Automation for SMEs',
+          'Full-Stack Web Engineering',
+          'Conversion Rate Optimization',
+          'Generative Engine Optimization (GEO)',
+          'KDPA 2019 & GDPR Compliance',
+          'Hospitality Booking Engine Architecture'
+        ]
+      }
+    ]
+  };
+
   return (
     <main className="w-full flex flex-col min-h-screen">
+      {/* JSON-LD Schema for E-E-A-T and Knowledge Graph */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
+
       {/* ═══ HERO SECTION ═══ */}
       <section className="relative overflow-hidden py-24 px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
         <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-[var(--accent-gold)]/8 rounded-full filter blur-[120px] pointer-events-none" />
         
         <div className="max-w-5xl mx-auto relative z-10">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[12px] font-mono text-[var(--text-muted)] mb-4">
+            <Link href="/" className="hover:text-[var(--accent-gold)] transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-[var(--accent-gold)] font-bold">About</span>
+          </nav>
+
           <div className="flex items-center gap-2 mb-4">
             <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-gold)]" />
             <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-[var(--accent-gold)]">
@@ -113,12 +220,12 @@ export default function AboutPage() {
           </div>
 
           <h1 className="text-h1 font-black tracking-tight leading-tight mb-6">
-            Engineered in Diani.<br />
-            <span className="text-[var(--accent-gold)]">Dedicated to Kenyan SMEs.</span>
+            Digital Growth &amp; AI Systems.<br />
+            <span className="text-[var(--accent-gold)]">Engineered in Diani for Kenyan SMEs.</span>
           </h1>
 
           <p className="text-body-lg text-[var(--text-muted)] max-w-2xl leading-relaxed font-light mb-8">
-            Goldfish Marketing is a creative digital marketing agency and AI systems consultancy headquartered in Diani Beach, Kenya. We engineer high-speed direct booking engines, local search visibility, and 24/7 WhatsApp automations for ambitious businesses across East Africa.
+            Goldfish Marketing is a digital marketing agency and AI systems consultancy headquartered in <Link href="/diani" className="underline hover:text-[var(--accent-gold)] transition-colors">Diani Beach, Kenya</Link>. We engineer high-speed <Link href="/services/smart-web-app-ecosystems" className="underline hover:text-[var(--accent-gold)] transition-colors">direct booking engines</Link>, <Link href="/services/advanced-visibility-engineering" className="underline hover:text-[var(--accent-gold)] transition-colors">local search visibility (SEO/GEO)</Link>, and 24/7 <Link href="/services/ai-automation-sme" className="underline hover:text-[var(--accent-gold)] transition-colors">WhatsApp automations</Link> for ambitious businesses across <Link href="/kenya" className="underline hover:text-[var(--accent-gold)] transition-colors">Kenya</Link> and East Africa.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -149,7 +256,7 @@ export default function AboutPage() {
                   Malack Bwana
                 </span>
                 <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider">
-                  Lead Systems Architect
+                  Principal Systems Architect
                 </span>
               </div>
               <div className="absolute -bottom-3 -right-3 px-3 py-1 rounded-full bg-[var(--bg-primary)] border border-[var(--accent-gold)] text-[10px] font-mono text-[var(--accent-gold)] font-bold shadow-md">
@@ -159,12 +266,21 @@ export default function AboutPage() {
 
             <div className="space-y-1 mb-6">
               <h2 className="text-2xl font-black text-[var(--text-core)]">Malack Bwana</h2>
-              <p className="text-xs text-[var(--accent-gold)] font-mono uppercase tracking-wider">
-                Founder & Technical Growth Director
+              <p className="text-xs text-[var(--accent-gold)] font-mono uppercase tracking-wider font-bold">
+                Founder &amp; Principal Systems Architect
               </p>
               <p className="text-xs text-[var(--text-muted)] font-light">
                 Direct Engineering Lead • Diani Beach, Kenya
               </p>
+              <a
+                href="https://www.linkedin.com/in/malack-bwana"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] font-mono text-[var(--accent-gold)] hover:underline inline-flex items-center gap-1 mt-1 font-bold"
+              >
+                <span>LinkedIn Verified Profile</span>
+                <span>↗</span>
+              </a>
             </div>
 
             <div className="w-full space-y-3">
@@ -174,11 +290,10 @@ export default function AboutPage() {
                 rel="noopener noreferrer"
                 className="btn-primary text-xs py-3 px-6 w-full text-center flex items-center justify-center gap-2 shadow-sm"
               >
-                <span>💬</span>
-                <span>WhatsApp Malack Directly (+254 711 404 755)</span>
+                <span>Direct Executive Advisory Line (WhatsApp)</span>
               </a>
               <span className="text-[10px] font-mono text-[var(--text-muted)] text-center block">
-                Direct founder line • No call center queues
+                Strict 24h Response SLA • Direct founder communication
               </span>
             </div>
           </div>
@@ -188,9 +303,9 @@ export default function AboutPage() {
             <span className="text-eyebrow text-xs block font-mono text-[var(--accent-gold)]">
               THE GOLDFISH THESIS
             </span>
-            <h3 className="text-2xl lg:text-3xl font-black text-[var(--text-core)] tracking-tight">
+            <blockquote className="text-2xl lg:text-3xl font-black text-[var(--text-core)] tracking-tight border-l-2 border-[var(--accent-gold)] pl-4 italic">
               &ldquo;Kenyan SMEs deserve software that prints profit, not pretty digital paperweights.&rdquo;
-            </h3>
+            </blockquote>
             <p>
               I founded Goldfish Marketing because I watched brilliant Kenyan entrepreneurs — boutique hotel owners, doctors, lawyers, logistics operators, and retail founders — suffer from the exact same digital dilemma:
             </p>
@@ -400,6 +515,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* ═══ CLIENT EVIDENCE & SOCIAL PROOF ═══ */}
+      <TestimonialsSection />
 
       <FooterCloser />
     </main>

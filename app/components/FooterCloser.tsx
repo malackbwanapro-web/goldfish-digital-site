@@ -12,7 +12,7 @@ interface FooterCloserProps {
 export default function FooterCloser({
   closerTitle = "Stop Leaking Revenue to Outdated Systems & High OTA Fees.",
   closerText = "Whether you manage a boutique coastal resort, a growing SME, or a regional real estate firm, we'll diagnose your bottlenecks and map a custom growth architecture in an actionable audit.",
-  primaryBtnText = "Request a Free Growth Audit",
+  primaryBtnText = "Request a Commercial Growth Audit",
   primaryBtnHref = "/contact",
   secondaryBtnText = "View Our Services",
   secondaryBtnHref = "/services"
@@ -72,7 +72,7 @@ export default function FooterCloser({
                 href="https://www.facebook.com/goldfishmarketingKE"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Goldfish Digital on Facebook"
+                aria-label="Goldfish Marketing on Facebook"
                 className="w-9 h-9 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-all duration-200"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -84,7 +84,7 @@ export default function FooterCloser({
                 href="https://www.instagram.com/goldfishmarketingke/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Goldfish Digital on Instagram"
+                aria-label="Goldfish Marketing on Instagram"
                 className="w-9 h-9 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-all duration-200"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -98,7 +98,7 @@ export default function FooterCloser({
                 href="https://www.tiktok.com/@goldfishmarketingke"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Goldfish Digital on TikTok"
+                aria-label="Goldfish Marketing on TikTok"
                 className="w-9 h-9 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-all duration-200"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -110,7 +110,7 @@ export default function FooterCloser({
 
           {/* Quick Links */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">Navigation</h4>
+            <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">Navigation</h3>
             <ul className="flex flex-col gap-2.5 list-none p-0 m-0">
               <li>
                 <Link href="/" className="text-caption hover:text-[var(--accent-gold)] transition-colors duration-200 text-decoration-none">
@@ -147,7 +147,7 @@ export default function FooterCloser({
 
           {/* Service Slugs */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">Capabilities</h4>
+            <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">Capabilities</h3>
             <ul className="flex flex-col gap-2.5 list-none p-0 m-0">
               <li>
                 <Link href="/services/smart-web-app-ecosystems" className="text-caption hover:text-[var(--accent-gold)] transition-colors duration-200 text-decoration-none">
@@ -184,7 +184,7 @@ export default function FooterCloser({
 
           {/* Compliance Info */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">Compliance &amp; Legal</h4>
+            <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">Compliance &amp; Legal</h3>
             <div className="text-caption flex flex-col gap-2">
               <Link href="/privacy" className="hover:text-[var(--accent-gold)] transition-colors duration-200">
                 Privacy Policy (KDPA &amp; GDPR)
@@ -202,8 +202,8 @@ export default function FooterCloser({
             </div>
             <div className="text-caption flex flex-col gap-0.5 mt-2">
               <span className="font-semibold text-[var(--text-core)]">Direct Contact:</span>
-              <a href="mailto:goldfishprojex@gmail.com" className="text-[var(--accent-gold)] hover:underline">
-                goldfishprojex@gmail.com
+              <a href="mailto:info@goldfishmarketing.co.ke" className="text-[var(--accent-gold)] hover:underline">
+                info@goldfishmarketing.co.ke
               </a>
               <a href="tel:+254711404755" className="text-[var(--text-muted)] hover:text-[var(--accent-gold)]">
                 +254 711 404 755
