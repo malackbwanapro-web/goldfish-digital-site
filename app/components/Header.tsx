@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { SITE_CONFIG } from '@/lib/constants';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -234,10 +236,10 @@ export default function Header() {
             Diani Bazaar, Beach Rd, Diani, Kenya
           </p>
           <div className="flex items-center justify-center gap-4 text-xs font-mono">
-            <a href="tel:+254711404755" className="text-[var(--accent-gold)] hover:underline">
-              📞 +254 711 404 755
+            <a href={`tel:+${SITE_CONFIG.WHATSAPP_NUMBER}`} className="text-[var(--accent-gold)] hover:underline">
+              📞 {SITE_CONFIG.PHONE_DISPLAY}
             </a>
-            <a href="https://wa.me/254711404755" target="_blank" rel="noopener noreferrer" className="text-emerald-500 hover:underline">
+            <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="text-emerald-500 hover:underline">
               💬 WhatsApp
             </a>
           </div>

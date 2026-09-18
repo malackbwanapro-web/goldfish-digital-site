@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import FooterCloser from '../components/FooterCloser';
 import TestimonialsSection from '../components/TestimonialsSection';
+import { SITE_CONFIG } from '@/lib/constants';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
   title: {
@@ -176,7 +178,7 @@ export default function AboutPage() {
           '@id': `${baseUrl}/#organization`
         },
         'url': `${baseUrl}/about`,
-        'telephone': '+254711404755',
+        'telephone': `+${SITE_CONFIG.WHATSAPP_NUMBER}`,
         'sameAs': [
           'https://www.linkedin.com/in/malack-bwana',
           'https://github.com/malackbwanapro-web'
@@ -285,7 +287,7 @@ export default function AboutPage() {
 
             <div className="w-full space-y-3">
               <a
-                href="https://wa.me/254711404755?text=Hi%20Malack%2C%20I%20read%20your%20about%20page%20and%20I%27d%20like%20to%20discuss%20our%20business%20systems"
+                href={buildWhatsAppUrl("Hi Malack, I read your about page and I'd like to discuss our business systems")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary text-xs py-3 px-6 w-full text-center flex items-center justify-center gap-2 shadow-sm"

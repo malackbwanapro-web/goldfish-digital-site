@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import ContactClient from './ContactClient';
 import FooterCloser from '../components/FooterCloser';
+import { SITE_CONFIG } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: {
@@ -63,8 +65,8 @@ export default function ContactPage() {
         '@id': 'https://www.goldfishmarketing.co.ke/#localbusiness',
         name: 'Goldfish Marketing',
         url: 'https://www.goldfishmarketing.co.ke',
-        telephone: '+254711404755',
-        email: 'info@goldfishmarketing.co.ke',
+        telephone: `+${SITE_CONFIG.WHATSAPP_NUMBER}`,
+        email: SITE_CONFIG.OFFICIAL_INFO_EMAIL,
         address: {
           '@type': 'PostalAddress',
           streetAddress: 'Diani Beach Road, Diani Bazaar',
@@ -133,7 +135,15 @@ export default function ContactPage() {
 
       {/* ═══ SECTION 2: TRI-MODAL CONTACT HUB ═══ */}
       <section className="py-16 px-6 lg:px-10 bg-[var(--bg-primary)]">
-        <ContactClient />
+        <Suspense
+          fallback={
+            <div className="max-w-5xl mx-auto p-12 text-center text-xs font-mono text-[var(--text-muted)] card-brand">
+              Initializing Contact Hub...
+            </div>
+          }
+        >
+          <ContactClient />
+        </Suspense>
       </section>
 
       {/* ═══ SECTION 3: THE FIRST 24 HOURS TRANSPARENCY BLUEPRINT ═══ */}
@@ -210,9 +220,9 @@ export default function ContactPage() {
                 Goldfish Marketing operates out of Diani Beach, Kwale County, serving clients throughout the Kenyan Coast, Nairobi, and East Africa.
               </p>
               <div className="text-xs font-mono space-y-1.5 text-[var(--text-core)]">
-                <p>📍 <strong className="text-[var(--text-core)]">Address:</strong> Diani Beach Road, Diani Bazaar, Kwale County, Kenya (P.O. Box 80401)</p>
-                <p>📞 <strong className="text-[var(--text-core)]">Direct Line / WhatsApp:</strong> <a href="tel:+254711404755" className="text-[var(--accent-gold)] hover:underline">+254 711 404 755</a></p>
-                <p>✉️ <strong className="text-[var(--text-core)]">Official Inquiries:</strong> <a href="mailto:info@goldfishmarketing.co.ke" className="text-[var(--accent-gold)] hover:underline">info@goldfishmarketing.co.ke</a></p>
+                <p>📍 <strong className="text-[var(--text-core)]">Address:</strong> {SITE_CONFIG.HQ_ADDRESS}, {SITE_CONFIG.HQ_REGION}, {SITE_CONFIG.HQ_COUNTRY} (P.O. Box {SITE_CONFIG.HQ_POSTAL_CODE})</p>
+                <p>📞 <strong className="text-[var(--text-core)]">Direct Line / WhatsApp:</strong> <a href={`tel:+${SITE_CONFIG.WHATSAPP_NUMBER}`} className="text-[var(--accent-gold)] hover:underline">{SITE_CONFIG.PHONE_DISPLAY}</a></p>
+                <p>✉️ <strong className="text-[var(--text-core)]">Official Inquiries:</strong> <a href={`mailto:${SITE_CONFIG.OFFICIAL_INFO_EMAIL}`} className="text-[var(--accent-gold)] hover:underline">{SITE_CONFIG.OFFICIAL_INFO_EMAIL}</a></p>
               </div>
             </div>
           </div>

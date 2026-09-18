@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function MobileStickyBar() {
   const pathname = usePathname();
@@ -10,9 +11,7 @@ export default function MobileStickyBar() {
   // Hide on contact page to avoid overlap
   if (pathname === '/contact') return null;
 
-  const waNumber = '254711404755';
-  const defaultMsg = encodeURIComponent('Hello Goldfish Marketing! I am interested in a Smart Growth Audit for my business.');
-  const waUrl = `https://wa.me/${waNumber}?text=${defaultMsg}`;
+  const waUrl = buildWhatsAppUrl('Hello Goldfish Marketing! I am interested in a Smart Growth Audit for my business.');
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-[var(--bg-surface)]/95 backdrop-blur-md border-t border-[var(--border-subtle)] p-3 shadow-2xl transition-all duration-300">

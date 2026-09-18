@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SITE_CONFIG } from '@/lib/constants';
 
 interface FooterCloserProps {
   closerTitle?: string;
@@ -202,11 +203,11 @@ export default function FooterCloser({
             </div>
             <div className="text-caption flex flex-col gap-0.5 mt-2">
               <span className="font-semibold text-[var(--text-core)]">Direct Contact:</span>
-              <a href="mailto:info@goldfishmarketing.co.ke" className="text-[var(--accent-gold)] hover:underline">
-                info@goldfishmarketing.co.ke
+              <a href={`mailto:${SITE_CONFIG.OFFICIAL_INFO_EMAIL}`} className="text-[var(--accent-gold)] hover:underline">
+                {SITE_CONFIG.OFFICIAL_INFO_EMAIL}
               </a>
-              <a href="tel:+254711404755" className="text-[var(--text-muted)] hover:text-[var(--accent-gold)]">
-                +254 711 404 755
+              <a href={`tel:+${SITE_CONFIG.WHATSAPP_NUMBER}`} className="text-[var(--text-muted)] hover:text-[var(--accent-gold)]">
+                {SITE_CONFIG.PHONE_DISPLAY}
               </a>
             </div>
           </div>

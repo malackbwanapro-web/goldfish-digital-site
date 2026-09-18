@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function WhatsAppFloat() {
   const [visible, setVisible] = useState(false);
@@ -10,10 +11,9 @@ export default function WhatsAppFloat() {
     return () => clearTimeout(timer);
   }, []);
 
-
-  const waNumber = '254711404755';
-  const msg = encodeURIComponent("Hi Goldfish Marketing! I came across your website and I'd like to learn more about your services.");
-  const waUrl = `https://wa.me/${waNumber}?text=${msg}`;
+  const waUrl = buildWhatsAppUrl(
+    "Hi Goldfish Marketing! I came across your website and I'd like to learn more about your services."
+  );
 
   return (
     <a

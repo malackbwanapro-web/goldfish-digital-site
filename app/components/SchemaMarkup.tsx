@@ -1,4 +1,5 @@
 import React from 'react';
+import { SITE_CONFIG } from '@/lib/constants';
 
 export default function SchemaMarkup() {
   const schemaData = {
@@ -6,30 +7,30 @@ export default function SchemaMarkup() {
     '@graph': [
       {
         '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
-        '@id': 'https://www.goldfishmarketing.co.ke/#organization',
-        'name': 'Goldfish Marketing',
+        '@id': `${SITE_CONFIG.SITE_URL}/#organization`,
+        'name': SITE_CONFIG.BRAND_NAME,
         'alternateName': ['Goldfish Digital', 'Goldfish Marketing Agency Kenya'],
-        'url': 'https://www.goldfishmarketing.co.ke',
-        'logo': 'https://www.goldfishmarketing.co.ke/logo-light.svg',
-        'image': 'https://www.goldfishmarketing.co.ke/og-image.png',
+        'url': SITE_CONFIG.SITE_URL,
+        'logo': `${SITE_CONFIG.SITE_URL}/logo-light.svg`,
+        'image': `${SITE_CONFIG.SITE_URL}/og-image.png`,
         'description': 'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
-        'telephone': '+254711404755',
-        'email': 'info@goldfishmarketing.co.ke',
+        'telephone': `+${SITE_CONFIG.WHATSAPP_NUMBER}`,
+        'email': SITE_CONFIG.OFFICIAL_INFO_EMAIL,
         'priceRange': '$$$',
         'currenciesAccepted': 'KES, USD, EUR, GBP',
         'paymentAccepted': 'Cash, Credit Card, M-Pesa, Bank Transfer',
         'address': {
           '@type': 'PostalAddress',
-          'streetAddress': 'Diani Bazaar, Beach Rd',
-          'addressLocality': 'Diani',
-          'addressRegion': 'Kwale County',
-          'postalCode': '80401',
+          'streetAddress': SITE_CONFIG.HQ_ADDRESS,
+          'addressLocality': SITE_CONFIG.HQ_CITY,
+          'addressRegion': SITE_CONFIG.HQ_REGION,
+          'postalCode': SITE_CONFIG.HQ_POSTAL_CODE,
           'addressCountry': 'KE'
         },
         'geo': {
           '@type': 'GeoCoordinates',
-          'latitude': -4.2796,
-          'longitude': 39.5947
+          'latitude': SITE_CONFIG.GEO_COORDINATES.latitude,
+          'longitude': SITE_CONFIG.GEO_COORDINATES.longitude
         },
         'areaServed': [
           { '@type': 'AdministrativeArea', 'name': 'Coast Province, Kenya' },

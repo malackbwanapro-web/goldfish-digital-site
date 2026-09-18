@@ -58,6 +58,7 @@ export async function POST(req: NextRequest) {
       selectedDay = '',
       painPoints = [],
       message = '',
+      serviceInterest = '',
     } = body;
 
     if (!name || (!email && !phone)) {
@@ -103,6 +104,17 @@ export async function POST(req: NextRequest) {
     const resendApiKey = process.env.RESEND_API_KEY;
     if (resendApiKey) {
       try {
+        let emailSubject = `⚡ NEW LEAD RECEIVED [${requestId}]: ${name} (${intent})`;
+        if (intent === 'whatsapp_quick_chat_draft') {
+          emailSubject = `⚡ [DRAFT CAPTURE] WhatsApp Lead [${requestId}]: ${name} (${phone}) - ${serviceInterest || 'General'}`;
+        } else if (intent === 'whatsapp_quick_chat') {
+          emailSubject = `⚡ NEW WHATSAPP LEAD [${requestId}]: ${name} (${phone}) - ${serviceInterest || 'General'}`;
+        } else if (intent === 'strategy_call') {
+          emailSubject = `📅 STRATEGY CALL REQUEST [${requestId}]: ${name} (${phone}) - ${selectedDay}`;
+        } else if (intent === 'diagnostic') {
+          emailSubject = `🛡️ 24H DIAGNOSTIC REQUEST [${requestId}]: ${name} (${companyName || phone})`;
+        }
+
         await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
@@ -112,22 +124,24 @@ export async function POST(req: NextRequest) {
           body: JSON.stringify({
             from: 'Goldfish Marketing Leads <leads@goldfishmarketing.co.ke>',
             to: ['goldfishprojex@gmail.com'],
-            subject: `⚡ NEW LEAD RECEIVED [${requestId}]: ${name} (${intent})`,
+            subject: emailSubject,
             html: `
               <h2>NEW GOLDFISH MARKETING LEAD RECORDED</h2>
               <p><strong>Reference ID:</strong> ${requestId}</p>
               <p><strong>Timestamp:</strong> ${timestamp}</p>
+              <p><strong>Status:</strong> ${intent === 'whatsapp_quick_chat_draft' ? 'Draft Auto-Captured (User typed >50 chars or prefill)' : 'Submitted / WhatsApp Launched'}</p>
               <p><strong>Intent:</strong> ${intent}</p>
+              ${serviceInterest ? `<p><strong>Service / Focus:</strong> ${serviceInterest}</p>` : ''}
               <hr />
               <p><strong>Name:</strong> ${name}</p>
               <p><strong>Phone:</strong> ${phone}</p>
-              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Email:</strong> ${email || 'N/A (WhatsApp Direct)'}</p>
               <p><strong>Company:</strong> ${companyName || 'N/A'}</p>
               <p><strong>Website:</strong> ${website || 'N/A'}</p>
               <p><strong>Requested Date/Slot:</strong> ${selectedDay} ${selectedTimeSlot}</p>
               <p><strong>Budget/Spend:</strong> ${budget || spend || 'N/A'}</p>
               <p><strong>Pain Points:</strong> ${painPoints.join(', ') || 'N/A'}</p>
-              <p><strong>Notes:</strong> ${message || 'N/A'}</p>
+              <p><strong>Message / Requirement:</strong><br />${message || 'N/A'}</p>
             `,
           }),
         });

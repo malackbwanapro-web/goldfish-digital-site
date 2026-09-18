@@ -4,6 +4,7 @@ import FooterCloser from '../components/FooterCloser';
 import CapabilityVisual from '../components/CapabilityVisual';
 import ServiceRecommender from './components/ServiceRecommender';
 import { servicesData } from './data/servicesData';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
   title: {
@@ -323,9 +324,23 @@ export default function ServicesHub() {
                   <li>✓ GA4 Server-Side Analytics &amp; Conversion Tracking</li>
                 </ul>
               </div>
-              <Link href="/contact" className="btn-outline w-full text-center text-xs py-3">
-                Select Foundation Sprint →
-              </Link>
+              <div className="flex flex-col gap-2.5">
+                <Link
+                  href="/contact?tier=tier-01&topic=Tier%2001%3A%20Foundation%20Sprint"
+                  className="btn-outline w-full text-center text-xs py-3"
+                >
+                  Select Foundation Sprint →
+                </Link>
+                <a
+                  href={buildWhatsAppUrl("Hi Malack, I'm interested in Tier 01: Foundation Sprint (Fixed Scope, 14–21 Day Turnaround). I'd like to discuss our project scope.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center text-[11px] font-mono text-emerald-500 hover:underline flex items-center justify-center gap-1.5"
+                >
+                  <span>💬</span>
+                  <span>Or 1-Tap WhatsApp Directly</span>
+                </a>
+              </div>
             </div>
 
             {/* TIER 2: GROWTH ENGINE (THE CORE RETAINER) */}
@@ -348,9 +363,23 @@ export default function ServicesHub() {
                   <li>✓ Direct WhatsApp &amp; Slack Channel to Senior Team</li>
                 </ul>
               </div>
-              <Link href="/contact" className="btn-primary w-full text-center text-xs py-3 shadow-md">
-                Deploy Growth Engine →
-              </Link>
+              <div className="flex flex-col gap-2.5">
+                <Link
+                  href="/contact?tier=tier-02&topic=Tier%2002%3A%20Growth%20Engine%20Retainer"
+                  className="btn-primary w-full text-center text-xs py-3 shadow-md"
+                >
+                  Deploy Growth Engine →
+                </Link>
+                <a
+                  href={buildWhatsAppUrl("Hi Malack, I'm interested in deploying Tier 02: Growth Engine Retainer (Ongoing Monthly Growth). I'd like to discuss our continuous GEO, paid ads, and automation scope.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center text-[11px] font-mono text-emerald-400 hover:underline flex items-center justify-center gap-1.5"
+                >
+                  <span>💬</span>
+                  <span>Or 1-Tap WhatsApp Directly</span>
+                </a>
+              </div>
             </div>
 
             {/* TIER 3: ECOSYSTEM DOMINANCE */}
@@ -370,9 +399,23 @@ export default function ServicesHub() {
                   <li>✓ Priority SLA: 4-Hour Critical Response Time Guarantee</li>
                 </ul>
               </div>
-              <Link href="/contact" className="btn-outline w-full text-center text-xs py-3">
-                Explore Dominance Partnership →
-              </Link>
+              <div className="flex flex-col gap-2.5">
+                <Link
+                  href="/contact?tier=tier-03&topic=Tier%2003%3A%20Ecosystem%20Dominance"
+                  className="btn-outline w-full text-center text-xs py-3"
+                >
+                  Explore Dominance Partnership →
+                </Link>
+                <a
+                  href={buildWhatsAppUrl("Hi Malack, I'm interested in Tier 03: Ecosystem Dominance Partnership (Dedicated Digital Department). I'd like to discuss our full platform rebuild and AI operations.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-center text-[11px] font-mono text-emerald-500 hover:underline flex items-center justify-center gap-1.5"
+                >
+                  <span>💬</span>
+                  <span>Or 1-Tap WhatsApp Directly</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -426,7 +469,7 @@ export default function ServicesHub() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
             <a
-              href="https://wa.me/254711404755?text=Hi%20Goldfish!%20I'd%20like%20to%20discuss%20our%20growth%20requirements."
+              href={buildWhatsAppUrl("Hi Goldfish! I'd like to discuss our growth requirements.")}
               target="_blank"
               rel="noopener noreferrer"
               className="p-6 rounded-2xl border border-emerald-500/40 bg-[var(--bg-primary)]/40 hover:bg-emerald-500/10 transition-all flex flex-col items-center justify-center text-center group"

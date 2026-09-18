@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import FooterCloser from '../components/FooterCloser';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
   title: 'Digital Marketing & Web Design Agency Mombasa | Goldfish Marketing',
@@ -33,7 +34,7 @@ export default function MombasaPage() {
               Request a Free Performance Audit
             </Link>
             <a
-              href="https://wa.me/254711404755?text=Hi%20Goldfish%20Marketing%2C%20I%20am%20a%20business%20owner%20in%20Mombasa"
+              href={buildWhatsAppUrl("Hi Goldfish Marketing, I am a business owner in Mombasa")}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline w-full sm:w-auto"

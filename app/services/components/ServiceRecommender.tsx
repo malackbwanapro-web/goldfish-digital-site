@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 interface GrowthVector {
   pillarTitle: string;
@@ -14,27 +15,32 @@ interface GrowthVector {
 export default function ServiceRecommender() {
   const [industry, setIndustry] = useState<'hospitality' | 'realestate' | 'sme' | 'corporate'>('hospitality');
   const [hurdle, setHurdle] = useState<string>('bookings');
+  const [customRequirement, setCustomRequirement] = useState<string>('');
 
   const industryHurdles: Record<string, { id: string; label: string }[]> = {
     hospitality: [
       { id: 'bookings', label: 'High OTA Commissions & Low Direct Bookings' },
       { id: 'speed', label: 'Slow Mobile Website on Safaricom 4G Networks' },
       { id: 'inquiries', label: 'Missing After-Hours International Inquiries' },
+      { id: 'custom', label: '✍️ Custom / Unique Challenge...' },
     ],
     realestate: [
       { id: 'leads', label: 'Poor Quality Leads from Meta/Google Ads' },
       { id: 'followup', label: 'Slow WhatsApp Follow-up & Manual CRM Intake' },
       { id: 'trust', label: 'Lack of Brand Authority for High-Ticket Buyers' },
+      { id: 'custom', label: '✍️ Custom / Unique Challenge...' },
     ],
     sme: [
       { id: 'manual', label: 'Drowning in Repetitive WhatsApp Messages & Orders' },
       { id: 'visibility', label: 'Invisible on Google & AI Search (ChatGPT/Perplexity)' },
       { id: 'conversion', label: 'Website Traffic Arrives but Never Converts' },
+      { id: 'custom', label: '✍️ Custom / Unique Challenge...' },
     ],
     corporate: [
       { id: 'compliance', label: 'Kenya DPA 2019 / Data Privacy Compliance Needed' },
       { id: 'authority', label: 'Outdated Corporate Identity Hurting Board Pitches' },
       { id: 'workflows', label: 'Fragmented Internal Software & Admin Workflows' },
+      { id: 'custom', label: '✍️ Custom / Unique Challenge...' },
     ],
   };
 
@@ -173,8 +179,37 @@ export default function ServiceRecommender() {
     },
   };
 
+  const customRecommendation: GrowthVector = {
+    pillarTitle: 'Bespoke Multi-Disciplinary Systems Sprint',
+    pillarSlug: 'smart-web-app-ecosystems',
+    expectedTimeline: '14–30 Day Tailored Sprint',
+    coreDeliverables: [
+      'Forensic tech stack audit & workflow bottleneck extraction',
+      'Custom architecture blueprint & zero-bloat system design',
+      'Direct founder strategy & scoping session with Malack Bwana',
+    ],
+    rationale: customRequirement.trim()
+      ? `Tailored to your specific challenge: "${customRequirement.trim().slice(0, 110)}${customRequirement.trim().length > 110 ? '...' : ''}"`
+      : 'Custom operational bottlenecks require precision engineering without bloated third-party plugin dependencies.',
+  };
+
   const key = `${industry}-${hurdle}`;
-  const activeRecommendation = recommendations[key] || recommendations['sme-manual'];
+  const activeRecommendation = hurdle === 'custom'
+    ? customRecommendation
+    : (recommendations[key] || recommendations['sme-manual']);
+
+  const industryLabels: Record<string, string> = {
+    hospitality: 'Boutique Hospitality',
+    realestate: 'Prime Real Estate',
+    sme: 'Growing SME / Retail',
+    corporate: 'Corporate & Legal',
+  };
+
+  const selectedHurdleLabel = industryHurdles[industry]?.find((h) => h.id === hurdle)?.label || hurdle;
+
+  const waPrefillMessage = hurdle === 'custom'
+    ? `Hi Malack! I ran your diagnostic for ${industryLabels[industry]}. I have a custom requirement: "${customRequirement.trim() || 'Custom operational challenge'}". I'd like to discuss this bespoke project.`
+    : `Hi Goldfish! I ran your diagnostic for ${industryLabels[industry]} regarding "${selectedHurdleLabel}". I'd like to discuss this growth vector.`;
 
   return (
     <div className="w-full max-w-5xl mx-auto my-12 p-6 lg:p-10 rounded-3xl bg-[var(--bg-surface)] border border-[var(--border-accent)]/40 shadow-2xl relative overflow-hidden">
@@ -231,7 +266,7 @@ export default function ServiceRecommender() {
         <label className="text-[11px] font-mono uppercase tracking-wider text-[var(--text-core)] font-bold block mb-2">
           Step 2: Primary Operational Hurdle
         </label>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
           {industryHurdles[industry]?.map((item) => (
             <button
               key={item.id}
@@ -248,6 +283,38 @@ export default function ServiceRecommender() {
             </button>
           ))}
         </div>
+
+        {/* Step 2 Custom Input CTA Area */}
+        {hurdle === 'custom' && (
+          <div className="mt-4 p-5 rounded-2xl bg-[var(--bg-primary)]/90 border border-[var(--accent-gold)]/50 shadow-inner">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <label className="text-xs font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold">
+                Tell Us What You&apos;d Like to Discuss:
+              </label>
+              <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                Bespoke Systems Scoping
+              </span>
+            </div>
+            <textarea
+              rows={3}
+              value={customRequirement}
+              onChange={(e) => setCustomRequirement(e.target.value)}
+              placeholder={
+                industry === 'hospitality'
+                  ? "e.g. We have 10 luxury safari cottages in Tsavo and need a direct booking engine linked to our PMS with M-Pesa STK push and a multi-agent WhatsApp concierge..."
+                  : industry === 'realestate'
+                  ? "e.g. We are marketing beachfront villas in Diani and need an automated WhatsApp lead qualification bot with high-net-worth investor deck tracking..."
+                  : industry === 'sme'
+                  ? "e.g. We receive 200 orders weekly on Instagram/WhatsApp and need automated inventory sync, M-Pesa till payment validation, and delivery dispatch alerts..."
+                  : "e.g. We need a Kenya DPA 2019-compliant client portal, automated billing intake, and executive board reporting dashboards..."
+              }
+              className="w-full p-3.5 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:border-[var(--accent-gold)] leading-relaxed"
+            />
+            <p className="text-[10px] font-mono text-[var(--text-muted)] mt-2">
+              💡 Your custom details will automatically pre-fill into WhatsApp and our Contact Desk below.
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Step 3: Recommendation Card */}
@@ -291,14 +358,20 @@ export default function ServiceRecommender() {
           >
             Explore Detailed Capability Specs →
           </Link>
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+            <Link
+              href={`/contact?topic=${encodeURIComponent(`Custom Scope (${industryLabels[industry]})`)}&message=${encodeURIComponent(customRequirement.trim() || `Hi Malack, I ran the Growth Vector tool for ${industryLabels[industry]} regarding ${selectedHurdleLabel} and would like to discuss a custom scope.`)}`}
+              className="btn-outline text-xs py-2.5 px-4 w-full sm:w-auto text-center"
+            >
+              Submit via Contact Desk →
+            </Link>
             <a
-              href={`https://wa.me/254711404755?text=${encodeURIComponent(`Hi Goldfish! I ran your diagnostic for ${industry} regarding "${hurdle}". I'd like to discuss this growth vector.`)}`}
+              href={buildWhatsAppUrl(waPrefillMessage)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-xs py-2.5 px-5 w-full sm:w-auto text-center"
             >
-              Discuss This Vector on WhatsApp →
+              Discuss on WhatsApp →
             </a>
           </div>
         </div>
