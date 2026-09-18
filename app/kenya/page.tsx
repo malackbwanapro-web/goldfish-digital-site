@@ -3,7 +3,7 @@ import Link from 'next/link';
 import FooterCloser from '../components/FooterCloser';
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing & AI Automation Agency Kenya | Goldfish Marketing',
+  title: 'Digital Marketing & AI Automation Agency Kenya',
   description:
     'Premier digital agency in Kenya offering custom web development, SEO, paid ads management, and AI automation for SMEs and growing brands across Kenya.',
   alternates: { canonical: 'https://www.goldfishmarketing.co.ke/kenya' },

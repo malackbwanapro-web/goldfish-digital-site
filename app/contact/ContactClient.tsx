@@ -2,12 +2,12 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { bookingOptions, validBooking } from '@/lib/booking';
 import { SITE_CONFIG } from '@/lib/constants';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import {
   isValidContactName,
   isValidPhoneNumber,
-  hasMinimumDraftLength,
 } from '@/lib/validators';
 import {
   formatWhatsAppDirectMessage,
@@ -62,10 +62,7 @@ export default function ContactClient() {
   const [waCustomMsg, setWaCustomMsg] = useState(
     "Hi Malack, I run a business in Kenya and would like to discuss upgrading our direct booking engine to cut OTA commissions."
   );
-  const [isPrefilled, setIsPrefilled] = useState(true);
 
-  const lastDispatchedKeyRef = useRef<string>('');
-  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Pre-hydrate from URL query params
   useEffect(() => {
@@ -77,19 +74,16 @@ export default function ContactClient() {
       const chip = waPromptChips[0];
       setWaTopic(chip.label);
       setWaCustomMsg(chip.text);
-      setIsPrefilled(true);
       setCalTopic('High-Speed Web Replatforming');
     } else if (tier === 'tier-02') {
       const chip = waPromptChips[1];
       setWaTopic(chip.label);
       setWaCustomMsg(chip.text);
-      setIsPrefilled(true);
       setCalTopic('General Digital Strategy');
     } else if (tier === 'tier-03') {
       const chip = waPromptChips[2];
       setWaTopic(chip.label);
       setWaCustomMsg(chip.text);
-      setIsPrefilled(true);
       setCalTopic('WhatsApp AI Automation');
     }
 
@@ -98,74 +92,56 @@ export default function ContactClient() {
     }
     if (msg) {
       setWaCustomMsg(msg);
-      setIsPrefilled(true);
     }
   }, [searchParams]);
 
   const handleChipSelect = (chip: { label: string; text: string }) => {
     setWaTopic(chip.label);
     setWaCustomMsg(chip.text);
-    setIsPrefilled(true);
   };
 
   const [lastRequestId, setLastRequestId] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Background Lead Dispatch Helper
-  const sendLeadToBackend = async (payload: any) => {
+  const [submissionError, setSubmissionError] = useState('');
+  const [whatsappUrl, setWhatsappUrl] = useState('');
+  const feedbackRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (submissionError || whatsappUrl) {
+      feedbackRef.current?.focus();
+      feedbackRef.current?.scrollIntoView({ block: 'center' });
+    }
+  }, [submissionError, whatsappUrl]);
+  const submittingRef = useRef(false);
+  const requestKeyRef = useRef({ payload: '', key: '' });
+  const sendLeadToBackend = async (payload: Record<string, unknown>) => {
+    if (submittingRef.current) return null;
+    submittingRef.current = true;
     setIsSubmitting(true);
+    setSubmissionError('');
+    setWhatsappUrl('');
+    setLastRequestId('');
+    const serialized = JSON.stringify(payload);
+    if (requestKeyRef.current.payload !== serialized) {
+      requestKeyRef.current = { payload: serialized, key: crypto.randomUUID() };
+    }
     try {
       const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Idempotency-Key': requestKeyRef.current.key },
+        body: serialized, signal: AbortSignal.timeout(15000),
       });
       const data = await res.json();
-      if (data.requestId) {
-        setLastRequestId(data.requestId);
-        return data.requestId;
-      }
-    } catch (err) {
-      console.warn('Background lead capture API notice:', err);
+      if (!res.ok || data.status !== 'notification_accepted' || typeof data.requestId !== 'string') throw new Error('Capture failed');
+      setLastRequestId(data.requestId);
+      return data.requestId as string;
+    } catch {
+      setSubmissionError('We could not confirm your email request. Your details are still here. Retry, or use the WhatsApp link below and press Send there.');
+      return null;
     } finally {
+      submittingRef.current = false;
       setIsSubmitting(false);
     }
-    return null;
   };
-
-  // Smart Background Lead Auto-Save Trigger (Clean Code: Guard Clauses & Predicates)
-  useEffect(() => {
-    const cleanName = waName.trim();
-    const cleanPhone = waPhone.trim();
-    const cleanMsg = waCustomMsg.trim();
-
-    if (!isValidContactName(cleanName) || !isValidPhoneNumber(cleanPhone)) {
-      return;
-    }
-
-    const shouldCapture = isPrefilled ? cleanMsg.length > 10 : hasMinimumDraftLength(cleanMsg, 50);
-
-    if (shouldCapture) {
-      const dispatchKey = `${cleanName}|${cleanPhone}|${waTopic}|${cleanMsg.slice(0, 50)}`;
-      if (lastDispatchedKeyRef.current !== dispatchKey) {
-        if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
-        debounceTimerRef.current = setTimeout(() => {
-          lastDispatchedKeyRef.current = dispatchKey;
-          sendLeadToBackend({
-            intent: 'whatsapp_quick_chat_draft',
-            name: cleanName,
-            phone: cleanPhone,
-            serviceInterest: waTopic,
-            message: cleanMsg,
-          });
-        }, 1500);
-      }
-    }
-
-    return () => {
-      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
-    };
-  }, [waName, waPhone, waTopic, waCustomMsg, isPrefilled]);
 
   const handleOpenWhatsApp = async () => {
     const cleanName = waName.trim();
@@ -177,7 +153,7 @@ export default function ContactClient() {
     }
     setWaNameError(false);
 
-    await sendLeadToBackend({
+    const reqId = await sendLeadToBackend({
       intent: 'whatsapp_quick_chat',
       name: cleanName,
       phone: cleanPhone,
@@ -193,7 +169,7 @@ export default function ContactClient() {
     });
 
     const targetUrl = buildWhatsAppUrl(formattedMessage);
-    window.open(targetUrl, '_blank');
+    setWhatsappUrl(targetUrl);
   };
 
   // ── TAB 2: 15-MIN STRATEGY SLOT STATE ──
@@ -201,44 +177,25 @@ export default function ContactClient() {
   const [calPhone, setCalPhone] = useState('');
   const [calEmail, setCalEmail] = useState('');
   const [calTopic, setCalTopic] = useState('General Digital Strategy');
-  const [selectedDay, setSelectedDay] = useState('Today');
-  const [selectedTime, setSelectedTime] = useState<string | null>('10:00 AM - 10:15 AM');
+  const [selectedDay, setSelectedDay] = useState('');
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [bookedSlot, setBookedSlot] = useState(false);
 
-  const now = new Date();
-  const dateOptions = [
-    {
-      id: 'today',
-      label: 'Today',
-      sub: now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
-      badge: '⚡ Fastest',
-    },
-    {
-      id: 'tomorrow',
-      label: 'Tomorrow',
-      sub: new Date(now.getTime() + 86400000).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
-      badge: '⭐ Recommended',
-    },
-    {
-      id: 'day-after',
-      label: new Date(now.getTime() + 172800000).toLocaleDateString('en-US', { weekday: 'short', day: 'numeric' }),
-      sub: new Date(now.getTime() + 172800000).toLocaleDateString('en-US', { month: 'short' }),
-      badge: '📅 Upcoming',
-    },
-  ];
-
-  const timeSlots = [
-    '09:00 AM - 09:15 AM',
-    '10:00 AM - 10:15 AM',
-    '11:30 AM - 11:45 AM',
-    '02:00 PM - 02:15 PM',
-    '03:30 PM - 03:45 PM',
-    '04:45 PM - 05:00 PM',
-  ];
+  const [dateOptions, setDateOptions] = useState<ReturnType<typeof bookingOptions>>([]);
+  useEffect(() => {
+    const refresh = () => setDateOptions(bookingOptions());
+    refresh();
+    const timer = setInterval(refresh, 60000);
+    return () => clearInterval(timer);
+  }, []);
+  const timeSlots = dateOptions.find(option => option.id === selectedDay)?.slots || [];
 
   const handleSlotBooking = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!calName || !calPhone || !calEmail || !selectedTime) return;
+    if (!calName || !calPhone || !calEmail || !selectedTime || !validBooking(selectedDay, selectedTime)) {
+      setSubmissionError('Please choose a future preferred day and time during business hours.');
+      return;
+    }
 
     const reqId = await sendLeadToBackend({
       intent: 'strategy_call',
@@ -261,8 +218,8 @@ export default function ContactClient() {
     });
 
     const targetUrl = buildWhatsAppUrl(formattedMessage);
-    window.open(targetUrl, '_blank');
-    setBookedSlot(true);
+    setWhatsappUrl(targetUrl);
+    if (reqId) setBookedSlot(true);
   };
 
   // ── TAB 3: CONFIDENTIAL DIAGNOSTIC INTAKE (SME CALIBRATED) ──
@@ -275,7 +232,7 @@ export default function ContactClient() {
   const [diagCompany, setDiagCompany] = useState('');
   const [diagWebsite, setDiagWebsite] = useState('');
   const [selectedHurdles, setSelectedHurdles] = useState<string[]>([]);
-  const [selectedBudget, setSelectedBudget] = useState('KShs 150,000 – 350,000');
+  const [selectedBudget, setSelectedBudget] = useState('');
   const [diagNotes, setDiagNotes] = useState('');
   const [submittedDiagnostic, setSubmittedDiagnostic] = useState(false);
 
@@ -296,19 +253,8 @@ export default function ContactClient() {
     }
   };
 
-  const budgetTiersKES = [
-    'KShs 75,000 – 150,000',
-    'KShs 150,000 – 350,000',
-    'KShs 350,000 – 750,000',
-    'KShs 750,000+',
-  ];
-
-  const budgetTiersUSD = [
-    '$600 – $1,200',
-    '$1,200 – $2,800',
-    '$2,800 – $6,000',
-    '$6,000+',
-  ];
+  const budgetTiersKES = ['KShs 15,000 – 25,000', 'KShs 50,000 – 80,000', 'KShs 80,000 – 100,000', 'KShs 100,000+', 'I need guidance'];
+  const budgetTiersUSD = ['$150 – $400', '$400 – $800', '$800+', 'I need guidance'];
 
   const activeBudgetTiers = currency === 'KES' ? budgetTiersKES : budgetTiersUSD;
 
@@ -323,7 +269,7 @@ export default function ContactClient() {
       website: diagWebsite,
       phone: diagPhone,
       email: diagEmail,
-      budget: `${selectedBudget} (${currency})`,
+      budget: `${selectedBudget || 'Not specified'} (${currency})`,
       painPoints: selectedHurdles,
       message: diagNotes,
     });
@@ -342,8 +288,8 @@ export default function ContactClient() {
     });
 
     const targetUrl = buildWhatsAppUrl(formattedMessage);
-    window.open(targetUrl, '_blank');
-    setSubmittedDiagnostic(true);
+    setWhatsappUrl(targetUrl);
+    if (reqId) setSubmittedDiagnostic(true);
   };
 
   const handleTabSwitch = (tab: 'whatsapp' | 'calendar' | 'diagnostic') => {
@@ -359,7 +305,13 @@ export default function ContactClient() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto w-full">
+    <div className="contact-intake max-w-5xl mx-auto w-full">
+      <div ref={feedbackRef} tabIndex={-1} className="scroll-mt-24">
+      {submissionError && <p role="alert" className="p-4 mb-4 border border-red-500 rounded-lg">{submissionError}</p>}
+      {lastRequestId && <p role="status" className="p-4 mb-4">Your request has been accepted by our email provider. Reference: {lastRequestId}. Delivery and appointment confirmation are still pending.</p>}
+      {whatsappUrl && <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary mb-6">Continue in WhatsApp — press Send to send your message</a>}
+      </div>
+
       {/* ═══ TRI-MODAL TAB SWITCHER ═══ */}
       <div className="flex flex-col sm:flex-row items-center justify-center p-1.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-md mb-10 max-w-2xl mx-auto">
         <button
@@ -378,7 +330,7 @@ export default function ContactClient() {
           onClick={() => handleTabSwitch('calendar')}
           className={`w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
             activeTab === 'calendar'
-              ? 'bg-[var(--accent-gold)] text-white shadow-md'
+              ? 'bg-[var(--accent-gold)] text-[#0D0D0D] shadow-md'
               : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
           }`}
         >
@@ -390,7 +342,7 @@ export default function ContactClient() {
           onClick={() => handleTabSwitch('diagnostic')}
           className={`w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
             activeTab === 'diagnostic'
-              ? 'bg-[var(--accent-gold)] text-white shadow-md'
+              ? 'bg-[var(--accent-gold)] text-[#0D0D0D] shadow-md'
               : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
           }`}
         >
@@ -427,7 +379,7 @@ export default function ContactClient() {
           </div>
 
           <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
-            Enter your details below to begin an end-to-end encrypted direct chat with our founder in Diani. Tapping the button opens WhatsApp with your pre-filled inquiry.
+            Enter your details below to begin an end-to-end encrypted direct chat with our founder in Diani. Submit your enquiry, then use the WhatsApp link to open your pre-filled message. Press Send in WhatsApp to send it.
           </p>
 
           {/* 1. Direct WhatsApp Contact Identity (Early Lead Safeguard) */}
@@ -438,12 +390,12 @@ export default function ContactClient() {
               </label>
               <span className="text-[10px] font-mono text-emerald-500 font-semibold flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Auto-saved for follow-up
+                Sent only when you submit
               </span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <input
+                <div className="min-w-0"><label className="field-label" htmlFor="waName">Full name</label><input id="waName" autoComplete="name"
                   type="text"
                   required
                   value={waName}
@@ -455,10 +407,10 @@ export default function ContactClient() {
                   className={`w-full p-3.5 rounded-xl bg-[var(--bg-surface)] border text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:border-emerald-500 transition-colors ${
                     waNameError && !waName.trim() ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500' : 'border-[var(--border-subtle)]'
                   }`}
-                />
+                /></div>
               </div>
               <div>
-                <input
+                <div className="min-w-0"><label className="field-label" htmlFor="waPhone">Phone / WhatsApp</label><input id="waPhone" autoComplete="tel"
                   type="tel"
                   required
                   value={waPhone}
@@ -470,7 +422,7 @@ export default function ContactClient() {
                   className={`w-full p-3.5 rounded-xl bg-[var(--bg-surface)] border text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:border-emerald-500 transition-colors ${
                     waNameError && !waPhone.trim() ? 'border-red-500 bg-red-500/5 ring-1 ring-red-500' : 'border-[var(--border-subtle)]'
                   }`}
-                />
+                /></div>
               </div>
             </div>
             {waNameError && (
@@ -480,7 +432,7 @@ export default function ContactClient() {
               </p>
             )}
             <p className="text-[10px] font-mono text-[var(--text-muted)] mt-2">
-              🔒 Confidential. Your inquiry is backed up securely and auto-emailed to goldfishprojex@gmail.com.
+              Submitting sends your details to Goldfish Marketing for follow-up. Drafts are not saved.
             </p>
           </div>
 
@@ -516,15 +468,14 @@ export default function ContactClient() {
                 Editable before sending
               </span>
             </div>
-            <textarea
+            <div className="min-w-0"><label className="field-label" htmlFor="waCustomMsg">Your message</label><textarea id="waCustomMsg" autoComplete="off"
               value={waCustomMsg}
               onChange={(e) => {
                 setWaCustomMsg(e.target.value);
-                setIsPrefilled(false);
               }}
               rows={4}
               className="w-full p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-sm font-mono text-[var(--text-core)] focus:outline-none focus:border-emerald-500 leading-relaxed"
-            />
+            /></div>
           </div>
 
           {/* Action CTA */}
@@ -536,17 +487,18 @@ export default function ContactClient() {
                 <span>No spam bots</span>
               </div>
               <span className="text-[10px] text-[var(--text-muted)]/70">
-                Automatic lead backup sent to {SITE_CONFIG.PRIMARY_NOTIFICATION_EMAIL}
+                You can continue in WhatsApp after submitting.
               </span>
             </div>
             <button
               onClick={handleOpenWhatsApp}
+              disabled={isSubmitting}
               className="w-full sm:w-auto py-3.5 px-8 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs uppercase tracking-wider font-bold shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2 transition-all"
             >
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M12.031 2c-5.514 0-9.998 4.486-9.998 10.001 0 1.956.564 3.78 1.54 5.337l-1.573 5.761 5.908-1.549c1.492.839 3.21 1.302 5.033 1.302 5.516 0 10.001-4.485 10.001-10.001 0-5.515-4.485-10.001-10.012-10.001zm5.758 14.175c-.244.688-1.428 1.314-1.968 1.391-.497.07-1.144.1-3.326-.803-2.793-1.157-4.577-4.004-4.717-4.193-.139-.188-1.135-1.512-1.135-2.883 0-1.371.717-2.046.974-2.327.257-.282.559-.352.747-.352.188 0 .376.002.535.01.17.008.399-.064.625.478.234.563.799 1.947.869 2.088.07.141.117.305.023.493-.093.188-.141.305-.281.47-.14.165-.295.368-.422.493-.14.136-.286.286-.123.567.164.281.728 1.202 1.562 1.944 1.073.955 1.979 1.25 2.26 1.39.281.141.445.117.61-.07.164-.188.703-.82.891-1.101.188-.282.375-.235.633-.14.258.094 1.64.773 1.921.913.281.141.469.211.539.328.07.117.07.677-.174 1.365z" />
               </svg>
-              <span>Send Request on WhatsApp ({SITE_CONFIG.PHONE_DISPLAY})</span>
+              <span>Submit enquiry & continue to WhatsApp</span>
             </button>
           </div>
         </div>
@@ -570,10 +522,10 @@ export default function ContactClient() {
               </h3>
               <p className="text-sm text-[var(--text-muted)] font-light max-w-lg mx-auto mb-4 leading-relaxed">
                 Thank you, <strong className="text-[var(--text-core)]">{calName}</strong>. Your request for{' '}
-                <span className="text-[var(--accent-gold)] font-mono font-bold">{selectedDay} at {selectedTime} (EAT)</span> has been logged and dispatched to WhatsApp.
+                <span className="text-[var(--accent-gold)] font-mono font-bold">{selectedDay} at {selectedTime} (EAT)</span> has been accepted by our email provider for delivery. It is not a confirmed appointment.
               </p>
               <div className="bg-[var(--bg-primary)] p-4 rounded-xl border border-[var(--border-subtle)] max-w-md mx-auto mb-6 text-xs text-[var(--text-muted)] text-left font-mono space-y-2">
-                <p>📌 <strong>Status:</strong> Slot request submitted &amp; auto-emailed to {SITE_CONFIG.PRIMARY_NOTIFICATION_EMAIL}.</p>
+                <p>📌 <strong>Status:</strong> Email delivery pending; our team will confirm availability.</p>
                 <p>ℹ️ <strong>Note:</strong> Strategy slots are pending confirmation by our team. If WhatsApp did not open, we will contact you at <span className="text-[var(--text-core)]">{calEmail}</span> or <span className="text-[var(--text-core)]">{calPhone}</span>.</p>
               </div>
               <button
@@ -607,9 +559,9 @@ export default function ContactClient() {
                     <button
                       type="button"
                       key={opt.id}
-                      onClick={() => setSelectedDay(opt.label)}
+                      onClick={() => { setSelectedDay(opt.id); setSelectedTime(null); }}
                       className={`p-4 rounded-xl border text-left transition-all ${
-                        selectedDay === opt.label
+                        selectedDay === opt.id
                           ? 'border-[var(--accent-gold)] bg-[var(--accent-gold)]/10 shadow-sm'
                           : 'border-[var(--border-subtle)] bg-[var(--bg-primary)]/50 hover:border-[var(--accent-gold)]/30'
                       }`}
@@ -641,7 +593,7 @@ export default function ContactClient() {
                       onClick={() => setSelectedTime(slot)}
                       className={`py-3 px-4 rounded-xl text-xs font-mono border transition-all text-center ${
                         selectedTime === slot
-                          ? 'bg-[var(--accent-gold)] text-white border-[var(--accent-gold)] shadow-sm font-bold'
+                          ? 'bg-[var(--accent-gold)] text-[#0D0D0D] border-[var(--accent-gold)] shadow-sm font-bold'
                           : 'bg-[var(--bg-primary)]/40 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)]/40'
                       }`}
                     >
@@ -657,33 +609,33 @@ export default function ContactClient() {
                   3. Your Details for Google Meet Invite:
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input
+                  <div className="min-w-0"><label className="field-label" htmlFor="calName">Full name</label><input id="calName" autoComplete="name"
                     type="text"
                     required
                     value={calName}
                     onChange={(e) => setCalName(e.target.value)}
                     placeholder="Your Full Name *"
                     className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:border-[var(--accent-gold)]"
-                  />
-                  <input
+                  /></div>
+                  <div className="min-w-0"><label className="field-label" htmlFor="calPhone">Phone / WhatsApp</label><input id="calPhone" autoComplete="tel"
                     type="tel"
                     required
                     value={calPhone}
                     onChange={(e) => setCalPhone(e.target.value)}
                     placeholder="WhatsApp / Phone Number *"
                     className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:border-[var(--accent-gold)]"
-                  />
+                  /></div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input
+                  <div className="min-w-0"><label className="field-label" htmlFor="calEmail">Email</label><input id="calEmail" autoComplete="email"
                     type="email"
                     required
                     value={calEmail}
                     onChange={(e) => setCalEmail(e.target.value)}
                     placeholder="Corporate Email Address *"
                     className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] placeholder:text-[var(--text-muted)]/50 focus:outline-none focus:border-[var(--accent-gold)]"
-                  />
-                  <select
+                  /></div>
+                  <div className="min-w-0"><label className="field-label" htmlFor="calTopic">Discussion topic</label><select id="calTopic" autoComplete="off"
                     value={calTopic}
                     onChange={(e) => setCalTopic(e.target.value)}
                     className="p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
@@ -693,13 +645,13 @@ export default function ContactClient() {
                     <option value="Local SEO & Google Maps">Local SEO & Google Maps Visibility</option>
                     <option value="High-Speed Web Replatforming">Next.js Web Replatforming</option>
                     <option value="General Digital Strategy">General Digital Systems Strategy</option>
-                  </select>
+                  </select></div>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[var(--border-subtle)]">
                 <span className="text-[10px] font-mono text-[var(--text-muted)]">
-                  Tapping will launch WhatsApp with prefilled slot request + auto-backup email
+                  Submit your request, then optionally continue in WhatsApp. Availability requires confirmation.
                 </span>
                 <button
                   type="submit"
@@ -707,9 +659,9 @@ export default function ContactClient() {
                   className="w-full sm:w-auto btn-primary text-xs py-3.5 px-8 shadow-md flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
-                    <span>Logging Request...</span>
+                    <span>Submitting...</span>
                   ) : (
-                    <span>Send Booking Request on WhatsApp →</span>
+                    <span>Submit preferred call time →</span>
                   )}
                 </button>
               </div>
@@ -735,11 +687,11 @@ export default function ContactClient() {
                 Confidential Diagnostic Intake Received
               </h3>
               <p className="text-sm text-[var(--text-muted)] font-light max-w-lg mx-auto mb-4 leading-relaxed">
-                Thank you, <strong className="text-[var(--text-core)]">{diagName}</strong>. Our engineering team has initiated the review for <strong className="text-[var(--text-core)]">{diagCompany}</strong>.
+                Thank you, <strong className="text-[var(--text-core)]">{diagName}</strong>. We will review your enquiry for <strong className="text-[var(--text-core)]">{diagCompany}</strong>.
               </p>
               <div className="bg-[var(--bg-primary)] p-4 rounded-xl border border-[var(--border-subtle)] max-w-md mx-auto mb-6 text-xs text-[var(--text-muted)] text-left font-mono space-y-2">
-                <p>📌 <strong>Status:</strong> Intake logged &amp; backup emailed to {SITE_CONFIG.PRIMARY_NOTIFICATION_EMAIL}.</p>
-                <p>📬 <strong>Delivery:</strong> Bespoke 3-page Growth &amp; Systems Teardown sent to <span className="text-[var(--accent-gold)]">{diagEmail}</span> and WhatsApp within 24 hours.</p>
+                <p>📌 <strong>Status:</strong> Accepted by our email provider; delivery pending.</p>
+                <p>📬 <strong>Delivery:</strong> We will follow up at <span className="text-[var(--accent-gold)]">{diagEmail}</span> to agree the next steps.</p>
                 <p>📞 <strong>Need Urgent Support?</strong> Direct line: <a href={`tel:+${SITE_CONFIG.WHATSAPP_NUMBER}`} className="text-[var(--accent-gold)] font-bold underline">{SITE_CONFIG.PHONE_DISPLAY}</a></p>
               </div>
               <button
@@ -771,7 +723,7 @@ export default function ContactClient() {
                       onClick={() => setDiagStep(stepNum as 1 | 2 | 3)}
                       className={`w-7 h-7 rounded-full flex items-center justify-center font-mono text-xs cursor-pointer transition-all ${
                         diagStep === stepNum
-                          ? 'bg-[var(--accent-gold)] text-white font-bold shadow-sm'
+                          ? 'bg-[var(--accent-gold)] text-[#0D0D0D] font-bold shadow-sm'
                           : diagStep > stepNum
                           ? 'bg-green-500/20 text-green-400 border border-green-500/30'
                           : 'bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[var(--text-muted)]'
@@ -790,7 +742,7 @@ export default function ContactClient() {
                     Step 1: Your Business Profile
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input
+                    <div className="min-w-0"><label className="field-label" htmlFor="diagName">Full name</label><input id="diagName" autoComplete="name"
                       type="text"
                       required
                       value={diagName}
@@ -802,8 +754,8 @@ export default function ContactClient() {
                       className={`p-3.5 rounded-xl bg-[var(--bg-primary)] border text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] ${
                         step1Errors && !diagName ? 'border-red-500 bg-red-500/5' : 'border-[var(--border-subtle)]'
                       }`}
-                    />
-                    <input
+                    /></div>
+                    <div className="min-w-0"><label className="field-label" htmlFor="diagCompany">Business name</label><input id="diagCompany" autoComplete="organization"
                       type="text"
                       required
                       value={diagCompany}
@@ -815,10 +767,10 @@ export default function ContactClient() {
                       className={`p-3.5 rounded-xl bg-[var(--bg-primary)] border text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] ${
                         step1Errors && !diagCompany ? 'border-red-500 bg-red-500/5' : 'border-[var(--border-subtle)]'
                       }`}
-                    />
+                    /></div>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input
+                    <div className="min-w-0"><label className="field-label" htmlFor="diagEmail">Email</label><input id="diagEmail" autoComplete="email"
                       type="email"
                       required
                       value={diagEmail}
@@ -830,8 +782,8 @@ export default function ContactClient() {
                       className={`p-3.5 rounded-xl bg-[var(--bg-primary)] border text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] ${
                         step1Errors && !diagEmail ? 'border-red-500 bg-red-500/5' : 'border-[var(--border-subtle)]'
                       }`}
-                    />
-                    <input
+                    /></div>
+                    <div className="min-w-0"><label className="field-label" htmlFor="diagPhone">Phone / WhatsApp</label><input id="diagPhone" autoComplete="tel"
                       type="tel"
                       required
                       value={diagPhone}
@@ -843,15 +795,15 @@ export default function ContactClient() {
                       className={`p-3.5 rounded-xl bg-[var(--bg-primary)] border text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] ${
                         step1Errors && !diagPhone ? 'border-red-500 bg-red-500/5' : 'border-[var(--border-subtle)]'
                       }`}
-                    />
+                    /></div>
                   </div>
-                  <input
+                  <div className="min-w-0"><label className="field-label" htmlFor="diagWebsite">Website or social profile</label><input id="diagWebsite" autoComplete="url"
                     type="url"
                     value={diagWebsite}
                     onChange={(e) => setDiagWebsite(e.target.value)}
                     placeholder="Website or Social Link (e.g. https://yourbusiness.co.ke)"
                     className="w-full p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)]"
-                  />
+                  /></div>
 
                   {step1Errors && (
                     <p className="text-xs font-mono text-red-400 bg-red-500/10 border border-red-500/20 p-2.5 rounded-lg">
@@ -940,18 +892,18 @@ export default function ContactClient() {
                     <div className="inline-flex rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)] p-1 text-xs font-mono">
                       <button
                         type="button"
-                        onClick={() => setCurrency('KES')}
+                        onClick={() => { setCurrency('KES'); setSelectedBudget(''); }}
                         className={`px-3 py-1 rounded transition-all ${
-                          currency === 'KES' ? 'bg-[var(--accent-gold)] text-white font-bold' : 'text-[var(--text-muted)]'
+                          currency === 'KES' ? 'bg-[var(--accent-gold)] text-[#0D0D0D] font-bold' : 'text-[var(--text-muted)]'
                         }`}
                       >
                         KES
                       </button>
                       <button
                         type="button"
-                        onClick={() => setCurrency('USD')}
+                        onClick={() => { setCurrency('USD'); setSelectedBudget(''); }}
                         className={`px-3 py-1 rounded transition-all ${
-                          currency === 'USD' ? 'bg-[var(--accent-gold)] text-white font-bold' : 'text-[var(--text-muted)]'
+                          currency === 'USD' ? 'bg-[var(--accent-gold)] text-[#0D0D0D] font-bold' : 'text-[var(--text-muted)]'
                         }`}
                       >
                         USD
@@ -968,7 +920,7 @@ export default function ContactClient() {
                         onClick={() => setSelectedBudget(tier)}
                         className={`p-3.5 rounded-xl border text-center text-xs font-mono transition-all ${
                           selectedBudget === tier
-                            ? 'bg-[var(--accent-gold)] border-[var(--accent-gold)] text-white font-bold shadow-sm'
+                            ? 'bg-[var(--accent-gold)] border-[var(--accent-gold)] text-[#0D0D0D] font-bold shadow-sm'
                             : 'bg-[var(--bg-primary)]/40 border-[var(--border-subtle)] text-[var(--text-core)] hover:border-[var(--accent-gold)]/40'
                         }`}
                       >
@@ -981,13 +933,13 @@ export default function ContactClient() {
                     <label className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider block mb-2">
                       Any specific notes or questions for our engineering audit?
                     </label>
-                    <textarea
+                    <div className="min-w-0"><label className="field-label" htmlFor="diagNotes">Project notes</label><textarea id="diagNotes" autoComplete="off"
                       value={diagNotes}
                       onChange={(e) => setDiagNotes(e.target.value)}
                       rows={3}
                       placeholder="e.g. We want to stop relying on Booking.com for 80% of our guests and need direct M-Pesa bookings..."
                       className="w-full p-3.5 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-xs font-mono text-[var(--text-core)] focus:outline-none focus:border-[var(--accent-gold)] leading-relaxed"
-                    />
+                    /></div>
                   </div>
 
                   <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[var(--border-subtle)]">
@@ -1004,9 +956,9 @@ export default function ContactClient() {
                       className="w-full sm:w-auto btn-primary text-xs py-3.5 px-8 shadow-md flex items-center justify-center gap-2"
                     >
                       {isSubmitting ? (
-                        <span>Logging Request...</span>
+                        <span>Submitting...</span>
                       ) : (
-                        <span>Send Diagnostic Request on WhatsApp →</span>
+                        <span>Submit project enquiry →</span>
                       )}
                     </button>
                   </div>

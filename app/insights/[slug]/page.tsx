@@ -53,10 +53,21 @@ export default function InsightArticlePage({ params }: PageProps) {
   }
 
   const category = getCategoryBySlug(article.categorySlug);
-  const articleHtml = ARTICLE_CONTENT[params.slug];
+  const articleHtml = ARTICLE_CONTENT[params.slug]?.replace(/<table>/g,
+    '<div class="article-table-scroll" role="region" aria-label="Comparison table: scroll horizontally for more columns" tabindex="0"><table>')
+    .replace(/<\/table>/g, '</table></div>');
+  const articleSchema = {
+    '@context': 'https://schema.org', '@type': 'BlogPosting',
+    headline: article.title, description: article.excerpt,
+    mainEntityOfPage: `https://www.goldfishmarketing.co.ke/insights/${article.slug}`,
+    author: { '@type': 'Organization', name: 'Goldfish Marketing', url: 'https://www.goldfishmarketing.co.ke/about' },
+    publisher: { '@id': 'https://www.goldfishmarketing.co.ke/#organization' },
+    ...(article.coverImage ? { image: new URL(article.coverImage, 'https://www.goldfishmarketing.co.ke').href } : {}),
+  };
 
   return (
     <main className="w-full flex flex-col min-h-screen relative">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema).replace(/</g, '\\u003c') }} />
       {/* ═══ READING PROGRESS BAR ═══ */}
       <ReadingProgressBar />
 

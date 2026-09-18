@@ -21,7 +21,7 @@ export default function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Goldfish Marketing on WhatsApp"
-      className={`fixed bottom-24 right-5 lg:bottom-8 lg:right-8 z-50 group flex items-center gap-3 transition-all duration-500 ${
+      className={`fixed bottom-24 right-5 lg:bottom-8 lg:right-8 z-50 group hidden lg:flex items-center gap-3 transition-all duration-500 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
     >

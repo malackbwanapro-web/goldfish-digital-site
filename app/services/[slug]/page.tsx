@@ -1,3 +1,4 @@
+import { SITE_CONFIG } from '@/lib/constants';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketing.co.ke';
+  const baseUrl = SITE_CONFIG.SITE_URL;
   const pageUrl = `${baseUrl}/services/${service.slug}`;
 
   return {
@@ -68,7 +69,7 @@ export default function ServicePage({ params }: Props) {
     notFound();
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketing.co.ke';
+  const baseUrl = SITE_CONFIG.SITE_URL;
   const pageUrl = `${baseUrl}/services/${service.slug}`;
 
   // Structured Data 1: Service Schema

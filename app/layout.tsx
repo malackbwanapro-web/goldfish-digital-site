@@ -1,3 +1,4 @@
+import { SITE_CONFIG } from '@/lib/constants';
 import type { Metadata } from 'next';
 import { Inter, Outfit, JetBrains_Mono, Poppins } from 'next/font/google';
 import './globals.css';
@@ -34,7 +35,7 @@ const poppins = Poppins({
 
 const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketing.co.ke';
+const siteUrl = SITE_CONFIG.SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

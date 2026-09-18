@@ -1,7 +1,8 @@
+import { SITE_CONFIG } from '@/lib/constants';
 import type { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketing.co.ke';
+  const baseUrl = SITE_CONFIG.SITE_URL;
 
   return {
     rules: [

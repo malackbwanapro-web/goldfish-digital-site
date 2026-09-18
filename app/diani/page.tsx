@@ -4,7 +4,7 @@ import FooterCloser from '../components/FooterCloser';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing & Web Design Agency in Diani Beach | Goldfish Marketing',
+  title: 'Digital Marketing & Web Design Agency in Diani Beach',
   description:
     'Diani Beach\'s premier digital marketing, web design, SEO, and AI automation agency. Helping coastal resorts, hotels, and SMEs win more customers online.',
   alternates: { canonical: 'https://www.goldfishmarketing.co.ke/diani' },

@@ -4,7 +4,7 @@ import FooterCloser from '../components/FooterCloser';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing & Web Design Agency Mombasa | Goldfish Marketing',
+  title: 'Digital Marketing & Web Design Agency Mombasa',
   description:
     'Leading digital marketing agency in Mombasa. Web development, SEO, Meta/Google ads, and AI automation for Mombasa companies and coastal enterprises.',
   alternates: { canonical: 'https://www.goldfishmarketing.co.ke/mombasa' },

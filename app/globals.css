@@ -775,3 +775,16 @@ input:focus, textarea:focus, select:focus {
   box-shadow: 0 12px 32px rgba(212, 175, 55, 0.12);
 }
 
+
+/* Audit corrections: preserve table semantics and contain horizontal scrolling. */
+.article-table-scroll { max-width: 100%; overflow-x: auto; margin: 1.5rem 0; }
+.article-table-scroll table { width: 100%; border-collapse: collapse; min-width: 30rem; }
+.article-table-scroll th, .article-table-scroll td { padding: .75rem; border: 1px solid var(--border-subtle); text-align: left; }
+.contact-intake input, .contact-intake select, .contact-intake textarea { font-size: 16px; max-width: 100%; }
+.contact-intake label.field-label { display: block; margin: .5rem 0; font-size: 14px; color: var(--text-core); }
+.contact-intake button:disabled { opacity: .6; cursor: wait; }
+@media (max-width: 1023px) { body { padding-bottom: calc(80px + env(safe-area-inset-bottom)); } }
+
+@media (max-width: 639px) {
+  .btn-primary, .btn-outline { white-space: normal !important; overflow-wrap: anywhere; max-width: 100%; min-width: 0; text-align: center; }
+}

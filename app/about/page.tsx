@@ -128,7 +128,7 @@ const stats = [
 ];
 
 export default function AboutPage() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.goldfishmarketing.co.ke';
+  const baseUrl = SITE_CONFIG.SITE_URL;
 
   const aboutSchema = {
     '@context': 'https://schema.org',

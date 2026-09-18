@@ -391,9 +391,9 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { tag: '12 Min Read | Technical Architecture', title: 'Why Traditional RPA Fails the Modern Enterprise—And the Agentic Architectures Replacing It.', excerpt: 'Discover why deterministic Robotic Process Automation breaks under unstructured data arrays, and how to build self-healing agent pipelines.', slug: 'sme-automation-playbook-5-workflows' },
-              { tag: '8 Min Read | SEO & Visibility', title: 'Why Google\'s AI Overviews Are Killing Your Organic Traffic — And How to Get Cited Instead.', excerpt: 'AI is now answering your customers\' questions before they ever reach your website. Here\'s how to get cited and stay visible.', slug: 'google-ai-overviews-killing-organic-traffic' },
-              { tag: '10 Min Read | Web Performance', title: 'Your Website Loads in 6 Seconds — Here\'s Exactly How Much Revenue That\'s Costing You.', excerpt: 'A data-driven breakdown of how page speed directly impacts bounce rate, conversion rate, and bottom-line revenue.', slug: 'site-speed-killing-revenue' },
+              { tag: 'Websites | Hospitality', title: 'Web Design for Hotels and Villas in Diani Beach', excerpt: 'Explore how a hospitality website can support direct enquiries and bookings.', slug: 'web-design-hotels-diani-beach-kenya' },
+              { tag: 'Website Planning | Pricing', title: 'Website Design Costs in Kenya', excerpt: 'Understand scope, integrations and ongoing costs before commissioning your website.', slug: 'website-design-cost-kenya-pricing-guide' },
+              { tag: 'Content | Tourism', title: 'Content Creation for Kenya Coast Tourism Businesses', excerpt: 'Plan photography, video and useful content around the questions your guests ask.', slug: 'content-creation-tourism-businesses-kenya-coast' },
             ].map((insight, idx) => (
               <article key={idx} className="flex flex-col justify-between p-8 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/20 hover:border-[var(--accent-gold)] transition-colors duration-300">
                 <div>
