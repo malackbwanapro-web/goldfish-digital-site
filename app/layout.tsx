@@ -69,7 +69,7 @@ export const metadata: Metadata = {
       'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
     images: [
       {
-        url: '/og-image.svg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Goldfish Marketing Digital Growth & AI Agency Kenya',
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     title: 'Digital Marketing, Web Design & AI Agency Kenya | Goldfish Marketing',
     description:
       'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
-    images: ['/og-image.svg'],
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -107,11 +107,17 @@ export default function RootLayout({
         <SchemaMarkup />
       </head>
       <body className="antialiased min-h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-core)] transition-colors duration-300 pb-16 lg:pb-0">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2.5 focus:bg-[var(--accent-gold)] focus:text-[#0D0D0D] focus:font-bold focus:rounded-lg focus:shadow-xl font-mono text-xs uppercase"
+        >
+          Skip to main content
+        </a>
         {gaId && <GoogleAnalytics gaId={gaId} />}
         <Header />
-        <div className="flex-1 flex flex-col">
+        <main id="main-content" className="flex-1 flex flex-col">
           {children}
-        </div>
+        </main>
         <WhatsAppFloat />
         <MobileStickyBar />
       </body>

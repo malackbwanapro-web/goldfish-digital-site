@@ -41,7 +41,38 @@ export default function ContactClient() {
     setWaCustomMsg(chip.text);
   };
 
-  const handleOpenWhatsApp = () => {
+  const [lastRequestId, setLastRequestId] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Background Lead Dispatch Helper
+  const sendLeadToBackend = async (payload: any) => {
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (data.requestId) {
+        setLastRequestId(data.requestId);
+        return data.requestId;
+      }
+    } catch (err) {
+      console.warn('Background lead capture API notice:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
+    return null;
+  };
+
+  const handleOpenWhatsApp = async () => {
+    await sendLeadToBackend({
+      intent: 'whatsapp_quick_chat',
+      name: 'WhatsApp Visitor',
+      message: waCustomMsg,
+      serviceInterest: waTopic,
+    });
     const encoded = encodeURIComponent(waCustomMsg);
     window.open(`https://wa.me/${WA_NUMBER}?text=${encoded}`, '_blank');
   };
@@ -86,14 +117,25 @@ export default function ContactClient() {
     '04:45 PM - 05:00 PM',
   ];
 
-  const handleSlotBooking = (e: React.FormEvent) => {
+  const handleSlotBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!calName || !calPhone || !calEmail || !selectedTime) return;
 
+    const reqId = await sendLeadToBackend({
+      intent: 'strategy_call',
+      name: calName,
+      phone: calPhone,
+      email: calEmail,
+      selectedDay,
+      selectedTimeSlot: `${selectedTime} (EAT)`,
+      serviceInterest: calTopic,
+    });
+
     const message =
-      `📅 *NEW STRATEGY CALL BOOKING* 📅\n\n` +
+      `📅 *NEW STRATEGY CALL REQUEST* 📅\n` +
+      `🔖 *Ref ID:* ${reqId || 'GFM-PENDING'}\n\n` +
       `👤 *Name:* ${calName}\n` +
-      `📱 *WhatsApp / Phone:* ${calPhone}\n` +
+      `📱 *Phone:* ${calPhone}\n` +
       `📧 *Email:* ${calEmail}\n` +
       `🗓️ *Requested Date:* ${selectedDay}\n` +
       `⏰ *Time Slot:* ${selectedTime} (EAT / UTC+3)\n` +
@@ -152,12 +194,25 @@ export default function ContactClient() {
 
   const activeBudgetTiers = currency === 'KES' ? budgetTiersKES : budgetTiersUSD;
 
-  const handleDiagnosticSubmit = (e: React.FormEvent) => {
+  const handleDiagnosticSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!diagName || !diagPhone || !diagEmail || !diagCompany) return;
 
+    const reqId = await sendLeadToBackend({
+      intent: 'diagnostic',
+      name: diagName,
+      companyName: diagCompany,
+      website: diagWebsite,
+      phone: diagPhone,
+      email: diagEmail,
+      budget: `${selectedBudget} (${currency})`,
+      painPoints: selectedHurdles,
+      message: diagNotes,
+    });
+
     const message =
-      `🛡️ *CONFIDENTIAL 3-PAGE DIAGNOSTIC REQUEST* 🛡️\n\n` +
+      `🛡️ *CONFIDENTIAL 3-PAGE DIAGNOSTIC REQUEST* 🛡️\n` +
+      `🔖 *Ref ID:* ${reqId || 'GFM-PENDING'}\n\n` +
       `👤 *Name:* ${diagName}\n` +
       `🏢 *Company:* ${diagCompany}\n` +
       `🌐 *Website:* ${diagWebsite || 'Not provided'}\n` +
@@ -289,10 +344,15 @@ export default function ContactClient() {
 
           {/* Action CTA */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[var(--border-subtle)]">
-            <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)]">
-              <span>🔒 Direct end-to-end encrypted chat</span>
-              <span>•</span>
-              <span>No spam bots</span>
+            <div className="flex flex-col gap-1 text-xs font-mono text-[var(--text-muted)]">
+              <div className="flex items-center gap-2">
+                <span>🔒 Direct end-to-end encrypted chat</span>
+                <span>•</span>
+                <span>No spam bots</span>
+              </div>
+              <span className="text-[10px] text-[var(--text-muted)]/70">
+                Automatic lead backup sent to goldfishprojex@gmail.com
+              </span>
             </div>
             <button
               onClick={handleOpenWhatsApp}
@@ -301,7 +361,7 @@ export default function ContactClient() {
               <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                 <path d="M12.031 2c-5.514 0-9.998 4.486-9.998 10.001 0 1.956.564 3.78 1.54 5.337l-1.573 5.761 5.908-1.549c1.492.839 3.21 1.302 5.033 1.302 5.516 0 10.001-4.485 10.001-10.001 0-5.515-4.485-10.001-10.012-10.001zm5.758 14.175c-.244.688-1.428 1.314-1.968 1.391-.497.07-1.144.1-3.326-.803-2.793-1.157-4.577-4.004-4.717-4.193-.139-.188-1.135-1.512-1.135-2.883 0-1.371.717-2.046.974-2.327.257-.282.559-.352.747-.352.188 0 .376.002.535.01.17.008.399-.064.625.478.234.563.799 1.947.869 2.088.07.141.117.305.023.493-.093.188-.141.305-.281.47-.14.165-.295.368-.422.493-.14.136-.286.286-.123.567.164.281.728 1.202 1.562 1.944 1.073.955 1.979 1.25 2.26 1.39.281.141.445.117.61-.07.164-.188.703-.82.891-1.101.188-.282.375-.235.633-.14.258.094 1.64.773 1.921.913.281.141.469.211.539.328.07.117.07.677-.174 1.365z" />
               </svg>
-              <span>Open WhatsApp Directly (+254 711 404 755)</span>
+              <span>Send Request on WhatsApp (+254 711 404 755)</span>
             </button>
           </div>
         </div>
@@ -317,13 +377,20 @@ export default function ContactClient() {
               <div className="w-12 h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center mx-auto mb-4 text-2xl">
                 ✓
               </div>
+              <div className="inline-block px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-mono font-bold mb-3">
+                Reference ID: {lastRequestId || 'GFM-PENDING'}
+              </div>
               <h3 className="text-2xl font-black text-[var(--text-core)] mb-2">
-                Strategy Call Slot Requested!
+                Strategy Call Request Received!
               </h3>
-              <p className="text-sm text-[var(--text-muted)] font-light max-w-lg mx-auto mb-6 leading-relaxed">
-                Thank you, <strong className="text-[var(--text-core)]">{calName}</strong>. We received your request for{' '}
-                <span className="text-[var(--accent-gold)] font-mono font-bold">{selectedDay} at {selectedTime} (EAT)</span>. We have dispatched calendar and Google Meet confirmation details to your WhatsApp and email.
+              <p className="text-sm text-[var(--text-muted)] font-light max-w-lg mx-auto mb-4 leading-relaxed">
+                Thank you, <strong className="text-[var(--text-core)]">{calName}</strong>. Your request for{' '}
+                <span className="text-[var(--accent-gold)] font-mono font-bold">{selectedDay} at {selectedTime} (EAT)</span> has been logged and dispatched to WhatsApp.
               </p>
+              <div className="bg-[var(--bg-primary)] p-4 rounded-xl border border-[var(--border-subtle)] max-w-md mx-auto mb-6 text-xs text-[var(--text-muted)] text-left font-mono space-y-2">
+                <p>📌 <strong>Status:</strong> Slot request submitted &amp; auto-emailed to goldfishprojex@gmail.com.</p>
+                <p>ℹ️ <strong>Note:</strong> Strategy slots are pending confirmation by our team. If WhatsApp did not open, we will contact you at <span className="text-[var(--text-core)]">{calEmail}</span> or <span className="text-[var(--text-core)]">{calPhone}</span>.</p>
+              </div>
               <button
                 onClick={() => setBookedSlot(false)}
                 className="btn-outline text-xs py-2 px-6"
@@ -445,15 +512,20 @@ export default function ContactClient() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-[var(--border-subtle)]">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[var(--border-subtle)]">
                 <span className="text-[10px] font-mono text-[var(--text-muted)]">
-                  Instant Google Meet confirmation dispatched upon booking
+                  Tapping will launch WhatsApp with prefilled slot request + auto-backup email
                 </span>
                 <button
                   type="submit"
-                  className="btn-primary text-xs py-3.5 px-8 shadow-md"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto btn-primary text-xs py-3.5 px-8 shadow-md flex items-center justify-center gap-2"
                 >
-                  Confirm 15-Minute Slot →
+                  {isSubmitting ? (
+                    <span>Logging Request...</span>
+                  ) : (
+                    <span>Send Booking Request on WhatsApp →</span>
+                  )}
                 </button>
               </div>
             </form>
@@ -471,12 +543,20 @@ export default function ContactClient() {
               <div className="w-12 h-12 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center mx-auto mb-4 text-2xl">
                 🛡️
               </div>
+              <div className="inline-block px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-xs font-mono font-bold mb-3">
+                Reference ID: {lastRequestId || 'GFM-PENDING'}
+              </div>
               <h3 className="text-2xl font-black text-[var(--text-core)] mb-2">
                 Confidential Diagnostic Intake Received
               </h3>
-              <p className="text-sm text-[var(--text-muted)] font-light max-w-lg mx-auto mb-6 leading-relaxed">
-                Thank you, <strong className="text-[var(--text-core)]">{diagName}</strong>. Our engineering team has initiated the review for <strong className="text-[var(--text-core)]">{diagCompany}</strong>. You will receive a bespoke 3-page Growth &amp; Systems Teardown at <span className="text-[var(--accent-gold)] font-mono">{diagEmail}</span> and via WhatsApp within 24 hours.
+              <p className="text-sm text-[var(--text-muted)] font-light max-w-lg mx-auto mb-4 leading-relaxed">
+                Thank you, <strong className="text-[var(--text-core)]">{diagName}</strong>. Our engineering team has initiated the review for <strong className="text-[var(--text-core)]">{diagCompany}</strong>.
               </p>
+              <div className="bg-[var(--bg-primary)] p-4 rounded-xl border border-[var(--border-subtle)] max-w-md mx-auto mb-6 text-xs text-[var(--text-muted)] text-left font-mono space-y-2">
+                <p>📌 <strong>Status:</strong> Intake logged &amp; backup emailed to goldfishprojex@gmail.com.</p>
+                <p>📬 <strong>Delivery:</strong> Bespoke 3-page Growth &amp; Systems Teardown sent to <span className="text-[var(--accent-gold)]">{diagEmail}</span> and WhatsApp within 24 hours.</p>
+                <p>📞 <strong>Need Urgent Support?</strong> Direct line: <a href="tel:+254711404755" className="text-[var(--accent-gold)] font-bold underline">+254 711 404 755</a></p>
+              </div>
               <button
                 onClick={() => {
                   setSubmittedDiagnostic(false);
@@ -725,7 +805,7 @@ export default function ContactClient() {
                     />
                   </div>
 
-                  <div className="pt-4 flex items-center justify-between border-t border-[var(--border-subtle)]">
+                  <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[var(--border-subtle)]">
                     <button
                       type="button"
                       onClick={() => setDiagStep(2)}
@@ -735,9 +815,14 @@ export default function ContactClient() {
                     </button>
                     <button
                       type="submit"
-                      className="btn-primary text-xs py-3.5 px-8 shadow-md"
+                      disabled={isSubmitting}
+                      className="w-full sm:w-auto btn-primary text-xs py-3.5 px-8 shadow-md flex items-center justify-center gap-2"
                     >
-                      Submit Confidential Diagnostic →
+                      {isSubmitting ? (
+                        <span>Logging Request...</span>
+                      ) : (
+                        <span>Send Diagnostic Request on WhatsApp →</span>
+                      )}
                     </button>
                   </div>
                 </div>

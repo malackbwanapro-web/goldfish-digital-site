@@ -155,7 +155,7 @@ export default function InsightArticlePage({ params }: PageProps) {
                 prose-p:text-sm prose-p:leading-relaxed prose-p:text-[var(--text-muted)] prose-p:font-light prose-p:mb-4
                 prose-ul:text-sm prose-ul:text-[var(--text-muted)] prose-ul:font-light prose-ul:my-4 prose-ul:list-disc prose-ul:pl-5 prose-li:mb-2
                 prose-strong:text-[var(--text-core)] prose-strong:font-bold
-                prose-table:w-full prose-table:my-6 prose-table:border-collapse prose-table:text-xs prose-table:font-mono
+                prose-table:block prose-table:w-full prose-table:overflow-x-auto prose-table:my-6 prose-table:border-collapse prose-table:text-xs prose-table:font-mono
                 prose-th:bg-[var(--bg-surface)] prose-th:p-3 prose-th:text-left prose-th:border prose-th:border-[var(--border-subtle)] prose-th:text-[var(--accent-gold)]
                 prose-td:p-3 prose-td:border prose-td:border-[var(--border-subtle)] prose-td:text-[var(--text-core)]
                 prose-a:text-[var(--accent-gold)] prose-a:underline hover:prose-a:text-[var(--accent-gold-hover)]"

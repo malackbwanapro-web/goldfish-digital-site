@@ -240,9 +240,9 @@ h1, h2, h3, h4, .font-display {
   gap: 8px;
   padding: 14px 32px;
   background: var(--accent-gold);
-  color: var(--text-inverse);
+  color: #0D0D0D;
   font-family: var(--font-poppins), 'Poppins', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 15px;
   letter-spacing: 0.04em;
   text-transform: uppercase;

@@ -164,6 +164,7 @@ export default function Header() {
             onClick={() => setIsOpen(!isOpen)}
             className="w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none bg-[var(--bg-surface)] rounded-full border border-[var(--border-subtle)] active:scale-95 transition-transform"
             aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
           >
             <span
               className={`w-5 h-0.5 bg-[var(--text-core)] transition-transform duration-300 ${
