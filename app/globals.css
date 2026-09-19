@@ -788,3 +788,12 @@ input:focus, textarea:focus, select:focus {
 @media (max-width: 639px) {
   .btn-primary, .btn-outline { white-space: normal !important; overflow-wrap: anywhere; max-width: 100%; min-width: 0; text-align: center; }
 }
+
+/* Keep decorative gold while making light-theme labels and outline actions readable. */
+[data-theme="light"] .text-eyebrow,
+[data-theme="light"] .btn-outline { color: #705400; }
+[data-theme="light"] .text-\[var\(--accent-gold\)\] { color: #705400; }
+@media (max-width: 639px) { .home-hero h1 { font-size: clamp(1.75rem, 7.5vw, 2.5rem); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

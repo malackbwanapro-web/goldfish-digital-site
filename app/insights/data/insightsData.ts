@@ -91,10 +91,8 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     slug: 'website-design-cost-kenya-pricing-guide',
     category: 'Smart Web & App Ecosystems',
     categorySlug: 'smart-web-app-ecosystems',
-    title:
-      'Website Design Cost in Kenya (2025/2026 Guide): Realistic SME Pricing Tiers in KES',
-    excerpt:
-      'From basic KES 35,000 brochure sites to KES 280,000+ custom revenue engines with M-Pesa STK Push and booking integration. A transparent breakdown of what Kenyan SMEs should actually pay.',
+    title: 'Website Design Prices at Goldfish Marketing: Scope and Costs in Kenya',
+    excerpt: 'Plan a website with Goldfish Marketing: KShs 50,000–80,000 for typical business projects, smaller scopes and custom applications quoted to fit.',
     readTime: '11 Min Read',
     isFeatured: false,
     tags: ['Kenya Web Pricing', 'SME Budgets', 'M-Pesa Daraja', 'ROI'],

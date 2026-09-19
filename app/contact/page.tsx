@@ -119,7 +119,7 @@ export default function ContactPage() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold">
-              Diani Beach HQ Live • Avg Response: &lt; 15 Mins
+              Diani Beach • Talk directly with Malack
             </span>
           </div>
 
@@ -128,7 +128,7 @@ export default function ContactPage() {
           </h1>
 
           <p className="text-body-lg text-[var(--text-muted)] leading-relaxed max-w-2xl mx-auto font-light mb-4">
-            Connect directly with our technical strategists. Pick the communication mode that suits your workflow: 1-Tap WhatsApp, a 15-minute strategy call, or a comprehensive 24-hour diagnostic teardown.
+            Tell Malack what your business needs. Send a WhatsApp enquiry, request a preferred call time, or share a project brief.
           </p>
         </div>
       </section>
@@ -152,7 +152,7 @@ export default function ContactPage() {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-eyebrow text-xs font-mono block mb-2">PROCESS TRANSPARENCY</span>
             <h2 className="text-2xl lg:text-3xl font-black tracking-tight text-[var(--text-core)]">
-              What Happens in Your First 24 Hours
+              What happens after you enquire
             </h2>
             <p className="text-xs text-[var(--text-muted)] font-light mt-2">
               We eliminate ambiguity from the start. Here is our step-by-step intake protocol:
@@ -163,13 +163,13 @@ export default function ContactPage() {
             <div className="p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-2">
-                  HOUR 0 — 2
+                  STEP 1
                 </span>
                 <h3 className="text-sm font-bold text-[var(--text-core)] mb-2">
-                  Automated Intake &amp; Security Shield
+                  Understand your business
                 </h3>
                 <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed">
-                  Your inquiry is assigned directly to a lead systems architect. All shared domains and financial figures are locked under mutual NDA protocols.
+                  Malack reviews your enquiry and the goals you have shared. Please do not send passwords or sensitive customer data through this form.
                 </p>
               </div>
             </div>
@@ -177,13 +177,13 @@ export default function ContactPage() {
             <div className="p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-2">
-                  HOUR 2 — 12
+                  STEP 2
                 </span>
                 <h3 className="text-sm font-bold text-[var(--text-core)] mb-2">
                   Technical Architecture &amp; Latency Audit
                 </h3>
                 <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed">
-                  We run live telemetry scans against your mobile speed on Safaricom 4G, schema entity recognition, booking engine friction, and local search rankings.
+                  We discuss your current website, customers, priorities and practical requirements.
                 </p>
               </div>
             </div>
@@ -191,13 +191,13 @@ export default function ContactPage() {
             <div className="p-6 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-2">
-                  HOUR 12 — 24
+                  STEP 3
                 </span>
                 <h3 className="text-sm font-bold text-[var(--text-core)] mb-2">
                   Delivery of Your Bespoke Action Plan
                 </h3>
                 <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed">
-                  You receive an actionable 3-page teardown detailing exact conversion bottlenecks, potential revenue lift, and a transparent implementation roadmap.
+                  We agree the next step and, where appropriate, prepare a scoped proposal with pricing and delivery milestones.
                 </p>
               </div>
             </div>
@@ -236,12 +236,12 @@ export default function ContactPage() {
                 East Africa Time (EAT / UTC+3)
               </h3>
               <p className="text-xs text-[var(--text-muted)] leading-relaxed font-light mb-4">
-                Our engineering team maintains high-velocity response times during core operating hours, with 24/7 automated triage for critical SLA incidents.
+                We review enquiries during the business hours below. Requested call times are confirmed personally.
               </p>
               <div className="text-xs font-mono space-y-1.5 text-[var(--text-core)]">
                 <p>🗓️ <strong className="text-[var(--text-core)]">Monday – Friday:</strong> 08:00 – 18:00 EAT</p>
-                <p>🗓️ <strong className="text-[var(--text-core)]">Saturday:</strong> 09:00 – 13:00 EAT (Strategy &amp; Emergency Sprints)</p>
-                <p>🗓️ <strong className="text-[var(--text-core)]">Sunday:</strong> Closed (Automated System Monitoring Active)</p>
+                <p>🗓️ <strong className="text-[var(--text-core)]">Saturday:</strong> 09:00 – 13:00 EAT</p>
+                <p>🗓️ <strong className="text-[var(--text-core)]">Sunday:</strong> Closed</p>
               </div>
             </div>
           </div>
@@ -261,7 +261,7 @@ export default function ContactPage() {
             </div>
             <div className="flex flex-col gap-1">
               <h4 className="text-xs font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                15-Minute Response SLA
+                Business-hours replies
               </h4>
               <p className="text-[11px] text-[var(--text-muted)] leading-relaxed font-light">
                 Direct founder and engineering replies during East Africa business hours.
@@ -278,7 +278,7 @@ export default function ContactPage() {
             </div>
             <div className="flex flex-col gap-1">
               <h4 className="text-xs font-mono uppercase tracking-widest text-[var(--text-core)] font-bold">
-                KDPA 2019 &amp; NDA Privacy
+                Your project information
               </h4>
               <p className="text-[11px] text-[var(--text-muted)] leading-relaxed font-light">
                 All client metrics, revenue data, and strategy briefs remain strictly confidential.

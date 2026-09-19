@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { bookingOptions, validBooking } from '@/lib/booking';
+import { trackContactEvent } from '@/lib/contact-analytics';
+import { getServiceOffer, SERVICE_OFFERS } from '@/lib/service-offers';
 import { SITE_CONFIG } from '@/lib/constants';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import {
@@ -57,10 +59,12 @@ export default function ContactClient() {
   // ── TAB 1: WHATSAPP DIRECT STATE ──
   const [waName, setWaName] = useState('');
   const [waPhone, setWaPhone] = useState('');
+  const [waBusiness, setWaBusiness] = useState('');
+  const [waTiming, setWaTiming] = useState('');
   const [waNameError, setWaNameError] = useState(false);
-  const [waTopic, setWaTopic] = useState('Direct Booking Engine / OTA Leak');
+  const [waTopic, setWaTopic] = useState('Website or digital marketing project');
   const [waCustomMsg, setWaCustomMsg] = useState(
-    "Hi Malack, I run a business in Kenya and would like to discuss upgrading our direct booking engine to cut OTA commissions."
+    "Hi Malack, I would like to discuss a website or digital marketing project for my business."
   );
 
 
@@ -69,6 +73,7 @@ export default function ContactClient() {
     const tier = searchParams.get('tier');
     const topic = searchParams.get('topic');
     const msg = searchParams.get('message');
+    const offer = getServiceOffer(searchParams.get('service'));
 
     if (tier === 'tier-01') {
       const chip = waPromptChips[0];
@@ -87,6 +92,11 @@ export default function ContactClient() {
       setCalTopic('WhatsApp AI Automation');
     }
 
+    if (offer) {
+      setWaTopic(offer.title);
+      setWaCustomMsg(offer.message);
+      setCalTopic(offer.title);
+    }
     if (topic) {
       setWaTopic(topic);
     }
@@ -113,6 +123,7 @@ export default function ContactClient() {
     }
   }, [submissionError, whatsappUrl]);
   const submittingRef = useRef(false);
+  const trackedRequests = useRef(new Set<string>());
   const requestKeyRef = useRef({ payload: '', key: '' });
   const sendLeadToBackend = async (payload: Record<string, unknown>) => {
     if (submittingRef.current) return null;
@@ -133,6 +144,10 @@ export default function ContactClient() {
       const data = await res.json();
       if (!res.ok || data.status !== 'notification_accepted' || typeof data.requestId !== 'string') throw new Error('Capture failed');
       setLastRequestId(data.requestId);
+      if (!trackedRequests.current.has(data.requestId)) {
+        trackContactEvent('lead_request_accepted', String(payload.intent));
+        trackedRequests.current.add(data.requestId);
+      }
       return data.requestId as string;
     } catch {
       setSubmissionError('We could not confirm your email request. Your details are still here. Retry, or use the WhatsApp link below and press Send there.');
@@ -153,11 +168,13 @@ export default function ContactClient() {
     }
     setWaNameError(false);
 
-    const reqId = await sendLeadToBackend({
+    const message = [waCustomMsg, waBusiness && `Business: ${waBusiness}`, waTiming && `Preferred start: ${waTiming}`].filter(Boolean).join('\n');
+    await sendLeadToBackend({
       intent: 'whatsapp_quick_chat',
+      companyName: waBusiness,
       name: cleanName,
       phone: cleanPhone,
-      message: waCustomMsg,
+      message,
       serviceInterest: waTopic,
     });
 
@@ -165,7 +182,7 @@ export default function ContactClient() {
       name: cleanName,
       phone: cleanPhone,
       topic: waTopic,
-      message: waCustomMsg,
+      message,
     });
 
     const targetUrl = buildWhatsAppUrl(formattedMessage);
@@ -312,6 +329,11 @@ export default function ContactClient() {
       {whatsappUrl && <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn-primary mb-6">Continue in WhatsApp — press Send to send your message</a>}
       </div>
 
+      {getServiceOffer(searchParams.get('service')) && <div className="card-brand p-5 mb-6">
+        <h2 className="text-lg font-bold">{getServiceOffer(searchParams.get('service'))?.title}</h2>
+        <p>{getServiceOffer(searchParams.get('service'))?.price} · {getServiceOffer(searchParams.get('service'))?.period}</p>
+        <p className="text-sm mt-2">{getServiceOffer(searchParams.get('service'))?.exclusions}</p>
+      </div>}
       {/* ═══ TRI-MODAL TAB SWITCHER ═══ */}
       <div className="flex flex-col sm:flex-row items-center justify-center p-1.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-md mb-10 max-w-2xl mx-auto">
         <button
@@ -347,7 +369,7 @@ export default function ContactClient() {
           }`}
         >
           <span>🛡️</span>
-          <span>24h Diagnostic</span>
+          <span>Project enquiry</span>
         </button>
       </div>
 
@@ -370,7 +392,7 @@ export default function ContactClient() {
             </div>
             <div className="text-right">
               <span className="text-xs font-mono text-[var(--text-muted)] block">
-                Typical Response: &lt; 15 mins
+                Replies during business hours
               </span>
               <span className="text-[11px] font-mono text-[var(--accent-gold)] font-bold">
                 Direct with Malack Bwana
@@ -436,13 +458,26 @@ export default function ContactClient() {
             </p>
           </div>
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <div className="min-w-0">
+              <label className="field-label" htmlFor="waBusiness">Business name (optional)</label>
+              <input id="waBusiness" autoComplete="organization" maxLength={150} value={waBusiness} onChange={e => setWaBusiness(e.target.value)} className="w-full p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]" />
+            </div>
+            <div className="min-w-0">
+              <label className="field-label" htmlFor="waTiming">When would you like to start? (optional)</label>
+              <select id="waTiming" value={waTiming} onChange={e => setWaTiming(e.target.value)} className="w-full p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                <option value="">Select a timeframe</option><option>This month</option><option>Within 1–3 months</option><option>Exploring options</option>
+              </select>
+            </div>
+          </div>
+
           {/* 2. Quick-Select Topic Chips */}
           <div className="mb-8">
             <span className="text-[11px] font-mono text-[var(--text-muted)] uppercase tracking-wider block mb-3">
               2. Select Your Discussion Priority:
             </span>
             <div className="flex flex-wrap gap-2.5">
-              {waPromptChips.map((chip, idx) => (
+              {[...SERVICE_OFFERS.map(offer => ({ label: offer.title, text: offer.message })), ...waPromptChips.slice(3)].map((chip, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleChipSelect(chip)}
@@ -644,6 +679,9 @@ export default function ContactClient() {
                     <option value="WhatsApp AI Automation">WhatsApp AI Customer Assistant</option>
                     <option value="Local SEO & Google Maps">Local SEO & Google Maps Visibility</option>
                     <option value="High-Speed Web Replatforming">Next.js Web Replatforming</option>
+                    <option value="Websites for growing businesses">Website project</option>
+                    <option value="Social media management">Social media management</option>
+                    <option value="Photography &amp; video content">Photography &amp; video content</option>
                     <option value="General Digital Strategy">General Digital Systems Strategy</option>
                   </select></div>
                 </div>
@@ -710,10 +748,10 @@ export default function ContactClient() {
               <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-4">
                 <div>
                   <span className="text-eyebrow text-xs font-mono block mb-1">
-                    CONFIDENTIAL 24-HOUR TEARDOWN
+                    PROJECT DETAILS
                   </span>
                   <h2 className="text-2xl font-black tracking-tight text-[var(--text-core)]">
-                    3-Step Growth Diagnostic
+                    Tell us about your project
                   </h2>
                 </div>
                 <div className="flex items-center gap-2">

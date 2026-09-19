@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import FooterCloser from '../components/FooterCloser';
-import TestimonialsSection from '../components/TestimonialsSection';
 import { SITE_CONFIG } from '@/lib/constants';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
@@ -206,7 +205,7 @@ export default function AboutPage() {
       {/* ═══ HERO SECTION ═══ */}
       <section className="relative overflow-hidden py-24 px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
         <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-[var(--accent-gold)]/8 rounded-full filter blur-[120px] pointer-events-none" />
-        
+
         <div className="max-w-5xl mx-auto relative z-10">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[12px] font-mono text-[var(--text-muted)] mb-4">
             <Link href="/" className="hover:text-[var(--accent-gold)] transition-colors">Home</Link>
@@ -244,7 +243,7 @@ export default function AboutPage() {
       {/* ═══ FOUNDER SECTION ═══ */}
       <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           {/* Founder Profile Card */}
           <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
             <div className="relative mb-6">
@@ -445,7 +444,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
+
             {/* Not For */}
             <div className="p-8 rounded-2xl border border-red-500/20 bg-red-500/5">
               <div className="flex items-center gap-2 mb-6">
@@ -519,7 +518,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ CLIENT EVIDENCE & SOCIAL PROOF ═══ */}
-      <TestimonialsSection />
+
 
       <FooterCloser />
     </main>

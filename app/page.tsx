@@ -1,13 +1,12 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import CodeTerminal from './components/CodeTerminal';
+import ServiceOffers from './components/ServiceOffers';
 import FooterCloser from './components/FooterCloser';
-import TestimonialsSection from './components/TestimonialsSection';
 import { servicesData } from './services/data/servicesData';
 
 export const metadata: Metadata = {
-  title: 'Digital Marketing & AI Agency Kenya | Goldfish Marketing',
+  title: { absolute: 'Web Design, Content & Social Media in Kenya | Goldfish Marketing' },
   description:
     'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
   alternates: {
@@ -87,7 +86,7 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════
           SECTION 1: HERO — PRO MAX AMBIENT LUXURY
       ═══════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden min-h-[calc(100vh-80px)] flex items-center py-20 px-6 lg:px-10">
+      <section className="home-hero relative overflow-hidden flex items-center py-12 lg:py-20 px-6 lg:px-10">
         
         {/* Animated Background Ambient Orbs */}
         <div className="absolute top-[-10%] right-[-5%] w-[550px] h-[550px] bg-[var(--accent-gold)]/10 rounded-full filter blur-[120px] pointer-events-none orb-animate-1" />
@@ -101,41 +100,39 @@ export default function Home() {
             {/* Outcome Micro-Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-surface)]/80 text-[var(--accent-gold)] text-[11px] font-mono tracking-wider uppercase mb-6 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Premier Digital Growth &amp; AI Systems • Diani • Nairobi • Coast</span>
+              <span>Websites • Content • Social media | Diani, Kenya</span>
             </div>
 
             <h1 className="text-h1 font-black leading-[1.12] tracking-tight mb-6">
-              We Engineer <span className="gradient-text-gold">Market Dominance</span>: Kenya&apos;s Premier Web Systems, SEO &amp; AI Agency.
+              Websites that help turn interest into <span className="text-[var(--text-core)]">enquiries.</span>
             </h1>
 
             <p className="text-body-lg text-[var(--text-muted)] mb-4 leading-relaxed font-light max-w-2xl">
-              Local insight meets global engineering. We build high-converting <Link href="/services/smart-web-app-ecosystems" className="underline hover:text-[var(--accent-gold)] transition-colors">web ecosystems</Link>, direct booking engines that cut OTA commissions for hospitality, and <Link href="/services/ai-automation-sme" className="underline hover:text-[var(--accent-gold)] transition-colors">AI automation</Link> that eliminates manual admin for growing Kenyan SMEs.
+              Websites for accommodation groups, tour operators, restaurants and service businesses—built around clear information and easy enquiries.
             </p>
-            <p className="text-body text-[var(--text-muted)] mb-8 leading-relaxed max-w-2xl font-normal">
-              Headquartered in <Link href="/diani" className="underline hover:text-[var(--accent-gold)] transition-colors">Diani Beach</Link> and serving ambitious brands across <Link href="/kenya" className="underline hover:text-[var(--accent-gold)] transition-colors">Kenya</Link> — whether your website isn&apos;t generating enquiries, your ads are burning budget, or your team is drowning in repetitive WhatsApp chats — we engineer the fix.
+            <p className="text-body text-[var(--text-muted)] mb-6 leading-relaxed max-w-2xl">
+              Typical business website projects: <strong>KShs 50,000–80,000</strong>, depending on scope. Content, social management and ads are available separately.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-3">
-              <Link href="/contact" className="btn-primary w-full sm:w-auto shadow-md">
-                Request a Commercial Growth Audit
+              <Link href="/contact?service=website" className="btn-primary w-full sm:w-auto shadow-md">
+                Discuss My Website
               </Link>
               <Link href="/portfolio" className="btn-outline w-full sm:w-auto">
-                Explore Client Case Studies →
+                See Our Work →
               </Link>
             </div>
-            <p className="text-[11px] font-mono text-[var(--text-muted)] flex items-center gap-2">
-              <span>100% Confidential</span>
-              <span>•</span>
-              <span>Actionable 12-Point Revenue Diagnostic</span>
-              <span>•</span>
-              <span>Zero Sales Pressure</span>
-            </p>
+            <p className="text-sm text-[var(--text-muted)]">Speak directly with Malack about your business, scope and next steps.</p>
           </div>
           
-          {/* Right Column — Dual Mode Terminal (5 cols) */}
-          <div className="lg:col-span-5 w-full aspect-square max-w-lg mx-auto">
-            <CodeTerminal />
-          </div>
+          <aside className="lg:col-span-5 w-full card-brand p-6 lg:p-8">
+            <p className="text-eyebrow mb-4">A relevant place to start</p>
+            <h2 className="text-2xl font-bold mb-4">A website for your accommodation business.</h2>
+            <p className="text-[var(--text-muted)] mb-5">Help prospective guests explore your properties and take the next step towards a booking. We start by understanding how enquiries and reservations work in your business.</p>
+            <p className="font-bold mb-2">Diani Ocean View Residences</p>
+            <p className="text-sm text-[var(--text-muted)] mb-5">An accommodation website built by Goldfish Marketing.</p>
+            <a href="https://dianioceanviewresidences.com/" target="_blank" rel="noopener noreferrer" className="btn-outline">View the client website ↗</a>
+          </aside>
         </div>
       </section>
 
@@ -160,8 +157,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               ),
-              label: 'Sub-Second Velocity',
-              sub: '95+ Lighthouse score guaranteed'
+              label: 'Mobile usability',
+              sub: 'Readable pages and clear enquiry paths'
             },
             {
               icon: (
@@ -169,8 +166,8 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               ),
-              label: 'KDPA & GDPR Compliant',
-              sub: 'Data Protection Act 2019 verified'
+              label: 'Clear project scope',
+              sub: 'Agree deliverables before work begins'
             },
             {
               icon: (
@@ -179,7 +176,7 @@ export default function Home() {
                 </svg>
               ),
               label: 'Measurable Commercial ROI',
-              sub: 'Direct bookings, pipeline & saved hours'
+              sub: 'Define useful measures for your business'
             },
           ].map((item, i) => (
             <div key={i} className="flex flex-col items-center gap-1.5">
@@ -306,76 +303,9 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════
           TESTIMONIALS
       ═══════════════════════════════════════════════════════ */}
-      <TestimonialsSection />
+      <ServiceOffers />
 
-      {/* ═══════════════════════════════════════════════════════
-          SECTION 5: FLAGSHIP CASE STUDY
-      ═══════════════════════════════════════════════════════ */}
-      <section className="section-padding px-6">
-        <div className="max-w-7xl mx-auto mb-10 text-center">
-          <span className="text-eyebrow text-xs mb-2 block font-mono">PROVEN COMMERCIAL IMPACT</span>
-          <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)]">
-            Featured Hospitality Case Study
-          </h2>
-        </div>
 
-        <div className="max-w-7xl mx-auto rounded-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-10 items-stretch border border-[var(--border-subtle)] shadow-2xl">
-          {/* Metrics Dashboard Display */}
-          <div className="lg:col-span-6 bg-[#0E0E0E] text-white p-8 lg:p-12 flex flex-col justify-center gap-8 relative">
-            <div className="text-[9px] font-mono text-[var(--accent-gold)] uppercase tracking-widest mb-2 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Verified Deployment • Diani Beach, Kenya</span>
-            </div>
-
-            <h3 className="text-h2 font-black tracking-tight text-white leading-tight">
-              Cutting OTA Commission Leakage: +58% Direct Bookings in 90 Days.
-            </h3>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left mt-2">
-              <div className="flex flex-col gap-2">
-                <span className="text-emerald-400 text-4xl lg:text-5xl font-black font-mono tracking-tighter">
-                  58%
-                </span>
-                <span className="text-[10px] text-gray-400 font-mono uppercase tracking-widest leading-normal">
-                  Direct Booking Ratio (Up from 14%)
-                </span>
-              </div>
-              <div className="flex flex-col gap-2 border-y sm:border-y-0 sm:border-x border-gray-800 py-6 sm:py-0 sm:px-6">
-                <span className="text-[var(--accent-gold)] text-4xl lg:text-5xl font-black font-mono tracking-tighter">
-                  1.2s
-                </span>
-                <span className="text-[10px] text-gray-400 font-mono uppercase tracking-widest leading-normal">
-                  Mobile Load Speed (-76% Latency)
-                </span>
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-white text-4xl lg:text-5xl font-black font-mono tracking-tighter">
-                  KES 3.2M
-                </span>
-                <span className="text-[10px] text-gray-400 font-mono uppercase tracking-widest leading-normal">
-                  Annual OTA Fees Reclaimed
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Copy (40% Desktop) */}
-          <div className="lg:col-span-4 p-8 lg:p-12 flex flex-col justify-center items-start bg-[var(--bg-surface)]">
-            <span className="text-eyebrow text-xs mb-3 font-mono">
-              HOSPITALITY DIRECT REVENUE ENGINE
-            </span>
-            <p className="text-body text-[var(--text-muted)] mb-4 leading-relaxed">
-              We engineered a custom Next.js direct booking platform with instant M-Pesa STK push and 24/7 WhatsApp AI concierge for a boutique coastal resort, liberating them from predatory 20% OTA commission cuts.
-            </p>
-            <div className="p-3 rounded-lg bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] mb-6 text-[11px] font-mono text-[var(--accent-gold)]">
-              AUDITED PROVENANCE: Verified via Booking Engine Telemetry &amp; GA4 Audit
-            </div>
-            <Link href="/portfolio/ecommerce-speed-replatforming" className="btn-primary w-full sm:w-auto text-xs py-3 px-6 shadow-md">
-              Explore Full Diani Resort Case Study →
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════════════════
           SECTION 6: INSIGHTS TEASER

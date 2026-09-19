@@ -1,77 +1,65 @@
 import type { MetadataRoute } from 'next';
 import { servicesData } from './services/data/servicesData';
-import { PORTFOLIO_PROJECTS } from './portfolio/data/portfolioData';
+import { PUBLISHED_PROJECTS } from './portfolio/data/publishedProjects';
 import { INSIGHT_ARTICLES } from './insights/data/insightsData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.goldfishmarketing.co.ke';
-  const currentDate = new Date().toISOString();
 
   // Static core routes
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: `${baseUrl}`,
-      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
     },
     {
       url: `${baseUrl}/services`,
-      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/portfolio`,
-      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/insights`,
-      lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/diani`,
-      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/mombasa`,
-      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/kenya`,
-      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.3,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.3,
     },
@@ -81,17 +69,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const serviceRoutes: MetadataRoute.Sitemap = Object.keys(servicesData).map(
     (slug) => ({
       url: `${baseUrl}/services/${slug}`,
-      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     })
   );
 
   // Dynamic Portfolio routes
-  const portfolioRoutes: MetadataRoute.Sitemap = PORTFOLIO_PROJECTS.map(
+  const portfolioRoutes: MetadataRoute.Sitemap = PUBLISHED_PROJECTS.map(
     (project) => ({
       url: `${baseUrl}/portfolio/${project.slug}`,
-      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.7,
     })
@@ -100,7 +86,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Dynamic Insights routes
   const insightRoutes: MetadataRoute.Sitemap = INSIGHT_ARTICLES.map((article) => ({
     url: `${baseUrl}/insights/${article.slug}`,
-    lastModified: currentDate,
     changeFrequency: 'monthly',
     priority: 0.7,
   }));

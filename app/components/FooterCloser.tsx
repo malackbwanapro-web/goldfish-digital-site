@@ -11,9 +11,9 @@ interface FooterCloserProps {
 }
 
 export default function FooterCloser({
-  closerTitle = "Stop Leaking Revenue to Outdated Systems & High OTA Fees.",
-  closerText = "Whether you manage a boutique coastal resort, a growing SME, or a regional real estate firm, we'll diagnose your bottlenecks and map a custom growth architecture in an actionable audit.",
-  primaryBtnText = "Request a Commercial Growth Audit",
+  closerTitle = "Let’s discuss what your business needs next.",
+  closerText = "Tell us about your customers, current website and priorities. We will help you define a practical scope and the next step.",
+  primaryBtnText = "Discuss Your Project",
   primaryBtnHref = "/contact",
   secondaryBtnText = "View Our Services",
   secondaryBtnHref = "/services"
@@ -193,7 +193,7 @@ export default function FooterCloser({
               <Link href="/terms" className="hover:text-[var(--accent-gold)] transition-colors duration-200">
                 Terms of Service
               </Link>
-              <span className="text-xs text-[var(--accent-gold)] font-semibold mt-1">SLA Guarantee: 24h Form response</span>
+              <span className="text-xs text-[var(--accent-gold)] font-semibold mt-1">Enquiries reviewed during business hours</span>
               <div className="flex gap-2 text-xs text-[var(--text-muted)] mt-2">
                 <span className="font-bold text-[var(--text-core)]">Coverage:</span>
                 <Link href="/diani" className="hover:text-[var(--accent-gold)] underline">Diani</Link> &bull;

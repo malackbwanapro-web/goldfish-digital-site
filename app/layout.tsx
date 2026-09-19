@@ -116,9 +116,9 @@ export default function RootLayout({
         </a>
         {gaId && <GoogleAnalytics gaId={gaId} />}
         <Header />
-        <main id="main-content" className="flex-1 flex flex-col">
+        <div id="main-content" tabIndex={-1} className="flex-1 flex flex-col">
           {children}
-        </main>
+        </div>
         <WhatsAppFloat />
         <MobileStickyBar />
       </body>

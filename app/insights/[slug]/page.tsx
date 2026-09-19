@@ -11,7 +11,6 @@ import { ARTICLE_CONTENT } from '../data/articleContent';
 import FooterCloser from '../../components/FooterCloser';
 import ReadingProgressBar from '../components/ReadingProgressBar';
 import ExecutiveSummary from '../components/ExecutiveSummary';
-import SelfAuditor from '../components/SelfAuditor';
 
 interface PageProps {
   params: { slug: string };
@@ -184,7 +183,7 @@ export default function InsightArticlePage({ params }: PageProps) {
           )}
 
           {/* 60-Second Interactive Self-Test Diagnostic */}
-          <SelfAuditor />
+
 
           {/* Contextual Micro-Bridge to Services */}
           <div className="card-brand p-8 rounded-2xl border border-[var(--accent-gold)]/40 bg-[var(--bg-surface)] mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-lg">

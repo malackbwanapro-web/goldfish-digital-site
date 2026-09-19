@@ -6,6 +6,7 @@ const nextConfig = {
       {
         source: '/:path*',
         headers: [
+          { key: 'Content-Security-Policy', value: "base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'" },
           {
             key: 'X-DNS-Prefetch-Control',
             value: 'on',

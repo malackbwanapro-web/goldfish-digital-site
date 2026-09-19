@@ -13,11 +13,8 @@ export default function ExecutiveSummary({
   keyTakeaways,
   roiMetric,
 }: ExecutiveSummaryProps) {
-  const defaultTakeaways = [
-    'Mobile latency over 3 seconds costs Kenyan SMEs over 20% in direct customer drop-off.',
-    'Integrating localized M-Pesa STK push and WhatsApp booking triples checkout completion compared to card-only flows.',
-    'Entity-based local search optimization and schema markup consistently outperform costly broad-match paid ads.',
-  ];
+  if (!keyTakeaways?.length) return null;
+  const defaultTakeaways: string[] = [];
 
   const takeaways = keyTakeaways && keyTakeaways.length > 0 ? keyTakeaways : defaultTakeaways;
 
@@ -60,7 +57,7 @@ export default function ExecutiveSummary({
             </span>
           ) : (
             <span className="text-[var(--accent-gold)] font-bold">
-              ⚡ Kenyan SME Impact: Verified Regional Data
+              Planning notes
             </span>
           )}
           <a

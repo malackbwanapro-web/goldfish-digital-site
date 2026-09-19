@@ -1512,3 +1512,20 @@ export const ARTICLE_CONTENT: Record<string, string> = {
 `,
 
 };
+
+ARTICLE_CONTENT['website-design-cost-kenya-pricing-guide'] = `
+<h2>Goldfish Marketing website pricing</h2>
+<p>Your quote depends on scope. A simple online presence, a business website and a custom application need different amounts of design, content and development work.</p>
+<table><thead><tr><th>Project</th><th>Planning range</th><th>Scope</th></tr></thead><tbody>
+<tr><td>Limited-scope website</td><td>KShs 15,000–20,000</td><td>A smaller starting point; confirm pages and requirements before quoting.</td></tr>
+<tr><td>Business website</td><td>KShs 50,000–80,000</td><td>A typical website project for an established business, based on agreed requirements.</td></tr>
+<tr><td>Custom application or integrations</td><td>Quoted after discovery</td><td>Booking, payments and bespoke workflows need a specific technical scope.</td></tr>
+</tbody></table>
+<h2>What to clarify before approving a proposal</h2><ul>
+<li>The pages, content and design work included.</li><li>How visitors will enquire or book, and whether any third-party integrations are required.</li>
+<li>Who supplies photography and copy, and who approves the final content.</li><li>Domain ownership, hosting, maintenance, applicable taxes and recurring third-party fees.</li>
+<li>Delivery milestones, revisions, training and handover.</li><li>Analytics and the enquiries or bookings you want to measure.</li></ul>
+<h2>Content and ongoing marketing are separate services</h2>
+<p>Social media management is KShs 15,000–25,000 per month, excluding dedicated photography and video production. Content packages are KShs 50,000–100,000, planned for approximately 8–12 weeks of content depending on publishing frequency. Advertising management and media spend are scoped separately.</p>
+<h2>For accommodation businesses</h2><p>Start by deciding whether you need an enquiry website or an integrated reservation system. Availability, payments, cancellation rules and third-party booking fees affect the work required. A business website price should not be assumed to include every integration.</p>
+<p><a href="/contact?service=website">Discuss your website with Malack</a> or <a href="/portfolio">explore client website projects</a>.</p>`;

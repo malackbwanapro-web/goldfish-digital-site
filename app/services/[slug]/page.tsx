@@ -593,70 +593,7 @@ export default function ServicePage({ params }: Props) {
         </section>
       )}
 
-      {/* ═══════════════════════════════════════════════════════
-          SECTION 6: CLIENT CASE STUDY — Editorial Narrative
-      ═══════════════════════════════════════════════════════ */}
-      <section className="py-16 lg:py-24 px-6 bg-[#0E0E0E] text-white relative overflow-hidden">
-        {/* Subtle ambient glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-gold)]/3 rounded-full blur-3xl pointer-events-none opacity-30" />
-
-        <div className="max-w-7xl mx-auto relative z-10">
-          {/* Case study eyebrow */}
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-xl bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/20 flex items-center justify-center">
-              <svg className="w-5 h-5 text-[var(--accent-gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <span className="text-eyebrow text-[var(--accent-gold)]">{service.caseStudy.eyebrow || 'CLIENT PROOF'}</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch rounded-2xl border border-gray-800 overflow-hidden shadow-2xl">
-            {/* Case text narrative */}
-            <div className="lg:col-span-6 p-8 lg:p-12 bg-[#121212] flex flex-col justify-center items-start">
-              {service.caseStudy.text.split('\n\n').map((paragraph, pIdx) => (
-                <p key={pIdx} className="text-[15px] text-gray-400 leading-relaxed font-light mb-4">
-                  {paragraph.startsWith('The Challenge:') || paragraph.startsWith('The Solution:') ? (
-                    <>
-                      <span className="font-bold text-white text-sm">{paragraph.split(':')[0]}:</span>
-                      <span className="text-gray-300">{paragraph.substring(paragraph.indexOf(':') + 1)}</span>
-                    </>
-                  ) : paragraph}
-                </p>
-              ))}
-              
-              {service.caseStudy.resultText && (
-                <p className="text-[15px] text-gray-300 leading-relaxed font-light mt-2">
-                  <span className="font-bold text-white text-sm">The Result:</span>
-                  <span>{service.caseStudy.resultText.startsWith('The Result:') ? service.caseStudy.resultText.substring(11) : service.caseStudy.resultText}</span>
-                </p>
-              )}
-            </div>
-
-            {/* Metrics panel */}
-            <div className="lg:col-span-6 p-8 lg:p-12 bg-black flex flex-col justify-center gap-6">
-              <span className="text-[10px] font-mono text-gray-600 uppercase tracking-widest mb-2">The Result</span>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {service.caseStudy.metrics.map((metric, mIdx) => {
-                  const parts = metric.split(' ');
-                  const number = parts[0];
-                  const rest = parts.slice(1).join(' ');
-                  return (
-                    <div key={mIdx} className="flex flex-col gap-2 border-l border-gray-800 pl-6">
-                      <span className="text-3xl lg:text-4xl font-black font-mono text-[var(--accent-gold)] tracking-tighter">
-                        {number}
-                      </span>
-                      <span className="text-[10px] text-gray-500 font-mono uppercase tracking-widest leading-normal">
-                        {rest}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section className="section-padding px-6 border-t border-[var(--border-subtle)]"><div className="max-w-4xl mx-auto"><h2 className="text-h2 mb-4">Start with a real project conversation.</h2><p className="mb-6">Explore our client websites and tell us what success should look like for your business. We will agree the scope and how to measure progress.</p><Link href="/portfolio" className="btn-outline">Explore client work →</Link></div></section>
 
       {/* ═══════════════════════════════════════════════════════
           SECTION 7: FAQs — Split Layout
