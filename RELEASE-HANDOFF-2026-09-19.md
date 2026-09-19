@@ -26,3 +26,13 @@
 5. Remaining editorial evidence: confirm official social profiles and any quantitative claims retained in article bodies or service descriptions. Do not restore withheld statistics or testimonials without records and permission.
 
 No credentials were printed or committed. Do not rerun earlier one-off edit scripts against the final files. Follow up from the deployed commit and this note.
+
+## Production confirmation — 19 September 2026
+- Release commit: a2496bafd34547d93feaa282283a63c3882ab187, pushed to origin/main.
+- GitHub production deployment 6539840822 reported success at 2026-09-19T10:26:11Z.
+- Verified the custom domain https://www.goldfishmarketing.co.ke after deployment: homepage, services, two offer contact URLs, portfolio, both new project summaries, pricing guide, robots.txt and sitemap.xml all returned HTTP 200.
+- New homepage heading is present. Checked HTML pages use the production canonical domain; offer contact URLs canonicalize to /contact. Limited CSP response header is present.
+- Live sitemap includes the two factual project summaries and excludes the withdrawn case studies. Sample old route /portfolio/ecommerce-speed-replatforming returns 200 with noindex, follow.
+- Local build, browser and test results above remain applicable to this release. Production form delivery and GA4 reporting were not tested; do not treat page availability as proof of lead delivery.
+- Production verification report: C:\Users\Malik\Desktop\CHAT GPT PROJECTS\GFM Website\live-release-verification-2026-09-19.json.
+- This confirmation was appended locally after publishing; the website code is deployed. Configuration and editorial work listed above remain open.
