@@ -98,6 +98,17 @@ export const INSIGHT_ARTICLES: InsightArticle[] = [
     tags: ['Kenya Web Pricing', 'SME Budgets', 'M-Pesa Daraja', 'ROI'],
     coverImage: '/images/services/web-conversion.png',
   },
+  {
+    slug: 'direct-bookings-vs-otas-kenya-hospitality-guide',
+    category: 'Smart Web & App Ecosystems',
+    categorySlug: 'smart-web-app-ecosystems',
+    title: 'Direct Bookings vs. OTAs in Kenya: Why New Hotels Need Both, and Established Resorts Must Break Free',
+    excerpt: 'Should Kenyan hotels abandon OTAs? Goldfish Marketing breaks down why new properties need OTAs + a 2-way channel manager, and how established resorts reclaim direct revenue and eliminate commission waste.',
+    readTime: '11 Min Read',
+    isFeatured: true,
+    tags: ['Hospitality Tech', 'Direct Bookings', 'OTA Commissions', 'Channel Manager', 'Diani & Mombasa Hotels'],
+    coverImage: '/images/services/web-conversion.png',
+  },
 
   // ───────────────────────────────────────────────
   // 2. Advanced Visibility Engineering
