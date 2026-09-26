@@ -1,4 +1,5 @@
 import { SITE_CONFIG } from '@/lib/constants';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -602,16 +603,46 @@ export default function ServicePage({ params }: Props) {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-10 gap-16">
           {/* Title column */}
           <div className="lg:col-span-4 flex flex-col items-start">
-            <span className="text-eyebrow mb-3 block">COMMON QUESTIONS</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border-accent)] bg-[var(--accent-gold)]/10 text-[var(--accent-gold)] text-[10px] font-mono tracking-widest uppercase mb-4 font-bold">
+              <span>RADICAL CLARITY &amp; DILIGENCE</span>
+            </div>
             <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)]">
-              Frequently Asked Questions
+              Straight Answers to the 5 Hard Buying Questions
             </h2>
-            <p className="text-caption mt-4 leading-relaxed">
-              Got a question that isn&apos;t covered? Reach out directly — we respond within 24 hours.
+            <p className="text-caption mt-4 leading-relaxed text-[var(--text-muted)]">
+              We don&apos;t hide behind agency jargon or evasive answers. Every serious business operator has legitimate questions about capital returns, delivery timelines, past agency risks, and technical sovereignty. Here is the unvarnished commercial reality before our first conversation.
             </p>
-            <Link href="/contact" className="btn-outline mt-8 text-sm">
-              Ask Us Directly
-            </Link>
+
+            <div className="mt-8 p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 w-full flex flex-col gap-3 text-xs font-mono text-[var(--text-muted)]">
+              <div className="flex items-center gap-2 text-[var(--text-core)] font-bold">
+                <span className="text-[var(--accent-gold)] font-bold">✓</span>
+                <span>100% Client Code &amp; Data Sovereignty</span>
+              </div>
+              <div className="flex items-center gap-2 text-[var(--text-core)] font-bold">
+                <span className="text-[var(--accent-gold)] font-bold">✓</span>
+                <span>Fixed 14-Day Delivery Sprints</span>
+              </div>
+              <div className="flex items-center gap-2 text-[var(--text-core)] font-bold">
+                <span className="text-[var(--accent-gold)] font-bold">✓</span>
+                <span>SLA-Backed Commercial Deliverables</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full mt-6">
+              <Link href="/contact" className="btn-primary w-full sm:w-auto text-sm text-center">
+                Book a Strategy Session
+              </Link>
+              <a
+                href={buildWhatsAppUrl(
+                  `Hi Malack, I'm reviewing the ${service.title} service page and have a specific question about your scope and pricing.`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline w-full sm:w-auto text-sm text-center"
+              >
+                WhatsApp Us
+              </a>
+            </div>
           </div>
 
           {/* Accordion column */}

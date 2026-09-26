@@ -7,6 +7,7 @@ export interface ServiceCapabilityRow {
 export interface ServiceFAQ {
   question: string;
   answer: string;
+  category?: string;
 }
 
 export interface ServiceDetail {
@@ -138,19 +139,29 @@ export const servicesData: Record<string, ServiceDetail> = {
     },
     faqs: [
       {
-        question: "Do you build custom websites or use templates?",
+        question: "Why invest in a custom Next.js website when a WordPress freelancer charges KShs 20,000?",
         answer:
-          "Everything we build is custom-engineered from the ground up. We don't use page builders or pre-made themes. Every element is purposefully designed to reflect your brand's identity and engineered to perform at the highest technical level.",
+          "If all your business needs is a static digital brochure, a KShs 20,000 template is fine. But if you rely on bookings, inquiries, or ad traffic, a cheap WordPress site actively burns capital: over 68% of regional web traffic is on mobile data, and Google proves 53% of mobile visitors abandon pages taking over 3 seconds. For a hospitality or high-ticket service provider, our custom Next.js platforms pay for their entire build in just 10 direct bookings by eliminating 15%–25% OTA commissions and capturing mobile visitors who bounce off slow sites.",
       },
       {
-        question: "How long does a full web build typically take?",
+        question: "How do we know our project won't drag on for months like our last agency experience?",
         answer:
-          "It depends on the scope of each project. Simple sites can be developed and delivered within 1-2 days. A standard marketing website with integrations can take 1–2 weeks from signed brief to launch. Complex web applications or platforms with custom functionality can take 4–8 weeks. We provide a precise timeline during the scoping phase.",
+          "Traditional agencies miss deadlines because they juggle 15 clients with junior contractors. Goldfish Digital caps active ecosystem builds at two at any given time. Standard business platforms are delivered in fixed 14-day sprints. You track development on a shared live dashboard, review milestone staging URLs, and pay in verified tranches tied strictly to deliverables.",
       },
       {
-        question: "Can you integrate with our existing CRM and tools?",
+        question: "How much of our executive team's time will this project require?",
         answer:
-          "Yes. We build the integration layer that connects your website to your existing operational stack — whether that's HubSpot, Salesforce, Xero, a payment gateway, or a bespoke internal system. We don't require you to change your tools.",
+          "Under 4 hours total across the entire 14-day build. We use our 90-Minute Reverse Extraction Protocol: a single recorded strategic interview where we extract your customer objections, pricing, and case studies. Our conversion copywriters draft 100% of your copy and headlines, and our asset concierge optimizes your photos for sub-second delivery. You review via quick Loom videos and WhatsApp voice notes.",
+      },
+      {
+        question: "If it's custom code, can our non-technical staff make edits without paying developer fees?",
+        answer:
+          "Yes. We decouple your content from the codebase using a modern visual Headless CMS. Your team logs into an intuitive portal on their phone or laptop: type the new price, upload an image, and click 'Publish'. Within 15 seconds, our global edge network updates the live site. Furthermore, you own 100% of the GitHub repository, DNS, and hosting credentials.",
+      },
+      {
+        question: "Does sub-second page speed actually translate into measurable commercial revenue?",
+        answer:
+          "Yes. In our verified client deployments, rebuilding slow legacy sites on our sub-second Next.js architecture lifted inquiry conversion rates from 1% to 4% in 90 days with zero increase in advertising budget. Sub-second mobile response times, instant room availability, and seamless Safaricom Daraja M-Pesa STK prompts remove the hesitation between interest and payment.",
       },
     ],
     footerCtaHeadline: "Your Path to Market Dominance",
@@ -248,19 +259,29 @@ export const servicesData: Record<string, ServiceDetail> = {
     },
     faqs: [
       {
-        question: "What exactly is GEO and why does it matter now?",
+        question: "SEO takes 6–12 months with no guarantees; why not just put that budget into Google Ads?",
         answer:
-          "Generative Engine Optimisation (GEO) is the practice of optimising your content and brand signals specifically to be cited and recommended by AI-powered search tools like ChatGPT Search, Perplexity, and Google AI Overviews. As more users discover businesses through these platforms, appearing in AI-generated answers is becoming as commercially important as ranking on Google Page 1.",
+          "If your business is in an emergency cash crisis needing revenue in 21 days, you should run search ads—we refuse to sell visibility architecture as an emergency fix. But paid ads are infinite rent: the second you pause spend, leads drop to zero, and ad auctions inflate 15%–25% annually. Visibility Engineering creates balance-sheet capital assets. Every schema graph, entity relationship, and technical speed enhancement we deploy is permanent digital equity that systematically drives down your blended acquisition costs over time.",
       },
       {
-        question: "How long does it take to see results from SEO?",
+        question: "We paid an SEO agency before and got useless monthly ranking PDFs; how is Goldfish different?",
         answer:
-          "Technical SEO improvements typically generate measurable ranking movements within 8–12 weeks of implementation. Significant traffic growth follows over a 3–6 month period. GEO results — AI citations and AI overview appearances — can emerge faster once your entity signals are properly structured.",
+          "Most SEO agencies assign junior staff to target zero-intent keywords that no buyer searches for, celebrate ranking for vanity terms, and email automated reports. We permanently ban vanity ranking PDFs. Our deliverables are tangible code and commercial telemetry: inspectable JSON-LD schema commits in your repository, crawl telemetry, Core Web Vitals optimizations, and verified pipeline growth (qualified form fills, high-intent demo requests, and direct calls).",
       },
       {
-        question: "Do you handle content creation as part of the SEO service?",
+        question: "Isn't SEO dead now that Google AI Overviews and ChatGPT answer questions directly?",
         answer:
-          "Yes. Our Advanced Visibility Engineering service integrates directly with our Brand Identity & Content Creation service. We don't just tell you what content to write — we produce it, optimise it, and publish it within a structured content architecture designed to compound your authority over time.",
+          "Traditional informational SEO (writing generic 500-word definition articles) is dead. But AI models are recommendation engines: when an executive asks ChatGPT, Claude, or Perplexity 'Who is the top corporate law firm in Nairobi?' or 'What is the best beachfront luxury villa in Diani?', the AI synthesizes a curated shortlist from structured knowledge graphs and verified entities. If your brand lacks structured schema and entity provenance, you simply do not exist in the AI's consideration set. Furthermore, traffic arriving from AI citations converts at 3x–5x higher rates because the buyer has already been vetted.",
+      },
+      {
+        question: "Do my executives or team have to spend hours writing weekly blogs or filming videos?",
+        answer:
+          "Zero homework. 70% of Visibility Engineering is deep code and data infrastructure: structured entity graphs, canonical architecture, semantic data tables, and Core Web Vitals. When original thought leadership is required, we use our 45-Minute SME Protocol: one structured recorded interview per month with your specialist. Our team extracts your case studies and contrarian insights, translating them into deep technical schema and authoritative assets. You spend 10 minutes reviewing via a Loom video—that is your entire commitment.",
+      },
+      {
+        question: "How do you prove that AI citations and Knowledge Graph rankings actually generate revenue?",
+        answer:
+          "We deploy a 4-Tier Triangulated Attribution Stack: Tier 1 tracks direct HTTP referrers from chatgpt.com, perplexity.ai, and claude.ai; Tier 2 captures high-intent self-reported attribution ('How did you find us?'); Tier 3 measures organic branded search surges in Google Search Console; Tier 4 programmatically audits 50+ commercial buyer prompts monthly across GPT-4o, Perplexity, and Gemini to benchmark your Share of Model against competitors. Ultimately, we hold our work accountable to Qualified Inbound Pipeline Velocity and reduction in blended CAC.",
       },
     ],
     footerCtaHeadline: "Engineer Your Dominance",
@@ -362,20 +383,29 @@ export const servicesData: Record<string, ServiceDetail> = {
     },
     faqs: [
       {
-        question:
-          "Do we need a full rebrand, or can you work with our existing identity?",
+        question: "How does spending on brand identity and photography put money back into our till this quarter?",
         answer:
-          "Both. We offer full brand identity builds for businesses starting fresh or undergoing a strategic repositioning, and brand evolution projects for businesses with existing equity in their identity that want to refine and elevate rather than replace.",
+          "Visual authority is the fastest lever to unlock 20% to 50% pricing power. In premium hospitality and high-ticket B2B, a buyer evaluates competence within 3 seconds. For a 12-room boutique hotel in Diani, if amateur photos force you to discount rooms from KShs 22,000 to KShs 15,000 to maintain occupancy, you forfeit over KShs 800,000 in gross margin every month. A KShs 200,000 visual overhaul amortizes in fewer than 15 room-nights. Visual authority does not cost money; it stops the price haggling and permanently resets what the market is willing to pay you.",
       },
       {
-        question: "What does your content production output look like monthly?",
+        question: "We paid an agency for a 60-page Brand Bible before that nobody used; how is this different?",
         answer:
-          "Output varies by retainer tier. A standard content retainer includes 4–8 long-form pieces per month, 8–16 social content assets, one monthly email, and one video asset. We scale output based on your growth goals and the content channels that are most commercially relevant for your business.",
+          "We permanently eliminate shelfware PDFs. Goldfish Digital builds 20 to 30 custom, drag-and-drop templates directly inside your team's Canva or Adobe Express account with locked fonts, official brand colors, and pre-formatted image grids. Your junior receptionist or assistant can open Canva, drop in a photo, change a rate, and export an on-brand graphic in under 3 minutes without touching a design tool. We also provide a laminated 1-page physical desk reference and conduct a 60-minute staff training workshop.",
       },
       {
-        question: "How do you ensure the content actually drives business results?",
+        question: "A commercial video shoot sounds chaotic; will you disrupt our paying guests and operations?",
         answer:
-          "Every content piece is mapped to a specific commercial objective — awareness, consideration, or conversion. We track performance at the content level and adjust our strategy monthly based on what's generating enquiries, not just impressions.",
+          "Zero operational disruption. We do not bring bloated 10-person film crews with bulky generators. We deploy high-mobility, cinema-grade tactical units (2 to 3 specialists maximum) using silent Sony FX cinema cameras and wireless audio. We reverse-engineer our shooting schedule: dawn exterior/drone sweeps before guests wake, interior and culinary setups during midday guest turnover (11:00 AM – 2:00 PM), and discreet evening vignettes from respectful distances. Your guests will barely notice us.",
+      },
+      {
+        question: "Why can't we just have our marketing intern shoot iPhone videos and design in Canva for free?",
+        answer:
+          "High-net-worth travelers and corporate B2B clients don't judge your service by what you claim in captions; they judge it by your costly signaling. Jittery smartphone video with blown-out lighting and muffled audio signals: 'This is a small-time budget operation—let's negotiate their rate.' Cinema optics, calibrated lighting, and broadcast sound design signal world-class quality where price is non-negotiable. Paying an intern KShs 40,000/month to produce low-performing social clips that repel high-ticket direct bookings is the most expensive mistake an SME can make.",
+      },
+      {
+        question: "Do we own the raw footage, or will you hold source files hostage? Will this look dated in 18 months?",
+        answer:
+          "You own 100% of your digital property unconditionally. Upon project settlement, we hand over the Master Asset Vault: editable Figma/Illustrator vectors, commercial font licenses, and uncompressed 4K raw B-roll footage. No watermarks or licensing tolls. Furthermore, we reject TikTok fads; our visual systems use disciplined Swiss typography and natural architectural palettes engineered to compound brand equity over 5 to 7 years.",
       },
     ],
     footerCtaHeadline: "Build Your Legacy",
@@ -477,20 +507,29 @@ export const servicesData: Record<string, ServiceDetail> = {
     },
     faqs: [
       {
-        question: "What's the minimum ad spend budget you work with?",
+        question: "Why insist on a minimum ad budget of KShs 150k–350k ($1.2k–$2.8k)? Can't we test with KShs 25,000?",
         answer:
-          "We typically advise clients running a minimum of KES 150,000 to KES 350,000 ($1,200–$2,800 USD) per month in direct media spend. Below this threshold, the pixel data and conversion volume required to train algorithmic bidding models effectively is insufficient to yield predictable, compounding ROAS.",
+          "Meta and Google bidding models are machine-learning algorithms that require a mathematical minimum of 50 conversion events within a 7-day rolling window to exit the volatile 'Learning Phase'. If your cost per conversion is KShs 1,500, reaching 50 events requires ~KShs 75,000 weekly (KShs 300,000/month). Spending only KShs 25,000/month traps campaigns in 'Learning Limited', causing the algorithm to bid blindly and inflating CPMs by 30%–50%. Testing with KShs 25,000 is like trying to boil a 10-liter pot of water with a single matchstick—it guarantees capital burn.",
       },
       {
-        question: "Do you create the ad creative in-house?",
+        question: "Our last agency showed us 50,000 video views, but our phone never rang; how is Goldfish different?",
         answer:
-          "Yes. Creative production is a core part of our paid growth service — not an add-on. We produce static visuals, short-form video ads, and carousel formats in-house, ensuring your creative is aligned with your brand identity and engineered for platform-specific performance.",
+          "We permanently ban vanity metrics from executive briefings. Impressions, reach, and 3-second views are media buyer diagnostics, not commercial results. Goldfish Digital reports exclusively on Customer Acquisition Cost (CAC), Return on Ad Spend (ROAS), and Marketing Efficiency Ratio (MER = Total Revenue / Total Marketing Investment). We implement server-side Meta Conversions API (CAPI) tied directly to your CRM and bank deposits—if an ad generates views but zero pipeline in 14 days, it is killed.",
       },
       {
-        question:
-          "How do you measure and report on social media and paid campaign performance?",
+        question: "Aren't Meta and Google ads full of bots and broke tire-kickers who ask 'How much?' and ghost?",
         answer:
-          "We provide monthly performance reports that connect platform metrics directly to business outcomes — leads generated, cost per acquisition, and estimated revenue influenced. We don't report on vanity metrics like impressions and follower counts unless they directly correlate with pipeline movement.",
+          "Cheap leads happen because agencies run 1-click lead forms or direct WhatsApp buttons without friction. Meta optimizes for the cheapest cost, attracting impulse clickers. We build custom Next.js qualification engines with intentional friction (budget gates and requirement filters). Disqualified leads trigger negative conversion feedback to Meta's algorithm. Furthermore, our 24/7 WhatsApp AI engages inquiries in 15 seconds, screening budgets before your human sales team ever speaks with them.",
+      },
+      {
+        question: "Do you run ads in our accounts or yours? Will you hold our pixel and audience data hostage?",
+        answer:
+          "Goldfish Digital NEVER runs ads out of agency-owned accounts. We build inside YOUR Meta Business Portfolio, Google Ads Manager, and LinkedIn Campaign Manager. You pay the ad networks directly and retain Super Admin control. Goldfish is added strictly as a partner operator. If you ever cancel, you revoke our access with one click. 100% of pixel optimization, lookalike audiences, and creative history remains your permanent corporate asset.",
+      },
+      {
+        question: "I don't have time to record new video ads every week; will performance collapse when ads fatigue?",
+        answer:
+          "You do not become an influencer or content creator. Our in-house production team handles scripting, filming, and motion design end-to-end. Furthermore, 80% of ad fatigue happens exclusively in the first 3 seconds (the hook). From a single 90-minute session, our 4×3×2 Modular Creative Matrix generates 4 hooks × 3 body angles × 2 CTAs = 24 unique ad permutations. When Hook A fatigues, automated rules switch delivery to Hook B without requiring new shoots.",
       },
     ],
     footerCtaHeadline: "Build Your Predictable Revenue Channel",
@@ -592,19 +631,29 @@ export const servicesData: Record<string, ServiceDetail> = {
     },
     faqs: [
       {
-        question: "Do we need a large budget or technical team to implement AI automation?",
+        question: "What if the AI hallucinates, quotes incorrect prices, or argues with a VIP client on WhatsApp?",
         answer:
-          "No. Our SME automation service is specifically designed for businesses without in-house technical teams. We handle the entire setup, configuration, and integration process. Most automation systems are live and generating results within 2–4 weeks of project kickoff.",
+          "We do not deploy open-ended creative chatbots. Our assistants use deterministic RAG (Retrieval-Augmented Generation) constrained strictly to your verified knowledge base and live CRM data. If a specific rate or custom policy does not exist verbatim in the system, the AI is physically restricted from guessing—it responds that management has been notified. Furthermore, sentiment circuit-breakers instantly escalate frustrated inquiries to your human staff via WhatsApp/Slack, backed by 100+ pre-launch adversarial stress tests.",
       },
       {
-        question: "Will the WhatsApp AI assistant actually sound like our brand?",
+        question: "Our clients value personal relationships; won't an automated bot feel cheap and insulting?",
         answer:
-          "Yes. We train the assistant on your brand voice, your service offering, your FAQs, and your specific business context. Contacts interacting with the assistant will experience a coherent, professional, and on-brand communication style — not a generic chatbot.",
+          "Speed IS hospitality. When an international traveler or high-ticket client inquires at 11:30 PM, waiting until 9:00 AM the next day means they book a competitor. A warm, articulate response in 15 seconds is the ultimate mark of luxury service. We fine-tune the assistant on your brand tone and local conversational nuance (including fluent English, Swahili, German, and French). Positioned as an 'Executive Digital Concierge', it handles routine questions instantly so your human staff can focus on high-touch relationship building.",
       },
       {
-        question: "What happens when the AI assistant doesn't know the answer?",
+        question: "We have zero technical staff; who maintains this when Meta updates APIs or a webhook breaks?",
         answer:
-          "The assistant is configured with a clear escalation protocol. If a query falls outside its trained parameters, it flags the conversation and notifies the appropriate team member to take over — ensuring no lead is lost and no client is left frustrated.",
+          "You never touch a line of code or manage an API key. Many cheap bots use unofficial web scrapers that get phone numbers banned. Goldfish builds exclusively on the official Meta WhatsApp Business Cloud API with enterprise reliability. Our automated heartbeat monitors ping systems every 60 seconds, and our managed SLA includes API version migrations, uptime guarantees, and instant fail-safe rerouting to human inboxes if an external database ever lags.",
+      },
+      {
+        question: "Why pay for custom AI automation when I can hire an intern for KShs 35,000/month or use Zapier?",
+        answer:
+          "Harvard Business Review and MIT research prove that responding to an inquiry within 5 minutes makes you 21x more likely to qualify and close them compared to 30 minutes. After hours or on weekends, a human employee takes hours to reply. If your average deal or booking is KShs 50,000 to KShs 200,000+, saving just ONE lost after-hours lead per month pays for our entire system. Unlike an intern, AI operates 24/7/365, never makes typos, handles 50 leads simultaneously, and automatically logs clean data into your CRM.",
+      },
+      {
+        question: "Will this AI train public ChatGPT models on our private client data or corrupt our CRM?",
+        answer:
+          "We deploy dedicated enterprise API endpoints with strict Zero Data Retention (ZDR) agreements. Your customer conversations are NEVER used to train, fine-tune, or improve any public AI model. All data is encrypted in transit and at rest, fully compliant with the Kenya Data Protection Act 2019 and GDPR. Our non-destructive integrations use immutable logging to prevent duplicate contacts, and your human team retains live visibility and one-click takeover anytime.",
       },
     ],
     footerCtaHeadline: "Reclaim Your Time",
@@ -706,20 +755,29 @@ export const servicesData: Record<string, ServiceDetail> = {
     },
     faqs: [
       {
-        question: "How long does a full digital performance audit take?",
+        question: "Why pay for an audit that's just an 80-page automated PDF that sits in a drawer?",
         answer:
-          "A comprehensive audit across website, SEO, paid advertising, and analytics typically takes 2–3 weeks to complete. We then present findings in a structured workshop session with a prioritised action plan and projected impact estimates.",
+          "Goldfish Digital permanently eliminates the 80-page automated PDF. We deliver an Interactive Impact-Prioritized Engineering Backlog ranked by the ICE framework (Impact, Confidence, Ease). You receive: 1) a 1-page Financial Leakage Brief quantifying monthly revenue loss from unmeasured checkout drop-offs and misallocated ads; 2) production-ready engineering tickets and GTM JSON container exports ready for immediate deployment; and 3) a 60-minute executive and developer walkthrough. If an audit doesn't tell you the exact financial cost of an error and provide the literal code to fix it within 14 days, it is not an engineering audit.",
       },
       {
-        question:
-          "What access do you need from us to conduct an audit?",
+        question: "GA4 and Meta Pixel are free software; why would we pay for analytics setup or an audit?",
         answer:
-          "We'll need read-level access to your GA4 property, Google Search Console, Meta Ads Manager, Google Ads account, and any other relevant platforms. We operate under strict confidentiality and data handling protocols — your data never leaves our secure environment.",
+          "Default, client-side GA4 and Meta Pixel tracking currently miss 25% to 40% of real transactions due to Apple iOS Intelligent Tracking Prevention (ITP cookie caps), Safari restrictions, ad-blockers, and consent banner drop-offs. When 35% of conversion events fail to pass back to Meta and Google, their machine learning algorithms bid blindly, optimizing for cheap clicks rather than high-LTV buyers. A stethoscope is inexpensive, but you pay a cardiologist to diagnose the hidden arrhythmia before it causes a heart attack. The tool is free; the commercial decisions you make on corrupted data cost you hundreds of thousands.",
       },
       {
-        question: "Do you implement the recommendations from the audit, or just advise?",
+        question: "Even if your audit finds 25 flaws, my internal team doesn't have the skills to fix them; won't this leave us stuck?",
         answer:
-          "Both options are available. Many clients engage us for the audit first and then retain us to implement the findings across our other service lines — SEO, paid growth, web, and automation. We can also provide the audit as a standalone deliverable if you have an in-house team to execute.",
+          "We are growth engineers, not theoretical consultants. Our audit includes two frictionless execution options: Option A (Full Turnkey Implementation), where Goldfish engineers write the custom dataLayer scripts, configure server-side Google Tag Manager (sGTM) on cloud infrastructure, verify Meta Conversions API (CAPI), and deploy all fixes directly with zero coding required from your team; or Option B (Plug-and-Play Kit) with one-click GTM JSON import files and step-by-step Loom video guides for your internal developers. All work is verified in staging with zero downtime.",
+      },
+      {
+        question: "Why do you need backend access to our ad accounts and CRM? Will this compromise proprietary financial data?",
+        answer:
+          "Goldfish Digital NEVER requests Admin or Owner access for an audit. We require only scoped 'Read-Only / Analyst / Viewer' permissions granted via official partner links (MCC, Meta Business Manager Partner ID). We sign a legally binding Mutual Non-Disclosure Agreement (NDA) prior to access. We operate under a strict Zero-PII storage policy: we audit tag triggers, server payloads, and conversion schemas—we never download, export, or store individual customer names or billing details. Furthermore, we verify whether your current tracking setup is leaking unhashed customer data, protecting you from Kenya DPA and GDPR liabilities.",
+      },
+      {
+        question: "Analytics doesn't run ads or close sales calls; how does fixing tracking tags put revenue in our bank account?",
+        answer:
+          "Modern ad networks (Meta Advantage+ and Google Performance Max) run entirely on machine learning signals. If your tracking fails to record high-ticket transactions or attributes them to the wrong channel, the algorithm optimizes for low-intent window shoppers, inflating your Customer Acquisition Cost (CAC) by 20% to 40%. On a monthly ad budget of KShs 300,000, recovering 25% in misallocated ad spend saves KShs 75,000 every month (KShs 900,000 annually). An analytics audit and server-side tracking infrastructure that permanently stops this leakage pays for itself within 45 to 60 days.",
       },
     ],
     footerCtaHeadline: "Gain Total Clarity",

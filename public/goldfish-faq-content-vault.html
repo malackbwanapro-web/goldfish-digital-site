@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goldfish Digital — Social Media Content Vault & FAQ Compendium</title>
+  <style>
+    :root {
+      --bg-dark: #0a0b0d;
+      --bg-surface: #121418;
+      --bg-card: #181b22;
+      --border-subtle: #242933;
+      --border-accent: rgba(212, 175, 55, 0.35);
+      --accent-gold: #d4af37;
+      --accent-gold-light: #f3e5ab;
+      --text-core: #f0f2f5;
+      --text-muted: #9aa2b1;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-core);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    aside {
+      width: 320px;
+      background-color: var(--bg-surface);
+      border-right: 1px solid var(--border-subtle);
+      padding: 32px 20px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+
+    .brand-header {
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .brand-header h1 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--text-core);
+      letter-spacing: -0.5px;
+    }
+    .brand-header span {
+      color: var(--accent-gold);
+    }
+    .brand-header p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-family: var(--font-mono);
+    }
+
+    .nav-group-title {
+      font-size: 11px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .nav-links { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover {
+      background-color: var(--bg-card);
+      color: var(--text-core);
+      border-left: 2px solid var(--accent-gold);
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 48px 60px;
+      max-width: 1100px;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(18, 20, 24, 0.4) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: 36px;
+      margin-bottom: 50px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--border-accent);
+      border-radius: 20px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    /* Pillar Section */
+    .pillar-section {
+      margin-bottom: 64px;
+      scroll-margin-top: 40px;
+    }
+    .pillar-header {
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border-subtle);
+      margin-bottom: 28px;
+    }
+    .pillar-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .pillar-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-core);
+      margin-top: 4px;
+    }
+
+    /* FAQ Card */
+    .faq-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .faq-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+    .faq-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .objection-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: rgba(212, 175, 55, 0.12);
+      color: var(--accent-gold);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .action-btn-group {
+      display: flex;
+      gap: 8px;
+    }
+    .copy-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      background: var(--accent-gold);
+      color: #000;
+      border-color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    .faq-question {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-core);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .raw-quote-box {
+      background: rgba(0, 0, 0, 0.4);
+      border-left: 3px solid var(--accent-gold);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 18px;
+      font-style: italic;
+      color: #d1d5db;
+      font-size: 13px;
+    }
+    .raw-quote-label {
+      display: block;
+      font-style: normal;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .faq-answer {
+      font-size: 14.5px;
+      color: #c7cbd3;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    /* Social Media Post Generator Box */
+    .social-prompt-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed var(--border-subtle);
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 12.5px;
+    }
+    .social-prompt-title {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .social-hook-text {
+      color: #9aa2b1;
+      font-style: italic;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--accent-gold);
+      color: #000;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: none;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      aside { width: 100%; height: auto; position: static; }
+      main { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Sidebar -->
+  <aside>
+    <div class="brand-header">
+      <h1>GOLDFISH <span>DIGITAL</span></h1>
+      <p>Social Media Content Vault &amp; FAQs</p>
+    </div>
+
+    <div class="nav-group-title">Service Pillars</div>
+    <ul class="nav-links">
+      <li><a href="#pillar-1">01. Web &amp; App Ecosystems</a></li>
+      <li><a href="#pillar-2">02. Visibility &amp; GEO / AI</a></li>
+      <li><a href="#pillar-3">03. Brand Identity &amp; Content</a></li>
+      <li><a href="#pillar-4">04. Digital Presence &amp; Ads</a></li>
+      <li><a href="#pillar-5">05. AI WhatsApp Automation</a></li>
+      <li><a href="#pillar-6">06. Analytics &amp; Audits</a></li>
+    </ul>
+
+    <div style="margin-top: 40px; padding: 16px; background: rgba(212, 175, 55, 0.08); border: 1px solid var(--border-accent); border-radius: 10px;">
+      <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-gold); font-weight: 700; margin-bottom: 6px;">
+        💡 HOW TO USE THIS VAULT
+      </div>
+      <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.5;">
+        Click <strong>"Copy Answer"</strong> to grab the complete objection-busting response, or click <strong>"Copy Social Hook"</strong> to grab ready-to-post LinkedIn/Twitter content angles!
+      </p>
+    </div>
+  </aside>
+
+  <!-- Main Content Stream -->
+  <main>
+    <div class="hero-banner">
+      <div class="hero-badge">Verified Commercial Knowledge Base</div>
+      <h2 class="hero-title">The 30 Buyer Objections &amp; Social Content Vault</h2>
+      <p class="hero-desc">
+        Engineered specifically for Goldfish Digital. Each entry deconstructs a high-friction buyer objection with customer quotes, psychological root causes, and high-trust answers. Use this vault for client proposals, sales discovery calls, and social media thought-leadership content.
+      </p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PILLAR 1: SMART WEB & APP ECOSYSTEMS
+    ═══════════════════════════════════════════════════════ -->
+    <section id="pillar-1" class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-tag">Pillar 01 · Engineering</span>
+        <h3 class="pillar-title">Smart Web &amp; App Ecosystems</h3>
+      </div>
+
+      <!-- FAQ 1.1 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">01 · Investment &amp; ROI</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p1-a1')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p1-s1')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Why invest in a custom Next.js website when a WordPress freelancer charges KShs 20,000?</h4>
+        <div class="raw-quote-box">
+          <span class="raw-quote-label">Prospect's Voice:</span>
+          "Why should I spend KShs 80k–150k+ with you when an Upwork freelancer can build me a WordPress site with Elementor for KShs 20,000? How does custom code justify a 4x price tag?"
+        </div>
+        <p class="faq-answer" id="p1-a1">
+          If all your business needs is an online digital business card, a KShs 20,000 template is fine. But if you rely on bookings, inquiries, or ad traffic, a cheap WordPress site actively burns capital: over 68% of regional web traffic is on mobile data, and Google proves 53% of mobile visitors abandon pages taking over 3 seconds. For a hospitality or high-ticket service provider, our custom Next.js platforms pay for their entire build in just 10 direct bookings by eliminating 15%–25% OTA commissions (Booking.com/Expedia) and capturing mobile visitors who bounce off slow sites.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title">
+            <span>LinkedIn / Twitter Post Angle</span>
+            <span style="color: #6b7280; font-weight: normal;">Hook Strategy</span>
+          </div>
+          <p class="social-hook-text" id="p1-s1">
+            "A KShs 20,000 WordPress website isn't saving you money. If you run a boutique hotel in Diani charging KShs 25,000/night, Booking.com takes 18% on every reservation. On just 10 direct bookings, you surrender KShs 45,000 in cash commissions. Here is the unit economics of why custom Next.js web platforms pay for themselves in 60 days..."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 1.2 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">02 · Timeline &amp; Delivery</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p1-a2')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p1-s2')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">How do we know our project won't drag on for months like our last agency experience?</h4>
+        <div class="raw-quote-box">
+          <span class="raw-quote-label">Prospect's Voice:</span>
+          "Our last web agency promised 4 weeks, took 6 months, and delivered a broken site. We were still chasing them on WhatsApp. How do I know Goldfish won't drag this out?"
+        </div>
+        <p class="faq-answer" id="p1-a2">
+          Traditional agencies miss deadlines because they juggle 15 clients with junior contractors. Goldfish Digital caps active ecosystem builds at two at any given time. Standard business platforms are delivered in fixed 14-day sprints. You track development on a shared live dashboard, review milestone staging URLs, and pay in verified tranches tied strictly to deliverables.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p1-s2">
+            "Why do 80% of web design projects miss their launch dates by 3+ months? It's not technical complexity—it's agency greed. They sell open-ended scopes without architecture, then hand off code to junior contractors. Here is how we build enterprise platforms in 14-day fixed sprints..."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 1.3 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">03 · Operational Load</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p1-a3')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p1-s3')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">How much of our executive team's time will this project require?</h4>
+        <div class="raw-quote-box">
+          <span class="raw-quote-label">Prospect's Voice:</span>
+          "I don't have time to write 15 pages of website copy or sit on 2-hour Zoom meetings. We are flat out running our business. Will this project drain our team?"
+        </div>
+        <p class="faq-answer" id="p1-a3">
+          Under 4 hours total across the entire 14-day build. We use our 90-Minute Reverse Extraction Protocol: a single recorded strategic interview where we extract your customer objections, pricing, and case studies. Our conversion copywriters draft 100% of your copy and headlines, and our asset concierge optimizes your photos for sub-second delivery. You review via quick Loom videos and WhatsApp voice notes.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p1-s3">
+            "If an agency tells you to 'write your own website copy,' they aren't growth partners—they're just decorators. You run an enterprise, not an editorial house. Here is our 90-minute protocol to extract high-converting sales copy without writing a single sentence."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 1.4 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">04 · Sovereignty &amp; Control</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p1-a4')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p1-s4')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">If it's custom code, can our non-technical staff make edits without paying developer fees?</h4>
+        <div class="raw-quote-box">
+          <span class="raw-quote-label">Prospect's Voice:</span>
+          "If it's custom-coded in Next.js, do we have to call you and pay an invoice every time we update a room price? Are you keeping us hostage?"
+        </div>
+        <p class="faq-answer" id="p1-a4">
+          Yes. We decouple your content from the codebase using a modern visual Headless CMS. Your team logs into an intuitive portal on their phone or laptop: type the new price, upload an image, and click 'Publish'. Within 15 seconds, our global edge network updates the live site. Furthermore, you own 100% of the GitHub repository, DNS, and hosting credentials.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p1-s4">
+            "Vendor lock-in is a dirty agency secret. If you have to pay a web agency $100 just to change your phone number or restaurant menu, you don't own a website—you're being held hostage. Here is how modern Headless CMS architecture gives you 100% control with zero code."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 1.5 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">05 · Commercial Impact</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p1-a5')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p1-s5')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Does sub-second page speed actually translate into measurable commercial revenue?</h4>
+        <div class="raw-quote-box">
+          <span class="raw-quote-label">Prospect's Voice:</span>
+          "Our slow WordPress site works 'fine'—we still get calls. People who want us will wait 5 seconds. Isn't page speed just developer geek talk?"
+        </div>
+        <p class="faq-answer" id="p1-a5">
+          Yes. In our verified client deployments, rebuilding slow legacy sites on our sub-second Next.js architecture lifted inquiry conversion rates from 1% to 4% in 90 days with zero increase in advertising budget. Sub-second mobile response times, instant room availability, and seamless Safaricom Daraja M-Pesa STK prompts remove the hesitation between interest and payment.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p1-s5">
+            "The most dangerous phrase in business is: 'Our website works fine.' You remember the 5 customers who called you; you are completely blind to the 95 who clicked your link, waited 6 seconds, got frustrated on Safaricom 4G, and booked your competitor instead. Here's how we tripled conversions by shaving off 3 seconds."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PILLAR 2: ADVANCED VISIBILITY ENGINEERING
+    ═══════════════════════════════════════════════════════ -->
+    <section id="pillar-2" class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-tag">Pillar 02 · Search &amp; AI</span>
+        <h3 class="pillar-title">Advanced Visibility Engineering (SEO &amp; GEO)</h3>
+      </div>
+
+      <!-- FAQ 2.1 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">01 · Investment &amp; ROI</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p2-a1')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p2-s1')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">SEO takes 6–12 months with no guarantees; why not just put that budget into Google Ads?</h4>
+        <p class="faq-answer" id="p2-a1">
+          If your business is in an emergency cash crisis needing revenue in 21 days, you should run search ads—we refuse to sell visibility architecture as an emergency fix. But paid ads are infinite rent: the second you pause spend, leads drop to zero, and ad auctions inflate 15%–25% annually. Visibility Engineering creates balance-sheet capital assets. Every schema graph, entity relationship, and technical speed enhancement we deploy is permanent digital equity that systematically drives down your blended acquisition costs over time.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p2-s1">
+            "Paid search ads are infinite rent. The day you pause your ad budget, your lead flow dies instantly. Meanwhile, Google raises your CPC by 20% every year. Stop renting customer attention. Here is how Entity Knowledge Graphs build permanent search equity that you own forever."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 2.2 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">02 · Agency Burn</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p2-a2')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p2-s2')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">We paid an SEO agency before and got useless monthly ranking PDFs; how is Goldfish different?</h4>
+        <p class="faq-answer" id="p2-a2">
+          Most SEO agencies assign junior staff to target zero-intent keywords that no buyer searches for, celebrate ranking for vanity terms, and email automated reports. We permanently ban vanity ranking PDFs. Our deliverables are tangible code and commercial telemetry: inspectable JSON-LD schema commits in your repository, crawl telemetry, Core Web Vitals optimizations, and verified pipeline growth (qualified form fills, high-intent demo requests, and direct calls).
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p2-s2">
+            "90% of SEO agencies sell activity, not enterprise value. They rank you #1 for a 3-word phrase that zero buyers search for, send you an automated 20-page PDF, and charge you $2,000/month. We permanently banned ranking PDFs. Here is what real visibility engineering looks like in code commits."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 2.3 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">03 · AI Disbelief</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p2-a3')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p2-s3')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Isn't SEO dead now that Google AI Overviews and ChatGPT answer questions directly?</h4>
+        <p class="faq-answer" id="p2-a3">
+          Traditional informational SEO (writing generic 500-word definition articles) is dead. But AI models are recommendation engines: when an executive asks ChatGPT, Claude, or Perplexity 'Who is the top corporate law firm in Nairobi?' or 'What is the best beachfront luxury villa in Diani?', the AI synthesizes a curated shortlist from structured knowledge graphs and verified entities. If your brand lacks structured schema and entity provenance, you simply do not exist in the AI's consideration set. Furthermore, traffic arriving from AI citations converts at 3x–5x higher rates because the buyer has already been vetted.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p2-s3">
+            "SEO isn't dead—informational blogging is dead. When buyers ask ChatGPT or Perplexity for a service provider, the AI doesn't search for keywords; it queries its neural knowledge graph. If your company isn't an indexed, verified entity, you are invisible to the most affluent buyers on earth."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 2.4 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">04 · Operational Load</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p2-a4')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p2-s4')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Do my executives or team have to spend hours writing weekly blogs or filming videos?</h4>
+        <p class="faq-answer" id="p2-a4">
+          Zero homework. 70% of Visibility Engineering is deep code and data infrastructure: structured entity graphs, canonical architecture, semantic data tables, and Core Web Vitals. When original thought leadership is required, we use our 45-Minute SME Protocol: one structured recorded interview per month with your specialist. Our team extracts your case studies and contrarian insights, translating them into deep technical schema and authoritative assets. You spend 10 minutes reviewing via a Loom video—that is your entire commitment.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p2-s4">
+            "Stop turning your CEO into an unpaid blogger. In 2026, writing 2,000-word SEO fluff articles is completely dead. Here is how our 45-Minute SME Protocol extracts domain authority from your leadership team with zero homework."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 2.5 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">05 · Attribution &amp; Proof</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p2-a5')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p2-s5')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">How do you prove that AI citations and Knowledge Graph rankings actually generate revenue?</h4>
+        <p class="faq-answer" id="p2-a5">
+          We deploy a 4-Tier Triangulated Attribution Stack: Tier 1 tracks direct HTTP referrers from chatgpt.com, perplexity.ai, and claude.ai; Tier 2 captures high-intent self-reported attribution ('How did you find us?'); Tier 3 measures organic branded search surges in Google Search Console; Tier 4 programmatically audits 50+ commercial buyer prompts monthly across GPT-4o, Perplexity, and Gemini to benchmark your Share of Model against competitors. Ultimately, we hold our work accountable to Qualified Inbound Pipeline Velocity and reduction in blended CAC.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p2-s5">
+            "How do you track a buyer who found you on ChatGPT? Default Google Analytics 4 can't do it. Here is our 4-Tier Triangulated Attribution Stack to track AI search referrals from prompt to bank deposit."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PILLAR 3: BRAND IDENTITY & CONTENT CREATION
+    ═══════════════════════════════════════════════════════ -->
+    <section id="pillar-3" class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-tag">Pillar 03 · Positioning &amp; Production</span>
+        <h3 class="pillar-title">Brand Identity &amp; Content Creation</h3>
+      </div>
+
+      <!-- FAQ 3.1 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">01 · Pricing Power &amp; ROI</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p3-a1')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p3-s1')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">How does spending on brand identity and photography put money back into our till this quarter?</h4>
+        <p class="faq-answer" id="p3-a1">
+          Visual authority is the fastest lever to unlock 20% to 50% pricing power. In premium hospitality and high-ticket B2B, a buyer evaluates competence within 3 seconds. For a 12-room boutique hotel in Diani, if amateur photos force you to discount rooms from KShs 22,000 to KShs 15,000 to maintain occupancy, you forfeit over KShs 800,000 in gross margin every month. A KShs 200,000 visual overhaul amortizes in fewer than 15 room-nights. Visual authority does not cost money; it stops the price haggling and permanently resets what the market is willing to pay you.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p3-s1">
+            "Branding isn't art—it's pricing leverage. If your visual presentation looks budget, clients will bargain you down before they even hear your proposal. Elevating your visual authority by 30% allows you to charge 50% more without losing volume. Here's the unit economics behind it."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 3.2 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">02 · Usability</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p3-a2')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p3-s2')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">We paid an agency for a 60-page Brand Bible before that nobody used; how is this different?</h4>
+        <p class="faq-answer" id="p3-a2">
+          We permanently eliminate shelfware PDFs. Goldfish Digital builds 20 to 30 custom, drag-and-drop templates directly inside your team's Canva or Adobe Express account with locked fonts, official brand colors, and pre-formatted image grids. Your junior receptionist or assistant can open Canva, drop in a photo, change a rate, and export an on-brand graphic in under 3 minutes without touching a design tool. We also provide a laminated 1-page physical desk reference and conduct a 60-minute staff training workshop.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p3-s2">
+            "A 60-page PDF 'Brand Bible' is useless. Your front desk staff will never open it. They'll go right back to posting distorted flyers made on WhatsApp. Stop buying PDFs—buy locked, cloud-synced design systems your junior staff can execute in 180 seconds."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 3.3 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">03 · Production Logistics</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p3-a3')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p3-s3')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">A commercial video shoot sounds chaotic; will you disrupt our paying guests and operations?</h4>
+        <p class="faq-answer" id="p3-a3">
+          Zero operational disruption. We do not bring bloated 10-person film crews with bulky generators. We deploy high-mobility, cinema-grade tactical units (2 to 3 specialists maximum) using silent Sony FX cinema cameras and wireless audio. We reverse-engineer our shooting schedule: dawn exterior/drone sweeps before guests wake, interior and culinary setups during midday guest turnover (11:00 AM – 2:00 PM), and discreet evening vignettes from respectful distances. Your guests will barely notice us.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p3-s3">
+            "Hoteliers fear photo shoots because they fear bad TripAdvisor reviews from disturbed guests. Here is how our 2-person tactical cinema unit captures world-class content with an invisible operational footprint."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 3.4 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">04 · The Intern Fallacy</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p3-a4')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p3-s4')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Why can't we just have our marketing intern shoot iPhone videos and design in Canva for free?</h4>
+        <p class="faq-answer" id="p3-a4">
+          High-net-worth travelers and corporate B2B clients don't judge your service by what you claim in captions; they judge it by your costly signaling. Jittery smartphone video with blown-out lighting and muffled audio signals: 'This is a small-time budget operation—let's negotiate their rate.' Cinema optics, calibrated lighting, and broadcast sound design signal world-class quality where price is non-negotiable. Paying an intern KShs 40,000/month to produce low-performing social clips that repel high-ticket direct bookings is the most expensive mistake an SME can make.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p3-s4">
+            "'Can't our intern just shoot on an iPhone?' Sure, if you want to be treated like an amateur. High-ticket buyers evaluate competence subconsciously. Shaky phone video is the fastest way to invite haggling on price."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 3.5 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">05 · Ownership &amp; Longevity</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p3-a5')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p3-s5')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Do we own the raw footage, or will you hold source files hostage? Will this look dated in 18 months?</h4>
+        <p class="faq-answer" id="p3-a5">
+          You own 100% of your digital property unconditionally. Upon project settlement, we hand over the Master Asset Vault: editable Figma/Illustrator vectors, commercial font licenses, and uncompressed 4K raw B-roll footage. No watermarks or licensing tolls. Furthermore, we reject TikTok fads; our visual systems use disciplined Swiss typography and natural architectural palettes engineered to compound brand equity over 5 to 7 years.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p3-s5">
+            "If an agency refuses to give you your raw footage or design vector files, they aren't your agency—they're your landlord. Here is our 100% sovereign asset ownership guarantee."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PILLAR 4: DIGITAL PRESENCE & PAID GROWTH
+    ═══════════════════════════════════════════════════════ -->
+    <section id="pillar-4" class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-tag">Pillar 04 · Performance Acquisition</span>
+        <h3 class="pillar-title">Digital Presence &amp; Paid Growth</h3>
+      </div>
+
+      <!-- FAQ 4.1 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">01 · Ad Spend Threshold</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p4-a1')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p4-s1')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Why insist on a minimum ad budget of KShs 150k–350k ($1.2k–$2.8k)? Can't we test with KShs 25,000?</h4>
+        <p class="faq-answer" id="p4-a1">
+          Meta and Google bidding models are machine-learning algorithms that require a mathematical minimum of 50 conversion events within a 7-day rolling window to exit the volatile 'Learning Phase'. If your cost per conversion is KShs 1,500, reaching 50 events requires ~KShs 75,000 weekly (KShs 300,000/month). Spending only KShs 25,000/month traps campaigns in 'Learning Limited', causing the algorithm to bid blindly and inflating CPMs by 30%–50%. Testing with KShs 25,000 is like trying to boil a 10-liter pot of water with a single matchstick—it guarantees capital burn.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p4-s1">
+            "Why testing Facebook ads with KShs 20,000 is guaranteed suicide: Meta's algorithm mathematically requires 50 conversions in 7 days to exit the learning phase. If you spend less than the algorithmic threshold, you are literally setting money on fire. Here's the auction math."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 4.2 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">02 · Vanity Metrics</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p4-a2')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p4-s2')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Our last agency showed us 50,000 video views, but our phone never rang; how is Goldfish different?</h4>
+        <p class="faq-answer" id="p4-a2">
+          We permanently ban vanity metrics from executive briefings. Impressions, reach, and 3-second views are media buyer diagnostics, not commercial results. Goldfish Digital reports exclusively on Customer Acquisition Cost (CAC), Return on Ad Spend (ROAS), and Marketing Efficiency Ratio (MER = Total Revenue / Total Marketing Investment). We implement server-side Meta Conversions API (CAPI) tied directly to your CRM and bank deposits—if an ad generates views but zero pipeline in 14 days, it is killed.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p4-s2">
+            "You cannot pay your staff with 'impressions' or 'likes.' If your marketing agency is celebrating 100k views while your bank account is stagnant, you are being manipulated by metric arbitrage. Here's how we tie ad spend directly to verified cash deposits."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 4.3 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">03 · Lead Quality</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p4-a3')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p4-s3')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Aren't Meta and Google ads full of bots and broke tire-kickers who ask 'How much?' and ghost?</h4>
+        <p class="faq-answer" id="p4-a3">
+          Cheap leads happen because agencies run 1-click lead forms or direct WhatsApp buttons without friction. Meta optimizes for the cheapest cost, attracting impulse clickers. We build custom Next.js qualification engines with intentional friction (budget gates and requirement filters). Disqualified leads trigger negative conversion feedback to Meta's algorithm. Furthermore, our 24/7 WhatsApp AI engages inquiries in 15 seconds, screening budgets before your human sales team ever speaks with them.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p4-s3">
+            "Why your WhatsApp gets flooded with 200 tire-kickers asking 'How much?' and ghosting: You optimized for cheap leads, so Meta gave you cheap people. High lead quality requires intentional friction. Here is our anti-spam qualification funnel."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 4.4 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">04 · Account Sovereignty</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p4-a4')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p4-s4')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Do you run ads in our accounts or yours? Will you hold our pixel and audience data hostage?</h4>
+        <p class="faq-answer" id="p4-a4">
+          Goldfish Digital NEVER runs ads out of agency-owned accounts. We build inside YOUR Meta Business Portfolio, Google Ads Manager, and LinkedIn Campaign Manager. You pay the ad networks directly and retain Super Admin control. Goldfish is added strictly as a partner operator. If you ever cancel, you revoke our access with one click. 100% of pixel optimization, lookalike audiences, and creative history remains your permanent corporate asset.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p4-s4">
+            "Red flag: If an agency tells you they run ads inside their own account because it's 'easier,' run. They are holding your pixel data hostage so you can never leave. Demand 100% client account ownership from Day 1."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 4.5 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">05 · Creative Fatigue</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p4-a5')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p4-s5')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">I don't have time to record new video ads every week; will performance collapse when ads fatigue?</h4>
+        <p class="faq-answer" id="p4-a5">
+          You do not become an influencer or content creator. Our in-house production team handles scripting, filming, and motion design end-to-end. Furthermore, 80% of ad fatigue happens exclusively in the first 3 seconds (the hook). From a single 90-minute session, our 4×3×2 Modular Creative Matrix generates 4 hooks × 3 body angles × 2 CTAs = 24 unique ad permutations. When Hook A fatigues, automated rules switch delivery to Hook B without requiring new shoots.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p4-s5">
+            "You don't need to film new video ads every 5 days to fight ad fatigue. Over 80% of fatigue is just in the first 3 seconds. Here is our 4×3×2 matrix that turns one 90-minute shoot into 24 ad variations that run for 6 months."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PILLAR 5: AI AUTOMATION FOR SMES
+    ═══════════════════════════════════════════════════════ -->
+    <section id="pillar-5" class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-tag">Pillar 05 · Intelligent Systems</span>
+        <h3 class="pillar-title">AI Automation for SMEs (WhatsApp Assistants)</h3>
+      </div>
+
+      <!-- FAQ 5.1 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">01 · Hallucination &amp; Risk</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p5-a1')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p5-s1')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">What if the AI hallucinates, quotes incorrect prices, or argues with a VIP client on WhatsApp?</h4>
+        <p class="faq-answer" id="p5-a1">
+          We do not deploy open-ended creative chatbots. Our assistants use deterministic RAG (Retrieval-Augmented Generation) constrained strictly to your verified knowledge base and live CRM data. If a specific rate or custom policy does not exist verbatim in the system, the AI is physically restricted from guessing—it responds that management has been notified. Furthermore, sentiment circuit-breakers instantly escalate frustrated inquiries to your human staff via WhatsApp/Slack, backed by 100+ pre-launch adversarial stress tests.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p5-s1">
+            "The #1 fear business owners have about AI: 'What if it quotes $100 for a $1,000 suite or argues with a VIP?' If your agency builds open-ended chatbots, they're reckless. Here's how deterministic RAG and sentiment circuit-breakers make hallucinations mathematically impossible."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 5.2 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">02 · Relationship Stigma</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p5-a2')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p5-s2')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Our clients value personal relationships; won't an automated bot feel cheap and insulting?</h4>
+        <p class="faq-answer" id="p5-a2">
+          Speed IS hospitality. When an international traveler or high-ticket client inquires at 11:30 PM, waiting until 9:00 AM the next day means they book a competitor. A warm, articulate response in 15 seconds is the ultimate mark of luxury service. We fine-tune the assistant on your brand tone and local conversational nuance (including fluent English, Swahili, German, and French). Positioned as an 'Executive Digital Concierge', it handles routine questions instantly so your human staff can focus on high-touch relationship building.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p5-s2">
+            "Speed IS hospitality. In luxury service, making a VIP client wait 4 hours for a WhatsApp response isn't 'personal touch'—it's bad customer service. An articulate, 15-second response at 11:30 PM is the ultimate luxury."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 5.3 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">03 · Tech Maintenance</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p5-a3')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p5-s3')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">We have zero technical staff; who maintains this when Meta updates APIs or a webhook breaks?</h4>
+        <p class="faq-answer" id="p5-a3">
+          You never touch a line of code or manage an API key. Many cheap bots use unofficial web scrapers that get phone numbers banned. Goldfish builds exclusively on the official Meta WhatsApp Business Cloud API with enterprise reliability. Our automated heartbeat monitors ping systems every 60 seconds, and our managed SLA includes API version migrations, uptime guarantees, and instant fail-safe rerouting to human inboxes if an external database ever lags.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p5-s3">
+            "Beware of cheap WhatsApp bots built on unofficial scrapers. Meta will ban your business phone number overnight without recourse. Build exclusively on the official Meta Cloud API with managed SLA monitoring."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 5.4 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">04 · Cost vs Intern</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p5-a4')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p5-s4')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Why pay for custom AI automation when I can hire an intern for KShs 35,000/month or use Zapier?</h4>
+        <p class="faq-answer" id="p5-a4">
+          Harvard Business Review and MIT research prove that responding to an inquiry within 5 minutes makes you 21x more likely to qualify and close them compared to 30 minutes. After hours or on weekends, a human employee takes hours to reply. If your average deal or booking is KShs 50,000 to KShs 200,000+, saving just ONE lost after-hours lead per month pays for our entire system. Unlike an intern, AI operates 24/7/365, never makes typos, handles 50 leads simultaneously, and automatically logs clean data into your CRM.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p5-s4">
+            "The brutal math of lead decay: MIT data proves responding to an inquiry in under 5 minutes makes you 21x more likely to close. An intern sleeping at 10 PM costs you 90% of your after-hours leads. Here's why 24/7 AI automation pays for itself with 1 saved deal."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 5.5 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">05 · Privacy &amp; Data</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p5-a5')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p5-s5')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Will this AI train public ChatGPT models on our private client data or corrupt our CRM?</h4>
+        <p class="faq-answer" id="p5-a5">
+          We deploy dedicated enterprise API endpoints with strict Zero Data Retention (ZDR) agreements. Your customer conversations are NEVER used to train, fine-tune, or improve any public AI model. All data is encrypted in transit and at rest, fully compliant with the Kenya Data Protection Act 2019 and GDPR. Our non-destructive integrations use immutable logging to prevent duplicate contacts, and your human team retains live visibility and one-click takeover anytime.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p5-s5">
+            "Is your AI bot leaking patient or client data to public models? Under the Kenya Data Protection Act and GDPR, non-compliance carries massive fines. Demand Zero Data Retention (ZDR) architecture."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PILLAR 6: STRATEGIC ANALYTICS & AUDITS
+    ═══════════════════════════════════════════════════════ -->
+    <section id="pillar-6" class="pillar-section">
+      <div class="pillar-header">
+        <span class="pillar-tag">Pillar 06 · Forensic Attribution</span>
+        <h3 class="pillar-title">Strategic Analytics &amp; Audits</h3>
+      </div>
+
+      <!-- FAQ 6.1 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">01 · Deliverable Cynicism</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p6-a1')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p6-s1')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Why pay for an audit that's just an 80-page automated PDF that sits in a drawer?</h4>
+        <p class="faq-answer" id="p6-a1">
+          Goldfish Digital permanently eliminates the 80-page automated PDF. We deliver an Interactive Impact-Prioritized Engineering Backlog ranked by the ICE framework (Impact, Confidence, Ease). You receive: 1) a 1-page Financial Leakage Brief quantifying monthly revenue loss from unmeasured checkout drop-offs and misallocated ads; 2) production-ready engineering tickets and GTM JSON container exports ready for immediate deployment; and 3) a 60-minute executive and developer walkthrough. If an audit doesn't tell you the exact financial cost of an error and provide the literal code to fix it within 14 days, it is not an engineering audit.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p6-s1">
+            "Nobody needs an 80-page PDF audit that tells you 'your meta tags are too long.' It's lazy agency fluff. Demand a prioritized engineering backlog with copy-paste code tickets and quantified monthly cash bleed."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 6.2 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">02 · Free Tool Mirage</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p6-a2')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p6-s2')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">GA4 and Meta Pixel are free software; why would we pay for analytics setup or an audit?</h4>
+        <p class="faq-answer" id="p6-a2">
+          Default, client-side GA4 and Meta Pixel tracking currently miss 25% to 40% of real transactions due to Apple iOS Intelligent Tracking Prevention (ITP cookie caps), Safari restrictions, ad-blockers, and consent banner drop-offs. When 35% of conversion events fail to pass back to Meta and Google, their machine learning algorithms bid blindly, optimizing for cheap clicks rather than high-LTV buyers. A stethoscope is inexpensive, but you pay a cardiologist to diagnose the hidden arrhythmia before it causes a heart attack. The tool is free; the commercial decisions you make on corrupted data cost you hundreds of thousands.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p6-s2">
+            "Google Analytics is free, but making decisions on broken data will bankrupt you. Default GA4 currently misses 30%+ of your sales due to iOS Safari cookie caps and ad-blockers. When your data is poisoned, Meta's AI bids on the wrong people."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 6.3 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">03 · Execution Bandwidth</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p6-a3')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p6-s3')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Even if your audit finds 25 flaws, my internal team doesn't have the skills to fix them; won't this leave us stuck?</h4>
+        <p class="faq-answer" id="p6-a3">
+          We are growth engineers, not theoretical consultants. Our audit includes two frictionless execution options: Option A (Full Turnkey Implementation), where Goldfish engineers write the custom dataLayer scripts, configure server-side Google Tag Manager (sGTM) on cloud infrastructure, verify Meta Conversions API (CAPI), and deploy all fixes directly with zero coding required from your team; or Option B (Plug-and-Play Kit) with one-click GTM JSON import files and step-by-step Loom video guides for your internal developers. All work is verified in staging with zero downtime.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p6-s3">
+            "Consultants find problems and leave you with homework. Engineers find problems and deploy the code. Why our analytics audits include full turnkey GTM and server-side deployment."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 6.4 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">04 · Data Confidentiality</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p6-a4')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p6-s4')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Why do you need backend access to our ad accounts and CRM? Will this compromise proprietary financial data?</h4>
+        <p class="faq-answer" id="p6-a4">
+          Goldfish Digital NEVER requests Admin or Owner access for an audit. We require only scoped 'Read-Only / Analyst / Viewer' permissions granted via official partner links (MCC, Meta Business Manager Partner ID). We sign a legally binding Mutual Non-Disclosure Agreement (NDA) prior to access. We operate under a strict Zero-PII storage policy: we audit tag triggers, server payloads, and conversion schemas—we never download, export, or store individual customer names or billing details. Furthermore, we verify whether your current tracking setup is leaking unhashed customer data, protecting you from Kenya DPA and GDPR liabilities.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p6-s4">
+            "Never give an agency administrator access to your ad accounts or CRM for an audit. The Principle of Least Privilege: read-only scoped access, mutual NDA, and zero local PII storage."
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 6.5 -->
+      <div class="faq-card">
+        <div class="faq-meta">
+          <span class="objection-pill">05 · Revenue Recovery</span>
+          <div class="action-btn-group">
+            <button class="copy-btn" onclick="copySnippet('p6-a5')">📋 Copy Answer</button>
+            <button class="copy-btn" onclick="copySnippet('p6-s5')">📱 Copy Social Hook</button>
+          </div>
+        </div>
+        <h4 class="faq-question">Analytics doesn't run ads or close sales calls; how does fixing tracking tags put revenue in our bank account?</h4>
+        <p class="faq-answer" id="p6-a5">
+          Modern ad networks (Meta Advantage+ and Google Performance Max) run entirely on machine learning signals. If your tracking fails to record high-ticket transactions or attributes them to the wrong channel, the algorithm optimizes for low-intent window shoppers, inflating your Customer Acquisition Cost (CAC) by 20% to 40%. On a monthly ad budget of KShs 300,000, recovering 25% in misallocated ad spend saves KShs 75,000 every month (KShs 900,000 annually). An analytics audit and server-side tracking infrastructure that permanently stops this leakage pays for itself within 45 to 60 days.
+        </p>
+        <div class="social-prompt-box">
+          <div class="social-prompt-title"><span>LinkedIn / Twitter Post Angle</span></div>
+          <p class="social-hook-text" id="p6-s5">
+            "Analytics doesn't generate revenue—it stops you from bleeding 30% of your ad spend every month. If you spend KShs 300,000 on ads with broken tracking, you are burning KShs 900,000 a year on zombie clicks. Stop guessing, start engineering."
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast">Copied to clipboard!</div>
+
+  <script>
+    function copySnippet(elementId) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.innerText.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("✓ Copied to clipboard!");
+      }).catch(err => {
+        console.error("Failed to copy", err);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.innerText = msg;
+      toast.style.display = "block";
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
