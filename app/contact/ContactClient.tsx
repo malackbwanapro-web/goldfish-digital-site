@@ -383,7 +383,7 @@ export default function ContactClient() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-[11px] font-mono uppercase tracking-widest text-emerald-500 font-bold">
-                  DIRECT FOUNDER LINE // DIANI BEACH HQ
+                  DIRECT FOUNDER LINE // DIANI &amp; NATIONWIDE
                 </span>
               </div>
               <h2 className="text-2xl lg:text-3xl font-black tracking-tight text-[var(--text-core)]">
@@ -401,7 +401,7 @@ export default function ContactClient() {
           </div>
 
           <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
-            Enter your details below to begin an end-to-end encrypted direct chat with our founder in Diani. Submit your enquiry, then use the WhatsApp link to open your pre-filled message. Press Send in WhatsApp to send it.
+            Enter your details below to begin a direct WhatsApp conversation with Malack. Submit your enquiry, then use the link to open your pre-filled message and press Send.
           </p>
 
           {/* 1. Direct WhatsApp Contact Identity (Early Lead Safeguard) */}

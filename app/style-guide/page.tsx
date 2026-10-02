@@ -330,7 +330,7 @@ export default function StyleGuidePage() {
                   UI Caption — 14px — Line-height: 1.4 — Letter-spacing: 0.4px
                 </p>
                 <p className="text-caption">
-                  Diani Bazaar, Beach Rd, Diani, Kwale County, Kenya — Open daily 8AM–6PM
+                  Based in Diani, Kwale County. Working across Kenya. Client meetings by appointment.
                 </p>
               </div>
             </div>

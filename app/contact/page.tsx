@@ -10,14 +10,14 @@ export const metadata: Metadata = {
     absolute: 'Contact Engineering & Growth Desk | Goldfish Marketing',
   },
   description:
-    'Connect directly with our technical desk in Diani Beach, Kenya. 1-Tap WhatsApp, reserve a 15-minute strategy slot, or request a 3-page confidential growth diagnostic.',
+    'Connect directly with Malack Bwana. Based in Diani, Kwale County, working with businesses across Kenya. Remote collaboration and meetings by appointment.',
   alternates: {
     canonical: 'https://www.goldfishmarketing.co.ke/contact',
   },
   openGraph: {
     title: 'Contact Engineering & Growth Desk | Goldfish Marketing',
     description:
-      'Connect directly with our technical desk in Diani Beach, Kenya. Direct WhatsApp, 15-minute strategy slots, and confidential 24-hour diagnostics.',
+      'Connect directly with Malack Bwana. Based in Diani, Kwale County, working with businesses across Kenya. Remote collaboration and meetings by appointment.',
     url: 'https://www.goldfishmarketing.co.ke/contact',
     locale: 'en_KE',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Contact Goldfish Marketing' }],
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Contact Engineering & Growth Desk | Goldfish Marketing',
     description:
-      'Connect directly with our technical desk in Diani Beach, Kenya. Direct WhatsApp, 15-minute strategy slots, and confidential 24-hour diagnostics.',
+      'Connect directly with Malack Bwana. Based in Diani, Kwale County, working with businesses across Kenya. Remote collaboration and meetings by appointment.',
     images: ['/og-image.png'],
   },
 };
@@ -58,10 +58,10 @@ export default function ContactPage() {
         '@id': 'https://www.goldfishmarketing.co.ke/contact/#webpage',
         url: 'https://www.goldfishmarketing.co.ke/contact',
         name: 'Contact Engineering & Growth Desk | Goldfish Marketing',
-        description: 'Direct communication channels for Goldfish Marketing in Diani Beach, Kenya.',
+        description: 'Direct communication channels for Goldfish Marketing. Based in Diani, Kwale County, serving businesses across Kenya.',
       },
       {
-        '@type': 'LocalBusiness',
+        '@type': ['LocalBusiness', 'ProfessionalService'],
         '@id': 'https://www.goldfishmarketing.co.ke/#localbusiness',
         name: 'Goldfish Marketing',
         url: 'https://www.goldfishmarketing.co.ke',
@@ -69,16 +69,10 @@ export default function ContactPage() {
         email: SITE_CONFIG.OFFICIAL_INFO_EMAIL,
         address: {
           '@type': 'PostalAddress',
-          streetAddress: 'Diani Beach Road, Diani Bazaar',
-          addressLocality: 'Diani Beach',
-          addressRegion: 'Kwale County',
-          postalCode: '80401',
+          addressLocality: SITE_CONFIG.HQ_CITY,
+          addressRegion: SITE_CONFIG.HQ_REGION,
+          postalCode: SITE_CONFIG.HQ_POSTAL_CODE,
           addressCountry: 'KE',
-        },
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: -4.2797,
-          longitude: 39.5947,
         },
         openingHoursSpecification: [
           {
@@ -119,7 +113,7 @@ export default function ContactPage() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 mb-6">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold">
-              Diani Beach • Talk directly with Malack
+              Diani &amp; Nationwide • Talk directly with Malack
             </span>
           </div>
 
@@ -211,16 +205,16 @@ export default function ContactPage() {
           <div className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex flex-col justify-between">
             <div>
               <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-2">
-                HEADQUARTERS &amp; PHYSICAL PRESENCE
+                LOCATION &amp; CLIENT MEETINGS
               </span>
               <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
-                Diani Beach Technical Operations
+                Based in Diani, Working Across Kenya
               </h3>
               <p className="text-xs text-[var(--text-muted)] leading-relaxed font-light mb-4">
-                Goldfish Marketing operates out of Diani Beach, Kwale County, serving clients throughout the Kenyan Coast, Nairobi, and East Africa.
+                {SITE_CONFIG.CONTACT_EXPLANATION}
               </p>
               <div className="text-xs font-mono space-y-1.5 text-[var(--text-core)]">
-                <p>📍 <strong className="text-[var(--text-core)]">Address:</strong> {SITE_CONFIG.HQ_ADDRESS}, {SITE_CONFIG.HQ_REGION}, {SITE_CONFIG.HQ_COUNTRY} (P.O. Box {SITE_CONFIG.HQ_POSTAL_CODE})</p>
+                <p>📍 <strong className="text-[var(--text-core)]">Operating Base:</strong> Diani Beach, Kwale County, Kenya (Postal Code: 80401) • Meetings by appointment</p>
                 <p>📞 <strong className="text-[var(--text-core)]">Direct Line / WhatsApp:</strong> <a href={`tel:+${SITE_CONFIG.WHATSAPP_NUMBER}`} className="text-[var(--accent-gold)] hover:underline">{SITE_CONFIG.PHONE_DISPLAY}</a></p>
                 <p>✉️ <strong className="text-[var(--text-core)]">Official Inquiries:</strong> <a href={`mailto:${SITE_CONFIG.OFFICIAL_INFO_EMAIL}`} className="text-[var(--accent-gold)] hover:underline">{SITE_CONFIG.OFFICIAL_INFO_EMAIL}</a></p>
               </div>

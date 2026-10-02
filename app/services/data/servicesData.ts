@@ -54,122 +54,127 @@ export interface ServiceDetail {
 export const servicesData: Record<string, ServiceDetail> = {
   "smart-web-app-ecosystems": {
     slug: "smart-web-app-ecosystems",
-    title: "Smart Web & App Ecosystems",
-    titleH1: "Engineered Web Systems Built for Measurable Commercial Return",
-    metaTitle: "Smart Web & App Ecosystems | High-Performance Web Development Kenya",
-    metaDescription: "We engineer lightning-fast Next.js web applications, high-converting booking engines, and robust digital systems for Kenyan SMEs and hospitality brands.",
-    hookLine: "Your digital presence is either a high-velocity revenue engine or an expensive liability. There is no middle ground.",
-    description: "If your business lacks a high-performance website, or if your current site is an underperforming digital brochure, you are losing qualified inquiries every day. In today’s competitive market, your digital ecosystem must be engineered as an active, high-yield revenue asset.",
-    hookTitle: "The Real Cost of Fragmented Web Systems",
-    hookText: "When your digital platform is slow, fragmented, or unoptimized for mobile checkout, commercial opportunities leak at every touchpoint. In a mobile-first market, customers expect instant page loads and seamless transactional flows. We engineer web infrastructure that eliminates technical friction and converts traffic into verified revenue.",
+    title: "Website Design & Development",
+    titleH1: "Website design and development for businesses across Kenya",
+    metaTitle: "Website Design & Development in Kenya | Goldfish Marketing",
+    metaDescription: "Website design for businesses across Kenya. Based in Diani, Goldfish works directly with you on scope, content and enquiries. Typical projects KShs 50,000–80,000.",
+    hookLine: "Typical business website projects: KShs 50,000–80,000, depending on scope.",
+    description: "Help customers understand your business and take the next step. Goldfish Marketing builds websites for accommodation groups, tour operators, restaurants and service businesses, with clear information and straightforward enquiry journeys.\n\nBased in Diani, we work with clients across Kenya through remote collaboration and agreed on-site arrangements.\n\nWork directly with Malack to agree what your website needs to do, what is included and how delivery will work.",
+    hookTitle: "A website built around your customers",
+    hookText: "For accommodation businesses, guests need to understand your properties and how to enquire. For tour operators, visitors need clear information about your experiences. For restaurants and service businesses, people need to see what you offer and how to get in touch. We start with those needs, then agree the pages, content and features that support them.",
     whoIsThisFor: [
       {
-        title: "The Offline Powerhouses",
-        description: "You have an established brand and product, but your lack of a professional digital footprint is stalling your growth. We build fast, mobile-responsive ecosystems that turn offline reputation into online dominance."
+        title: "Accommodation Businesses",
+        description: "Guests need to understand your rooms, rates, location and how to make a direct enquiry or reservation without technical friction."
       },
       {
-        title: "The \"Under-Performing\" Sites",
-        description: "You have traffic, but your conversion rate is non-existent. We diagnose the technical rot and re-engineer your funnels to stop the bleed and start the growth."
+        title: "Tour & Safari Operators",
+        description: "Visitors need clear itineraries, experience details, transparent pricing information and an easy WhatsApp or form enquiry path."
       },
       {
-        title: "The Visionaries",
-        description: "You need a bespoke, custom-coded solution—built by senior developers—that isn't reliant on bloated, slow-loading templates."
+        title: "Restaurants & Local Services",
+        description: "Customers need to quickly see menus, opening hours, location and direct contact routes on both mobile and desktop."
       }
     ],
-    technicalSuperiority: "We don't use \"quick-fix\" builders. Our senior development team utilizes a custom-engineered stack (React, modern JavaScript, and lean CSS) to ensure your digital ecosystem is technically flawless. We prioritize core web vitals, indexable technical SEO architecture, and conversion-psychology-driven UI/UX. We don't just build websites; we build scalable machines designed to rank, capture, and convert.",
+    technicalSuperiority: "Most of our larger business website projects fall within KShs 50,000–80,000. Limited-scope projects may fall within KShs 15,000–20,000; we will explain whether that scope fits your needs. Custom applications, booking systems, payment integrations, photography/video, hosting and ongoing support are scoped separately. The proposal confirms fees, applicable taxes and ongoing costs before you commit.",
     proofSection: {
-      title: "The Proof: By the Numbers",
-      subheading: "We don't deal in fluff. We deal in measurable impact.",
+      title: "What we scope together",
+      subheading: "These are planning areas, not an unlimited package. Your proposal lists the exact deliverables and responsibilities.",
       points: [
         {
-          title: "Technical SEO Mastery",
-          text: "By correcting structural technical SEO, we move your site from \"invisible\" to \"discoverable.\""
+          title: "Structure, Content & Enquiry Paths",
+          text: "Page structure, clear descriptions of your business and services, mobile and desktop layouts, and enquiry paths (forms, phone, WhatsApp) appropriate to your business."
         },
         {
-          title: "Conversion Engineering",
-          text: "We have taken under-performing sites and increased conversion rates from 1% to 4% in just 90 days by auditing and repairing broken user funnels."
+          title: "Search Foundations & Handover",
+          text: "Search-friendly page titles, headings, internal links, indexing foundations, and enquiry measurement, followed by review, launch and handover."
         }
       ]
     },
     capabilities: [
-      "Conversion-Focused Web Architecture",
-      "Mobile App Development (iOS & Android)",
-      "CRM & API Integration Layer",
+      "Page structure and clear service descriptions",
+      "Layouts designed for mobile and desktop",
+      "Direct enquiry paths (forms, phone, WhatsApp)",
     ],
     capabilitiesBreakout: [
       {
-        title: "Conversion-Focused Web Architecture",
+        title: "Understand the business & agree the scope",
         deepDive:
-          "We design and engineer high-performance websites built around a single goal: turning visitors into customers. Every layout decision, content hierarchy, and interactive element is deliberate. We combine luxury visual aesthetics — generous white space, refined typography, premium motion — with a conversion architecture that guides users through a structured psychological journey from awareness to action.",
+          "We understand your customers, goals, existing website and required functionality. Then we agree the pages, content responsibilities, costs and delivery milestones.",
         impact:
-          "Clients consistently report significant uplifts in lead-to-contact form conversion rates within the first 90 days of launch.",
+          "Agreed scope, transparent pricing, and confirmed milestones before work begins.",
       },
       {
-        title: "Mobile App Development (iOS & Android)",
+        title: "Build, review & milestone feedback",
         deepDive:
-          "We build native and cross-platform mobile applications that feel premium and perform flawlessly. Whether you need a client-facing app, an internal operations tool, or a customer loyalty platform, we engineer mobile products that are fast, intuitive, and deeply integrated with your business backend — CRM, inventory systems, and automation workflows included.",
+          "We build a clean, mobile-first website and review the proposed layout and content with you at agreed checkpoints.",
         impact:
-          "Extends your digital touchpoint to mobile-first audiences, increasing engagement and reducing friction in the customer journey.",
+          "Delivery schedule confirmed based on scope and content readiness.",
       },
       {
-        title: "CRM & API Integration Layer",
+        title: "Test, launch & handover",
         deepDive:
-          "A beautiful website that doesn't talk to your business systems is a missed opportunity. We build the technical integration layer that connects your web ecosystem to your CRM (HubSpot, Salesforce, or custom), marketing automation tools, payment processors, and AI workflows — ensuring every form submission, purchase, or user action flows automatically into your operational stack.",
+          "We verify all agreed pages, mobile layouts, links and enquiry routes (forms, telephone and WhatsApp), then complete handover.",
         impact:
-          "Eliminates manual data entry and ensures every lead is captured, tagged, and actioned without human intervention.",
+          "A verified, search-friendly website ready to help customers enquire.",
       },
     ],
     techStack: [
       "React",
       "Next.js",
       "TypeScript",
-      "Node.js",
       "TailwindCSS",
-      "Stripe",
+      "Mobile First",
+      "Analytics",
     ],
     caseStudy: {
-      eyebrow: "Client Highlight: The 300% Turnaround",
-      text: "The Challenge: A legacy SME had a beautiful, high-traffic website that functioned as a decorative element rather than a revenue tool. They had near-zero conversion on qualified leads due to a fragmented, non-existent funnel structure.\n\nThe Solution: We tore down the conversion-killing architecture and rebuilt the funnel based on intent-driven data, implemented a rigorous technical SEO framework, and streamlined the user path.",
-      resultText: "The Result: Within 3 months, we drove a 300% increase in conversion rates (1% to 4%), transforming their digital presence from a cost center into their #1 lead generation asset.",
+      eyebrow: "Relevant client work here on the coast",
+      text: "Diani Ocean View Residences: a website project for an accommodation business in Diani.\n\nSizzlers Steakhouse & Pub Diani: a restaurant website project.",
+      resultText: "Delivered with real verified previews, factual summaries and internal project links.",
       metrics: [
-        "300% Increase in Conversion Rates",
-        "1% to 4% Conversion Over 90 Days",
-        "100% Turnaround of Lead Generation Asset",
+        "Diani Ocean View Residences",
+        "Sizzlers Steakhouse & Pub",
+        "Direct Enquiry Flows",
       ],
     },
     faqs: [
       {
-        question: "Why invest in a custom Next.js website when a WordPress freelancer charges KShs 20,000?",
+        question: "Can you improve my existing website?",
         answer:
-          "If all your business needs is a static digital brochure, a KShs 20,000 template is fine. But if you rely on bookings, inquiries, or ad traffic, a cheap WordPress site actively burns capital: over 68% of regional web traffic is on mobile data, and Google proves 53% of mobile visitors abandon pages taking over 3 seconds. For a hospitality or high-ticket service provider, our custom Next.js platforms pay for their entire build in just 10 direct bookings by eliminating 15%–25% OTA commissions and capturing mobile visitors who bounce off slow sites.",
+          "We can review it and discuss whether targeted improvements or a rebuild better fits your requirements.",
       },
       {
-        question: "How do we know our project won't drag on for months like our last agency experience?",
+        question: "Will my website rank first?",
         answer:
-          "Traditional agencies miss deadlines because they juggle 15 clients with junior contractors. Goldfish Digital caps active ecosystem builds at two at any given time. Standard business platforms are delivered in fixed 14-day sprints. You track development on a shared live dashboard, review milestone staging URLs, and pay in verified tranches tied strictly to deliverables.",
+          "No position is guaranteed. We can build search-friendly foundations and agree ongoing SEO work separately where appropriate.",
       },
       {
-        question: "How much of our executive team's time will this project require?",
+        question: "Do you provide the photos and videos?",
         answer:
-          "Under 4 hours total across the entire 14-day build. We use our 90-Minute Reverse Extraction Protocol: a single recorded strategic interview where we extract your customer objections, pricing, and case studies. Our conversion copywriters draft 100% of your copy and headlines, and our asset concierge optimizes your photos for sub-second delivery. You review via quick Loom videos and WhatsApp voice notes.",
+          "Production is available as a separate service. We can also plan around suitable assets you already have permission to use.",
       },
       {
-        question: "If it's custom code, can our non-technical staff make edits without paying developer fees?",
+        question: "Are hosting and support included?",
         answer:
-          "Yes. We decouple your content from the codebase using a modern visual Headless CMS. Your team logs into an intuitive portal on their phone or laptop: type the new price, upload an image, and click 'Publish'. Within 15 seconds, our global edge network updates the live site. Furthermore, you own 100% of the GitHub repository, DNS, and hosting credentials.",
+          "These are scoped separately and confirmed in your proposal, including any recurring costs.",
       },
       {
-        question: "Does sub-second page speed actually translate into measurable commercial revenue?",
+        question: "Can you work with me outside Diani?",
         answer:
-          "Yes. In our verified client deployments, rebuilding slow legacy sites on our sub-second Next.js architecture lifted inquiry conversion rates from 1% to 4% in 90 days with zero increase in advertising budget. Sub-second mobile response times, instant room availability, and seamless Safaricom Daraja M-Pesa STK prompts remove the hesitation between interest and payment.",
+          "Yes. We can agree the brief, review the website and coordinate delivery remotely for businesses across Kenya. Any on-site work, travel and accommodation requirements are agreed separately.",
+      },
+      {
+        question: "Can we meet in person?",
+        answer:
+          "Yes, by arrangement and subject to location and availability. Meetings at Sizzlers, Diani Bazaar, can be arranged in advance. Photography and video shoots elsewhere in Kenya require an agreed production and travel scope.",
       },
     ],
-    footerCtaHeadline: "Your Path to Market Dominance",
+    footerCtaHeadline: "Let's discuss your website",
     footerCtaSubtext:
-      "You can continue to watch your competitors dominate your search landscape, or you can take control of your digital future.",
-    footerCtaButton: "Book Your Free Strategy Consultation",
-    heroAuditCta: "Request a Free Website Audit",
-    geoSummary: "Advanced Web & App Ecosystems by Goldfish Marketing is an enterprise web architecture and mobile app engineering service built with Next.js, React, and native APIs. It delivers sub-second Core Web Vitals, conversion-focused user funnels, and integrated CRM data synchronization for high-growth businesses.",
+      "Tell us about your business, what is not working today and what you need the website to help customers do.",
+    footerCtaButton: "Discuss my website",
+    heroAuditCta: "See client websites",
+    geoSummary: "Website design and development for businesses across Kenya by Goldfish Marketing. Based in Diani, working directly with clients on scope, content and enquiries. Typical business website projects KShs 50,000–80,000.",
   },
 
   "advanced-visibility-engineering": {

@@ -64,7 +64,7 @@ export default function TermsOfServicePage() {
           <h2 className="text-h3 font-bold mb-4 text-[var(--accent-gold)]">5. Contact Information</h2>
           <div className="p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] font-mono text-sm space-y-1">
             <p><strong>Goldfish Marketing</strong></p>
-            <p>Diani Bazaar, Beach Rd, Diani, Kwale County, Kenya</p>
+            <p>Based in Diani, Kwale County, Kenya (Postal Code: 80401) • Meetings by appointment</p>
             <p>Email: info@goldfishmarketing.co.ke | Phone: +254 711 404 755</p>
           </div>
         </section>

@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
         <section className="bg-[var(--bg-surface)] p-8 rounded-2xl border border-[var(--border-subtle)]">
           <h2 className="text-h3 font-bold mb-4 text-[var(--accent-gold)]">1. Data Controller Information</h2>
           <p className="mb-4">
-            Goldfish Marketing (&quot;Goldfish Digital&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is a creative digital marketing agency and AI systems integration consultancy based in Diani, Kwale County, Kenya (Diani Bazaar, Beach Rd).
+            Goldfish Marketing (&quot;Goldfish Digital&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is a digital marketing agency and web systems consultancy based in Diani, Kwale County, Kenya. Client meetings and formal correspondence are by prior appointment.
           </p>
           <p>
             We are committed to protecting the privacy and rights of our clients, website visitors, and business partners in accordance with the Data Protection Act No. 24 of 2019 of Kenya (KDPA), General Data Protection Regulation (GDPR), and applicable privacy laws.
@@ -76,7 +76,7 @@ export default function PrivacyPolicyPage() {
           <div className="mt-4 p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] font-mono text-sm">
             <p><strong>Email:</strong> info@goldfishmarketing.co.ke</p>
             <p><strong>Phone:</strong> +254 711 404 755</p>
-            <p><strong>Address:</strong> Diani Bazaar, Beach Rd, Diani, Kwale County, Kenya</p>
+            <p><strong>Location:</strong> Based in Diani, Kwale County, Kenya (Postal Code: 80401) • Meetings by appointment</p>
           </div>
         </section>
       </div>

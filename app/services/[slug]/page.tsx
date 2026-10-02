@@ -205,10 +205,16 @@ export default function ServicePage({ params }: Props) {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-              <Link href="/contact" className="btn-primary w-full sm:w-auto shadow-md">
+              <Link
+                href={service.slug === 'smart-web-app-ecosystems' ? '/contact?service=website' : '/contact'}
+                className="btn-primary w-full sm:w-auto shadow-md"
+              >
                 {service.footerCtaButton || 'Book a Free Consultation'}
               </Link>
-              <Link href="/contact" className="btn-outline w-full sm:w-auto">
+              <Link
+                href={service.slug === 'smart-web-app-ecosystems' ? '/portfolio' : '/contact'}
+                className="btn-outline w-full sm:w-auto"
+              >
                 {service.heroAuditCta || 'Request a Free Audit'}
               </Link>
             </div>
@@ -244,10 +250,10 @@ export default function ServicePage({ params }: Props) {
               
               <div className="flex flex-wrap lg:flex-nowrap items-center gap-3 shrink-0">
                 <div className="px-3 py-1.5 rounded-md bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[11px] font-mono text-[var(--text-muted)]">
-                  Provider: <strong className="text-[var(--text-core)]">Goldfish Digital</strong>
+                  Provider: <strong className="text-[var(--text-core)]">Goldfish Marketing</strong>
                 </div>
                 <div className="px-3 py-1.5 rounded-md bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[11px] font-mono text-[var(--text-muted)]">
-                  Index Status: <strong className="text-emerald-500">Verified Entity</strong>
+                  Base: <strong className="text-[var(--text-core)]">Diani, Kwale County</strong>
                 </div>
               </div>
             </div>
@@ -594,7 +600,24 @@ export default function ServicePage({ params }: Props) {
         </section>
       )}
 
-      <section className="section-padding px-6 border-t border-[var(--border-subtle)]"><div className="max-w-4xl mx-auto"><h2 className="text-h2 mb-4">Start with a real project conversation.</h2><p className="mb-6">Explore our client websites and tell us what success should look like for your business. We will agree the scope and how to measure progress.</p><Link href="/portfolio" className="btn-outline">Explore client work →</Link></div></section>
+      <section className="section-padding px-6 border-t border-[var(--border-subtle)]">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-h2 mb-4">Start with a real project conversation.</h2>
+          <p className="mb-6 text-[var(--text-muted)]">
+            Explore our client websites and tell us what success should look like for your business. We will agree the scope and how to measure progress.
+          </p>
+          <div className="flex flex-wrap items-center gap-6">
+            <Link href="/portfolio" className="btn-outline">
+              Explore client work →
+            </Link>
+            {service.slug === 'smart-web-app-ecosystems' && (
+              <Link href="/diani" className="text-xs font-mono text-[var(--accent-gold)] hover:underline">
+                Working with us in Diani, Ukunda and Kwale → /diani
+              </Link>
+            )}
+          </div>
+        </div>
+      </section>
 
       {/* ═══════════════════════════════════════════════════════
           SECTION 7: FAQs — Split Layout

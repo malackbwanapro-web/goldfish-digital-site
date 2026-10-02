@@ -13,7 +13,7 @@ export default function SchemaMarkup() {
         'url': SITE_CONFIG.SITE_URL,
         'logo': `${SITE_CONFIG.SITE_URL}/logo-light.svg`,
         'image': `${SITE_CONFIG.SITE_URL}/og-image.png`,
-        'description': 'Diani & Kenya premier digital marketing, high-converting web design, SEO, and AI automation agency for growing SMEs & hospitality brands.',
+        'description': 'Based in Diani, Kwale County. Digital marketing, high-converting web design, SEO, and AI automation for growing businesses across Kenya.',
         'telephone': `+${SITE_CONFIG.WHATSAPP_NUMBER}`,
         'email': SITE_CONFIG.OFFICIAL_INFO_EMAIL,
         'priceRange': '$$$',
@@ -21,16 +21,10 @@ export default function SchemaMarkup() {
         'paymentAccepted': 'Cash, Credit Card, M-Pesa, Bank Transfer',
         'address': {
           '@type': 'PostalAddress',
-          'streetAddress': SITE_CONFIG.HQ_ADDRESS,
           'addressLocality': SITE_CONFIG.HQ_CITY,
           'addressRegion': SITE_CONFIG.HQ_REGION,
           'postalCode': SITE_CONFIG.HQ_POSTAL_CODE,
           'addressCountry': 'KE'
-        },
-        'geo': {
-          '@type': 'GeoCoordinates',
-          'latitude': SITE_CONFIG.GEO_COORDINATES.latitude,
-          'longitude': SITE_CONFIG.GEO_COORDINATES.longitude
         },
         'areaServed': [
           { '@type': 'AdministrativeArea', 'name': 'Coast Province, Kenya' },

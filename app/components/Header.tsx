@@ -232,8 +232,8 @@ export default function Header() {
 
         {/* Mobile Drawer Footer Contacts */}
         <div className="max-w-md mx-auto w-full pt-6 mt-6 border-t border-[var(--border-subtle)] text-center space-y-2">
-          <p className="text-xs font-mono text-[var(--text-muted)] uppercase tracking-wider">
-            Diani Bazaar, Beach Rd, Diani, Kenya
+          <p className="text-xs font-mono text-[var(--text-muted)] tracking-wider">
+            Based in Diani, Kwale County • Working across Kenya
           </p>
           <div className="flex items-center justify-center gap-4 text-xs font-mono">
             <a href={`tel:+${SITE_CONFIG.WHATSAPP_NUMBER}`} className="text-[var(--accent-gold)] hover:underline">

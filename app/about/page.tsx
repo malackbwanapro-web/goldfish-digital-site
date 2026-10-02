@@ -9,11 +9,11 @@ export const metadata: Metadata = {
     absolute: 'About Malack Bwana & Goldfish Marketing | Diani Beach Agency',
   },
   description:
-    'Meet Malack Bwana, founder of Goldfish Marketing — Diani Beach’s premier digital marketing, web engineering, SEO, and AI automation consultancy for growing Kenyan SMEs.',
+    'Meet Malack Bwana, founder of Goldfish Marketing. Based in Diani, Kwale County, working with businesses across Kenya. Client meetings by appointment.',
   alternates: { canonical: 'https://www.goldfishmarketing.co.ke/about' },
   openGraph: {
     title: 'About Malack Bwana & Goldfish Marketing | Diani Beach Agency',
-    description: 'Local Experts. Global Standards. Engineered in Diani Beach, Kenya.',
+    description: 'Based in Diani, Kwale County. Working with businesses across Kenya.',
     url: 'https://www.goldfishmarketing.co.ke/about',
     locale: 'en_KE',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Malack Bwana - Goldfish Marketing Diani Beach' }],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'About Malack Bwana & Goldfish Marketing | Diani Beach Agency',
-    description: 'Local Experts. Global Standards. Engineered in Diani Beach, Kenya.',
+    description: 'Based in Diani, Kwale County. Working with businesses across Kenya.',
     images: ['/og-image.png'],
   },
 };
@@ -63,6 +63,66 @@ const values = [
     ),
     title: 'Local Soul, Global Engineering',
     desc: 'Engineered in Diani Beach. Built on global cloud standards that rival tech firms in London, Berlin, or Silicon Valley, with deep Kenyan market fluency.',
+  },
+];
+
+interface TeamMember {
+  name: string;
+  role: string;
+  discipline: string;
+  tag: string;
+  initials: string;
+  bio: string;
+}
+
+const teamMembers: TeamMember[] = [
+  {
+    name: 'Fred Ndungu',
+    role: 'Cyber Security Specialist',
+    discipline: 'Security & Infrastructure Hardening',
+    tag: 'SECURITY',
+    initials: 'FN',
+    bio: 'Focuses on server resilience, API endpoint security, penetration testing, and KDPA data compliance to keep client platforms secure and audit-ready.',
+  },
+  {
+    name: 'James Mwangi',
+    role: 'Senior Developer',
+    discipline: 'Full-Stack Architecture & APIs',
+    tag: 'ENGINEERING',
+    initials: 'JM',
+    bio: 'Engineers custom Next.js web applications, complex booking engines, and robust API integrations designed for sub-second speed and uptime.',
+  },
+  {
+    name: 'Mohammed Galgalo',
+    role: 'Junior Developer',
+    discipline: 'Frontend & UI Performance',
+    tag: 'INTERFACE',
+    initials: 'MG',
+    bio: 'Specializes in responsive mobile-first UI components, cross-browser compatibility, and optimizing assets for smooth experiences across devices.',
+  },
+  {
+    name: 'Marvin Tairara',
+    role: 'Creative Content Director',
+    discipline: 'Visual Media & Creative Strategy',
+    tag: 'CREATIVE',
+    initials: 'MT',
+    bio: 'Directs photography and video production packages, visual storytelling, and brand aesthetics that resonate with high-value audiences.',
+  },
+  {
+    name: 'Brian Arome',
+    role: 'Advanced Visibility Specialist',
+    discipline: 'Technical SEO & Generative Engine Optimization',
+    tag: 'VISIBILITY',
+    initials: 'BA',
+    bio: 'Architects structured Schema.org entity graphs, technical SEO frameworks, and AI-search citation maps (GEO) to drive organic discovery.',
+  },
+  {
+    name: 'Lucy Lodderstedt',
+    role: 'Lead Researcher / Accounts Manager',
+    discipline: 'Market Research & Client Success',
+    tag: 'ACCOUNTS',
+    initials: 'LL',
+    bio: 'Leads market research, customer journey analysis, and client milestone coordination to ensure projects run smoothly from brief to launch.',
   },
 ];
 
@@ -172,7 +232,7 @@ export default function AboutPage() {
         '@type': 'Person',
         '@id': `${baseUrl}/about/#founder`,
         'name': 'Malack Bwana',
-        'jobTitle': 'Founder & Principal Systems Architect',
+        'jobTitle': 'Company Director & Head Strategist',
         'worksFor': {
           '@id': `${baseUrl}/#organization`
         },
@@ -226,7 +286,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="text-body-lg text-[var(--text-muted)] max-w-2xl leading-relaxed font-light mb-8">
-            Goldfish Marketing is a digital marketing agency and AI systems consultancy headquartered in <Link href="/diani" className="underline hover:text-[var(--accent-gold)] transition-colors">Diani Beach, Kenya</Link>. We engineer high-speed <Link href="/services/smart-web-app-ecosystems" className="underline hover:text-[var(--accent-gold)] transition-colors">direct booking engines</Link>, <Link href="/services/advanced-visibility-engineering" className="underline hover:text-[var(--accent-gold)] transition-colors">local search visibility (SEO/GEO)</Link>, and 24/7 <Link href="/services/ai-automation-sme" className="underline hover:text-[var(--accent-gold)] transition-colors">WhatsApp automations</Link> for ambitious businesses across <Link href="/kenya" className="underline hover:text-[var(--accent-gold)] transition-colors">Kenya</Link> and East Africa.
+            Goldfish Marketing is based in <Link href="/diani" className="underline hover:text-[var(--accent-gold)] transition-colors">Diani, Kwale County</Link>, working with businesses across <Link href="/kenya" className="underline hover:text-[var(--accent-gold)] transition-colors">Kenya</Link>. We build high-speed <Link href="/services/smart-web-app-ecosystems" className="underline hover:text-[var(--accent-gold)] transition-colors">websites</Link>, manage <Link href="/services/brand-identity-content-creation" className="underline hover:text-[var(--accent-gold)] transition-colors">social media and content</Link>, and deliver tailored <Link href="/services" className="underline hover:text-[var(--accent-gold)] transition-colors">digital growth services</Link> with client meetings arranged by appointment.
           </p>
 
           <div className="flex flex-wrap gap-4">
@@ -256,22 +316,22 @@ export default function AboutPage() {
                 <span className="text-xs font-mono font-bold text-white tracking-wide">
                   Malack Bwana
                 </span>
-                <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider">
-                  Principal Systems Architect
+                <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider text-center">
+                  Company Director &amp; Head Strategist
                 </span>
               </div>
               <div className="absolute -bottom-3 -right-3 px-3 py-1 rounded-full bg-[var(--bg-primary)] border border-[var(--accent-gold)] text-[10px] font-mono text-[var(--accent-gold)] font-bold shadow-md">
-                ● DIANI BEACH HQ
+                ● DIANI BASE
               </div>
             </div>
 
             <div className="space-y-1 mb-6">
               <h2 className="text-2xl font-black text-[var(--text-core)]">Malack Bwana</h2>
               <p className="text-xs text-[var(--accent-gold)] font-mono uppercase tracking-wider font-bold">
-                Founder &amp; Principal Systems Architect
+                Company Director &amp; Head Strategist
               </p>
               <p className="text-xs text-[var(--text-muted)] font-light">
-                Direct Engineering Lead • Diani Beach, Kenya
+                Based in Diani • Working across Kenya
               </p>
               <a
                 href="https://www.linkedin.com/in/malack-bwana"
@@ -323,8 +383,76 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ═══ SPECIALIST DELIVERY TEAM ═══ */}
+      <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <span className="text-eyebrow mb-2 block font-mono text-[var(--accent-gold)]">
+              ENGINEERING &amp; CREATIVE BENCH
+            </span>
+            <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)]">
+              Specialized Talent Working Hand-in-Hand with Malack
+            </h2>
+            <p className="text-sm text-[var(--text-muted)] font-light mt-3 leading-relaxed">
+              While Malack directs client strategy and technical architecture, our specialized delivery partners work in the background to ensure every system is fortified, lightning-fast, visually compelling, and built to rank. A high-calibre multidisciplinary bench without the agency bloat.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {teamMembers.map((member) => (
+              <div
+                key={member.name}
+                className="p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent-gold)]/40 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-[var(--accent-gold)]/15 border border-[var(--accent-gold)]/30 flex items-center justify-center">
+                      <span className="text-sm font-black font-mono text-[var(--accent-gold)]">
+                        {member.initials}
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-mono px-2.5 py-1 rounded-full bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[var(--text-muted)] tracking-wider">
+                      {member.tag}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base font-bold text-[var(--text-core)]">
+                    {member.name}
+                  </h3>
+                  <p className="text-xs text-[var(--accent-gold)] font-mono font-medium mb-1">
+                    {member.role}
+                  </p>
+                  <p className="text-[11px] text-[var(--text-muted)] font-mono tracking-tight mb-3">
+                    {member.discipline}
+                  </p>
+
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed">
+                    {member.bio}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Single Point of Accountability Reassurance */}
+          <div className="mt-10 p-5 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+            <div className="w-10 h-10 rounded-full bg-[var(--accent-gold)]/20 border border-[var(--accent-gold)]/40 flex items-center justify-center shrink-0">
+              <span className="text-sm font-bold text-[var(--accent-gold)]">✓</span>
+            </div>
+            <div>
+              <p className="text-xs font-bold text-[var(--text-core)]">
+                Single Point of Accountability
+              </p>
+              <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mt-0.5">
+                You always speak directly with Malack for project strategy and scoping, backed by specialized execution from senior practitioners at every stage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ "WHY DIANI?" CONTRARIAN THESIS ═══ */}
-      <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)]">
+      <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-eyebrow mb-2 block font-mono">CONTRARIAN LOCATION</span>
@@ -337,7 +465,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+            <div className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
               <div>
                 <span className="text-2xl mb-4 block">🌊</span>
                 <h3 className="text-base font-bold text-[var(--text-core)] mb-2">
@@ -349,7 +477,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+            <div className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
               <div>
                 <span className="text-2xl mb-4 block">⚡</span>
                 <h3 className="text-base font-bold text-[var(--text-core)] mb-2">
@@ -361,7 +489,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+            <div className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
               <div>
                 <span className="text-2xl mb-4 block">📍</span>
                 <h3 className="text-base font-bold text-[var(--text-core)] mb-2">
@@ -377,7 +505,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ STATS STRIP ═══ */}
-      <section className="py-16 px-6 lg:px-10 bg-[var(--bg-surface)] border-y border-[var(--border-subtle)]">
+      <section className="py-16 px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {stats.map((s, i) => (
@@ -395,7 +523,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ AGENCY SLA MANIFESTO ═══ */}
-      <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)]">
+      <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-eyebrow mb-2 block font-mono">ACCOUNTABILITY FRAMEWORK</span>
@@ -411,7 +539,7 @@ export default function AboutPage() {
             {slas.map((s, i) => (
               <div
                 key={i}
-                className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] hover:border-[var(--accent-gold)]/40 transition-all duration-300 flex flex-col justify-between"
+                className="p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] hover:border-[var(--accent-gold)]/40 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <span className="text-[10px] font-mono text-[var(--accent-gold)] font-bold uppercase tracking-widest block mb-2">
@@ -431,7 +559,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ "WHO WE ARE NOT FOR" RADICAL TRANSPARENCY ═══ */}
-      <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)] border-t border-[var(--border-subtle)]">
+      <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-eyebrow mb-2 block font-mono">RADICAL TRANSPARENCY</span>
@@ -494,7 +622,7 @@ export default function AboutPage() {
       </section>
 
       {/* ═══ CORE VALUES ═══ */}
-      <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-t border-[var(--border-subtle)]">
+      <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-eyebrow mb-3 block font-mono">OUR FOUNDING ETHOS</span>
@@ -504,7 +632,7 @@ export default function AboutPage() {
             {values.map((v, i) => (
               <div
                 key={i}
-                className="p-8 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/40 transition-colors duration-300 flex gap-5"
+                className="p-8 rounded-2xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/40 transition-colors duration-300 flex gap-5"
               >
                 <span className="text-3xl flex-shrink-0">{v.icon}</span>
                 <div>

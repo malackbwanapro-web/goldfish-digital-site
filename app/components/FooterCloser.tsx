@@ -28,7 +28,7 @@ export default function FooterCloser({
       <div className="max-w-4xl mx-auto px-6 py-24 text-center relative z-10">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-primary)]/50 text-[var(--accent-gold)] text-[11px] font-mono tracking-widest uppercase mb-6">
           <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-pulse" />
-          Strategic Growth Intake • Diani Beach HQ
+          Strategic Growth Intake • Diani &amp; Kenya
         </div>
 
         <h2 className="text-h2 font-black tracking-tight mb-6 max-w-2xl mx-auto leading-tight">
@@ -220,7 +220,7 @@ export default function FooterCloser({
             &copy; {new Date().getFullYear()} Goldfish Marketing. All rights reserved.
           </p>
           <div className="flex items-center gap-6 flex-wrap justify-center sm:justify-end">
-            <span className="text-caption">Diani Bazaar, Beach Rd, Diani, Kwale County, Kenya</span>
+            <span className="text-caption">{SITE_CONFIG.LOCATION_LINE}</span>
             <div className="flex items-center gap-3">
               <a href="https://www.facebook.com/goldfishmarketing" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[var(--text-muted)] hover:text-[var(--accent-gold)] transition-colors duration-200">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
