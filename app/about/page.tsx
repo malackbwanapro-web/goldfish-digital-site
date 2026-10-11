@@ -85,19 +85,19 @@ const teamMembers: TeamMember[] = [
     bio: 'Focuses on server resilience, API endpoint security, penetration testing, and KDPA data compliance to keep client platforms secure and audit-ready.',
   },
   {
-    name: 'James Mwangi',
+    name: 'Saul Chamberlain',
     role: 'Senior Developer',
     discipline: 'Full-Stack Architecture & APIs',
     tag: 'ENGINEERING',
-    initials: 'JM',
+    initials: 'SC',
     bio: 'Engineers custom Next.js web applications, complex booking engines, and robust API integrations designed for sub-second speed and uptime.',
   },
   {
-    name: 'Mohammed Galgalo',
+    name: 'Gregory Bwire',
     role: 'Junior Developer',
     discipline: 'Frontend & UI Performance',
     tag: 'INTERFACE',
-    initials: 'MG',
+    initials: 'GB',
     bio: 'Specializes in responsive mobile-first UI components, cross-browser compatibility, and optimizing assets for smooth experiences across devices.',
   },
   {
