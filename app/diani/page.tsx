@@ -248,7 +248,7 @@ export default function DianiPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Project 1: Diani Ocean View */}
             <div className="card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
               <div>
@@ -308,6 +308,32 @@ export default function DianiPage() {
                 >
                   Visit client site ↗
                 </a>
+              </div>
+            </div>
+
+            {/* Project 3: Beakim Hospitality Group */}
+            <div className="card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-2">
+                  Multi-Property Hospitality &bull; Diani &amp; Ukunda
+                </span>
+                <h3 className="text-xl font-bold text-[var(--text-core)] mb-2">
+                  Beakim Hospitality Group
+                </h3>
+                <p className="text-xs font-mono text-emerald-500 font-semibold mb-3">
+                  4 Properties • 65+ Units • Next.js 14 PMS • Direct FinTech
+                </p>
+                <p className="text-caption text-[var(--text-muted)] leading-relaxed mb-6">
+                  Unifying 4 coastal properties under a singular digital umbrella: instant WhatsApp direct booking, dynamic pricing engine, Dongo Kundu Bypass SGR logistics guidance, and an enterprise Next.js 14 PMS with fail-closed encrypted storage.
+                </p>
+              </div>
+              <div className="flex items-center gap-4 pt-4 border-t border-[var(--border-subtle)]">
+                <Link href="/portfolio/beakim-hospitality-group" className="text-xs font-mono font-bold text-[var(--accent-gold)] hover:underline">
+                  Explore full case study →
+                </Link>
+                <span className="text-xs font-mono text-[var(--text-muted)] ml-auto">
+                  Staging Prep
+                </span>
               </div>
             </div>
           </div>

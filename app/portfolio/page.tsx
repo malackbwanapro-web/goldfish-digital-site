@@ -81,7 +81,7 @@ export default function PortfolioPage() {
                     </span>
                     {project.isFlagship && (
                       <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[var(--accent-gold)]/15 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)]">
-                        ● FLAGSHIP {project.sector.includes('Dining') || project.sector.includes('Restaurant') || project.sector.includes('Nightlife') ? 'DINING & NIGHTLIFE' : 'HOSPITALITY'} CASE STUDY
+                        ● FLAGSHIP {project.sector.includes('Multi-Property') ? 'MULTI-PROPERTY HOSPITALITY' : project.sector.includes('Dining') || project.sector.includes('Restaurant') || project.sector.includes('Nightlife') ? 'DINING & NIGHTLIFE' : 'HOSPITALITY'} CASE STUDY
                       </span>
                     )}
                   </div>
@@ -144,7 +144,7 @@ export default function PortfolioPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span>Visit Live Platform</span>
+                    <span>{project.slug === 'beakim-hospitality-group' ? 'Platform Staging Finalization' : 'Visit Live Platform'}</span>
                     <span>↗</span>
                   </a>
                 </div>

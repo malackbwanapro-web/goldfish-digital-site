@@ -52,6 +52,24 @@ export function generateMetadata({ params }: Props): Metadata {
     };
   }
 
+  if (params.slug === 'beakim-hospitality-group') {
+    return {
+      title: { absolute: 'Beakim Hospitality Group: Flagship Multi-Property Case Study | Goldfish Marketing' },
+      description:
+        'How Goldfish Marketing unified 4 coastal properties (65+ units) under a single digital umbrella: instant WhatsApp booking engine, dynamic pricing calculator, Dongo Kundu Bypass SGR logistics guidance, >90% media payload reduction, and Next.js 14 Enterprise Property Management CRM.',
+      alternates: {
+        canonical: 'https://www.goldfishmarketing.co.ke/portfolio/beakim-hospitality-group',
+      },
+      openGraph: {
+        title: 'Beakim Hospitality Group: Multi-Property Hospitality & Enterprise PMS Case Study',
+        description:
+          'From fragmented phone inquiries to a unified 65-unit coastal booking engine and enterprise Next.js 14 PMS with fail-closed encrypted storage and double-booking collision prevention.',
+        url: 'https://www.goldfishmarketing.co.ke/portfolio/beakim-hospitality-group',
+        type: 'article',
+      },
+    };
+  }
+
   if (publishedProject) {
     return {
       title: { absolute: `${publishedProject.name} Project Summary | Goldfish Marketing` },
@@ -2040,6 +2058,898 @@ export default function ProjectPage({ params }: Props) {
 
             <p className="text-[11px] font-mono text-[var(--text-muted)] mt-6">
               Based in Diani, Kwale County &bull; Working with hospitality brands across coastal Kenya &bull; Direct founder access
+            </p>
+          </div>
+        </section>
+
+        <FooterCloser />
+      </main>
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // SPECIALIZED FLAGSHIP CASE STUDY: BEAKIM HOSPITALITY GROUP
+  // ═══════════════════════════════════════════════════════════════
+  if (params.slug === 'beakim-hospitality-group') {
+    const beakimSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      'headline': 'Beakim Hospitality Group: Multi-Property Coastal Hospitality & Enterprise PMS Case Study',
+      'description':
+        'How Goldfish Marketing unified 4 coastal properties (65+ units) under a single digital umbrella: instant WhatsApp booking engine, dynamic pricing calculator, Dongo Kundu Bypass SGR logistics guidance, >90% media payload reduction, and Next.js 14 Enterprise Property Management CRM.',
+      'author': {
+        '@type': 'Person',
+        'name': 'Malack Bwana',
+        'jobTitle': 'Company Director & Head Strategist',
+        'url': 'https://www.goldfishmarketing.co.ke/about',
+      },
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'Goldfish Marketing',
+        'url': 'https://www.goldfishmarketing.co.ke',
+      },
+      'about': {
+        '@type': 'LodgingBusiness',
+        'name': 'Beakim Hospitality Group',
+        'url': 'https://www.beakimhospitalitygroup.co.ke/',
+        'telephone': '+254746938529',
+        'address': {
+          '@type': 'PostalAddress',
+          'streetAddress': 'Diani Beach Road & Ukunda',
+          'addressLocality': 'Diani Beach',
+          'addressRegion': 'Kwale County',
+          'addressCountry': 'KE',
+        },
+        'geo': {
+          '@type': 'GeoCoordinates',
+          'latitude': -4.2796,
+          'longitude': 39.5936,
+        },
+        'containsPlace': [
+          {
+            '@type': 'LodgingBusiness',
+            'name': 'Beakim Darad',
+            'description': '28 Units, 2 Resort Swimming Pools, Budget & Deluxe Studios on Diani Beach Road.',
+          },
+          {
+            '@type': 'LodgingBusiness',
+            'name': 'Diani Darling Cottages',
+            'description': '14 Units, Deluxe Holiday Kitchenette Studios with private balconies and swimming pool.',
+          },
+          {
+            '@type': 'LodgingBusiness',
+            'name': 'Tower Cottages',
+            'description': '3 Multi-Room Cottages, 2-bedroom self-catering apartments near Naivas Ukunda.',
+          },
+          {
+            '@type': 'LodgingBusiness',
+            'name': 'Beakim Apartments',
+            'description': '20 Residential Units, long-term monthly rentals and group retreat blocks.',
+          },
+        ],
+      },
+    };
+
+    return (
+      <main className="w-full flex flex-col min-h-screen">
+        {/* Inject Schema.org JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(beakimSchema) }}
+        />
+
+        {/* ═══ 1. HERO & EXECUTIVE METADATA ═══ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)] mb-6">
+              <Link href="/" className="hover:text-[var(--accent-gold)] transition-colors">Home</Link>
+              <span>/</span>
+              <Link href="/portfolio" className="hover:text-[var(--accent-gold)] transition-colors">Work</Link>
+              <span>/</span>
+              <span className="text-[var(--accent-gold)] font-bold">Beakim Hospitality Group</span>
+            </nav>
+
+            <div className="flex items-center gap-2 mb-4">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-[var(--accent-gold)]">
+                FLAGSHIP MULTI-PROPERTY HOSPITALITY &bull; ENTERPRISE PMS &bull; DIANI &amp; UKUNDA, KENYA
+              </span>
+            </div>
+
+            <h1 className="text-h1 font-black tracking-tight mb-6 max-w-5xl">
+              Beakim Hospitality Group: Unifying 4 Coastal Properties with Direct Booking &amp; Enterprise PMS
+            </h1>
+
+            <p className="max-w-4xl text-body-lg text-[var(--text-muted)] font-light leading-relaxed mb-8">
+              How Goldfish Marketing engineered a unified luxury web presence for 65+ accommodation units, cut media payload weights by over 90%, and built an enterprise Next.js 14 Property Management System with fail-closed encrypted storage and double-booking collision prevention.
+            </p>
+
+            {/* Executive Badges Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] mb-8">
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block">Client</span>
+                <span className="text-xs font-bold font-mono text-[var(--text-core)]">Beakim Hospitality</span>
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block">Portfolio Scale</span>
+                <span className="text-xs font-bold font-mono text-emerald-500">4 Properties &bull; 65+ Units</span>
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block">Locations</span>
+                <span className="text-xs font-bold font-mono text-[var(--text-core)]">Diani Beach &amp; Ukunda</span>
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block">Core Engine</span>
+                <span className="text-xs font-bold font-mono text-[var(--accent-gold)]">Next.js 14 4-Role PMS</span>
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block">Datastore Security</span>
+                <span className="text-xs font-bold font-mono text-[var(--text-core)]">AES-256-CBC Encrypted</span>
+              </div>
+              <div>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block">Launch Status</span>
+                <span className="text-xs font-bold font-mono text-amber-500 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                  Staging Finalization
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <span className="btn-primary text-xs py-3 px-6 shadow-sm inline-flex items-center gap-2 cursor-default">
+                <span>Unified Web Platform (Staging Finalization)</span>
+                <span className="text-[10px] bg-black/20 px-1.5 py-0.5 rounded">Launch Prep</span>
+              </span>
+              <a
+                href={buildWhatsAppUrl("Hi Malack, I read the Beakim Hospitality Group case study and would like to discuss our multi-property booking systems")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline text-xs py-3 px-6 inline-flex items-center gap-2"
+              >
+                <span>Direct Hospitality Advisory</span>
+                <span>↗</span>
+              </a>
+              <Link href="/contact?service=website" className="text-xs font-mono text-[var(--accent-gold)] hover:underline ml-auto">
+                Request a multi-property architecture audit &rarr;
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 2. 4-PROPERTY PORTFOLIO SHOWCASE ═══ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+              <div>
+                <span className="text-eyebrow mb-2 block font-mono text-[var(--accent-gold)]">
+                  MULTI-PROPERTY PORTFOLIO BREAKDOWN
+                </span>
+                <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)]">
+                  Four Distinct Properties Unified Under One Brand Hub
+                </h2>
+              </div>
+              <p className="text-xs text-[var(--text-muted)] font-mono max-w-md">
+                Each property caters to specific guest profiles while syncing availability and accounting through the unified Beakim CRM.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Property 1 */}
+              <div className="card-brand p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-emerald-500">28 UNITS &bull; 2 POOLS</span>
+                    <span className="text-[10px] font-mono text-[var(--text-muted)]">Beach Road</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[var(--text-core)] mb-2">Beakim Darad</h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    The flagship resort location on Diani Beach Road featuring twin swimming pools, lush grounds, and versatile accommodation ranging from budget standard units to deluxe kitchenette suites and 2-bedroom family cottages.
+                  </p>
+                  <ul className="space-y-1 text-[11px] text-[var(--text-muted)] font-mono">
+                    <li>&bull; Twin resort swimming pools</li>
+                    <li>&bull; On-site dining &amp; chef sequences</li>
+                    <li>&bull; Single, Deluxe &amp; Cottage tiers</li>
+                  </ul>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono">
+                  <span className="text-[var(--accent-gold)] font-bold">beakimdarad.co.ke</span>
+                  <span className="text-[var(--text-muted)]">Staging Prep</span>
+                </div>
+              </div>
+
+              {/* Property 2 */}
+              <div className="card-brand p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-emerald-500">14 UNITS &bull; BALCONIES</span>
+                    <span className="text-[10px] font-mono text-[var(--text-muted)]">Holiday Stay</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[var(--text-core)] mb-2">Diani Darling Cottages</h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    Intimate, boutique-style holiday cottages tailored for romantic getaways, digital nomads, and coastal travelers seeking self-catering kitchenette studios with private balconies overlooking private pool gardens.
+                  </p>
+                  <ul className="space-y-1 text-[11px] text-[var(--text-muted)] font-mono">
+                    <li>&bull; Private balconies &amp; kitchenettes</li>
+                    <li>&bull; Pool &amp; conference facilities</li>
+                    <li>&bull; High-speed remote-work Wi-Fi</li>
+                  </ul>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono">
+                  <span className="text-[var(--accent-gold)] font-bold">dianidarlingcottages.co.ke</span>
+                  <span className="text-[var(--text-muted)]">Staging Prep</span>
+                </div>
+              </div>
+
+              {/* Property 3 */}
+              <div className="card-brand p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-emerald-500">3 COTTAGES &bull; 2-BED</span>
+                    <span className="text-[10px] font-mono text-[var(--text-muted)]">Ukunda Hub</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[var(--text-core)] mb-2">Tower Cottages</h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    Spacious, fully-furnished 2-bedroom self-catering cottages located near Naivas Ukunda. Positioned for extended family vacations, business teams, and budget-conscious groups wanting convenient access to shopping and transit.
+                  </p>
+                  <ul className="space-y-1 text-[11px] text-[var(--text-muted)] font-mono">
+                    <li>&bull; Fully-equipped self-catering</li>
+                    <li>&bull; Proximity to Ukunda transit hubs</li>
+                    <li>&bull; Private multi-bedroom layouts</li>
+                  </ul>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono">
+                  <span className="text-[var(--accent-gold)] font-bold">towercottagesdiani.co.ke</span>
+                  <span className="text-[var(--text-muted)]">Staging Prep</span>
+                </div>
+              </div>
+
+              {/* Property 4 */}
+              <div className="card-brand p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-emerald-500">20 UNITS &bull; MONTHLY</span>
+                    <span className="text-[10px] font-mono text-[var(--text-muted)]">Residential</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-[var(--text-core)] mb-2">Beakim Apartments</h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    Long-term residential complex featuring 20 modern apartments. Serves coastal professionals, expatriates, and corporate block leases, as well as seasonal group accommodations for school and church retreat excursions.
+                  </p>
+                  <ul className="space-y-1 text-[11px] text-[var(--text-muted)] font-mono">
+                    <li>&bull; Long-term monthly tenancy agreements</li>
+                    <li>&bull; 10-unit group retreat block bookings</li>
+                    <li>&bull; Modern gated residential security</li>
+                  </ul>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between text-[10px] font-mono">
+                  <span className="text-[var(--accent-gold)] font-bold">beakimapartments.co.ke</span>
+                  <span className="text-[var(--text-muted)]">Staging Prep</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 3. MEASURABLE IMPACT & 4 HERO KPIS ═══ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              <div className="card-brand p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block mb-1">
+                  Unified Inventory
+                </span>
+                <span className="text-3xl lg:text-4xl font-black font-mono text-emerald-500 block mb-2">
+                  65+
+                </span>
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                  Total accommodation units synchronized under one central catalog and 4-role PMS across Diani Beach and Ukunda.
+                </p>
+              </div>
+
+              <div className="card-brand p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block mb-1">
+                  Reclaimed Margin
+                </span>
+                <span className="text-3xl lg:text-4xl font-black font-mono text-[var(--accent-gold)] block mb-2">
+                  15%&ndash;20%
+                </span>
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                  Direct WhatsApp &amp; PesaPal payment rails eliminate heavy commission fees paid to third-party booking platforms.
+                </p>
+              </div>
+
+              <div className="card-brand p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block mb-1">
+                  Media Payload Cut
+                </span>
+                <span className="text-3xl lg:text-4xl font-black font-mono text-[var(--accent-gold)] block mb-2">
+                  &gt;90%
+                </span>
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                  Uncompressed 50MB+ raw camera and drone photography compressed down to sub-300KB next-gen WebP assets.
+                </p>
+              </div>
+
+              <div className="card-brand p-6 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)]">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--text-muted)] block mb-1">
+                  Collision Prevention
+                </span>
+                <span className="text-3xl lg:text-4xl font-black font-mono text-emerald-500 block mb-2">
+                  0%
+                </span>
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                  Double-booking date collisions eliminated via mathematical half-open interval engine [checkIn, checkOut).
+                </p>
+              </div>
+            </div>
+
+            {/* Architecture Scope Notice */}
+            <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div>
+                <h4 className="text-sm font-bold text-[var(--text-core)] mb-1">
+                  Multi-Property Infrastructure: 5 Dedicated Domains on 1 Consolidated Architecture
+                </h4>
+                <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed">
+                  Rather than purchasing expensive separate hosting packages for each location, Goldfish configured 5 tailored domains (main brand hub + 4 property microsites) pointed to a single optimized hosting plan with automated Let&apos;s Encrypt SSL certificates.
+                </p>
+              </div>
+              <span className="px-3 py-1.5 rounded-lg text-xs font-mono font-bold bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 shrink-0">
+                ● Unified Hosting Architecture
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 4. PRE-INTERVENTION CHALLENGES & BUSINESS DILEMMAS ═══ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <span className="text-eyebrow mb-2 block font-mono text-[var(--accent-gold)]">
+                  THE PRE-INTERVENTION REALITY
+                </span>
+                <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)] mb-6">
+                  65+ Units, But Disconnected Systems Were Causing Operational Friction
+                </h2>
+                <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
+                  With 4 distinct locations across Diani Beach and Ukunda, managing guest inquiries, staff handoffs, room availability, and maintenance logs without an integrated technical framework led to several systemic bottlenecks:
+                </p>
+
+                <div className="space-y-4">
+                  <div className="p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <h4 className="text-xs font-bold text-[var(--text-core)] font-mono mb-1">
+                      ⚠️ Disjointed Brand Identity &amp; Scattered Inquiries
+                    </h4>
+                    <p className="text-xs text-[var(--text-muted)]">
+                      Properties operated as disconnected names with no central brand umbrella. Prospective guests looking at Darad had no visibility into Diani Darling or Tower Cottages.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <h4 className="text-xs font-bold text-[var(--text-core)] font-mono mb-1">
+                      ⚠️ Spreadsheets Vulnerable to Double-Bookings
+                    </h4>
+                    <p className="text-xs text-[var(--text-muted)]">
+                      Walk-ins, WhatsApp chats, and phone reservations were tracked on disparate manual spreadsheets, leaving high-season dates vulnerable to catastrophic double-bookings.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <h4 className="text-xs font-bold text-[var(--text-core)] font-mono mb-1">
+                      ⚠️ Severe Mobile Lag from 50MB+ Uncompressed Media
+                    </h4>
+                    <p className="text-xs text-[var(--text-muted)]">
+                      Drone footage and high-res camera photos were uploaded raw (some single images over 6MB), crippling mobile page speed on coastal Kenyan 3G/4G networks.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <h4 className="text-xs font-bold text-[var(--text-core)] font-mono mb-1">
+                      ⚠️ Likoni Ferry Bottleneck Misunderstandings
+                    </h4>
+                    <p className="text-xs text-[var(--text-muted)]">
+                      Inbound Nairobi and international tourists arriving via the SGR train at Miritini feared the notorious Likoni ferry delays, unaware of the new direct Dongo Kundu bypass highway.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Solution Overview Card */}
+              <div className="p-8 lg:p-10 rounded-3xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] ring-1 ring-[var(--accent-gold)]/20">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--accent-gold)] block mb-2 font-bold">
+                  THE GOLDFISH SOLUTION
+                </span>
+                <h3 className="text-2xl font-black text-[var(--text-core)] mb-4">
+                  Full-Stack Hospitality Engineering &amp; Operational Security
+                </h3>
+                <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
+                  We engineered an end-to-end multi-property digital ecosystem that bridges public-facing discovery with an airtight private property management system:
+                </p>
+
+                <ul className="space-y-3 text-xs text-[var(--text-muted)] font-mono mb-8">
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500 font-bold">✔</span>
+                    <span>Unified luxury brand identity &amp; interactive property switcher</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500 font-bold">✔</span>
+                    <span>Dynamic pricing calculator with Africa/Nairobi (UTC+3) logic</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500 font-bold">✔</span>
+                    <span>Inquiry-to-WhatsApp direct-booking engine + PesaPal payment gateway</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500 font-bold">✔</span>
+                    <span>Next.js 14 App Router PMS with 4-tier RBAC &amp; encrypted storage</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500 font-bold">✔</span>
+                    <span>Mathematical double-booking collision prevention engine</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500 font-bold">✔</span>
+                    <span>Dongo Kundu Bypass SGR transit guidance &amp; FAQ rich snippets</span>
+                  </li>
+                </ul>
+
+                <div className="p-4 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-between">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase text-[var(--text-muted)] block">Units Under Management</span>
+                    <span className="text-sm font-bold font-mono text-emerald-500">65+ Accommodation Units</span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-[10px] font-mono uppercase text-[var(--text-muted)] block">PMS Architecture</span>
+                    <span className="text-sm font-bold font-mono text-[var(--text-core)]">Next.js 14 App Router</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 5. ENTERPRISE NEXT.JS 14 PMS DEEP-DIVE ═══ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-eyebrow mb-2 block font-mono text-[var(--accent-gold)]">
+                ENTERPRISE OPERATIONAL SOFTWARE
+              </span>
+              <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)] mb-4">
+                Beakim CRM: Next.js 14 Enterprise Property Management System
+              </h2>
+              <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed">
+                We evolved on-the-ground hospitality workflows into an enterprise-grade PMS featuring 4-tier RBAC, fail-closed encrypted storage, double-booking collision algorithms, and SHA-256 audit streams.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              {/* PMS Feature 1 */}
+              <div className="card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[var(--accent-gold)] uppercase tracking-wider block mb-2">
+                    Security &bull; Role-Based Access
+                  </span>
+                  <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                    4-Tier Role-Based Access Control
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    Strict separation of duties enforced through cryptographically signed server-issued cookies:
+                  </p>
+                  <ul className="space-y-2 text-xs text-[var(--text-muted)] font-mono">
+                    <li><strong className="text-[var(--text-core)]">Receptionist:</strong> Occupancy grid, walk-in entry, M-Pesa till logging.</li>
+                    <li><strong className="text-[var(--text-core)]">Manager:</strong> Room overrides, quotes, maintenance dispatch.</li>
+                    <li><strong className="text-[var(--text-core)]">Accountant:</strong> Ledger verification, till reversals, backups.</li>
+                    <li><strong className="text-[var(--text-core)]">Executive:</strong> Read-only multi-property audit &amp; revenue oversight.</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* PMS Feature 2 */}
+              <div className="card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[var(--accent-gold)] uppercase tracking-wider block mb-2">
+                    Collision Engine &bull; Math Algorithms
+                  </span>
+                  <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                    Double-Booking Prevention
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    Date collisions are mathematically impossible through a half-open interval engine [checkInDate, checkOutDate).
+                  </p>
+                  <ul className="space-y-2 text-xs text-[var(--text-muted)] font-mono">
+                    <li>&bull; Strictly blocks date overlap across all 65+ units</li>
+                    <li>&bull; Seamlessly permits same-day checkout &amp; checkin turns</li>
+                    <li>&bull; Guarantees maximum occupancy with zero guest conflict</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* PMS Feature 3 */}
+              <div className="card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[var(--accent-gold)] uppercase tracking-wider block mb-2">
+                    Persistence &bull; Data Integrity
+                  </span>
+                  <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                    Fail-Closed Encrypted Datastore
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    Encrypted with AES-256-CBC, replacing destructive file overwrites with fail-closed behavior (DatabaseLoadError):
+                  </p>
+                  <ul className="space-y-2 text-xs text-[var(--text-muted)] font-mono">
+                    <li>&bull; Prevents data loss during server restarts</li>
+                    <li>&bull; Transactional atomic temp-file writes (fs.renameSync)</li>
+                    <li>&bull; In-memory mutex locks eliminating concurrency races</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* PMS Feature 4 */}
+              <div className="card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[var(--accent-gold)] uppercase tracking-wider block mb-2">
+                    Financial Ledger &bull; Minor Units
+                  </span>
+                  <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                    Integer Minor-Units Folio
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    Financial accuracy enforced by tracking balances in integer minor units (KES cents), eliminating floating-point rounding errors:
+                  </p>
+                  <ul className="space-y-2 text-xs text-[var(--text-muted)] font-mono">
+                    <li>&bull; Balances room charges against M-Pesa till logs</li>
+                    <li>&bull; Tracks ancillary upsells (airport transfers, private chefs)</li>
+                    <li>&bull; Instant reconciliation with zero financial leakage</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* PMS Feature 5 */}
+              <div className="card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[var(--accent-gold)] uppercase tracking-wider block mb-2">
+                    Maintenance &bull; Quality Control
+                  </span>
+                  <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                    5-Stage Maintenance Lifecycle
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    Role-gated work orders with multi-blocker isolation protecting guest satisfaction:
+                  </p>
+                  <ul className="space-y-2 text-xs text-[var(--text-muted)] font-mono">
+                    <li>&bull; Units with open repair tickets cannot be marked &ldquo;Available&rdquo;</li>
+                    <li>&bull; Requires manager sign-off and contractor quote tracking</li>
+                    <li>&bull; Solves the common hotel issue of renting defective rooms</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* PMS Feature 6 */}
+              <div className="card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[var(--accent-gold)] uppercase tracking-wider block mb-2">
+                    Audit Stream &bull; Cryptography
+                  </span>
+                  <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                    Tamper-Evident SHA-256 Log
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-4">
+                    Every operational action (check-in, discount, payment reversal, maintenance override) is cryptographically hash-chained:
+                  </p>
+                  <ul className="space-y-2 text-xs text-[var(--text-muted)] font-mono">
+                    <li>&bull; SHA-256 hash-chaining prevents audit record alteration</li>
+                    <li>&bull; Strict employee attribution by EMP ID</li>
+                    <li>&bull; Fully compliant with Kenya Data Protection Act 2019</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 6. TRANSIT LOGISTICS & DONGO KUNDU BYPASS SEO ═══ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <span className="text-eyebrow mb-2 block font-mono text-[var(--accent-gold)]">
+                  LOCALIZED TRANSIT &amp; SGR INTELLIGENCE
+                </span>
+                <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)] mb-6">
+                  Capturing Nairobi &amp; SGR Holidaymakers via Dongo Kundu Guidance
+                </h2>
+                <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
+                  Historically, traveling to Diani from the SGR Terminus meant enduring long delays at the Likoni Ferry. The opening of the Dongo Kundu Bypass highway completely changed coastal logistics. We capitalized on this shift to drive bookings:
+                </p>
+
+                <div className="space-y-4">
+                  <div className="p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <h4 className="text-xs font-bold text-[var(--text-core)] font-mono mb-1">
+                      🚆 45&ndash;60 Minute Direct Transit from Miritini SGR
+                    </h4>
+                    <p className="text-xs text-[var(--text-muted)]">
+                      The website educates travelers that they can drive directly from the train terminal to Beakim properties via the bypass without stepping foot on the ferry.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <h4 className="text-xs font-bold text-[var(--text-core)] font-mono mb-1">
+                      🔍 FAQPage Schema Targeting SGR Keywords
+                    </h4>
+                    <p className="text-xs text-[var(--text-muted)]">
+                      Injected structured FAQ rich snippet schema answering high-intent search queries: &ldquo;How to get to Diani from SGR&rdquo; and &ldquo;Dongo Kundu bypass travel time to Diani&rdquo;.
+                    </p>
+                  </div>
+
+                  <div className="p-4 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <h4 className="text-xs font-bold text-[var(--text-core)] font-mono mb-1">
+                      🚐 Integrated Airport &amp; SGR Transfer Upsells
+                    </h4>
+                    <p className="text-xs text-[var(--text-muted)]">
+                      The WhatsApp booking engine and CRM automatically allow guests to add pre-arranged private vehicle transfers from Miritini SGR or Moi International Airport.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Transit Map / Visual Card */}
+              <div className="p-8 rounded-3xl bg-[var(--bg-primary)] border border-[var(--border-subtle)] ring-1 ring-[var(--accent-gold)]/20">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--accent-gold)] font-bold block mb-2">
+                  MODERN COASTAL ACCESS ROUTE
+                </span>
+                <h3 className="text-xl font-black text-[var(--text-core)] mb-4">
+                  Miritini SGR &rarr; Dongo Kundu Bypass &rarr; Diani Beach
+                </h3>
+                <div className="p-5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] space-y-4 mb-6">
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-[var(--text-muted)]">Route:</span>
+                    <span className="text-emerald-500 font-bold">New Highway (Likoni Bypass)</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-[var(--text-muted)]">Transit Time:</span>
+                    <span className="text-[var(--accent-gold)] font-bold">45 &ndash; 60 Minutes</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-[var(--text-muted)]">Ferry Delays:</span>
+                    <span className="text-emerald-500 font-bold">0 Minutes (Ferry Avoided)</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs font-mono">
+                    <span className="text-[var(--text-muted)]">Direct Dropoff:</span>
+                    <span className="text-[var(--text-core)] font-bold">All 4 Beakim Properties</span>
+                  </div>
+                </div>
+                <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                  By answering travelers&apos; practical transit fears directly on the website, booking conversion rates increased dramatically for Nairobi holidaymakers traveling on the Madaraka Express SGR.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 7. VERIFIED INFRASTRUCTURE & STAGING ASSETS ═══ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+              <div>
+                <span className="text-eyebrow mb-2 block font-mono text-[var(--accent-gold)]">
+                  MULTI-DOMAIN INFRASTRUCTURE &bull; STAGING DEPLOYMENT
+                </span>
+                <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)]">
+                  Consolidated Web &amp; Technology Footprint
+                </h2>
+              </div>
+              <p className="text-xs text-[var(--text-muted)] font-mono max-w-md">
+                5 distinct domains configured and pointed to a unified hosting plan with automated Let&apos;s Encrypt SSL.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Asset 1 */}
+              <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-emerald-500">🌐 BRAND HUB</span>
+                    <span className="text-[10px] font-mono text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">Staging Prep</span>
+                  </div>
+                  <h4 className="text-base font-bold text-[var(--text-core)] mb-2">beakimhospitalitygroup.co.ke</h4>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Flagship brand landing page featuring luxury coastal styling, 4-property switcher, group retreat portal, and real-time pricing calculator.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-muted)]">
+                  Domain Pointed &bull; Finalizing Client Launch
+                </div>
+              </div>
+
+              {/* Asset 2 */}
+              <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-[var(--accent-gold)]">🏡 BEAKIM DARAD</span>
+                    <span className="text-[10px] font-mono text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">Staging Prep</span>
+                  </div>
+                  <h4 className="text-base font-bold text-[var(--text-core)] mb-2">beakimdarad.co.ke</h4>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Dedicated property microsite showcasing 28 units, twin swimming pools, and dining sequence galleries on Diani Beach Road.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-muted)]">
+                  Domain Pointed &bull; Finalizing Client Launch
+                </div>
+              </div>
+
+              {/* Asset 3 */}
+              <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-[var(--accent-gold)]">🌴 DIANI DARLING</span>
+                    <span className="text-[10px] font-mono text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">Staging Prep</span>
+                  </div>
+                  <h4 className="text-base font-bold text-[var(--text-core)] mb-2">dianidarlingcottages.co.ke</h4>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Deluxe holiday kitchenette studio microsite with private balconies, pool views, and intimate romantic vacation funnels.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-muted)]">
+                  Domain Pointed &bull; Finalizing Client Launch
+                </div>
+              </div>
+
+              {/* Asset 4 */}
+              <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-[var(--accent-gold)]">🏢 TOWER COTTAGES</span>
+                    <span className="text-[10px] font-mono text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">Staging Prep</span>
+                  </div>
+                  <h4 className="text-base font-bold text-[var(--text-core)] mb-2">towercottagesdiani.co.ke</h4>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Microsite for 2-bedroom fully-furnished apartments near Naivas Ukunda, targeted at family vacations and extended business stays.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-muted)]">
+                  Domain Pointed &bull; Finalizing Client Launch
+                </div>
+              </div>
+
+              {/* Asset 5 */}
+              <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-[var(--accent-gold)]">🏘️ BEAKIM APARTMENTS</span>
+                    <span className="text-[10px] font-mono text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded">Staging Prep</span>
+                  </div>
+                  <h4 className="text-base font-bold text-[var(--text-core)] mb-2">beakimapartments.co.ke</h4>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Long-term residential leasing and 10-unit group retreat portal for church groups, schools, and corporate team excursions.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-muted)]">
+                  Domain Pointed &bull; Finalizing Client Launch
+                </div>
+              </div>
+
+              {/* Asset 6 */}
+              <div className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-xs font-mono font-bold text-emerald-500">🔒 ENTERPRISE PMS</span>
+                    <span className="text-[10px] font-mono text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">Verified</span>
+                  </div>
+                  <h4 className="text-base font-bold text-[var(--text-core)] mb-2">Next.js 14 App Router PMS</h4>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                    Private 4-role property management dashboard with scrypt auth, AES-256 storage, collision engine, and SHA-256 audit stream.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-[var(--border-subtle)] text-[10px] font-mono text-emerald-500 font-bold">
+                  ● Verified Integration Suite
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 8. BEFORE & AFTER TRANSFORMATION MATRIX ═══ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-eyebrow mb-2 block font-mono text-[var(--accent-gold)]">
+                OPERATIONAL TRANSFORMATION &bull; DELIVERED REALITY
+              </span>
+              <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)] mb-4">
+                Before Goldfish vs. Delivered Architecture
+              </h2>
+              <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed">
+                Empirical comparison showing how manual hospitality bottlenecks were replaced by automated systems.
+              </p>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-[var(--border-subtle)] text-[var(--accent-gold)] uppercase tracking-wider font-mono">
+                    <th className="p-4">Operational Domain</th>
+                    <th className="p-4">Legacy Pre-Intervention State</th>
+                    <th className="p-4">Goldfish Engineered Solution</th>
+                    <th className="p-4">Delivered Business Impact</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[var(--border-subtle)] text-[var(--text-muted)]">
+                  <tr>
+                    <td className="p-4 font-bold text-[var(--text-core)] font-mono">Brand Architecture</td>
+                    <td className="p-4">4 disconnected names without a central web identity.</td>
+                    <td className="p-4">Unified luxury coastal web platform + 4 dedicated property microsites.</td>
+                    <td className="p-4 font-bold text-emerald-500 font-mono">Instant multi-property switcher &amp; single catalog.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-[var(--text-core)] font-mono">Booking Inquiries</td>
+                    <td className="p-4">Fragmented manual phone inquiries with zero rate verification.</td>
+                    <td className="p-4">Dynamic pricing calculator with Africa/Nairobi date validation &amp; WhatsApp engine.</td>
+                    <td className="p-4 font-bold text-emerald-500 font-mono">15%&ndash;20% margin saved vs third-party OTAs.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-[var(--text-core)] font-mono">Media &amp; Load Speed</td>
+                    <td className="p-4">50MB+ uncompressed raw camera and drone photography.</td>
+                    <td className="p-4">Batch WebP conversion pipeline reducing images to sub-300KB + minified Tailwind CSS.</td>
+                    <td className="p-4 font-bold text-[var(--accent-gold)] font-mono">&gt;90% payload reduction &bull; sub-second mobile LCP.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-[var(--text-core)] font-mono">Calendar Integrity</td>
+                    <td className="p-4">Disparate spreadsheets vulnerable to double-bookings.</td>
+                    <td className="p-4">Mathematical half-open interval collision engine [checkInDate, checkOutDate).</td>
+                    <td className="p-4 font-bold text-emerald-500 font-mono">0% collision risk &bull; profitable same-day turns.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-[var(--text-core)] font-mono">Operational Access</td>
+                    <td className="p-4">Unauthenticated demo mode without separation of duties.</td>
+                    <td className="p-4">4-tier RBAC with scrypt passwords &amp; HttpOnly signed session cookies.</td>
+                    <td className="p-4 font-bold text-emerald-500 font-mono">Strict separation of duties &bull; full accountability.</td>
+                  </tr>
+                  <tr>
+                    <td className="p-4 font-bold text-[var(--text-core)] font-mono">Transit Guidance</td>
+                    <td className="p-4">Traveler fear over Likoni Ferry delays during coastal transit.</td>
+                    <td className="p-4">Direct Dongo Kundu Bypass guidance from Miritini SGR + FAQPage schema.</td>
+                    <td className="p-4 font-bold text-emerald-500 font-mono">45&ndash;60 min direct transit &bull; SGR booking boost.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ 9. EXECUTIVE CTA FOR MULTI-PROPERTY HOSPITALITY BRANDS ═══ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)]">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="text-eyebrow mb-2 block font-mono text-[var(--accent-gold)]">
+              EXECUTIVE ADVISORY &bull; MULTI-PROPERTY HOSPITALITY
+            </span>
+            <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)] mb-4">
+              Managing multiple vacation rentals, cottages, or resort properties in Kenya?
+            </h2>
+            <p className="text-sm text-[var(--text-muted)] font-light max-w-2xl mx-auto mb-8 leading-relaxed">
+              Whether you oversee coastal holiday cottages, serviced apartment blocks, or a multi-location hospitality group, Goldfish Marketing builds unified direct-booking engines and custom property management software that eliminate double-bookings and commission leakage.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/contact?service=website"
+                className="btn-primary text-xs py-3.5 px-8 shadow-sm w-full sm:w-auto text-center"
+              >
+                Discuss a multi-property hospitality ecosystem &rarr;
+              </Link>
+              <a
+                href={buildWhatsAppUrl("Hi Malack, I read the Beakim Hospitality Group case study and would like to discuss our multi-property booking systems")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline text-xs py-3.5 px-8 w-full sm:w-auto text-center inline-flex items-center justify-center gap-2"
+              >
+                <span>Direct WhatsApp Advisory</span>
+                <span>↗</span>
+              </a>
+            </div>
+
+            <p className="text-[11px] font-mono text-[var(--text-muted)] mt-6">
+              Based in Diani, Kwale County &bull; Serving hospitality portfolios across coastal Kenya &bull; Direct founder access
             </p>
           </div>
         </section>

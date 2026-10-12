@@ -78,4 +78,34 @@ export const PUBLISHED_PROJECTS: readonly PublishedProject[] = [
     ],
     isFlagship: true,
   },
+  {
+    slug: 'beakim-hospitality-group',
+    name: 'Beakim Hospitality Group',
+    sector: 'Multi-Property Hospitality & Enterprise PMS',
+    url: 'https://www.beakimhospitalitygroup.co.ke/',
+    tagline: 'Multi-Property Hospitality Web Platform, Direct FinTech & Next.js 14 Enterprise PMS',
+    description:
+      'Complete digital infrastructure for a premier 4-property coastal hospitality portfolio: unified luxury web flagship, 4 dedicated property microsites, inquiry-to-WhatsApp direct booking, Dongo Kundu Bypass SGR logistics guidance, >90% media payload reduction, and an enterprise Next.js 14 Property Management System with fail-closed encrypted storage and double-booking collision prevention.',
+    context:
+      'Beakim operates 65+ accommodation units across 4 distinct properties in Diani Beach and Ukunda. Prior to engagement, the properties lacked a central digital umbrella, relied on manual spreadsheets vulnerable to calendar collisions, and suffered from 50MB+ uncompressed raw media. Goldfish Marketing engineered a unified booking engine, cut media payload weights by over 90%, and built an enterprise-grade 4-role PMS CRM.',
+    evidence:
+      'Delivered full architecture comprising public flagship hub, 4 dedicated microsites (Darad, Diani Darling, Tower Cottages, Beakim Apartments), dynamic pricing engine, inquiry-to-WhatsApp funnel, PesaPal payment gateway rails, and an enterprise Next.js 14 PMS featuring 4-tier RBAC, AES-256-CBC fail-closed encrypted storage, and automated regression verification.',
+    tags: [
+      '4 Unified Properties',
+      'Next.js 14 Enterprise PMS',
+      'AES-256 Encrypted Datastore',
+      '4-Role RBAC',
+      'WhatsApp Booking Engine',
+      'PesaPal FinTech',
+      'Dongo Kundu SGR SEO',
+      'WebP Pipeline',
+    ],
+    metrics: [
+      { value: '65+', label: 'Accommodation Units' },
+      { value: '15%–20%', label: 'OTA Margin Reclaimed' },
+      { value: '>90%', label: 'Media Payload Reduced' },
+      { value: '0%', label: 'Double-Booking Collisions' },
+    ],
+    isFlagship: true,
+  },
 ] as const;
