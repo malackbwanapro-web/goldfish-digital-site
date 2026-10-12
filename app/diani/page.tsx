@@ -253,18 +253,21 @@ export default function DianiPage() {
             <div className="card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] flex flex-col justify-between">
               <div>
                 <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-2">
-                  Hospitality &bull; Diani Beach
+                  Hospitality Transformation &bull; Diani Beach
                 </span>
-                <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                <h3 className="text-xl font-bold text-[var(--text-core)] mb-2">
                   Diani Ocean View Residences
                 </h3>
+                <p className="text-xs font-mono text-emerald-500 font-semibold mb-3">
+                  Direct FinTech • Beds24 Sync • 4K Shoot • 90-Day Socials
+                </p>
                 <p className="text-caption text-[var(--text-muted)] leading-relaxed mb-6">
-                  A website project for an accommodation business in Diani. Explore the project and visit the client website.
+                  An autonomous hospitality ecosystem for beachfront luxury villas: market research, full brand identity, on-site 4K master media shoot, 90-day social media strategy, PesaPal direct booking, and Beds24 channel sync.
                 </p>
               </div>
               <div className="flex items-center gap-4 pt-4 border-t border-[var(--border-subtle)]">
                 <Link href="/portfolio/diani-ocean-view-residences" className="text-xs font-mono font-bold text-[var(--accent-gold)] hover:underline">
-                  Explore the project →
+                  Explore full case study →
                 </Link>
                 <a
                   href="https://dianioceanviewresidences.com/"
