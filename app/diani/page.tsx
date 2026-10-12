@@ -286,19 +286,22 @@ export default function DianiPage() {
                 <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold block mb-2">
                   Dining &bull; Diani Bazaar
                 </span>
-                <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                <h3 className="text-xl font-bold text-[var(--text-core)] mb-2">
                   Sizzlers Steakhouse &amp; Pub Diani
                 </h3>
+                <p className="text-xs font-mono text-emerald-500 font-semibold mb-3">
+                  50+ Direct Bookings • 33.1% Organic Conv. • WhatsApp Engine • Review Flywheel
+                </p>
                 <p className="text-caption text-[var(--text-muted)] leading-relaxed mb-6">
-                  A restaurant website project. Explore the project and visit the client website.
+                  A high-converting digital flagship and in-venue Google Review acceleration engine for Diani&apos;s premier steakhouse: frictionless WhatsApp table booking, dynamic open/closed status (9 AM–3 AM), instant-search digital menu, and 90-day short-form video reels.
                 </p>
               </div>
               <div className="flex items-center gap-4 pt-4 border-t border-[var(--border-subtle)]">
                 <Link href="/portfolio/sizzlers-steakhouse-diani" className="text-xs font-mono font-bold text-[var(--accent-gold)] hover:underline">
-                  Explore the project →
+                  Explore full case study →
                 </Link>
                 <a
-                  href="https://sizzlersdiani.com/"
+                  href="https://www.sizzlerssteakhousediani.co.ke/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xs font-mono text-[var(--text-muted)] hover:text-[var(--text-core)] ml-auto"

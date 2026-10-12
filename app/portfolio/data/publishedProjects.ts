@@ -51,20 +51,31 @@ export const PUBLISHED_PROJECTS: readonly PublishedProject[] = [
   {
     slug: 'sizzlers-steakhouse-diani',
     name: 'Sizzlers Steakhouse & Pub Diani',
-    sector: 'Restaurant & Dining',
+    sector: 'Restaurant & Nightlife',
     url: 'https://www.sizzlerssteakhousediani.co.ke/',
-    tagline: 'High-Visibility Coastal Dining Web Platform & Local Discovery',
+    tagline: 'High-Converting Dining Flagship, WhatsApp Booking Engine & Local Google Review Flywheel',
     description:
-      'A dedicated restaurant web platform and local discovery asset for Sizzlers at Diani Bazaar on the Kenyan south coast.',
+      'Complete digital transformation for Diani Beach’s premier steakhouse and late-night venue: an ultra-fast web flagship, frictionless WhatsApp table booking engine, real-time operating hours sync (9 AM–3 AM), instant-search digital menu, in-venue Google Review acceleration, 90-day short-form video reels engine, and GA4 conversion telemetry.',
     context:
-      'A restaurant website gives prospective diners, tourists, and resident foodies a place to explore menus, confirm location and hours, and make enquiries or reservations directly.',
+      'Prior to our engagement, Sizzlers relied on an outdated, slow legacy website that produced zero online reservations, had no conversion tracking, and left late-night diners guessing kitchen hours. Goldfish Marketing engineered an autonomous direct-booking ecosystem, eliminated third-party aggregator commissions, and created an in-venue review flywheel that propelled the venue to top search rankings across coastal Kenya.',
     evidence:
-      'Project delivery confirmed by Goldfish Marketing founder Malack Bwana. Built with fast mobile loading and local Diani search presence.',
-    tags: ['Restaurant Web Design', 'Local Discovery', 'Menu Architecture', 'Diani Bazaar'],
-    metrics: [
-      { value: 'Sub-1s', label: 'Mobile Menu Load' },
-      { value: '100%', label: 'Diani Search Entity Discovery' },
+      'Live in production at sizzlerssteakhousediani.co.ke with GA4 telemetry (G-FM29F5EBMR). Captured 50+ direct table reservations via WhatsApp, 123 Google organic key events (33.1% conversion rate), 296 direct sessions, 204 total funnel events, and a verified 4.8/5-star rating across 200+ Google reviews.',
+    tags: [
+      'WhatsApp Booking Engine',
+      'In-Venue Review Accelerator',
+      '33.1% Organic Conv.',
+      '50+ Direct Bookings',
+      '90-Day Social Reels',
+      'Instant Digital Menu',
+      'GEO & Local Schema',
+      'GA4 Telemetry',
     ],
-    isFlagship: false,
+    metrics: [
+      { value: '50+', label: 'Confirmed Table Bookings' },
+      { value: '33.1%', label: 'Google Organic Conv. Rate' },
+      { value: '4.8 / 5', label: 'Google Rating (200+ Reviews)' },
+      { value: 'Sub-1s', label: 'Mobile Menu Load Speed' },
+    ],
+    isFlagship: true,
   },
 ] as const;
