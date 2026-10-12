@@ -77,18 +77,10 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Fred Ndungu',
-    role: 'Cyber Security Specialist',
-    discipline: 'Security & Infrastructure Hardening',
-    tag: 'SECURITY',
-    initials: 'FN',
-    bio: 'Focuses on server resilience, API endpoint security, penetration testing, and KDPA data compliance to keep client platforms secure and audit-ready.',
-  },
-  {
     name: 'Astram Singh',
     role: 'Cyber Security Specialist',
     discipline: 'Threat Defense & System Integrity',
-    tag: 'CYBERSEC',
+    tag: 'SECURITY',
     initials: 'AS',
     bio: 'Specializes in application security, encrypted API gateways, vulnerability assessments, and proactive defense to safeguard client infrastructure.',
   },
