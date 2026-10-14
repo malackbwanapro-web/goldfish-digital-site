@@ -16,6 +16,7 @@ import {
   formatStrategyCallMessage,
   formatDiagnosticMessage,
 } from '@/lib/formatters';
+import { TypebotEstimator } from '@/app/components/typebot';
 
 const waPromptChips = [
   {
@@ -54,7 +55,7 @@ const waPromptChips = [
 
 export default function ContactClient() {
   const searchParams = useSearchParams();
-  const [activeTab, setActiveTab] = useState<'whatsapp' | 'calendar' | 'diagnostic'>('whatsapp');
+  const [activeTab, setActiveTab] = useState<'whatsapp' | 'estimator' | 'calendar' | 'diagnostic'>('whatsapp');
 
   // ── TAB 1: WHATSAPP DIRECT STATE ──
   const [waName, setWaName] = useState('');
@@ -102,6 +103,9 @@ export default function ContactClient() {
     }
     if (msg) {
       setWaCustomMsg(msg);
+    }
+    if (searchParams.get('tab') === 'estimator') {
+      setActiveTab('estimator');
     }
   }, [searchParams]);
 
@@ -309,7 +313,7 @@ export default function ContactClient() {
     if (reqId) setSubmittedDiagnostic(true);
   };
 
-  const handleTabSwitch = (tab: 'whatsapp' | 'calendar' | 'diagnostic') => {
+  const handleTabSwitch = (tab: 'whatsapp' | 'estimator' | 'calendar' | 'diagnostic') => {
     if (waName) {
       if (!calName) setCalName(waName);
       if (!diagName) setDiagName(waName);
@@ -334,11 +338,11 @@ export default function ContactClient() {
         <p>{getServiceOffer(searchParams.get('service'))?.price} · {getServiceOffer(searchParams.get('service'))?.period}</p>
         <p className="text-sm mt-2">{getServiceOffer(searchParams.get('service'))?.exclusions}</p>
       </div>}
-      {/* ═══ TRI-MODAL TAB SWITCHER ═══ */}
-      <div className="flex flex-col sm:flex-row items-center justify-center p-1.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-md mb-10 max-w-2xl mx-auto">
+      {/* ═══ QUAD-MODAL TAB SWITCHER ═══ */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 p-1.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-md mb-10 max-w-3xl mx-auto">
         <button
           onClick={() => handleTabSwitch('whatsapp')}
-          className={`w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
+          className={`py-3 px-3 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
             activeTab === 'whatsapp'
               ? 'bg-emerald-600 text-white shadow-md'
               : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
@@ -349,8 +353,20 @@ export default function ContactClient() {
         </button>
 
         <button
+          onClick={() => handleTabSwitch('estimator')}
+          className={`py-3 px-3 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
+            activeTab === 'estimator'
+              ? 'bg-[var(--accent-gold)] text-[#0D0D0D] shadow-md'
+              : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
+          }`}
+        >
+          <span>⚡</span>
+          <span>AI Estimator</span>
+        </button>
+
+        <button
           onClick={() => handleTabSwitch('calendar')}
-          className={`w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
+          className={`py-3 px-3 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
             activeTab === 'calendar'
               ? 'bg-[var(--accent-gold)] text-[#0D0D0D] shadow-md'
               : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
@@ -362,7 +378,7 @@ export default function ContactClient() {
 
         <button
           onClick={() => handleTabSwitch('diagnostic')}
-          className={`w-full sm:w-1/3 py-3 px-4 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
+          className={`py-3 px-3 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
             activeTab === 'diagnostic'
               ? 'bg-[var(--accent-gold)] text-[#0D0D0D] shadow-md'
               : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
@@ -540,7 +556,14 @@ export default function ContactClient() {
       </div>
 
       {/* ══════════════════════════════════════════
-          TAB 2: 15-MINUTE STRATEGY SLOT
+          TAB 2: INTERACTIVE AI SCOPE ESTIMATOR (TYPEBOT)
+      ══════════════════════════════════════════ */}
+      <div className={activeTab === 'estimator' ? 'block' : 'hidden'}>
+        <TypebotEstimator />
+      </div>
+
+      {/* ══════════════════════════════════════════
+          TAB 3: 15-MINUTE STRATEGY SLOT
       ══════════════════════════════════════════ */}
       <div className={activeTab === 'calendar' ? 'block' : 'hidden'}>
         <div className="card-brand p-8 lg:p-12 border border-[var(--border-subtle)] bg-[var(--bg-surface)] shadow-xl rounded-2xl">
@@ -709,7 +732,7 @@ export default function ContactClient() {
       </div>
 
       {/* ══════════════════════════════════════════
-          TAB 3: 3-STEP CONFIDENTIAL DIAGNOSTIC
+          TAB 4: 3-STEP CONFIDENTIAL PROJECT ENQUIRY
       ══════════════════════════════════════════ */}
       <div className={activeTab === 'diagnostic' ? 'block' : 'hidden'}>
         <div className="card-brand p-8 lg:p-12 border border-[var(--border-subtle)] bg-[var(--bg-surface)] shadow-xl rounded-2xl">

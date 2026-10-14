@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ code: 'FIELD_TOO_LONG' }, { status: 422 });
       }
     }
-    if (!['contact', 'audit', 'whatsapp_quick_chat', 'strategy_call', 'diagnostic'].includes(lead.intent) ||
+    if (!['contact', 'audit', 'whatsapp_quick_chat', 'strategy_call', 'diagnostic', 'typebot_assistant', 'typebot_estimator'].includes(lead.intent) ||
         !isValidContactName(lead.name) || (!lead.email && !lead.phone) ||
         (lead.email && !isValidEmail(lead.email)) || (lead.phone && !isValidPhoneNumber(lead.phone))) {
       return NextResponse.json({ code: 'VALIDATION_ERROR' }, { status: 422 });

@@ -7,6 +7,7 @@ import GoogleAnalytics from './components/GoogleAnalytics';
 import SchemaMarkup from './components/SchemaMarkup';
 import MobileStickyBar from './components/MobileStickyBar';
 import WhatsAppFloat from './components/WhatsAppFloat';
+import { TypebotBubble } from './components/typebot';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -120,6 +121,7 @@ export default function RootLayout({
           {children}
         </div>
         <WhatsAppFloat />
+        <TypebotBubble />
         <MobileStickyBar />
       </body>
     </html>

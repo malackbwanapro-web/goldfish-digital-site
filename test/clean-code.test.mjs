@@ -14,6 +14,7 @@ import {
   formatWhatsAppDirectMessage,
   formatStrategyCallMessage,
   formatDiagnosticMessage,
+  formatTypebotScopeMessage,
 } from '../lib/formatters.ts';
 
 test('Clean Code: SITE_CONFIG Invariants', () => {
@@ -103,4 +104,24 @@ test('Clean Code: Domain Message Formatters', () => {
   assert.ok(diagMsg.includes('🏢 *Company:* Diani Safari Ltd'));
   assert.ok(diagMsg.includes('• High OTA Commissions'));
   assert.ok(diagMsg.includes('• Slow 4G Speed'));
+
+  // Typebot Scope Formatter
+  const scopeMsg = formatTypebotScopeMessage({
+    industry: 'Luxury Villa / Resort',
+    scopeItems: ['Direct Booking FinTech', 'Beds24 Two-Way Calendar Sync'],
+    name: 'Sarah Connor',
+    company: 'Diani Beachfront Villas',
+    phone: '+254711404755',
+    email: 'sarah@example.com',
+    timeline: 'Standard (14–21 days)',
+    notes: 'Require M-Pesa integration with PesaPal',
+  });
+  assert.ok(scopeMsg.includes('⚡ *INTERACTIVE PROJECT SCOPE ESTIMATE* ⚡'));
+  assert.ok(scopeMsg.includes('🏢 *Industry / Archetype:* Luxury Villa / Resort'));
+  assert.ok(scopeMsg.includes('👤 *Contact Name:* Sarah Connor'));
+  assert.ok(scopeMsg.includes('• Direct Booking FinTech'));
+  assert.ok(scopeMsg.includes('• Beds24 Two-Way Calendar Sync'));
+  assert.ok(scopeMsg.includes('⏱️ *Target Timeline:* Standard (14–21 days)'));
+  assert.ok(scopeMsg.includes('Require M-Pesa integration with PesaPal'));
 });
+
