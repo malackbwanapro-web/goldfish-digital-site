@@ -41,6 +41,8 @@ export default function TypebotStandard({
   const [loadError, setLoadError] = useState(false);
 
   useEffect(() => {
+    if (!typebotId) return;
+
     let script = document.querySelector<HTMLScriptElement>(
       `script[src="${TYPEBOT_CONFIG.CDN_URL}"]`
     );
@@ -72,6 +74,29 @@ export default function TypebotStandard({
       onScriptLoaded();
     }
   }, [typebotId, apiHost]);
+
+  if (!typebotId) {
+    return (
+      <div
+        className={`relative w-full rounded-2xl overflow-hidden border border-[var(--border-subtle)] bg-[#0D0D0D] shadow-2xl p-8 flex flex-col items-center justify-center text-center text-white ${className}`}
+        style={{ height }}
+      >
+        <span className="text-4xl mb-3">🤖</span>
+        <h4 className="text-base font-bold text-[var(--accent-gold)] mb-2">
+          Conversational Bot Canvas
+        </h4>
+        <p className="text-xs text-neutral-400 max-w-md mb-6 leading-relaxed">
+          The embedded canvas is ready. Once your Typebot is published and linked via <code className="text-[var(--accent-gold)]">NEXT_PUBLIC_TYPEBOT_ID</code>, the live conversational bot will stream directly here.
+        </p>
+        <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-800 text-xs font-mono text-neutral-300 max-w-sm text-left">
+          <div className="text-[10px] text-[var(--accent-gold)] font-bold uppercase mb-1">
+            Ready Template:
+          </div>
+          <div>• typebot-templates/goldfish-growth-concierge.json</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div

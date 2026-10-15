@@ -4,8 +4,11 @@
  */
 
 export const TYPEBOT_CONFIG = {
-  // Public Bot Identifier (Configurable via environment variable or default)
-  BOT_ID: process.env.NEXT_PUBLIC_TYPEBOT_ID || 'goldfish-growth-concierge',
+  // Public Bot Identifier (Configured via environment variable when published)
+  BOT_ID: process.env.NEXT_PUBLIC_TYPEBOT_ID || '',
+
+  // Flag indicating whether an external Typebot instance is actively linked
+  IS_CONFIGURED: Boolean(process.env.NEXT_PUBLIC_TYPEBOT_ID),
 
   // API Host (Defaults to Typebot Cloud viewer, or local self-hosted instance e.g. http://localhost:8081)
   API_HOST: process.env.NEXT_PUBLIC_TYPEBOT_API_HOST || 'https://viewer.typebot.io',
