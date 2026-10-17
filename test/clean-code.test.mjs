@@ -125,3 +125,65 @@ test('Clean Code: Domain Message Formatters', () => {
   assert.ok(scopeMsg.includes('Require M-Pesa integration with PesaPal'));
 });
 
+// Import refactored modules for new verification
+import { isSlotAvailable, validBooking, bookingOptions } from '../lib/booking.ts';
+import { DEFAULT_LEAD_SUBMISSION_TIMEOUT_MS, submitLead } from '../lib/leads-api.ts';
+import { WA_PROMPT_CHIPS } from '../app/contact/components/WhatsAppTab.tsx';
+import { HURDLE_OPTIONS } from '../app/contact/components/DiagnosticTab.tsx';
+
+test('Clean Code: Booking Domain Predicates & Options', () => {
+  // Saturday after 1:00 PM (780 min) is non-operational
+  const saturdayAfternoon = isSlotAvailable(6, 14 * 60, false, 0);
+  assert.strictEqual(saturdayAfternoon, false);
+
+  // Past slot today is non-operational
+  const pastSlotToday = isSlotAvailable(1, 10 * 60, true, 11 * 60);
+  assert.strictEqual(pastSlotToday, false);
+
+  // Weekday regular business hours slot in future is operational
+  const weekdayMorning = isSlotAvailable(1, 10 * 60, false, 0);
+  assert.strictEqual(weekdayMorning, true);
+
+  // Sunday is excluded from booking options
+  // 2026-10-18 is a Sunday
+  const isSundayBookable = validBooking('2026-10-18', '10:00 AM - 10:15 AM', new Date('2026-10-17T07:00:00Z'));
+  assert.strictEqual(isSundayBookable, false);
+
+  // Options return populated slots
+  const options = bookingOptions(new Date('2026-10-19T07:00:00Z'));
+  assert.ok(Array.isArray(options));
+  assert.ok(options.length > 0);
+  assert.ok(options[0].slots.length > 0);
+});
+
+test('Clean Code: Lead Submission Boundary Adapter Contract', async () => {
+  assert.strictEqual(DEFAULT_LEAD_SUBMISSION_TIMEOUT_MS, 15_000);
+
+  // Network failure / mock rejection test
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async () => {
+    throw new Error('Connection refused');
+  };
+
+  try {
+    const result = await submitLead(
+      { intent: 'test_lead', name: 'Tester' },
+      'test-idempotency-key-001'
+    );
+    assert.strictEqual(result.success, false);
+    assert.strictEqual(result.error, 'Connection refused');
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('Clean Code: Component Domain Constants Integrity', () => {
+  assert.ok(Array.isArray(WA_PROMPT_CHIPS));
+  assert.ok(WA_PROMPT_CHIPS.length >= 8);
+  assert.ok(WA_PROMPT_CHIPS.every((chip) => chip.label && chip.text));
+
+  assert.ok(Array.isArray(HURDLE_OPTIONS));
+  assert.ok(HURDLE_OPTIONS.length >= 6);
+});
+
+

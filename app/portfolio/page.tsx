@@ -108,13 +108,13 @@ export default function PortfolioPage() {
                     {/* Metrics strip for flagship */}
                     {project.metrics && (
                       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] mb-6">
-                        {project.metrics.map((m, i) => (
-                          <div key={i} className="flex flex-col">
+                        {project.metrics.map((metric, metricIndex) => (
+                          <div key={metricIndex} className="flex flex-col">
                             <span className="text-lg lg:text-xl font-black font-mono text-[var(--accent-gold)]">
-                              {m.value}
+                              {metric.value}
                             </span>
                             <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider mt-0.5">
-                              {m.label}
+                              {metric.label}
                             </span>
                           </div>
                         ))}
@@ -124,9 +124,9 @@ export default function PortfolioPage() {
                     {/* Tags */}
                     {project.tags && (
                       <div className="flex flex-wrap gap-2 mb-6">
-                        {project.tags.map((tag, i) => (
+                        {project.tags.map((tag, tagIndex) => (
                           <span
-                            key={i}
+                            key={tagIndex}
                             className="px-2.5 py-1 rounded-md text-[10px] font-mono bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-core)]"
                           >
                             {tag}
