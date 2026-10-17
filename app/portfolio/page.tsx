@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ACTUAL_CLIENTS } from './data/actualClientsData';
 import { PUBLISHED_PROJECTS } from './data/publishedProjects';
 import FooterCloser from '../components/FooterCloser';
+import ScrollReveal from '../components/ScrollReveal';
 
 export const metadata: Metadata = {
   title: { absolute: 'Client Work & Hospitality Case Studies | Goldfish Marketing' },
@@ -67,88 +68,93 @@ export default function PortfolioPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {PUBLISHED_PROJECTS.map((project) => (
-              <article
+            {PUBLISHED_PROJECTS.map((project, idx) => (
+              <ScrollReveal
                 key={project.slug}
-                className={`card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between ${
-                  project.isFlagship ? 'md:col-span-2 ring-1 ring-[var(--accent-gold)]/30' : ''
-                }`}
+                delay={idx * 0.1}
+                className={project.isFlagship ? 'md:col-span-2 flex' : 'flex'}
               >
-                <div>
-                  <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-                    <span className="text-xs font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold">
-                      {project.sector}
-                    </span>
-                    {project.isFlagship && (
-                      <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[var(--accent-gold)]/15 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)]">
-                        ● FLAGSHIP {project.sector.includes('Multi-Property') ? 'MULTI-PROPERTY HOSPITALITY' : project.sector.includes('Dining') || project.sector.includes('Restaurant') || project.sector.includes('Nightlife') ? 'DINING & NIGHTLIFE' : 'HOSPITALITY'} CASE STUDY
+                <article
+                  className={`card-brand p-8 rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)] flex flex-col justify-between w-full ${
+                    project.isFlagship ? 'ring-1 ring-[var(--accent-gold)]/30' : ''
+                  }`}
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+                      <span className="text-xs font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold">
+                        {project.sector}
                       </span>
+                      {project.isFlagship && (
+                        <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[var(--accent-gold)]/15 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)]">
+                          ● FLAGSHIP {project.sector.includes('Multi-Property') ? 'MULTI-PROPERTY HOSPITALITY' : project.sector.includes('Dining') || project.sector.includes('Restaurant') || project.sector.includes('Nightlife') ? 'DINING & NIGHTLIFE' : 'HOSPITALITY'} CASE STUDY
+                        </span>
+                      )}
+                    </div>
+
+                    <h3 className="text-2xl lg:text-3xl font-black text-[var(--text-core)] mb-2">
+                      {project.name}
+                    </h3>
+
+                    {project.tagline && (
+                      <p className="text-sm font-mono font-semibold text-[var(--text-muted)] mb-4">
+                        {project.tagline}
+                      </p>
+                    )}
+
+                    <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
+                      {project.description}
+                    </p>
+
+                    {/* Metrics strip for flagship */}
+                    {project.metrics && (
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] mb-6">
+                        {project.metrics.map((m, i) => (
+                          <div key={i} className="flex flex-col">
+                            <span className="text-lg lg:text-xl font-black font-mono text-[var(--accent-gold)]">
+                              {m.value}
+                            </span>
+                            <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider mt-0.5">
+                              {m.label}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Tags */}
+                    {project.tags && (
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tags.map((tag, i) => (
+                          <span
+                            key={i}
+                            className="px-2.5 py-1 rounded-md text-[10px] font-mono bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-core)]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     )}
                   </div>
 
-                  <h3 className="text-2xl lg:text-3xl font-black text-[var(--text-core)] mb-2">
-                    {project.name}
-                  </h3>
-
-                  {project.tagline && (
-                    <p className="text-sm font-mono font-semibold text-[var(--text-muted)] mb-4">
-                      {project.tagline}
-                    </p>
-                  )}
-
-                  <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
-                    {project.description}
-                  </p>
-
-                  {/* Metrics strip for flagship */}
-                  {project.metrics && (
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] mb-6">
-                      {project.metrics.map((m, i) => (
-                        <div key={i} className="flex flex-col">
-                          <span className="text-lg lg:text-xl font-black font-mono text-[var(--accent-gold)]">
-                            {m.value}
-                          </span>
-                          <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-wider mt-0.5">
-                            {m.label}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Tags */}
-                  {project.tags && (
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="px-2.5 py-1 rounded-md text-[10px] font-mono bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[var(--text-core)]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-[var(--border-subtle)]">
-                  <Link
-                    className="btn-primary text-xs py-2.5 px-5 shadow-sm"
-                    href={`/portfolio/${project.slug}`}
-                  >
-                    Explore Deep-Dive Case Study →
-                  </Link>
-                  <a
-                    className="text-xs font-mono font-bold text-[var(--text-muted)] hover:text-[var(--accent-gold)] transition-colors inline-flex items-center gap-1"
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <span>{project.slug === 'beakim-hospitality-group' ? 'Platform Staging Finalization' : 'Visit Live Platform'}</span>
-                    <span>↗</span>
-                  </a>
-                </div>
-              </article>
+                  <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-[var(--border-subtle)]">
+                    <Link
+                      className="btn-primary text-xs py-2.5 px-5 shadow-sm"
+                      href={`/portfolio/${project.slug}`}
+                    >
+                      Explore Deep-Dive Case Study →
+                    </Link>
+                    <a
+                      className="text-xs font-mono font-bold text-[var(--text-muted)] hover:text-[var(--accent-gold)] transition-colors inline-flex items-center gap-1"
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>{project.slug === 'beakim-hospitality-group' ? 'Platform Staging Finalization' : 'Visit Live Platform'}</span>
+                      <span>↗</span>
+                    </a>
+                  </div>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
 

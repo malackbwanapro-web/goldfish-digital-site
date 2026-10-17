@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import ServiceOffers from './components/ServiceOffers';
 import FooterCloser from './components/FooterCloser';
+import ScrollReveal from './components/ScrollReveal';
 import { servicesData } from './services/data/servicesData';
 
 export const metadata: Metadata = {
@@ -88,18 +89,23 @@ export default function Home() {
       ═══════════════════════════════════════════════════════ */}
       <section className="home-hero relative overflow-hidden flex items-center py-12 lg:py-20 px-6 lg:px-10">
         
-        {/* Animated Background Ambient Orbs */}
+        {/* Animated Background Ambient Orbs - Design Spell: Coastal Aurora Breathing */}
         <div className="absolute top-[-10%] right-[-5%] w-[550px] h-[550px] bg-[var(--accent-gold)]/10 rounded-full filter blur-[120px] pointer-events-none orb-animate-1" />
         <div className="absolute bottom-[-10%] left-[-5%] w-[450px] h-[450px] bg-purple-600/10 rounded-full filter blur-[120px] pointer-events-none orb-animate-2" />
+        <div className="absolute top-[25%] left-[20%] w-[380px] h-[380px] bg-teal-500/10 rounded-full filter blur-[130px] pointer-events-none orb-animate-3" />
 
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center relative z-10">
           
           {/* Left Column (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <ScrollReveal delay={0.05} className="lg:col-span-7 flex flex-col items-start text-left">
             
-            {/* Outcome Micro-Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-surface)]/80 text-[var(--accent-gold)] text-[11px] font-mono tracking-wider uppercase mb-6 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            {/* Outcome Micro-Badge - Design Spell: Live Radar Sonar Ping */}
+            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-[var(--border-accent)] bg-[var(--bg-surface)]/80 text-[var(--accent-gold)] text-[11px] font-mono tracking-wider uppercase mb-6 shadow-sm">
+              <span className="relative flex h-2.5 w-2.5 items-center justify-center">
+                <span className="radar-ping-ring absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="radar-ping-ring-delayed absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+              </span>
               <span>Websites • Content • Social media | Diani, Kenya</span>
             </div>
 
@@ -123,16 +129,18 @@ export default function Home() {
               </Link>
             </div>
             <p className="text-sm text-[var(--text-muted)]">Speak directly with Malack about your business, scope and next steps.</p>
-          </div>
+          </ScrollReveal>
           
-          <aside className="lg:col-span-5 w-full card-brand p-6 lg:p-8">
-            <p className="text-eyebrow mb-4">A relevant place to start</p>
-            <h2 className="text-2xl font-bold mb-4">A website for your accommodation business.</h2>
-            <p className="text-[var(--text-muted)] mb-5">Help prospective guests explore your properties and take the next step towards a booking. We start by understanding how enquiries and reservations work in your business.</p>
-            <p className="font-bold mb-2">Diani Ocean View Residences</p>
-            <p className="text-sm text-[var(--text-muted)] mb-5">An accommodation website built by Goldfish Marketing.</p>
-            <a href="https://dianioceanviewresidences.com/" target="_blank" rel="noopener noreferrer" className="btn-outline">View the client website ↗</a>
-          </aside>
+          <ScrollReveal delay={0.2} className="lg:col-span-5 w-full">
+            <aside className="w-full card-brand p-6 lg:p-8">
+              <p className="text-eyebrow mb-4">A relevant place to start</p>
+              <h2 className="text-2xl font-bold mb-4">A website for your accommodation business.</h2>
+              <p className="text-[var(--text-muted)] mb-5">Help prospective guests explore your properties and take the next step towards a booking. We start by understanding how enquiries and reservations work in your business.</p>
+              <p className="font-bold mb-2">Diani Ocean View Residences</p>
+              <p className="text-sm text-[var(--text-muted)] mb-5">An accommodation website built by Goldfish Marketing.</p>
+              <a href="https://dianioceanviewresidences.com/" target="_blank" rel="noopener noreferrer" className="btn-outline">View the client website ↗</a>
+            </aside>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -179,13 +187,13 @@ export default function Home() {
               sub: 'Define useful measures for your business'
             },
           ].map((item, i) => (
-            <div key={i} className="flex flex-col items-center gap-1.5">
+            <ScrollReveal key={i} delay={i * 0.08} className="flex flex-col items-center gap-1.5">
               <div className="p-2 rounded-lg bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex items-center justify-center">
                 {item.icon}
               </div>
               <p className="text-sm font-bold text-[var(--text-core)]">{item.label}</p>
               <p className="text-[11px] text-[var(--text-muted)]">{item.sub}</p>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
@@ -218,7 +226,7 @@ export default function Home() {
           SECTION 3: THE CORE THESIS
       ═══════════════════════════════════════════════════════ */}
       <section className="section-padding px-6 relative">
-        <div className="max-w-2xl mx-auto text-center">
+        <ScrollReveal className="max-w-2xl mx-auto text-center">
           <div className="inline-block w-12 h-1 bg-[var(--accent-gold)] rounded mb-8" />
           <h2 className="text-h2 font-black tracking-tight mb-8 leading-snug">
             Legacy Digital Infrastructure Cannot Keep Pace With Modern Market Demands.
@@ -231,7 +239,7 @@ export default function Home() {
               We engineer the antidote. By deploying custom, high-performance web systems, advanced visibility (SEO/GEO/CRO) protocols, and deterministic AI automation pipelines, we eliminate friction at the source. We don&apos;t offer generic software wrappers or abstract consulting templates; we deliver high-fidelity digital infrastructure that converts operational bottlenecks into absolute competitive advantages.
             </p>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       {/* ═══════════════════════════════════════════════════════
@@ -252,43 +260,44 @@ export default function Home() {
           {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {servicesList.map((service, idx) => (
-              <div
-                key={idx}
-                className="group relative rounded-2xl p-8 bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/60 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between shadow-sm hover:shadow-xl"
-              >
-                {/* Top accent glow line */}
-                <div className="absolute top-0 left-8 right-8 h-0.5 bg-[var(--accent-gold)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
+              <ScrollReveal key={idx} delay={idx * 0.08} className="flex">
+                <div
+                  className="group relative rounded-2xl p-8 bg-[var(--bg-primary)]/40 border border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/60 transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between shadow-sm hover:shadow-xl w-full"
+                >
+                  {/* Top accent glow line */}
+                  <div className="absolute top-0 left-8 right-8 h-0.5 bg-[var(--accent-gold)] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
 
-                <div>
-                  <div className="p-3 bg-[var(--bg-surface)] rounded-xl border border-[var(--border-subtle)] w-fit mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
-                    {serviceIcons[service.slug]}
+                  <div>
+                    <div className="p-3 bg-[var(--bg-surface)] rounded-xl border border-[var(--border-subtle)] w-fit mb-6 shadow-sm group-hover:scale-110 transition-transform duration-300">
+                      {serviceIcons[service.slug]}
+                    </div>
+
+                    <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-widest block mb-2 font-bold group-hover:translate-x-1 transition-transform duration-200">
+                      Pillar 0{idx + 1}
+                    </span>
+
+                    <h3 className="text-h3 font-bold tracking-tight text-[var(--text-core)] mb-4 leading-snug group-hover:text-[var(--accent-gold)] transition-colors duration-200">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-caption leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
 
-                  <span className="text-[10px] font-mono text-[var(--accent-gold)] uppercase tracking-widest block mb-2 font-bold">
-                    Pillar 0{idx + 1}
-                  </span>
-
-                  <h3 className="text-h3 font-bold tracking-tight text-[var(--text-core)] mb-4 leading-snug group-hover:text-[var(--accent-gold)] transition-colors duration-200">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-caption leading-relaxed">
-                    {service.description}
-                  </p>
+                  <div className="mt-8 pt-4 border-t border-[var(--border-subtle)]/50">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-2 text-[12px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold group-hover:translate-x-1.5 transition-transform duration-200"
+                    >
+                      Explore Capability
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
-
-                <div className="mt-8 pt-4 border-t border-[var(--border-subtle)]/50">
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="inline-flex items-center gap-2 text-[12px] font-mono text-[var(--accent-gold)] uppercase tracking-wider font-bold group-hover:translate-x-1 transition-transform duration-200"
-                  >
-                    Explore Capability
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </Link>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
 
@@ -325,25 +334,27 @@ export default function Home() {
               { tag: 'Website Planning | Pricing', title: 'Website Design Costs in Kenya', excerpt: 'Understand scope, integrations and ongoing costs before commissioning your website.', slug: 'website-design-cost-kenya-pricing-guide' },
               { tag: 'Content | Tourism', title: 'Content Creation for Kenya Coast Tourism Businesses', excerpt: 'Plan photography, video and useful content around the questions your guests ask.', slug: 'content-creation-tourism-businesses-kenya-coast' },
             ].map((insight, idx) => (
-              <article key={idx} className="flex flex-col justify-between p-8 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/20 hover:border-[var(--accent-gold)] transition-colors duration-300">
-                <div>
-                  <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider block mb-4">
-                    {insight.tag}
-                  </span>
-                  <h3 className="text-[18px] font-bold text-[var(--text-core)] tracking-tight mb-4 leading-snug">
-                    {insight.title}
-                  </h3>
-                  <p className="text-caption leading-relaxed">
-                    {insight.excerpt}
-                  </p>
-                </div>
-                <Link
-                  href={`/insights/${insight.slug}`}
-                  className="inline-flex items-center gap-1 text-[13px] font-mono text-[var(--text-core)] hover:text-[var(--accent-gold)] transition-colors duration-200 mt-6 uppercase tracking-wider font-bold"
-                >
-                  Read Briefing →
-                </Link>
-              </article>
+              <ScrollReveal key={idx} delay={idx * 0.1} className="flex">
+                <article className="flex flex-col justify-between p-8 rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/20 hover:border-[var(--accent-gold)] transition-colors duration-300 w-full">
+                  <div>
+                    <span className="text-[11px] font-mono text-[var(--accent-gold)] uppercase tracking-wider block mb-4">
+                      {insight.tag}
+                    </span>
+                    <h3 className="text-[18px] font-bold text-[var(--text-core)] tracking-tight mb-4 leading-snug">
+                      {insight.title}
+                    </h3>
+                    <p className="text-caption leading-relaxed">
+                      {insight.excerpt}
+                    </p>
+                  </div>
+                  <Link
+                    href={`/insights/${insight.slug}`}
+                    className="inline-flex items-center gap-1 text-[13px] font-mono text-[var(--text-core)] hover:text-[var(--accent-gold)] transition-colors duration-200 mt-6 uppercase tracking-wider font-bold"
+                  >
+                    Read Briefing →
+                  </Link>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>

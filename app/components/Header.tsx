@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { SITE_CONFIG } from '@/lib/constants';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
@@ -11,6 +12,14 @@ export default function Header() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  // Design Spell: The Horizon Glow reading progress bar
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   // Load theme preference from localStorage on mount
   useEffect(() => {
@@ -70,10 +79,10 @@ export default function Header() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between relative z-50">
-        {/* Brand Logo */}
+        {/* Brand Logo - Design Spell: Crest Gyroscopic Micro-Gleam */}
         <Link href="/" onClick={() => setIsOpen(false)} className="flex items-center gap-3 group text-decoration-none">
-          <div className="w-10 h-10 rounded-full border-2 border-[var(--accent-gold)] flex items-center justify-center bg-[var(--bg-surface)] overflow-hidden shadow-sm group-hover:scale-105 transition-transform duration-300">
-            <span className="text-[var(--accent-gold)] font-black text-lg tracking-tighter">G</span>
+          <div className="w-10 h-10 rounded-full border-2 border-[var(--accent-gold)] flex items-center justify-center bg-[var(--bg-surface)] overflow-hidden shadow-sm group-hover:scale-110 group-hover:rotate-6 group-hover:border-[var(--accent-gold)] group-hover:shadow-[0_0_15px_rgba(var(--accent-gold-rgb),0.35)] transition-all duration-300">
+            <span className="text-[var(--accent-gold)] font-black text-lg tracking-tighter group-hover:scale-105 transition-transform duration-200">G</span>
           </div>
           <span className="font-extrabold text-lg tracking-wider text-[var(--text-core)] uppercase group-hover:text-[var(--accent-gold)] transition-colors duration-200">
             Goldfish Marketing
@@ -246,6 +255,12 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      {/* Design Spell: The Horizon Glow reading progress bar */}
+      <motion.div
+        style={{ scaleX }}
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[var(--accent-gold)] via-[#F3E5AB] to-[var(--accent-gold)] origin-left z-50 pointer-events-none"
+      />
     </header>
   );
 }

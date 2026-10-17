@@ -221,7 +221,7 @@ h1, h2, h3, h4, .font-display {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: 16px;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-card), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s ease;
@@ -229,7 +229,7 @@ h1, h2, h3, h4, .font-display {
 
 @media (hover: hover) and (pointer: fine) {
   .card-brand:hover {
-    box-shadow: var(--shadow-elevated);
+    box-shadow: var(--shadow-elevated), 0 0 24px rgba(var(--accent-gold-rgb), 0.12);
     transform: translateY(-4px);
     border-color: var(--border-accent);
   }
@@ -264,12 +264,31 @@ h1, h2, h3, h4, .font-display {
   overflow: hidden;
 }
 
+/* The Gold Ray Shimmer Spell */
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(110deg, transparent 15%, rgba(255, 255, 255, 0.45) 50%, transparent 85%);
+  transform: skewX(-20deg);
+  transition: none;
+  pointer-events: none;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .btn-primary:hover {
     background: var(--accent-gold-dark);
     border-color: var(--accent-gold-dark);
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(var(--accent-gold-rgb), 0.35);
+  }
+
+  .btn-primary:hover::after {
+    left: 190%;
+    transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
 
@@ -499,11 +518,53 @@ h1, h2, h3, h4, .font-display {
 }
 
 .orb-animate-1 {
-  animation: floatOrb 12s ease-in-out infinite;
+  animation: floatOrb 14s ease-in-out infinite;
 }
 
 .orb-animate-2 {
-  animation: floatOrb 16s ease-in-out infinite reverse;
+  animation: floatOrb 18s ease-in-out infinite reverse;
+}
+
+.orb-animate-3 {
+  animation: floatOrb 22s ease-in-out infinite;
+  animation-delay: -6s;
+}
+
+/* ─────────────────────────────────────────
+   LIVE RADAR PULSE (Sonar Ripple Spell)
+───────────────────────────────────────── */
+@keyframes sonarPing {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  65% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+.radar-ping-ring {
+  animation: sonarPing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.radar-ping-ring-delayed {
+  animation: sonarPing 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  animation-delay: 1.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-animate-1,
+  .orb-animate-2,
+  .orb-animate-3,
+  .radar-ping-ring,
+  .radar-ping-ring-delayed {
+    animation: none !important;
+  }
 }
 
 /* Continuous Marquee Ticker */
