@@ -59,7 +59,6 @@ export default function Header() {
     { label: 'Work', href: '/portfolio', desc: 'Case studies & empirical client results' },
     { label: 'Insights', href: '/insights', desc: 'Strategic briefings & technical deep dives' },
     { label: 'About', href: '/about', desc: 'Our story, founder & core values' },
-    { label: 'Contact', href: '/contact', desc: 'Book a Smart Growth Audit or Strategy Call' },
   ];
 
   return (
@@ -102,10 +101,10 @@ export default function Header() {
 
         {/* Right CTA / Switcher (Desktop) */}
         <div className="hidden lg:flex items-center gap-6">
-          {/* Theme Switcher Toggle */}
+          {/* Theme Switcher Toggle - 48px Touch Target */}
           <button
             onClick={toggleTheme}
-            className="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center hover:border-[var(--accent-gold)] transition-colors duration-200 bg-[var(--bg-surface)] text-[var(--text-core)]"
+            className="w-12 h-12 min-w-[48px] min-h-[48px] rounded-full border border-[var(--border-subtle)] flex items-center justify-center hover:border-[var(--accent-gold)] transition-colors duration-200 bg-[var(--bg-surface)] text-[var(--text-core)] active:scale-95"
             aria-label="Toggle theme"
           >
             {theme === 'light' ? (
@@ -136,9 +135,10 @@ export default function Header() {
 
         {/* Hamburger / Toggle Controls (Mobile - Below 1024px) */}
         <div className="flex lg:hidden items-center gap-3">
+          {/* Mobile Theme Toggle - 48px Touch Target */}
           <button
             onClick={toggleTheme}
-            className="w-10 h-10 rounded-full border border-[var(--border-subtle)] flex items-center justify-center bg-[var(--bg-surface)] text-[var(--text-core)]"
+            className="w-12 h-12 min-w-[48px] min-h-[48px] rounded-full border border-[var(--border-subtle)] flex items-center justify-center bg-[var(--bg-surface)] text-[var(--text-core)] active:scale-95"
             aria-label="Toggle theme"
           >
             {theme === 'light' ? (
@@ -162,9 +162,10 @@ export default function Header() {
             )}
           </button>
 
+          {/* Mobile Hamburger Toggle - 48px Touch Target */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-10 h-10 flex flex-col justify-center items-center gap-1.5 focus:outline-none bg-[var(--bg-surface)] rounded-full border border-[var(--border-subtle)] active:scale-95 transition-transform"
+            className="w-12 h-12 min-w-[48px] min-h-[48px] flex flex-col justify-center items-center gap-1.5 focus:outline-none bg-[var(--bg-surface)] rounded-full border border-[var(--border-subtle)] active:scale-95 transition-transform"
             aria-label="Toggle navigation menu"
             aria-expanded={isOpen}
           >

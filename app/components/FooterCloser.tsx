@@ -67,6 +67,7 @@ export default function FooterCloser({
               A premium digital growth agency — we blend elite visual design, AI automation, and advanced visibility engineering to build brands that scale.
             </p>
             {/* Social Icons */}
+            {/* Social Icons - 48px Min Touch Target */}
             <div className="flex items-center gap-3 mt-2">
               {/* Facebook */}
               <a
@@ -74,7 +75,7 @@ export default function FooterCloser({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Goldfish Marketing on Facebook"
-                className="w-9 h-9 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-all duration-200"
+                className="w-12 h-12 min-w-[48px] min-h-[48px] rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] active:scale-95 transition-all duration-200"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                   <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
@@ -86,7 +87,7 @@ export default function FooterCloser({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Goldfish Marketing on Instagram"
-                className="w-9 h-9 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-all duration-200"
+                className="w-12 h-12 min-w-[48px] min-h-[48px] rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] active:scale-95 transition-all duration-200"
               >
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -100,7 +101,7 @@ export default function FooterCloser({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Goldfish Marketing on TikTok"
-                className="w-9 h-9 rounded-lg border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] transition-all duration-200"
+                className="w-12 h-12 min-w-[48px] min-h-[48px] rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/40 flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--accent-gold)] hover:border-[var(--accent-gold)] active:scale-95 transition-all duration-200"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                   <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z" />

@@ -108,7 +108,7 @@ export default function RootLayout({
       <head>
         <SchemaMarkup />
       </head>
-      <body className="antialiased min-h-screen flex flex-col bg-[var(--bg-primary)] text-[var(--text-core)] transition-colors duration-300 pb-16 lg:pb-0">
+      <body className="antialiased min-h-screen min-h-svh flex flex-col bg-[var(--bg-primary)] text-[var(--text-core)] transition-colors duration-300 pb-16 lg:pb-0">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2.5 focus:bg-[var(--accent-gold)] focus:text-[#0D0D0D] focus:font-bold focus:rounded-lg focus:shadow-xl font-mono text-xs uppercase"
@@ -117,7 +117,7 @@ export default function RootLayout({
         </a>
         {gaId && <GoogleAnalytics gaId={gaId} />}
         <Header />
-        <div id="main-content" tabIndex={-1} className="flex-1 flex flex-col">
+        <div id="main-content" tabIndex={-1} className="flex-1 flex flex-col scroll-mt-24">
           {children}
         </div>
         <WhatsAppFloat />

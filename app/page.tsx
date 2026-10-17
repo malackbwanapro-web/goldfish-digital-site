@@ -218,7 +218,7 @@ export default function Home() {
           SECTION 3: THE CORE THESIS
       ═══════════════════════════════════════════════════════ */}
       <section className="section-padding px-6 relative">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center">
           <div className="inline-block w-12 h-1 bg-[var(--accent-gold)] rounded mb-8" />
           <h2 className="text-h2 font-black tracking-tight mb-8 leading-snug">
             Legacy Digital Infrastructure Cannot Keep Pace With Modern Market Demands.
