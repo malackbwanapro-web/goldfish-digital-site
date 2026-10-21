@@ -70,6 +70,24 @@ export function generateMetadata({ params }: Props): Metadata {
     };
   }
 
+  if (params.slug === 'holiday-illumination-las-vegas') {
+    return {
+      title: { absolute: 'Holiday Illumination LLC ("Highlights"): Flagship Luxury Web & AI Operations CRM Case Study | Goldfish Marketing' },
+      description:
+        'How Goldfish Marketing re-engineered a 28-season Las Vegas luxury illumination leader (Est. 1998): Next.js 16 Midnight Luxe web platform, 4-quadrant Las Vegas Valley ZIP routing engine, Retell AI 24/7 voice receptionist, 5-role internal Operations & Dispatch CRM, and 107 automated verification tests.',
+      alternates: {
+        canonical: 'https://www.goldfishmarketing.co.ke/portfolio/holiday-illumination-las-vegas',
+      },
+      openGraph: {
+        title: 'Holiday Illumination LLC ("Highlights"): Luxury Estate Conversion Platform & Custom AI Dispatch CRM',
+        description:
+          'Eliminating the 50-mile cross-valley routing bottleneck across Summerlin & Henderson with a Next.js 16 conversion platform, 4-quadrant ZIP geocoding engine, 24/7 AI voice triage, and a 5-workspace role-based Operations CRM.',
+        url: 'https://www.goldfishmarketing.co.ke/portfolio/holiday-illumination-las-vegas',
+        type: 'article',
+      },
+    };
+  }
+
   if (publishedProject) {
     return {
       title: { absolute: `${publishedProject.name} Project Summary | Goldfish Marketing` },
@@ -2950,6 +2968,922 @@ export default function ProjectPage({ params }: Props) {
 
             <p className="text-[11px] font-mono text-[var(--text-muted)] mt-6">
               Based in Diani, Kwale County &bull; Serving hospitality portfolios across coastal Kenya &bull; Direct founder access
+            </p>
+          </div>
+        </section>
+
+        <FooterCloser />
+      </main>
+    );
+  }
+
+  // ═══════════════════════════════════════════════════════════════
+  // FLAGSHIP CASE STUDY: HOLIDAY ILLUMINATION LLC ("HIGHLIGHTS")
+  // ═══════════════════════════════════════════════════════════════
+  if (params.slug === 'holiday-illumination-las-vegas') {
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: 'Holiday Illumination LLC ("Highlights"): Luxury Estate Conversion Platform & Custom Geo-Smart Operations CRM Case Study',
+      description:
+        'How Goldfish Marketing engineered a dual-system enterprise transformation for a 28-season Las Vegas holiday lighting leader (Est. 1998): a Next.js 16 Midnight Luxe web platform, a 4-quadrant Las Vegas Valley ZIP routing engine, Retell AI 24/7 voice receptionist triage, a 5-workspace role-based Operations & Dispatch CRM, and a 107-test automated verification suite.',
+      author: {
+        '@type': 'Organization',
+        name: 'Goldfish Marketing',
+        url: 'https://www.goldfishmarketing.co.ke',
+      },
+      about: {
+        '@type': 'HomeAndConstructionBusiness',
+        name: 'Holiday Illumination LLC ("Highlights")',
+        url: 'https://holiday-illumination.vercel.app',
+        foundingDate: '1998',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '3030 Westwood Drive',
+          addressLocality: 'Las Vegas',
+          addressRegion: 'NV',
+          addressCountry: 'US',
+        },
+      },
+    };
+
+    return (
+      <main className="w-full flex flex-col min-h-screen bg-[var(--bg-primary)]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
+        {/* ═══════════════════════════════════════════════════════════════
+            1. EXECUTIVE HERO & KPI TELEMETRY BAR
+            ═══════════════════════════════════════════════════════════════ */}
+        <section className="relative pt-14 pb-20 lg:pt-20 lg:pb-24 px-6 lg:px-10 bg-gradient-to-b from-[#070B13] via-[#090D16] to-[var(--bg-primary)] border-b border-[var(--border-subtle)] overflow-hidden">
+          <div className="absolute -top-32 -right-32 w-[36rem] h-[36rem] rounded-full bg-[var(--accent-gold)]/8 blur-[120px] pointer-events-none" />
+          <div className="absolute top-1/2 -left-40 w-[28rem] h-[28rem] rounded-full bg-red-500/5 blur-[100px] pointer-events-none" />
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            {/* Breadcrumb */}
+            <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-mono text-[var(--text-muted)] mb-8">
+              <Link href="/" className="hover:text-[var(--accent-gold)] transition-colors">Home</Link>
+              <span>/</span>
+              <Link href="/portfolio" className="hover:text-[var(--accent-gold)] transition-colors">Work &amp; Case Studies</Link>
+              <span>/</span>
+              <span className="text-[var(--accent-gold)] font-bold">Holiday Illumination LLC (&ldquo;Highlights&rdquo;)</span>
+            </nav>
+
+            {/* Flagship Badges */}
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 text-[11px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold">
+                <span className="w-2 h-2 rounded-full bg-[var(--accent-gold)] animate-pulse" />
+                Flagship Enterprise Systems &amp; AI Operations Case Study
+              </span>
+              <span className="px-3 py-1.5 rounded-full bg-[var(--bg-surface)] border border-[var(--border-subtle)] text-[11px] font-mono text-[var(--text-muted)]">
+                Las Vegas, Summerlin &amp; Henderson, NV &bull; Est. 1998 (28+ Seasons)
+              </span>
+              <span className="px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-400">
+                ● Official Domain Cutover (www.holidayillumination.com) Scheduled Next Week
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+              <div className="lg:col-span-8">
+                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-[var(--text-core)] leading-[1.08] mb-6">
+                  Holiday Illumination LLC (&ldquo;Highlights&rdquo;):{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F3E5AB] via-[#D4AF37] to-[#AA7C11]">
+                    Luxury Estate Conversion &amp; Geo-Smart Dispatch CRM
+                  </span>
+                </h1>
+
+                <p className="text-base sm:text-lg text-[var(--text-muted)] font-light leading-relaxed mb-8 max-w-3xl">
+                  Operating from a permanent headquarters at <strong className="text-[var(--text-core)] font-semibold">3030 Westwood Drive</strong> since <strong className="text-[var(--text-core)] font-semibold">1998</strong>, Holiday Illumination LLC is Las Vegas&apos;s premier $2M-insured residential estate and commercial holiday lighting contractor. We engineered two interconnected enterprise systems: a <strong className="text-[var(--text-core)] font-semibold">Midnight Luxe Next.js 16 Public Conversion Platform</strong> and a private, role-based <strong className="text-[var(--text-core)] font-semibold">Operations &amp; Dispatch CRM</strong> powered by 4-quadrant Las Vegas Valley ZIP routing and 24/7 Retell AI voice triage.
+                </p>
+
+                {/* Primary CTAs + Privacy Notice */}
+                <div className="flex flex-wrap items-center gap-4 mb-6">
+                  <a
+                    href="https://holiday-illumination.vercel.app"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-gold text-xs py-3.5 px-7 inline-flex items-center gap-2 font-bold"
+                  >
+                    <span>Preview Public Staging Platform</span>
+                    <span>↗</span>
+                  </a>
+                  <a
+                    href="#dual-architecture"
+                    className="btn-outline text-xs py-3.5 px-6 inline-flex items-center gap-2"
+                  >
+                    <span>Explore Dual-System Architecture</span>
+                    <span>↓</span>
+                  </a>
+                </div>
+
+                <div className="p-4 rounded-xl bg-[var(--bg-surface)]/90 border border-[var(--border-subtle)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 max-w-3xl">
+                  <div className="flex items-start sm:items-center gap-3">
+                    <span className="px-2.5 py-1 rounded bg-amber-500/15 border border-amber-500/30 text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold shrink-0">
+                      Deployment Notice
+                    </span>
+                    <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                      Public staging is live now; final DNS cutover to <span className="font-mono text-[var(--text-core)]">www.holidayillumination.com</span> completes next week upon client registrar login handover. The <strong className="text-[var(--text-core)]">Internal Operations &amp; Dispatch CRM</strong> is a strictly private, zero-indexed (<code className="text-[11px] text-[var(--accent-gold)]">noindex, nofollow</code>), RBAC-protected console and is not publicly linked.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Project Metadata Card */}
+              <div className="lg:col-span-4 p-6 sm:p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-2xl space-y-5">
+                <div className="flex items-center justify-between border-b border-[var(--border-subtle)] pb-4">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] block">Client Dossier</span>
+                    <h2 className="text-base font-bold text-[var(--text-core)]">Holiday Illumination LLC</h2>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-md bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 text-[10px] font-mono text-[var(--accent-gold)] font-bold">
+                    EST. 1998
+                  </span>
+                </div>
+
+                <div className="space-y-3 text-xs">
+                  <div className="flex justify-between gap-4 py-1.5 border-b border-[var(--border-subtle)]/60">
+                    <span className="text-[var(--text-muted)] font-mono">Headquarters</span>
+                    <span className="text-[var(--text-core)] font-medium text-right">3030 Westwood Dr, Las Vegas, NV</span>
+                  </div>
+                  <div className="flex justify-between gap-4 py-1.5 border-b border-[var(--border-subtle)]/60">
+                    <span className="text-[var(--text-muted)] font-mono">Service Markets</span>
+                    <span className="text-[var(--text-core)] font-medium text-right">Summerlin, Henderson &amp; LV Valley</span>
+                  </div>
+                  <div className="flex justify-between gap-4 py-1.5 border-b border-[var(--border-subtle)]/60">
+                    <span className="text-[var(--text-muted)] font-mono">Coverage &amp; Trust</span>
+                    <span className="text-[var(--text-core)] font-medium text-right">$2M Commercial Liability &bull; 4.8★</span>
+                  </div>
+                  <div className="flex justify-between gap-4 py-1.5 border-b border-[var(--border-subtle)]/60">
+                    <span className="text-[var(--text-muted)] font-mono">Core Stack</span>
+                    <span className="text-[var(--text-core)] font-medium text-right">Next.js 16 &bull; React 19 &bull; Supabase</span>
+                  </div>
+                  <div className="flex justify-between gap-4 py-1.5 border-b border-[var(--border-subtle)]/60">
+                    <span className="text-[var(--text-muted)] font-mono">Voice &amp; Edge Auth</span>
+                    <span className="text-[var(--text-core)] font-medium text-right">Retell AI &bull; Web Crypto HMAC-SHA256</span>
+                  </div>
+                  <div className="flex justify-between gap-4 py-1.5">
+                    <span className="text-[var(--text-muted)] font-mono">Internal CRM Access</span>
+                    <span className="text-emerald-400 font-mono text-[11px] text-right">🔒 Private RBAC Console</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 6-Metric Executive Telemetry Strip */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-12 pt-10 border-t border-[var(--border-subtle)]">
+              {[
+                { value: '28+ Seasons', label: 'Operating Since 1998', sub: '3030 Westwood Dr HQ' },
+                { value: '4 Quadrants', label: 'LV Valley ZIP Engine', sub: 'Eliminates 50-Mi Zigzag' },
+                { value: '5 Consoles', label: 'Role-Based CRM Hubs', sub: 'Owner to Field Trucks' },
+                { value: '24/7 AI Voice', label: 'Retell AI Receptionist', sub: 'Active / Overflow / Paused' },
+                { value: '2-Person', label: 'Bank Custody Controls', sub: 'Field-to-Office Audit' },
+                { value: '107 Tests', label: 'Zero-Dep Quality Suite', sub: '100% Pass Across 4 Suites' },
+              ].map((stat, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-xl bg-[var(--bg-surface)]/80 border border-[var(--border-subtle)] hover:border-[var(--accent-gold)]/40 transition-colors"
+                >
+                  <div className="text-xl sm:text-2xl font-black text-[var(--accent-gold)] font-mono tracking-tight">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs font-bold text-[var(--text-core)] mt-1">{stat.label}</div>
+                  <div className="text-[10px] font-mono text-[var(--text-muted)] mt-0.5">{stat.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════
+            2. THE PRE-INTERVENTION BOTTLENECKS ("BEFORE GOLDFISH")
+            ═══════════════════════════════════════════════════════════════ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="max-w-3xl mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                01 // THE EXECUTIVE DIAGNOSIS
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[var(--text-core)] mb-4">
+                Four Seasonal Bottlenecks Constraining a 28-Year Market Leader
+              </h2>
+              <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed">
+                Despite an unmatched local reputation across guard-gated estates in Summerlin and Henderson, Holiday Illumination&apos;s legacy static web presence and manual scheduling created intense operational friction during the peak October–December installation window.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  code: 'BOTTLENECK 01',
+                  title: 'The "50-Mile Cross-Valley" Routing Bottleneck',
+                  problem:
+                    'Estimators and installation crews were criss-crossing the Las Vegas Valley between Summerlin (Northwest), Henderson (Southeast), and the Southwest within the same day—burning prime billable hours in desert highway traffic instead of installing custom lighting.',
+                  impact: 'Resolved via an automated 4-Quadrant Las Vegas ZIP Clustering Engine that groups walkthroughs, warranty loops, and 3-truck installation manifests by sector.',
+                },
+                {
+                  code: 'BOTTLENECK 02',
+                  title: 'Dated Digital Perception vs. $2M-Insured Ultra-Luxury Service',
+                  problem:
+                    'Their legacy website failed to communicate the architectural sophistication of a $2M-insured commercial-grade contractor trusted by guard-gated estates (The Ridges, MacDonald Highlands) and major commercial centers.',
+                  impact: 'Replaced with a Midnight Luxe & Champagne Gold (60-30-10) Next.js 16 platform featuring an 8s estate transformation hero, interactive Day/Night slider, and $750 minimum anchor.',
+                },
+                {
+                  code: 'BOTTLENECK 03',
+                  title: 'Peak-Season Call Overflow & Unstructured Lead Intake',
+                  problem:
+                    'During the October–December rush, inbound calls for new estate estimates, complimentary warranty bulb repairs, and billing inquiries overwhelmed the front desk without automated triage or geographic qualification.',
+                  impact: 'Integrated a 24/7 Retell AI Voice Receptionist with instant mode controls (ACTIVE, OVERFLOW, PAUSED) and 1-tap routing into Estimate or Warranty calendars.',
+                },
+                {
+                  code: 'BOTTLENECK 04',
+                  title: 'Fragmented Field-to-Office Handshakes & Cash Custody',
+                  problem:
+                    'On-site walkthrough estimates, field cash/check deposit collections, warranty service calls, and January takedowns lacked a unified, auditable source of truth linking the receptionist, lead estimator, warranty runner, and installation trucks.',
+                  impact: 'Engineered a 5-workspace role-based CRM enforcing 2-person bank deposit reconciliation, mandatory installation photo proof, and automated January Climate Vault manifests.',
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between hover:border-[var(--accent-gold)]/30 transition-all"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded bg-red-500/10 text-red-400 border border-red-500/20 font-bold">
+                        {item.code}
+                      </span>
+                      <span className="text-[11px] font-mono text-[var(--text-muted)]">Before → After</span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-[var(--text-core)] mb-3">{item.title}</h3>
+                    <p className="text-sm text-[var(--text-muted)] font-light leading-relaxed mb-5">
+                      {item.problem}
+                    </p>
+                  </div>
+                  <div className="pt-4 border-t border-[var(--border-subtle)] flex items-start gap-2.5">
+                    <span className="text-emerald-400 font-bold text-sm mt-0.5">✓</span>
+                    <p className="text-xs text-emerald-300/90 font-medium leading-relaxed">{item.impact}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════
+            3. SYSTEM ARCHITECTURE: TWO INTERCONNECTED ENTERPRISE SYSTEMS
+            ═══════════════════════════════════════════════════════════════ */}
+        <section id="dual-architecture" className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)]/40 border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="max-w-3xl mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                02 // DUAL-SYSTEM ENTERPRISE TOPOLOGY
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[var(--text-core)] mb-4">
+                Two Interconnected Systems Sharing a Unified Geo-Smart Core
+              </h2>
+              <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed">
+                Rather than bolting third-party plugins onto a brochure site, we architected an isolated monorepo (<code className="text-xs text-[var(--accent-gold)]">apps/web</code> and <code className="text-xs text-[var(--accent-gold)]">apps/crm</code>) connected via a shared Las Vegas Valley Quadrant Engine, Supabase Postgres with Realtime Sync, and Retell AI voice webhooks.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+              {/* Column 1: Public Platform */}
+              <div className="p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 rounded-full bg-[var(--accent-gold)]/10 border border-[var(--accent-gold)]/30 text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold">
+                      Pillar A // Public Intake (apps/web)
+                    </span>
+                    <span className="text-[11px] font-mono text-emerald-400">Public Web</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                    Luxury Marketing &amp; Estate Intake Web App
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed mb-5">
+                    Engineered for instant LCP, high-net-worth trust conversion, and structured geographic lead capture before a human ever picks up the phone.
+                  </p>
+                  <ul className="space-y-3 text-xs text-[var(--text-muted)]">
+                    <li className="flex items-start gap-2.5 p-3 rounded-xl bg-[var(--bg-primary)]/60 border border-[var(--border-subtle)]">
+                      <span className="text-[var(--accent-gold)] font-mono font-bold">01</span>
+                      <span><strong className="text-[var(--text-core)]">Cinema Transformation Hero &amp; Day/Night Slider:</strong> 8s transformation video + interactive C9 LED luminance comparison.</span>
+                    </li>
+                    <li className="flex items-start gap-2.5 p-3 rounded-xl bg-[var(--bg-primary)]/60 border border-[var(--border-subtle)]">
+                      <span className="text-[var(--accent-gold)] font-mono font-bold">02</span>
+                      <span><strong className="text-[var(--text-core)]">Haute Halloween &amp; Christmas Showcases:</strong> Gateway October estate installations + 20-question UHNW/Commercial FAQ.</span>
+                    </li>
+                    <li className="flex items-start gap-2.5 p-3 rounded-xl bg-[var(--bg-primary)]/60 border border-[var(--border-subtle)]">
+                      <span className="text-[var(--accent-gold)] font-mono font-bold">03</span>
+                      <span><strong className="text-[var(--text-core)]">Geo-Smart 3-Step Walkthrough Wizard:</strong> Captures property telemetry, validates 5-digit LV ZIP, and selects arrival window.</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[var(--border-subtle)] text-[11px] font-mono text-[var(--accent-gold)] flex items-center justify-between">
+                  <span>Commits Validated Lead + Sector</span>
+                  <span>→</span>
+                </div>
+              </div>
+
+              {/* Column 2: Shared Routing & AI Core */}
+              <div className="p-7 rounded-2xl bg-gradient-to-b from-[#101726] to-[var(--bg-surface)] border-2 border-[var(--accent-gold)]/40 flex flex-col justify-between shadow-xl">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 rounded-full bg-[var(--accent-gold)]/20 border border-[var(--accent-gold)]/40 text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold">
+                      Shared Domain &amp; Routing Core
+                    </span>
+                    <span className="text-[11px] font-mono text-[var(--accent-gold)]">Realtime Hub</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                    LV Valley Quadrant Engine, Supabase &amp; Retell AI
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed mb-5">
+                    Every web submission and inbound phone call passes through deterministic geographic zoning and state-machine persistence.
+                  </p>
+
+                  <div className="space-y-3 text-xs">
+                    <div className="p-3.5 rounded-xl bg-[var(--bg-primary)]/80 border border-[var(--accent-gold)]/30">
+                      <div className="font-mono text-[11px] text-[var(--accent-gold)] font-bold mb-1">
+                        LV VALLEY QUADRANT ENGINE
+                      </div>
+                      <p className="text-[var(--text-muted)] leading-relaxed">
+                        Maps 5-digit ZIP codes into <code className="text-[10px] text-[var(--text-core)]">SUMMERLIN_NW</code>, <code className="text-[10px] text-[var(--text-core)]">HENDERSON_GV</code>, <code className="text-[10px] text-[var(--text-core)]">SW_ENTERPRISE</code>, or <code className="text-[10px] text-[var(--text-core)]">CENTRAL_NLV</code>.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-[var(--bg-primary)]/80 border border-[var(--border-subtle)]">
+                      <div className="font-mono text-[11px] text-emerald-400 font-bold mb-1">
+                        SUPABASE POSTGRES + REALTIME SYNC
+                      </div>
+                      <p className="text-[var(--text-muted)] leading-relaxed">
+                        Dual-mode repository pattern with live cross-device synchronization and zero-data-loss local persistence fallback.
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-[var(--bg-primary)]/80 border border-[var(--border-subtle)]">
+                      <div className="font-mono text-[11px] text-sky-400 font-bold mb-1">
+                        RETELL AI VOICE RECEPTIONIST
+                      </div>
+                      <p className="text-[var(--text-muted)] leading-relaxed">
+                        24/7 natural-voice phone triage classifying callers into New Estimate, Warranty Repair, or Billing queues.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[var(--border-subtle)] text-[11px] font-mono text-emerald-400 flex items-center justify-between">
+                  <span>Streams State to 5 Role Workspaces</span>
+                  <span>→</span>
+                </div>
+              </div>
+
+              {/* Column 3: Private Operations CRM */}
+              <div className="p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold">
+                      Pillar B // Operations CRM (apps/crm)
+                    </span>
+                    <span className="text-[11px] font-mono text-[var(--text-muted)]">🔒 Zero-Indexed</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-[var(--text-core)] mb-3">
+                    5-Role Operations &amp; Fleet Dispatch Console
+                  </h3>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed mb-5">
+                    Protected by Edge HMAC-SHA256 JWT + 4-digit PIN authentication, isolating each staff member to their exact operational surface.
+                  </p>
+                  <ul className="space-y-2.5 text-xs text-[var(--text-muted)]">
+                    <li className="p-2.5 rounded-lg bg-[var(--bg-primary)]/60 border border-[var(--border-subtle)] flex items-center justify-between">
+                      <span><strong className="text-[var(--text-core)]">1. Owner Command:</strong> KPIs, Cluster Manifests, Audit CSV</span>
+                      <span className="font-mono text-[10px] text-[var(--accent-gold)]">HH-EEID-001</span>
+                    </li>
+                    <li className="p-2.5 rounded-lg bg-[var(--bg-primary)]/60 border border-[var(--border-subtle)] flex items-center justify-between">
+                      <span><strong className="text-[var(--text-core)]">2. Reception Desk:</strong> AI Call Triage &amp; 2-Person Bank Custody</span>
+                      <span className="font-mono text-[10px] text-[var(--accent-gold)]">HH-EEID-002</span>
+                    </li>
+                    <li className="p-2.5 rounded-lg bg-[var(--bg-primary)]/60 border border-[var(--border-subtle)] flex items-center justify-between">
+                      <span><strong className="text-[var(--text-core)]">3. Estimator Suite:</strong> Live On-Site Quoter &amp; Slot Dispatcher</span>
+                      <span className="font-mono text-[10px] text-[var(--accent-gold)]">HH-EEID-003</span>
+                    </li>
+                    <li className="p-2.5 rounded-lg bg-[var(--bg-primary)]/60 border border-[var(--border-subtle)] flex items-center justify-between">
+                      <span><strong className="text-[var(--text-core)]">4. Warranty Route:</strong> Anti-Zigzag Same-Quadrant Care</span>
+                      <span className="font-mono text-[10px] text-[var(--accent-gold)]">HH-EEID-004</span>
+                    </li>
+                    <li className="p-2.5 rounded-lg bg-[var(--bg-primary)]/60 border border-[var(--border-subtle)] flex items-center justify-between">
+                      <span><strong className="text-[var(--text-core)]">5. Field Crews:</strong> Trucks 1–3 Photo Proof &amp; Takedowns</span>
+                      <span className="font-mono text-[10px] text-[var(--accent-gold)]">HH-EEID-005..007</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[var(--border-subtle)] text-[11px] font-mono text-[var(--text-muted)] flex items-center justify-between">
+                  <span>Internal RBAC Deployment</span>
+                  <span className="text-emerald-400">100% Audit Traceable</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════
+            4. PILLAR A: HIGH-CONVERTING LUXURY PUBLIC PLATFORM
+            ═══════════════════════════════════════════════════════════════ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="max-w-3xl mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                03 // PILLAR A — PUBLIC CONVERSION ARCHITECTURE
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[var(--text-core)] mb-4">
+                Midnight Luxe &amp; Champagne Gold (60-30-10) Public Web Platform
+              </h2>
+              <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed">
+                Built on <strong className="text-[var(--text-core)]">Next.js 16 App Router</strong>, <strong className="text-[var(--text-core)]">React 19</strong>, and <strong className="text-[var(--text-core)]">Tailwind CSS v4</strong>, the public platform pairs dark nocturnal sophistication (<code className="text-xs text-[var(--accent-gold)]">#090D16</code> Obsidian, <code className="text-xs text-[var(--accent-gold)]">#D4AF37</code> Champagne Gold, <code className="text-xs text-[var(--accent-gold)]">#961C28</code> Velvet Crimson) with behavioral conversion engineering.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  badge: 'HERO & LCP ENGINE',
+                  title: 'Full-Viewport Estate Transformation Video Hero',
+                  desc: 'Instant-LCP server-rendered poster transitioning smoothly into an 8-second residential lighting transformation loop with verified social proof (★★★★★ 4.8 Google Rating • Trusted Since 1998) and $750 minimum package anchor microcopy.',
+                  metrics: 'Instant LCP Poster • 8s Cinema Loop',
+                },
+                {
+                  badge: 'INTERACTIVE PROOF',
+                  title: 'Day vs. Night C9 Luminescence Comparison Slider',
+                  desc: 'Touch-physics and WCAG keyboard-accessible comparison slider allowing estate owners to drag across a Las Vegas residence to experience custom-cut commercial C9 LED luminance before and after dusk.',
+                  metrics: 'Touch Physics • WCAG Keyboard Accessible',
+                },
+                {
+                  badge: 'GATEWAY SEASON STRATEGY',
+                  title: 'Haute Halloween & Autumn Illumination Spotlight',
+                  desc: 'Strategically positioned above Christmas services to capture October estate installations—featuring amber, violet, and crimson architectural uplighting, 12ft prop rigging, and 50-mph Mojave Desert wind anchoring with 1-click service pre-selection.',
+                  metrics: '50-MPH Mojave Wind Rated • 1-Click Pre-Select',
+                },
+                {
+                  badge: 'PERSONA OBJECTION CRUSHING',
+                  title: '4 Trust Pillars & 20-Question Categorized FAQ',
+                  desc: 'Engineered around Las Vegas buyer psychology: UHNW Guard-Gated Estates (Spanish barrel tile clip protection, <5 PSI spider lifts for paver motorcourts, NEC 80% load balancing, W-2 vetted crews) and Commercial/HOAs (nocturnal 10 PM–6 AM installs, ADA cable ramps, VendorCafe compliance, 3-year OpEx leases).',
+                  metrics: 'Zero Tile Roof Damage • <5 PSI Spider Lifts',
+                },
+                {
+                  badge: 'GEO-SMART INTAKE',
+                  title: '3-Step Estate Walkthrough Scheduler Wizard',
+                  desc: 'Resolves the homeowner’s 5-digit Las Vegas ZIP code in real time into one of four geographic quadrants (SUMMERLIN_NW, HENDERSON_GV, SW_ENTERPRISE, CENTRAL_NLV), offers Today/Tomorrow/Custom windows, and commits directly to Supabase as INTAKE_PENDING.',
+                  metrics: '4-Quadrant Auto-Zoned • Direct Supabase Sync',
+                },
+                {
+                  badge: 'BEHAVIORAL DESIGN SPELLS',
+                  title: 'Weibull Hesitation Concierge & Spotlight Telemetry',
+                  desc: 'Features a Weibull 8.0-second dwell-hesitation engine and scroll-thrashing detector that gently surfaces a live phone concierge capsule when a prospect hesitates, paired with cursor-tracked radial amber uplighting (.spotlight-card).',
+                  metrics: '8.0s Dwell Detector • Scroll-Thrash Recovery',
+                },
+              ].map((card, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between hover:border-[var(--accent-gold)]/40 transition-all"
+                >
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                      {card.badge}
+                    </span>
+                    <h3 className="text-lg font-bold text-[var(--text-core)] mb-3">{card.title}</h3>
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)] font-light leading-relaxed mb-6">
+                      {card.desc}
+                    </p>
+                  </div>
+                  <div className="pt-3 border-t border-[var(--border-subtle)] text-[11px] font-mono text-emerald-400">
+                    ● {card.metrics}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════
+            5. PILLAR B: CUSTOM ROLE-BASED OPERATIONS & DISPATCH CRM
+            ═══════════════════════════════════════════════════════════════ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)]/40 border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+              <div className="max-w-3xl">
+                <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                  04 // PILLAR B — PRIVATE INTERNAL OPERATIONS &amp; DISPATCH CRM
+                </span>
+                <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[var(--text-core)] mb-4">
+                  Five Role-Isolated Workspaces Built for Zero Eye Fatigue
+                </h2>
+                <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed">
+                  To protect proprietary operational telemetry and client estate records, the internal CRM operates as a standalone, zero-indexed (<code className="text-xs text-[var(--accent-gold)]">noindex, nofollow</code>) Midnight Luxe Dark Console. Staff authenticate via <strong className="text-[var(--text-core)]">4-digit Role PINs</strong> verified at the Next.js Edge layer, unlocking only their authorized operational workspace.
+                </p>
+              </div>
+              <div className="px-4 py-3 rounded-xl bg-[var(--bg-surface)] border border-emerald-500/30 text-xs font-mono text-emerald-400 shrink-0">
+                🔒 Private Internal Deployment (URL Restricted to Authorized Staff)
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {[
+                {
+                  role: 'WORKSPACE 01 // OWNER COMMAND CENTER',
+                  eeid: 'HH-EEID-001 (Executive Oversight)',
+                  title: 'Pipeline Valuation, Valley Cluster Manifests & Audit Exports',
+                  points: [
+                    'Real-time financial telemetry across pipeline valuation, collected 50% deposits, and outstanding final balances.',
+                    'Valley Route Cluster Manifests: interactive drill-down accordions for every Las Vegas quadrant showing job density and regional revenue concentration.',
+                    'Live 3-truck fleet status monitoring, emergency crew broadcasts, and 1-click RFC-4180 CSV Audit Exports stamped with Employee IDs (HH-EEID-001 through 007).',
+                  ],
+                },
+                {
+                  role: 'WORKSPACE 02 // RECEPTION & AI TELEPHONY DESK',
+                  eeid: 'HH-EEID-002 (Front Desk & Custody)',
+                  title: 'Retell AI Voice Controls & 2-Person Bank Deposit Reconciliation',
+                  points: [
+                    'Instant Retell AI Voice Receptionist mode switching between ACTIVE (24/7 AI answering), OVERFLOW (human-first, AI backup), and PAUSED.',
+                    '1-Tap Call Routing converting inbound call logs directly into the Estimator Calendar or Warranty Care route with automatic ZIP-to-quadrant geocoding.',
+                    '2-Person Cash & Check Bank Deposit Reconciliation: enforces financial custody separation—when an estimator collects cash or check in the field, Reception must verify the physical bank drop against online banking before depositPaid unlocks for installation.',
+                  ],
+                },
+                {
+                  role: 'WORKSPACE 03 // IN-PERSON ESTIMATOR SUITE',
+                  eeid: 'HH-EEID-003 (Lead Estimator)',
+                  title: 'Live On-Site Quoting Engine & Smart 2-Step Install Slot Dispatcher',
+                  points: [
+                    'Neat 2-hour daily route blocks (8:00 AM–5:30 PM) with 1-tap "Start Visit" arrival timestamping and duration-tracked "End Visit" logging.',
+                    'Live On-Site Quoting & Discount Engine calculating roofline footage, palm tree tiers, stake lights, discretionary discounts (5%–20% or Custom %), and exact-cent 50% deposit math.',
+                    '4-Path Walkthrough Outcome Engine (Agreed & Paid, Agreed – Pay Later, Thinking About It, Declined with mandatory objection logging) paired with a Smart Install Slot Dispatcher that recommends dates where a truck is already anchored in that quadrant.',
+                  ],
+                },
+                {
+                  role: 'WORKSPACE 04 // ANTI-ZIGZAG WARRANTY CARE ROUTE',
+                  eeid: 'HH-EEID-004 (Dedicated Service Runner)',
+                  title: 'Autonomous Quadrant Clustering & Zero-Cash Rapid Resolution',
+                  points: [
+                    'Automatically groups complimentary warranty repair requests into same-quadrant Morning (9 AM–12 PM) and Afternoon (2 PM–5 PM) loops radiating from 3030 Westwood Drive.',
+                    'Eliminates cross-valley driving for single bulb or timer replacements during peak December demand.',
+                    'Streamlined Zero-Cash ($0.00) field interface with 1-tap elapsed time logging (15m, 30m, 45m, 60m), mandatory resolution notes (e.g., "Replaced 3 C9 warm white bulbs + GFCI reset"), and 1-click multi-stop Google Maps navigation.',
+                  ],
+                },
+                {
+                  role: 'WORKSPACE 05 // FIELD CREWS & JANUARY TAKEDOWN HUB',
+                  eeid: 'HH-EEID-005..007 (Trucks 1, 2 & 3)',
+                  title: '3-Truck Quadrant Dispatch, Photo Proof Gate & Climate Vault Takedowns',
+                  points: [
+                    'Decoupled fleet scheduling across Truck 1 (NW / Summerlin), Truck 2 (Henderson / Green Valley), and Truck 3 (SW / Enterprise), capped at a realistic maximum of 3 estate installations per truck per day.',
+                    'Dynamic Route Elasticity & Pull-Forward Handshake allowing crews finishing early to pull forward same-quadrant jobs afterReception phone confirmation and custom light stock verification.',
+                    'Mandatory wide-angle photo proof gate (or documented Supervisor Exception) required before unlocking INSTALL_COMPLETED, which automatically transitions the estate into the January Takedown & Climate Vault manifest (PENDING → SCHEDULED → COMPLETED) at 3030 Westwood Drive.',
+                  ],
+                },
+                {
+                  role: 'UNIFIED LEDGER // CLIENT DOSSIER & LIFETIME JOURNEY',
+                  eeid: 'Permanent Record (#HL-CID-XXXX)',
+                  title: 'Multi-Season Estate Dossier & 5-Stage Visual Pipeline Stepper',
+                  points: [
+                    'Every homeowner or commercial property is assigned a permanent Lifetime ID (#HL-CID-XXXX) tracking multi-season roofline specifications and storage bin locations.',
+                    '5-Stage Visual Pipeline Stepper tracking Lead Intake → Walkthrough & Quote → Deposit & Bank Verification → Installation & Photo Proof → January Takedown & Storage.',
+                    'Includes a high-resolution installation photo proof lightbox and a chronological multi-season audit ledger.',
+                  ],
+                },
+              ].map((ws, idx) => (
+                <div
+                  key={idx}
+                  className="p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between hover:border-[var(--accent-gold)]/30 transition-all"
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold">
+                        {ws.role}
+                      </span>
+                      <span className="px-2.5 py-0.5 rounded bg-[var(--bg-primary)] border border-[var(--border-subtle)] text-[10px] font-mono text-[var(--text-muted)]">
+                        {ws.eeid}
+                      </span>
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-[var(--text-core)] mb-4">{ws.title}</h3>
+                    <ul className="space-y-3">
+                      {ws.points.map((pt, pIdx) => (
+                        <li key={pIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[var(--text-muted)] font-light leading-relaxed">
+                          <span className="text-[var(--accent-gold)] font-bold mt-0.5">▸</span>
+                          <span>{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════
+            6. DEEP-DIVE ENGINEERING SPOTLIGHTS
+            ═══════════════════════════════════════════════════════════════ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="max-w-3xl mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                05 // ALGORITHMIC &amp; SECURITY DEEP-DIVES
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[var(--text-core)] mb-4">
+                How Geographic Zoning &amp; Custody Controls Work Under the Hood
+              </h2>
+              <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed">
+                Every architectural decision was anchored in physical Las Vegas geography, financial auditability, and zero-trust security boundaries.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Spotlight 1: 4-Quadrant LV Valley Matrix */}
+              <div className="p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                  SPOTLIGHT A // GEO-ROUTING ENGINE
+                </span>
+                <h3 className="text-lg font-bold text-[var(--text-core)] mb-3">
+                  Las Vegas Valley 4-Quadrant ZIP Clustering
+                </h3>
+                <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-5">
+                  Automatically resolves 5-digit ZIP codes into dedicated operational sectors radiating from 3030 Westwood Drive:
+                </p>
+                <div className="space-y-2.5 text-xs font-mono">
+                  <div className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <div className="text-[var(--accent-gold)] font-bold">SUMMERLIN_NW (Truck 1 Anchor)</div>
+                    <div className="text-[var(--text-muted)] text-[11px] mt-0.5">The Ridges, Red Rock, Queensridge, Centennial (89134, 89135, 89138, 89144...)</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <div className="text-emerald-400 font-bold">HENDERSON_GV (Truck 2 Anchor)</div>
+                    <div className="text-[var(--text-muted)] text-[11px] mt-0.5">MacDonald Highlands, Ascaya, Anthem, Seven Hills, Lake Las Vegas (89012, 89052...)</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <div className="text-sky-400 font-bold">SW_ENTERPRISE (Truck 3 Anchor)</div>
+                    <div className="text-[var(--text-muted)] text-[11px] mt-0.5">Southern Highlands, Spanish Trail, Rhodes Ranch, Mountains Edge (89141, 89148...)</div>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <div className="text-purple-400 font-bold">CENTRAL_NLV (HQ Radius Hub)</div>
+                    <div className="text-[var(--text-muted)] text-[11px] mt-0.5">3030 Westwood Corridor, Scotch 80s, Las Vegas Country Club, Aliante</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Spotlight 2: 2-Person Bank Custody State Machine */}
+              <div className="p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                  SPOTLIGHT B // FINANCIAL CUSTODY
+                </span>
+                <h3 className="text-lg font-bold text-[var(--text-core)] mb-3">
+                  2-Person Cash &amp; Check Bank Reconciliation
+                </h3>
+                <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-5">
+                  High-value residential and commercial installs frequently involve on-site check or cash deposits. We eliminated custody ambiguity via a strict state machine:
+                </p>
+                <div className="space-y-3 text-xs">
+                  <div className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <span className="font-mono text-[10px] text-amber-400 font-bold block">STEP 1 // FIELD COLLECTION (WITH_VANESSA)</span>
+                    <p className="text-[var(--text-muted)] mt-1">
+                      Estimator logs exact-cent 50% deposit collected on-site via Cash or Check. Job enters <code className="text-amber-300">WITH_VANESSA</code> custody state; installation scheduling remains locked.
+                    </p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <span className="font-mono text-[10px] text-sky-400 font-bold block">STEP 2 // FRONT-DESK BANK DROP VERIFICATION</span>
+                    <p className="text-[var(--text-muted)] mt-1">
+                      Receptionist (<code className="text-sky-300">HH-EEID-002</code>) reconciles the physical bank deposit slip against online banking records.
+                    </p>
+                  </div>
+                  <div className="p-3 rounded-xl bg-[var(--bg-primary)] border border-emerald-500/30">
+                    <span className="font-mono text-[10px] text-emerald-400 font-bold block">STEP 3 // DISPATCH UNLOCK (VERIFIED_IN_BANK)</span>
+                    <p className="text-[var(--text-muted)] mt-1">
+                      Only after dual-employee verification does <code className="text-emerald-300">depositPaid</code> unlock for Truck 1–3 installation dispatch, stamping both employee IDs to the audit log.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Spotlight 3: Edge Auth & Privacy Hardening */}
+              <div className="p-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                  SPOTLIGHT C // ZERO-TRUST SECURITY
+                </span>
+                <h3 className="text-lg font-bold text-[var(--text-core)] mb-3">
+                  Web Crypto HMAC-SHA256 Edge Auth &amp; Public Anonymity
+                </h3>
+                <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed mb-5">
+                  Engineered for rapid field switching on iPads and mobile devices without compromising enterprise security:
+                </p>
+                <ul className="space-y-3 text-xs text-[var(--text-muted)]">
+                  <li className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <strong className="text-[var(--text-core)] block mb-0.5 font-mono text-[11px]">Edge-Verified JWT Sessions</strong>
+                    Zero-dependency Web Crypto API HMAC-SHA256 tokens stored in <code className="text-[var(--accent-gold)]">HttpOnly; SameSite=Lax</code> cookies, verified inside Next.js Edge Middleware.
+                  </li>
+                  <li className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <strong className="text-[var(--text-core)] block mb-0.5 font-mono text-[11px]">Public Employee Anonymity</strong>
+                    Zero internal staff names are exposed on the public website—protecting key personnel from competitor poaching while maintaining full Employee ID (<code className="text-[var(--accent-gold)]">HH-EEID-001..007</code>) accountability inside the private CRM.
+                  </li>
+                  <li className="p-3 rounded-xl bg-[var(--bg-primary)] border border-[var(--border-subtle)]">
+                    <strong className="text-[var(--text-core)] block mb-0.5 font-mono text-[11px]">Strict Search Engine Isolation</strong>
+                    Every CRM route enforces <code className="text-[var(--accent-gold)]">X-Robots-Tag: noindex, nofollow</code> and role-scoped API guards.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════
+            7. 8-PHASE END-TO-END ENGINEERING JOURNEY
+            ═══════════════════════════════════════════════════════════════ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-surface)]/40 border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="max-w-3xl mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                06 // THE 8-PHASE DELIVERY ROADMAP
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[var(--text-core)] mb-4">
+                How We Took Holiday Illumination From Legacy Static to Enterprise Grade
+              </h2>
+              <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed">
+                Executed across eight disciplined engineering sprints—from monorepo decomposition and luxury brand positioning to behavioral UX telemetry and Robert C. Martin Clean Code verification.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {[
+                {
+                  phase: 'PHASE 01',
+                  title: 'Monorepo & Next.js 16 Migration',
+                  desc: 'Replaced legacy static HTML with a modular npm workspaces monorepo (apps/web, apps/crm, test/) running Next.js 16 App Router, React 19, TypeScript 5, and Tailwind CSS v4.',
+                },
+                {
+                  phase: 'PHASE 02',
+                  title: 'Midnight Luxe 60-30-10 Brand System',
+                  desc: 'Crafted the nocturnal luxury visual language (#090D16 Obsidian, #D4AF37 Champagne Gold, #961C28 Velvet Crimson), 1998 heritage storytelling, and $750 minimum anchor.',
+                },
+                {
+                  phase: 'PHASE 03',
+                  title: 'Haute Halloween & 20-Q Persona FAQ',
+                  desc: 'Added the gateway October Halloween showcase and a 20-question technical FAQ addressing Spanish clay tile roofs, <5 PSI spider lifts, and nocturnal commercial installs.',
+                },
+                {
+                  phase: 'PHASE 04',
+                  title: 'Geo-Smart Intake & Valley Zoning',
+                  desc: 'Built the 3-step walkthrough wizard and Las Vegas ZIP-to-quadrant geocoding engine to eliminate cross-valley estimator driving.',
+                },
+                {
+                  phase: 'PHASE 05',
+                  title: '5-Role CRM & Edge JWT + PIN Auth',
+                  desc: 'Engineered the 5 role-based workspaces protected by Web Crypto HMAC-SHA256 Edge JWT sessions and 4-digit PIN switching.',
+                },
+                {
+                  phase: 'PHASE 06',
+                  title: '2-Person Custody & Lifetime Ledger',
+                  desc: 'Implemented 2-person bank deposit verification, 4-outcome estimator workflows, photo-proof installation gates, and January Climate Vault manifests.',
+                },
+                {
+                  phase: 'PHASE 07',
+                  title: 'Empirical UX Audit & Design Spells',
+                  desc: 'Resolved 19 behavioral UX findings (F01–F11, UX-01–UX-08), enforcing 44px Apple HIG touch targets, WCAG AAA contrast, and Weibull 8.0s hesitation telemetry.',
+                },
+                {
+                  phase: 'PHASE 08',
+                  title: 'Clean Code Refactor & 107-Test Suite',
+                  desc: 'Executed a Robert C. Martin Clean Code audit (R01–R10), decomposing monoliths into SRP domain modules backed by 107 zero-dependency automated tests.',
+                },
+              ].map((step, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded bg-[var(--accent-gold)]/10 text-[var(--accent-gold)] border border-[var(--accent-gold)]/30 font-bold inline-block mb-3">
+                      {step.phase}
+                    </span>
+                    <h3 className="text-base font-bold text-[var(--text-core)] mb-2">{step.title}</h3>
+                    <p className="text-xs text-[var(--text-muted)] font-light leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════
+            8. TECHNICAL STACK & 107-TEST QUALITY VERIFICATION MATRIX
+            ═══════════════════════════════════════════════════════════════ */}
+        <section className="section-padding px-6 lg:px-10 bg-[var(--bg-primary)] border-b border-[var(--border-subtle)]">
+          <div className="max-w-7xl mx-auto">
+            <div className="max-w-3xl mb-12">
+              <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-2">
+                07 // TECHNICAL VERIFICATION &amp; QUALITY ASSURANCE
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[var(--text-core)] mb-4">
+                107 Automated Verification Assertions Across 4 Test Suites
+              </h2>
+              <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed">
+                Every routing rule, discount calculation, role permission guard, and WCAG contrast token is continuously verified via a zero-dependency Node.js native test runner suite (<code className="text-xs text-[var(--accent-gold)]">node --test</code>).
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              {/* Stack Table */}
+              <div className="lg:col-span-7 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] overflow-hidden">
+                <div className="px-6 py-4 border-b border-[var(--border-subtle)] flex items-center justify-between">
+                  <span className="text-xs font-mono uppercase tracking-wider text-[var(--accent-gold)] font-bold">
+                    Enterprise Architecture Stack
+                  </span>
+                  <span className="text-[11px] font-mono text-emerald-400">Zero Build Errors</span>
+                </div>
+                <div className="divide-y divide-[var(--border-subtle)] text-xs">
+                  {[
+                    { layer: 'Framework & UI Runtime', tech: 'Next.js 16.2+ (App Router), React 19.2, TypeScript 5' },
+                    { layer: 'Styling & Design Tokens', tech: 'Tailwind CSS v4, Midnight Luxe 60-30-10 Token Architecture' },
+                    { layer: 'Database & Realtime Sync', tech: 'Supabase Postgres + Realtime Channels + LocalStorage Fallback' },
+                    { layer: 'Authentication & RBAC', tech: 'Web Crypto API HMAC-SHA256 Edge JWT + 4-Digit Role PINs' },
+                    { layer: 'Voice AI & Telephony', tech: 'Retell AI Voice Receptionist Webhook & Mode Controller' },
+                    { layer: 'UX & Accessibility Standard', tech: 'WCAG AAA Contrast, 44×44px Apple HIG Touch Targets, Reduced Motion' },
+                  ].map((row, idx) => (
+                    <div key={idx} className="px-6 py-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <span className="font-mono text-[var(--text-muted)]">{row.layer}</span>
+                      <span className="font-medium text-[var(--text-core)] sm:text-right">{row.tech}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 4 Test Suites */}
+              <div className="lg:col-span-5 space-y-4">
+                {[
+                  {
+                    suite: 'test/web-smoke.test.mjs',
+                    focus: 'Public Luxury Website & SEO',
+                    details: 'Hero LCP priority, Day/Night slider keyboard a11y, Halloween pre-selection, 20 FAQs, JSON-LD LocalBusiness schema, and public employee anonymity.',
+                  },
+                  {
+                    suite: 'test/crm-smoke.test.mjs',
+                    focus: '5-Role CRM & State Machine',
+                    details: 'RBAC workspaces, 2-person bank custody verification, photo proof installation gates, and January Climate Vault takedown workflow.',
+                  },
+                  {
+                    suite: 'test/crm-clean-code.test.mjs',
+                    focus: 'SRP Domain Engine Unit Tests',
+                    details: 'Exact-cent 50% deposit math, RFC-4180 CSV escaping, Las Vegas ZIP quadrant mapping, and multi-stop Google Maps URL generation.',
+                  },
+                  {
+                    suite: 'test/ux-audit-fixes.test.mjs',
+                    focus: 'Empirical UX Behavioral Guards',
+                    details: 'Weibull 8.0s dwell-hesitation trigger, scroll-thrashing detection, 44px touch targets, and WCAG AAA contrast compliance.',
+                  },
+                ].map((t, idx) => (
+                  <div key={idx} className="p-4 rounded-xl bg-[var(--bg-surface)] border border-[var(--border-subtle)]">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <code className="text-xs font-mono text-[var(--accent-gold)] font-bold">{t.suite}</code>
+                      <span className="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-[10px] font-bold">
+                        PASS
+                      </span>
+                    </div>
+                    <div className="text-xs font-bold text-[var(--text-core)] mb-1">{t.focus}</div>
+                    <p className="text-[11px] text-[var(--text-muted)] font-light leading-relaxed">{t.details}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════
+            9. CONVERSION CLOSER & ADVISORY CTA
+            ═══════════════════════════════════════════════════════════════ */}
+        <section className="section-padding px-6 lg:px-10 bg-gradient-to-b from-[var(--bg-primary)] to-[#070B13] border-b border-[var(--border-subtle)]">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="text-xs font-mono uppercase tracking-widest text-[var(--accent-gold)] font-bold block mb-3">
+              READY TO ELIMINATE OPERATIONAL BOTTLENECKS?
+            </span>
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight text-[var(--text-core)] mb-5">
+              Need a High-Converting Luxury Platform Paired with a Custom Operations CRM?
+            </h2>
+            <p className="text-sm sm:text-base text-[var(--text-muted)] font-light leading-relaxed max-w-2xl mx-auto mb-8">
+              Whether you operate a multi-crew field service enterprise in the United States or a multi-property hospitality portfolio in East Africa, we engineer bespoke conversion websites, AI voice receptionists, and role-based dispatch consoles that turn operational chaos into measurable profit.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://holiday-illumination.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gold text-xs py-3.5 px-8 w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 font-bold"
+              >
+                <span>Preview Public Staging Site</span>
+                <span>↗</span>
+              </a>
+              <a
+                href={buildWhatsAppUrl("Hi Malack, I read the Holiday Illumination Las Vegas case study and would like to discuss a custom conversion platform and operations CRM for our business")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline text-xs py-3.5 px-8 w-full sm:w-auto text-center inline-flex items-center justify-center gap-2"
+              >
+                <span>Direct WhatsApp Systems Advisory</span>
+                <span>↗</span>
+              </a>
+            </div>
+
+            <p className="text-[11px] font-mono text-[var(--text-muted)] mt-6">
+              Official client domain cutover (www.holidayillumination.com) scheduled next week &bull; Internal Operations CRM kept private by NDA &amp; security policy
             </p>
           </div>
         </section>

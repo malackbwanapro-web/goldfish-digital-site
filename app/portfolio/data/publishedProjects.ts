@@ -108,4 +108,34 @@ export const PUBLISHED_PROJECTS: readonly PublishedProject[] = [
     ],
     isFlagship: true,
   },
+  {
+    slug: 'holiday-illumination-las-vegas',
+    name: 'Holiday Illumination LLC ("Highlights")',
+    sector: 'Luxury Estate Contracting & Geo-Smart Field Dispatch CRM (Las Vegas, USA)',
+    url: 'https://holiday-illumination.vercel.app',
+    tagline: 'Next.js 16 Luxury Conversion Platform, 4-Quadrant LV Valley Dispatch CRM, Retell AI Voice Receptionist & 107-Test Suite',
+    description:
+      'For Las Vegas’s premier residential estate and commercial holiday lighting company (serving guard-gated communities in Summerlin and Henderson since 1998), Goldfish Marketing engineered a dual-platform Next.js 16 ecosystem: a luxury public conversion website and a private role-based Operations & Dispatch CRM. By replacing legacy static pages and manual scheduling with a ZIP-code quadrant routing engine, a Retell AI Voice Receptionist desk, 2-person bank deposit custody verification, and automated crew capacity locks, we eliminated 50-mile cross-valley driving bottlenecks and unified every touchpoint from initial estate walkthrough to January climate-vault storage.',
+    context:
+      'Operating from a permanent headquarters at 3030 Westwood Drive for 28+ seasons, Holiday Illumination LLC suffered from cross-valley routing bottlenecks between Summerlin and Henderson, peak-season October–December call overflow, dated digital perception, and fragmented field-to-office handshakes across estimators, warranty runners, and installation trucks.',
+    evidence:
+      'Engineered an interconnected Next.js 16 + React 19 + Supabase + Retell AI monorepo ecosystem comprising a Midnight Luxe 60-30-10 public conversion web app (interactive Day/Night slider, Haute Halloween spotlight, 20-question UHNW/Commercial persona FAQ, Geo-Smart 3-step intake wizard, Weibull hesitation concierge) and a private zero-indexed 5-role Operations & Dispatch CRM verified by 107 zero-dependency automated tests. Official domain cutover to www.holidayillumination.com scheduled upon registrar handoff.',
+    tags: [
+      'Next.js 16 & React 19',
+      'Geo-Smart ZIP Routing',
+      '5-Role Operations CRM',
+      'Retell AI Receptionist',
+      'Day/Night Estate Slider',
+      '2-Person Bank Custody',
+      'Weibull UX Telemetry',
+      '107 Automated Tests',
+    ],
+    metrics: [
+      { value: '4 Quadrants', label: 'Automated LV Valley ZIP Clustering' },
+      { value: '5 Role Consoles', label: 'Custom Dark-Mode RBAC CRM Workspaces' },
+      { value: '24/7 AI Voice', label: 'Retell AI Call Triage & Overflow' },
+      { value: '107 Tests', label: 'Automated Code, Math & RBAC Suite' },
+    ],
+    isFlagship: true,
+  },
 ] as const;

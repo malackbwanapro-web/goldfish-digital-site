@@ -272,6 +272,33 @@ export const ACTUAL_CLIENTS: ActualClientProject[] = [
     caseStudySlug: 'ecommerce-speed-replatforming',
     badgeLabel: 'Quad & Buggy Safaris',
   },
+  {
+    id: 'holiday-illumination',
+    name: 'Holiday Illumination LLC ("Highlights")',
+    domain: 'holidayillumination.com (Staging Preview)',
+    liveUrl: 'https://holiday-illumination.vercel.app',
+    sector: 'Luxury Estate Contracting & Geo-Smart CRM',
+    sectorSlug: 'tech-infrastructure',
+    location: 'Las Vegas, Summerlin & Henderson • NV, USA',
+    tagline: 'Since 1998: Next.js 16 luxury estate lighting conversion platform, 4-quadrant LV Valley ZIP routing engine, Retell AI Voice Receptionist, and 5-role Operations & Dispatch CRM.',
+    brandColors: {
+      primary: '#D4AF37',
+      bgTint: 'rgba(150, 28, 40, 0.08)',
+      borderTint: 'rgba(212, 175, 55, 0.3)',
+    },
+    metrics: {
+      value: '4 Quadrants • 5 Roles',
+      label: 'Geo-Smart Dispatch CRM & 107 Automated Tests',
+    },
+    deliverables: [
+      'Midnight Luxe 60-30-10 Next.js 16 public conversion platform with interactive Day/Night luminescence slider and Haute Halloween spotlight',
+      'Geo-Smart 3-step estate walkthrough wizard auto-resolving Las Vegas ZIP codes into 4 geographic quadrants to eliminate 50-mile cross-valley zig-zagging',
+      'Private 5-role Operations & Dispatch CRM with Retell AI Voice Receptionist controls, 2-person bank deposit custody verification, and 107 automated verification tests',
+    ],
+    techStack: ['Next.js 16 & React 19', 'Supabase Realtime', 'Retell AI Voice', '5-Role RBAC CRM', '107-Test Suite'],
+    caseStudySlug: 'holiday-illumination-las-vegas',
+    badgeLabel: 'Las Vegas Est. 1998',
+  },
 ];
 
 export const CLIENT_SECTORS: ClientSectorFilter[] = [

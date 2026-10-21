@@ -86,7 +86,15 @@ export default function PortfolioPage() {
                       </span>
                       {project.isFlagship && (
                         <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-[var(--accent-gold)]/15 border border-[var(--accent-gold)]/40 text-[var(--accent-gold)]">
-                          ● FLAGSHIP {project.sector.includes('Multi-Property') ? 'MULTI-PROPERTY HOSPITALITY' : project.sector.includes('Dining') || project.sector.includes('Restaurant') || project.sector.includes('Nightlife') ? 'DINING & NIGHTLIFE' : 'HOSPITALITY'} CASE STUDY
+                          ● FLAGSHIP{' '}
+                          {project.slug === 'holiday-illumination-las-vegas'
+                            ? 'INTERNATIONAL ENTERPRISE & AI CRM'
+                            : project.sector.includes('Multi-Property')
+                              ? 'MULTI-PROPERTY HOSPITALITY'
+                              : project.sector.includes('Dining') || project.sector.includes('Restaurant') || project.sector.includes('Nightlife')
+                                ? 'DINING & NIGHTLIFE'
+                                : 'HOSPITALITY'}{' '}
+                          CASE STUDY
                         </span>
                       )}
                     </div>
@@ -149,7 +157,13 @@ export default function PortfolioPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <span>{project.slug === 'beakim-hospitality-group' ? 'Platform Staging Finalization' : 'Visit Live Platform'}</span>
+                      <span>
+                        {project.slug === 'beakim-hospitality-group'
+                          ? 'Platform Staging Finalization'
+                          : project.slug === 'holiday-illumination-las-vegas'
+                            ? 'Preview Public Staging (www.holidayillumination.com Cutover Next Week)'
+                            : 'Visit Live Platform'}
+                      </span>
                       <span>↗</span>
                     </a>
                   </div>
@@ -165,10 +179,10 @@ export default function PortfolioPage() {
                 EXPANDED CLIENT ROSTER
               </span>
               <h2 className="text-h2 font-black tracking-tight text-[var(--text-core)]">
-                More Live Kenyan Client Platforms
+                More Live Client Platforms
               </h2>
               <p className="text-sm text-[var(--text-muted)] font-light mt-2 max-w-2xl">
-                Active web builds and growth ecosystems engineered across coastal hospitality, high-end safaris, and regional SMEs.
+                Active web builds and growth ecosystems engineered across coastal hospitality, high-end safaris, U.S. estate contracting, and regional SMEs.
               </p>
             </div>
 
