@@ -30,6 +30,33 @@ export interface ClientSectorFilter {
 
 export const ACTUAL_CLIENTS: ActualClientProject[] = [
   {
+    id: 'beakim-hospitality-group',
+    name: 'Beakim Hospitality Group',
+    domain: 'beakimhospitalitygroup.co.ke',
+    liveUrl: 'https://www.beakimhospitalitygroup.co.ke/',
+    sector: 'Multi-Property Hospitality & Enterprise PMS',
+    sectorSlug: 'hospitality-stays',
+    location: 'Diani Beach & Ukunda • Kwale County, Kenya',
+    tagline: '4 coastal properties (65+ units) unified with a 2-Column Reservation Command Center, 83-guest Fit Nation case study, interactive SEO portal (/seo-matrix), 89+ geo-tagged WebP photos, and Next.js 14 Enterprise PMS.',
+    brandColors: {
+      primary: '#10B981',
+      bgTint: 'rgba(16, 185, 129, 0.08)',
+      borderTint: 'rgba(16, 185, 129, 0.25)',
+    },
+    metrics: {
+      value: '4 Properties • 65+ Units',
+      label: '2-Column Booking Command Center & Enterprise PMS',
+    },
+    deliverables: [
+      'Luxury 2-Column Reservation Command Center with +KSh 1,000/day coastal breakfast add-ons, stay preferences, and non-blocking 3,500ms background CRM sync',
+      'Diani Insights editorial hub featuring the 83-guest Fit Nation Kenya mega-retreat case study, 89+ EXIF geo-tagged WebP photos, and 7-stage arrival story arc',
+      'Interactive Executive SEO Telemetry Portal (/seo-matrix), verified GA4 & Google Search Console integration, and Next.js 14 4-Role Enterprise PMS with Pesapal IPN webhook',
+    ],
+    techStack: ['Next.js 14 4-Role PMS', '2-Column Booking Engine', 'Pesapal IPN & CRM Sync', 'Interactive SEO Portal', '10/10 Clean Code Tests'],
+    caseStudySlug: 'beakim-hospitality-group',
+    badgeLabel: '4 Properties • 65+ Units',
+  },
+  {
     id: 'all-kenya-safaris',
     name: 'All Kenya Safaris & Adventures',
     domain: 'allkenyasafaris.co.ke',

@@ -158,11 +158,9 @@ export default function PortfolioPage() {
                       rel="noopener noreferrer"
                     >
                       <span>
-                        {project.slug === 'beakim-hospitality-group'
-                          ? 'Platform Staging Finalization'
-                          : project.slug === 'holiday-illumination-las-vegas'
-                            ? 'Preview Public Staging (www.holidayillumination.com Cutover Next Week)'
-                            : 'Visit Live Platform'}
+                        {project.slug === 'holiday-illumination-las-vegas'
+                          ? 'Preview Public Staging (www.holidayillumination.com Cutover Next Week)'
+                          : 'Visit Live Platform'}
                       </span>
                       <span>↗</span>
                     </a>
