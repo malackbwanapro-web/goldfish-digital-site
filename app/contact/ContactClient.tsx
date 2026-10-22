@@ -5,12 +5,11 @@ import { useSearchParams } from 'next/navigation';
 import { trackContactEvent } from '@/lib/contact-analytics';
 import { getServiceOffer } from '@/lib/service-offers';
 import { submitLead, type LeadSubmissionPayload } from '@/lib/leads-api';
-import { TypebotEstimator } from '@/app/components/typebot';
 import WhatsAppTab, { WA_PROMPT_CHIPS, type PromptChip } from './components/WhatsAppTab';
 import StrategyCallTab from './components/StrategyCallTab';
 import DiagnosticTab from './components/DiagnosticTab';
 
-type ContactTabKey = 'whatsapp' | 'estimator' | 'calendar' | 'diagnostic';
+type ContactTabKey = 'whatsapp' | 'calendar' | 'diagnostic';
 
 export default function ContactClient() {
   const searchParams = useSearchParams();
@@ -73,8 +72,9 @@ export default function ContactClient() {
     if (messageParam) {
       setCustomMessage(messageParam);
     }
-    if (searchParams.get('tab') === 'estimator') {
-      setActiveTab('estimator');
+    const tabParam = searchParams.get('tab');
+    if (tabParam === 'calendar' || tabParam === 'diagnostic') {
+      setActiveTab(tabParam);
     }
   }, [searchParams]);
 
@@ -166,8 +166,8 @@ export default function ContactClient() {
         </div>
       )}
 
-      {/* Quad-Modal Tab Switcher */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 p-1.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-md mb-10 max-w-3xl mx-auto">
+      {/* Tri-Modal Tab Switcher */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-1.5 p-1.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] shadow-md mb-10 max-w-2xl mx-auto">
         <button
           onClick={() => setActiveTab('whatsapp')}
           className={`py-3 px-3 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
@@ -178,18 +178,6 @@ export default function ContactClient() {
         >
           <span>💬</span>
           <span>1-Tap WhatsApp</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('estimator')}
-          className={`py-3 px-3 rounded-xl text-xs font-mono uppercase tracking-wider font-bold transition-all flex items-center justify-center gap-2 ${
-            activeTab === 'estimator'
-              ? 'bg-[var(--accent-gold)] text-[#0D0D0D] shadow-md'
-              : 'text-[var(--text-muted)] hover:text-[var(--text-core)]'
-          }`}
-        >
-          <span>⚡</span>
-          <span>AI Estimator</span>
         </button>
 
         <button
@@ -234,12 +222,7 @@ export default function ContactClient() {
         />
       </div>
 
-      {/* Tab 2: Interactive AI Scope Estimator (Typebot) */}
-      <div className={activeTab === 'estimator' ? 'block' : 'hidden'}>
-        <TypebotEstimator />
-      </div>
-
-      {/* Tab 3: 15-Minute Strategy Slot */}
+      {/* Tab 2: 15-Minute Strategy Slot */}
       <div className={activeTab === 'calendar' ? 'block' : 'hidden'}>
         <StrategyCallTab
           clientName={clientName}
@@ -256,7 +239,7 @@ export default function ContactClient() {
         />
       </div>
 
-      {/* Tab 4: 3-Step Confidential Project Enquiry */}
+      {/* Tab 3: 3-Step Confidential Project Enquiry */}
       <div className={activeTab === 'diagnostic' ? 'block' : 'hidden'}>
         <DiagnosticTab
           clientName={clientName}

@@ -612,8 +612,8 @@ export default function ServicePage({ params }: Props) {
             </Link>
             {service.slug === 'smart-web-app-ecosystems' && (
               <div className="flex flex-col gap-1.5">
-                <Link href="/contact?tab=estimator" className="text-xs font-mono text-[var(--accent-gold)] hover:underline flex items-center gap-1">
-                  <span>⚡ Calculate your custom web platform &amp; booking scope (Interactive Estimator) →</span>
+                <Link href="/contact?service=smart-web-app-ecosystems" className="text-xs font-mono text-[var(--accent-gold)] hover:underline flex items-center gap-1">
+                  <span>⚡ Request a custom web platform &amp; booking architecture diagnostic →</span>
                 </Link>
                 <Link href="/diani" className="text-xs font-mono text-[var(--text-muted)] hover:underline">
                   Working with us in Diani, Ukunda and Kwale → /diani

@@ -18,8 +18,6 @@ const ALLOWED_LEAD_INTENTS = [
   'whatsapp_quick_chat',
   'strategy_call',
   'diagnostic',
-  'typebot_assistant',
-  'typebot_estimator',
 ] as const;
 
 const LEAD_STRING_FIELDS = [

@@ -7,7 +7,6 @@ import GoogleAnalytics from './components/GoogleAnalytics';
 import SchemaMarkup from './components/SchemaMarkup';
 import MobileStickyBar from './components/MobileStickyBar';
 import WhatsAppFloat from './components/WhatsAppFloat';
-import { TypebotBubble } from './components/typebot';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -88,10 +87,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
   },
   verification: {
     google: googleVerification || 'google8ac8b339d5eac038',
@@ -121,7 +116,6 @@ export default function RootLayout({
           {children}
         </div>
         <WhatsAppFloat />
-        <TypebotBubble />
         <MobileStickyBar />
       </body>
     </html>
